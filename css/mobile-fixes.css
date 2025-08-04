@@ -28,6 +28,22 @@ html, body {
   width: 100% !important;
 }
 
+/* Target the specific utility-page-wrap class */
+.utility-page-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Fix Webflow lightbox components that use 100vw */
+.w-lightbox-view {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.w-lightbox-image {
+  max-width: 100% !important;
+}
+
 /* 5. Container fixes for mobile */
 @media screen and (max-width: 991px) {
   .container-large,
