@@ -1,0 +1,382 @@
+/* Professional Cookie Consent Styles
+   GDPR/CCPA Compliant Design
+   Matches site's dark theme aesthetic */
+
+/* Banner Styles */
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 9999;
+  padding: 1.5rem 0;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.cookie-consent-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.cookie-consent-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cookie-consent-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.cookie-consent-text h3 {
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.cookie-consent-text p {
+  color: #a0a0a0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Button Styles */
+.cookie-consent-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cookie-consent-button-primary {
+  background: #ffffff;
+  color: #000000;
+}
+
+.cookie-consent-button-primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.cookie-consent-button-secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cookie-consent-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Modal Styles */
+.cookie-consent-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 10000;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cookie-consent-modal-content {
+  background: #0a0a0a;
+  max-width: 600px;
+  margin: 3rem auto;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.cookie-consent-modal-header {
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cookie-consent-modal-header h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.cookie-consent-close {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.cookie-consent-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cookie-consent-modal-body {
+  padding: 2rem;
+}
+
+.cookie-consent-modal-body > p {
+  color: #a0a0a0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Cookie Categories */
+.cookie-consent-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cookie-consent-category {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  padding: 1.5rem;
+}
+
+.cookie-consent-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cookie-consent-category-info h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.cookie-consent-badge {
+  font-size: 0.75rem;
+  color: #a0a0a0;
+  background: transparent;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cookie-consent-category p {
+  color: #a0a0a0;
+  font-size: 0.813rem;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Checkbox Styles */
+.cookie-consent-switch {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.cookie-consent-switch input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.cookie-consent-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cookie-consent-slider:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 8px;
+  height: 12px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.cookie-consent-switch input:checked ~ .cookie-consent-slider {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.cookie-consent-switch input:checked ~ .cookie-consent-slider:after {
+  display: block;
+  border-color: #0a0a0a;
+}
+
+.cookie-consent-switch input:disabled ~ .cookie-consent-slider {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cookie-consent-switch input:disabled:checked ~ .cookie-consent-slider {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Modal Footer */
+.cookie-consent-modal-footer {
+  padding: 1rem 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cookie-consent-link {
+  color: #a0a0a0;
+  font-size: 0.813rem;
+  text-decoration: none;
+  font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: color 0.2s ease;
+}
+
+.cookie-consent-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.cookie-consent-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Reopen Button - Hidden by default */
+.cookie-consent-reopen {
+  display: none; /* Removed as unprofessional */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .cookie-consent-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cookie-consent-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cookie-consent-button {
+    font-size: 0.813rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .cookie-consent-modal-content {
+    margin: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .cookie-consent-modal-header,
+  .cookie-consent-modal-body,
+  .cookie-consent-modal-footer {
+    padding: 1.5rem;
+  }
+  
+  .cookie-consent-modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .cookie-consent-modal-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .cookie-consent-button {
+    width: 100%;
+  }
+}
