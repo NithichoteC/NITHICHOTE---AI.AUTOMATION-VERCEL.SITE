@@ -24,6 +24,8 @@
   <link rel="manifest" href="manifest.json">
   <!-- Cookie Consent Styles -->
   <link href="css/cookie-consent.css" rel="stylesheet" type="text/css">
+  <!-- Mobile Overflow Fixes -->
+  <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -2103,6 +2105,16 @@
                 .service-content:not(:first-child) .service-card .accordion-item:first-child {
                   border-top: none !important;
                 }
+                
+                /* Reduce grid gap between service-content blocks on mobile/tablet */
+                .service-grid {
+                  grid-row-gap: 0 !important; /* Remove gap to maintain equal spacing */
+                }
+                
+                /* Remove top padding from Zero Learning (first item in second service-content) */
+                .service-content:not(:first-child) .service-card .accordion-item:first-child {
+                  padding-top: 0 !important;
+                }
               }
               
               /* Professional border collapse solution */
@@ -2143,6 +2155,7 @@
                 align-items: center !important;
                 margin: 0 !important;
                 line-height: 1.2 !important;
+                white-space: nowrap !important; /* Prevent text wrapping to ensure consistent spacing */
               }
               
               .service-card .accordion-heading strong {
@@ -2340,8 +2353,8 @@
               @media (max-width: 479px) {
                 /* Use responsive font sizing that scales with viewport */
                 .service-card .accordion-heading {
-                  white-space: normal !important;
-                  font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
+                  white-space: nowrap !important; /* Prevent wrapping to fix Zero Learning spacing */
+                  font-size: clamp(1rem, 4.5vw, 1.5rem) !important; /* Slightly smaller to ensure fit */
                   word-break: break-word !important;
                   line-height: 1.15 !important;
                   padding-right: 0.5rem !important;
@@ -2357,6 +2370,13 @@
               @media (max-width: 380px) {
                 .service-card .accordion-heading {
                   font-size: clamp(1.1rem, 4.5vw, 1.5rem) !important;
+                }
+              }
+              
+              /* For extremely narrow screens - ensure text doesn't overflow */
+              @media (max-width: 350px) {
+                .service-card .accordion-heading {
+                  font-size: 0.95rem !important;
                 }
               }
               
