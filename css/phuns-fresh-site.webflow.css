@@ -2548,14 +2548,14 @@ blockquote {
   overflow: hidden;
 }
 
-/* Professional Infinite Scroll Animation - 2 sets for reliability */
+/* Professional Infinite Scroll Animation - 2 sets for seamless loop */
 @keyframes infinite-scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    /* Move 49% to create slight overlap and prevent gap */
-    transform: translateX(-49%);
+    /* Move exactly 50% to scroll through first set and seamlessly continue with second */
+    transform: translateX(-50%);
   }
 }
 
@@ -2565,9 +2565,9 @@ blockquote {
     transform: translateX(0);
   }
   100% {
-    /* Move 49% to create slight overlap and prevent gap */
-    -webkit-transform: translateX(-49%);
-    transform: translateX(-49%);
+    /* Move exactly 50% to scroll through first set and seamlessly continue with second */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 
