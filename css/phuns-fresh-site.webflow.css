@@ -2554,8 +2554,8 @@ blockquote {
     transform: translateX(0);
   }
   100% {
-    /* Move exactly 50% for seamless loop with 2 duplicate sets */
-    transform: translateX(-50%);
+    /* Move 49% to create slight overlap and prevent gap */
+    transform: translateX(-49%);
   }
 }
 
@@ -2565,9 +2565,9 @@ blockquote {
     transform: translateX(0);
   }
   100% {
-    /* Move exactly 50% for seamless loop with 2 duplicate sets */
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    /* Move 49% to create slight overlap and prevent gap */
+    -webkit-transform: translateX(-49%);
+    transform: translateX(-49%);
   }
 }
 
@@ -2576,10 +2576,10 @@ blockquote {
   display: flex;
   align-items: center;
   gap: 40px;
-  animation: infinite-scroll 50s linear infinite;
-  -webkit-animation: infinite-scroll 50s linear infinite;
+  animation: infinite-scroll 60s linear infinite;
+  -webkit-animation: infinite-scroll 60s linear infinite;
   width: max-content;
-  will-change: transform;
+  will-change: transform, opacity;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
@@ -4799,8 +4799,8 @@ blockquote {
   /* Mobile logo animation fixes */
   .logo-track {
     gap: 30px;
-    animation-duration: 40s;
-    -webkit-animation-duration: 40s;
+    animation-duration: 50s;
+    -webkit-animation-duration: 50s;
   }
   
   .logo-item {
@@ -5330,8 +5330,8 @@ blockquote {
   /* Extra small mobile logo animation fixes */
   .logo-track {
     gap: 25px;
-    animation-duration: 35s;
-    -webkit-animation-duration: 35s;
+    animation-duration: 45s;
+    -webkit-animation-duration: 45s;
   }
   
   .logo-item {
