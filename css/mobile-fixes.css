@@ -6,10 +6,8 @@ html, body {
   max-width: 100% !important;
 }
 
-/* 2. Fix for elements using 100vw */
-* {
-  max-width: 100% !important;
-}
+/* 2. Fix for elements using 100vw - removed universal selector that was breaking layout */
+/* Target only specific elements that actually cause overflow */
 
 /* 3. Ensure proper box-sizing */
 *, *::before, *::after {
@@ -44,7 +42,7 @@ html, body {
   max-width: 100% !important;
 }
 
-/* 5. Container fixes for mobile */
+/* 5. Container fixes for mobile - preserve centering */
 @media screen and (max-width: 991px) {
   .container-large,
   .container-medium,
@@ -53,7 +51,14 @@ html, body {
   .w-layout-blockcontainer {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    max-width: 100% !important;
+    /* Removed max-width override to preserve container centering */
+  }
+  
+  /* Ensure the main container stays centered */
+  .container {
+    max-width: 940px !important; /* Preserve original max-width */
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
 
@@ -65,6 +70,13 @@ html, body {
   .padding-global {
     padding-left: 15px !important;
     padding-right: 15px !important;
+  }
+  
+  /* Maintain container centering on tablets */
+  .container {
+    max-width: 728px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   
   /* Fix navigation on mobile */
@@ -90,6 +102,16 @@ html, body {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
+  
+  /* Override Webflow's max-width: none on mobile */
+  .container {
+    max-width: 100% !important; /* Full width on mobile but still contained */
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+  }
 }
 
 /* 6. Fix for logo carousel/slider if present */
@@ -106,9 +128,10 @@ html, body {
   position: relative !important;
 }
 
-/* 7. Prevent horizontal scroll from any element */
-section, div, nav, header, footer, main {
-  max-width: 100% !important;
+/* 7. Prevent horizontal scroll from specific overflow-prone elements */
+/* Removed blanket div selector that was breaking container widths */
+section, nav, header, footer, main {
+  overflow-x: hidden;
 }
 
 /* 8. Fix for images that might be too wide */
