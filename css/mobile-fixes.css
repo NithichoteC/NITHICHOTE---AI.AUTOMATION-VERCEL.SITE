@@ -100,6 +100,18 @@ html, body {
   max-width: 100% !important;
 }
 
+/* Ensure logo animation works on mobile */
+.div-block-32 {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.logo-track {
+  /* Allow animation to work properly */
+  max-width: none !important;
+  width: max-content !important;
+}
+
 /* 7. Prevent horizontal scroll from any element */
 section, div, nav, header, footer, main {
   max-width: 100% !important;
