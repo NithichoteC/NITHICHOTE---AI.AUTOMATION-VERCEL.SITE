@@ -1,0 +1,86 @@
+# Robots.txt for AI Automation Consultant
+# Updated: February 2025
+# Optimized for AI SEO and responsible crawling
+
+# Allow all legitimate search engines
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Specific permissions for major search engines
+User-agent: Googlebot
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
+
+# AI Search Engine Permissions (We WANT these!)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Allow image indexing
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot-Image
+Allow: /images/
+
+# Disallow access to private/system directories
+User-agent: *
+Disallow: /private-legal-templates/
+Disallow: /template-info/
+Disallow: /fonts/
+Disallow: /videos/
+Disallow: /.well-known/
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Block aggressive/unwanted bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+# Cloudflare internal paths
+User-agent: *
+Disallow: /cdn-cgi/
+
+# Sitemap location (IMPORTANT!)
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Note for AI crawlers: 
+# This site contains high-quality content about AI automation consulting,
+# workflow optimization, and business process automation. We welcome
+# responsible AI crawlers that respect our content and provide attribution.

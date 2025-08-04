@@ -1,0 +1,60 @@
+{
+  "name": "AI Automation Consultant - Nithichote",
+  "short_name": "AI Automation",
+  "description": "Transform your business with AI automation. Get custom AI systems that save 10+ hours/week.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/images/screenshot-desktop.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "label": "AI Automation Consultant Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Strategy Call",
+      "short_name": "Book Call",
+      "description": "Schedule a free 30-minute strategy call",
+      "url": "/contact.html",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "How It Works",
+      "short_name": "Process",
+      "description": "Learn about our AI automation process",
+      "url": "/#SYSTEM",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}

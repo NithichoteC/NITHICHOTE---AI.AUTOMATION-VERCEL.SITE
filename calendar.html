@@ -1,0 +1,3075 @@
+<!DOCTYPE html><!--  Professional Calendar Booking Page  -->
+<html data-wf-page="686bac2b4d1341d4cca18e08" data-wf-site="686bac2b4d1341d4cca18daf" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Book Your Strategy Session - AI Automation Consultation</title>
+  <meta content="Book your personalized 30-minute AI automation strategy session. Let's map your highest-impact automations together." name="description">
+  <meta content="Book Your Strategy Session - AI Automation Consultation" property="og:title">
+  <meta content="Book your personalized 30-minute AI automation strategy session. Let's map your highest-impact automations together." property="og:description">
+  <meta content="Book Your Strategy Session - AI Automation Consultation" property="twitter:title">
+  <meta content="Book your personalized 30-minute AI automation strategy session. Let's map your highest-impact automations together." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/phuns-fresh-site.webflow.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- Custom Video Player Styles -->
+  
+  <!-- Removed iframe-resizer due to license requirements -->
+  
+  <!-- Cal.com embed script -->
+  <script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "30min", {origin:"https://app.cal.com"});
+  </script>
+  
+  <style>
+    /* Calendar Page Design */
+    :root {
+      --primary-black: #0f0f0f;
+      --white: white;
+      --border: #b4b4b414;
+      --grey: #b4b4b4;
+      --dark: #202020;
+      --secondary-black: #202020;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
+    body {
+      font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      background: var(--primary-black);
+      color: var(--white);
+      line-height: 1.5;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    
+    .page-wrapper {
+      min-height: 100vh;
+      background: var(--primary-black);
+      overflow: visible;
+    }
+    
+    /* Header Section */
+    .calendar-header {
+      text-align: center;
+      padding: 4rem 0 2rem 0;
+      background: var(--primary-black);
+    }
+    
+    .calendar-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    
+    .calendar-header p {
+      font-size: 1.1rem;
+      color: var(--grey);
+      margin: 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Progress Indicator */
+    .progress-indicator {
+      text-align: center;
+      padding: 1rem 0 2rem 0;
+    }
+    
+    .progress-steps {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .step-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--primary-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .step-circle.completed {
+      background: var(--white);
+    }
+    
+    .step-text {
+      font-size: 0.9rem;
+      color: var(--grey);
+    }
+    
+    .step-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    /* Calendar Container - Professional Design */
+    .calendar-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem 2rem 1rem;
+    }
+    
+    /* Personalized Message Section */
+    .personalized-message {
+      text-align: center;
+      padding: 0.5rem 0 1rem 0; /* Reduced top padding */
+    }
+    
+    .personalized-text {
+      font-size: 1.1rem;
+      color: var(--grey);
+      margin: 0 0 1.5rem 0; /* Reduced bottom margin */
+      font-weight: 400;
+    }
+    
+    .calendar-divider {
+      width: 100px;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto 0.375rem auto; /* Tighter spacing between divider and calendar */
+    }
+    
+    /* Cal.com Embed Styling - Professional Integration */
+    .calendly-embed-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      background: transparent;
+      overflow: visible;
+    }
+    
+    .calendly-inline-widget {
+      width: 100%;
+      height: auto;
+      border: none;
+      background: transparent;
+      overflow: visible !important;
+    }
+    
+    /* Enhanced iframe styling for professional integration */
+    .calendly-inline-widget iframe,
+    #my-cal-inline-30min iframe {
+      width: 100% !important;
+      height: 700px !important; /* Updated default height */
+      border: none !important;
+      background: transparent !important;
+      display: block !important;
+      /* Remove any default Cal.com styling */
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: hidden !important;
+      scrolling: no !important;
+    }
+    
+    /* Desktop-specific settings */
+    @media screen and (min-width: 480px) {
+      .calendly-embed-container {
+        height: auto;
+        overflow: visible;
+      }
+      
+      .calendly-inline-widget {
+        height: auto;
+        overflow: visible;
+      }
+      
+      #my-cal-inline-30min {
+        height: auto;
+        overflow: visible;
+      }
+    }
+    
+    /* Dynamic height container - fully flexible */
+    #my-cal-inline-30min {
+      width: 100%;
+      position: relative;
+      background: transparent;
+    }
+    
+    /* Hide all scrollbars */
+    #my-cal-inline-30min::-webkit-scrollbar,
+    #my-cal-inline-30min iframe::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    
+    #my-cal-inline-30min,
+    #my-cal-inline-30min iframe {
+      -ms-overflow-style: none !important; /* IE and Edge */
+      scrollbar-width: none !important; /* Firefox */
+    }
+    
+    /* Force dark background on all Cal.com elements */
+    #my-cal-inline-30min iframe {
+      background: #0f0f0f !important;
+    }
+    
+    /* Aggressively hide ALL Cal.com branding */
+    [data-cal-namespace] [class*="cal-com"],
+    [data-cal-namespace] [class*="powered"],
+    [data-cal-namespace] [class*="branding"],
+    [data-cal-namespace] footer,
+    [data-cal-namespace] [href*="cal.com"],
+    #my-cal-inline-30min [class*="powered-by"],
+    #my-cal-inline-30min [class*="branding"],
+    #my-cal-inline-30min footer,
+    .cal-powered-by,
+    .cal-branding,
+    a[href*="cal.com"]:not([href*="app.cal.com"]),
+    /* Target specific confirmation page branding */
+    [data-cal-namespace] [class*="create-your-own"],
+    [data-cal-namespace] [class*="try-it-free"],
+    [data-cal-namespace] [class*="promotional"],
+    #my-cal-inline-30min [href*="cal.com/signup"],
+    #my-cal-inline-30min [href*="cal.com"][target="_blank"],
+    /* Target parent containers of Cal.com links */
+    div:has(> a[href*="cal.com"]),
+    p:has(> a[href*="cal.com"]),
+    /* Target the specific text on confirmation */
+    *:has-text("Create your own booking link"),
+    *:has-text("Try it for free") {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    
+    /* Ensure dark theme consistency */
+    .calendly-inline-widget *,
+    #my-cal-inline-30min * {
+      color-scheme: dark !important;
+    }
+    
+    /* Fix width constraints */
+    #my-cal-inline-30min {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    /* Override any white backgrounds in booking form */
+    #my-cal-inline-30min::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #0f0f0f;
+      z-index: -1;
+    }
+    
+    /* Loading State - Matches calendar height */
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 580px;
+      width: 100%;
+      color: var(--grey);
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top: 3px solid var(--white);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Confirmation Page Styling - Matches Landing Page Design */
+    .confirmation-container {
+      text-align: center;
+      padding: 2.5rem 2rem 1rem;
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .confirmation-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .confirmation-heading {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      text-transform: uppercase;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .confirmation-text {
+      font-size: 1.2rem;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.4;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .confirmation-message {
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+      font-weight: 400;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .confirmation-button {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: var(--white);
+      color: var(--primary-black);
+      text-decoration: none;
+      border: 2px solid var(--white);
+      border-radius: 0;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .confirmation-button:hover {
+      background: transparent;
+      color: var(--white);
+    }
+    
+    /* Section Dividers */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      margin: 2.5rem auto;
+      width: 100%;
+      max-width: 600px;
+    }
+    
+    /* Enhanced Confirmation Page Styles */
+    .confirmation-video {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .confirmation-video h3 {
+      font-size: 1.375rem;
+      margin-bottom: 0;
+      color: var(--white);
+      font-weight: 600;
+    }
+    
+    .video-wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      background: #000;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      /* Use aspect-ratio instead of padding hack */
+      aspect-ratio: 16 / 9;
+    }
+    
+    /* Fallback for older browsers */
+    @supports not (aspect-ratio: 16 / 9) {
+      .video-wrapper {
+        padding-bottom: 56.25%;
+        height: 0;
+      }
+    }
+    
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--secondary-black);
+      color: var(--grey);
+      font-style: italic;
+    }
+    
+    /* Video player styling */
+    #confirmation-video-player {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* Changed from contain to cover to remove black bars */
+      background: #000;
+    }
+    
+    /* Custom play button overlay */
+    .video-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .video-play-overlay:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-play-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .video-play-button {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .video-play-overlay:hover .video-play-button {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .video-play-button::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 25px solid #000;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      margin-left: 5px;
+    }
+    
+    /* Custom video controls styling */
+    video::-webkit-media-controls {
+      width: 100%;
+    }
+    
+    video::-webkit-media-controls-panel {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 5px;
+    }
+    
+    /* Show controls only on hover */
+    video::-webkit-media-controls-panel {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    video:hover::-webkit-media-controls-panel {
+      opacity: 1;
+    }
+    
+    /* Ensure play and mute buttons are white */
+    video::-webkit-media-controls-play-button,
+    video::-webkit-media-controls-mute-button {
+      filter: brightness(2) contrast(2);
+      -webkit-filter: brightness(2) contrast(2);
+    }
+    
+    /* Hide time displays but show progress bar */
+    video::-webkit-media-controls-current-time-display,
+    video::-webkit-media-controls-time-remaining-display,
+    video::-webkit-media-controls-fullscreen-button {
+      display: none !important;
+    }
+    
+    /* Style the timeline progress bar */
+    video::-webkit-media-controls-timeline-container {
+      filter: brightness(2) contrast(1.2);
+      -webkit-filter: brightness(2) contrast(1.2);
+    }
+    
+    video::-webkit-media-controls-timeline {
+      filter: brightness(2) contrast(1.2);
+      -webkit-filter: brightness(2) contrast(1.2);
+    }
+    
+    /* Hide volume slider but keep mute button */
+    video::-webkit-media-controls-volume-slider-container {
+      display: none !important;
+    }
+    
+    /* For Firefox */
+    video::-moz-media-controls-panel {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Hide time displays in Firefox but show progress bar */
+    video::-moz-media-controls-current-time-display,
+    video::-moz-media-controls-time-remaining-display {
+      display: none !important;
+    }
+    
+    /* Style Firefox progress bar */
+    video::-moz-media-controls-progress-bar {
+      filter: brightness(2) contrast(1.2);
+    }
+    
+    /* General video element styling */
+    video {
+      background: #000;
+    }
+    
+    /* Loading spinner already defined earlier in the CSS */
+    
+    /* Calendar Section Styles */
+    .calendar-section {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    
+    .calendar-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+      text-align: center;
+    }
+    
+    .calendar-subtext {
+      text-align: center;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .calendar-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .calendar-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.75rem;
+      background: var(--secondary-black);
+      color: var(--white);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: 'General Sans', -apple-system, sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .calendar-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .calendar-button:hover:before {
+      opacity: 1;
+    }
+    
+    .calendar-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .calendar-button svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    
+    .google-cal:hover {
+      border-color: #4285f4;
+      box-shadow: 0 6px 20px rgba(66, 133, 244, 0.3);
+    }
+    
+    .google-cal:hover svg {
+      filter: drop-shadow(0 0 4px rgba(66, 133, 244, 0.5));
+    }
+    
+    .outlook-cal:hover {
+      border-color: #0078d4;
+      box-shadow: 0 6px 20px rgba(0, 120, 212, 0.3);
+    }
+    
+    .outlook-cal:hover svg {
+      filter: drop-shadow(0 0 4px rgba(0, 120, 212, 0.5));
+    }
+    
+    .apple-cal:hover {
+      border-color: #555555;
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+    }
+    
+    .apple-cal:hover svg {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+    }
+    
+    /* AI Assistant Section */
+    .ai-assistant-section {
+      margin: 3rem 0;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .ai-assistant-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .ai-assistant-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .ai-description {
+      color: var(--grey);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .ai-discovery-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--white);
+      color: var(--primary-black);
+      text-decoration: none;
+      border: 2px solid var(--white);
+      border-radius: 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .ai-discovery-button:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Cal.com Calendar Section */
+    .cal-calendar-section {
+      margin: 0.5rem 0 1rem 0;
+      text-align: center;
+    }
+    
+    .cal-calendar-section h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    
+    /* Enhanced confirmation wrapper */
+    .enhanced-confirmation {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    /* Confirmation page-specific styles for seamless integration */
+    .calendly-embed-container.confirmation-page {
+      height: auto !important;
+      min-height: 1200px !important;
+      overflow: visible !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    
+    /* Professional container setup */
+    .calendar-container {
+      min-height: 100vh;
+      height: auto;
+      position: relative;
+    }
+    
+    .calendly-embed-container.confirmation-page .calendly-inline-widget {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    
+    /* Ensure iframe can expand naturally */
+    #my-cal-inline-30min.iframe-container {
+      width: 100%;
+      position: relative;
+      overflow: visible;
+    }
+    
+    /* Remove all scroll indicators on confirmation page */
+    .calendly-embed-container.confirmation-page::before,
+    .calendly-embed-container.confirmation-page::after {
+      display: none !important;
+      content: none !important;
+    }
+    
+    /* Remove scrollbar styling on confirmation */
+    .calendly-embed-container.confirmation-page::-webkit-scrollbar {
+      display: none !important;
+    }
+    
+    .calendly-embed-container.confirmation-page .calendly-inline-widget,
+    .calendly-embed-container.confirmation-page #my-cal-inline-30min {
+      height: auto !important;
+      min-height: 600px !important;
+      overflow: visible !important;
+    }
+    
+    /* Simple confirmation page solution */
+    .calendly-embed-container.confirmation-page {
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      position: relative;
+      background: transparent;
+      border: none;
+      overflow: visible;
+    }
+    
+    /* Desktop/Laptop: Dynamic height based on content */
+    @media screen and (min-width: 769px) {
+      .calendly-embed-container.confirmation-page iframe {
+        width: 100%;
+        height: auto;
+        min-height: 600px; /* Minimum while loading */
+        border: none;
+        display: block;
+      }
+    }
+    
+    /* Mobile: Fixed height to prevent excess space */
+    @media screen and (max-width: 768px) {
+      .calendly-embed-container.confirmation-page iframe {
+        width: 100%;
+        height: 1000px !important;
+        min-height: 1000px !important;
+        max-height: 1000px !important;
+        border: none;
+      }
+    }
+    
+    /* iPad specific adjustment */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      .calendly-embed-container.confirmation-page iframe {
+        height: auto;
+        min-height: 600px; /* Minimum while loading */
+      }
+    }
+    
+    /* Mobile Responsive Styles */
+    @media screen and (max-width: 768px) {
+      /* Video wrapper already has 75% padding */
+      
+      .calendar-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .calendar-button {
+        width: 100%;
+        justify-content: center;
+      }
+      
+      .ai-assistant-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .ai-description br {
+        display: none;
+      }
+      
+    }
+    
+    
+    /* Tablet-specific styles (iPad Mini, etc) */
+    @media screen and (min-width: 480px) and (max-width: 768px) {
+      .calendar-header {
+        padding: 2rem 0 1rem 0;
+      }
+      
+      .calendar-header h1 {
+        font-size: 2rem;
+      }
+      
+      .calendar-container {
+        padding: 0 1rem 2rem 1rem;
+      }
+      
+      .personalized-message {
+        padding: 0.75rem 0 1.5rem 0;
+      }
+      
+      .personalized-text {
+        font-size: 1rem;
+      }
+      
+      .calendar-divider {
+        width: 80px;
+        margin-bottom: 0.375rem;
+      }
+      
+      .progress-steps {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .step-divider {
+        width: 1px;
+        height: 20px;
+      }
+      
+      /* Scrollable container for tablets - same as mobile */
+      .calendly-embed-container {
+        height: 800px; /* Fixed viewport height */
+        padding: 0;
+        margin: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: relative;
+        background: rgba(15, 15, 15, 0.5);
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        /* Container boundaries */
+        border: 1px solid rgba(180, 180, 180, 0.15);
+        border-radius: 8px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Scroll indicators for tablets */
+      .calendly-embed-container::after {
+        content: '';
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, rgba(15, 15, 15, 0.95));
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 0 0 8px 8px;
+      }
+      
+      .calendly-embed-container::before {
+        content: '';
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to top, transparent, rgba(15, 15, 15, 0.95));
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 8px 8px 0 0;
+      }
+      
+      .calendly-embed-container.has-scroll-bottom::after {
+        opacity: 1;
+      }
+      
+      .calendly-embed-container.has-scroll-top::before {
+        opacity: 1;
+      }
+      
+      /* Styled scrollbar for tablets */
+      .calendly-embed-container::-webkit-scrollbar {
+        width: 6px;
+        background: transparent;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 3px;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        transition: background 0.2s ease;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      
+      .calendly-embed-container {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05);
+      }
+      
+      .calendly-inline-widget {
+        height: auto;
+        position: relative;
+        overflow: visible;
+      }
+      
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        width: 100% !important;
+        height: 2000px !important; /* Increased to accommodate full day schedules */
+        border: 0 !important;
+        display: block;
+        position: relative;
+        border-radius: 8px;
+      }
+      
+      .loading-container {
+        height: 580px;
+      }
+      
+      #my-cal-inline-30min {
+        height: auto;
+        overflow: visible;
+        position: relative;
+      }
+    }
+    
+    @media screen and (max-width: 479px) {
+      /* Ensure page scrolling on mobile */
+      html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .page-wrapper {
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
+      }
+      
+      /* Reduce vertical spacing for more calendar room */
+      .calendar-header {
+        padding: 1.5rem 1.25rem 0.75rem 1.25rem; /* Less top/bottom padding */
+      }
+      
+      .calendar-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .progress-indicator {
+        padding: 0.5rem 0; /* Reduced vertical padding */
+      }
+      
+      /* Smaller progress elements on mobile */
+      .progress-steps {
+        gap: 0.5rem; /* Tighter spacing */
+        align-items: center;
+        flex-direction: row; /* Keep horizontal on mobile */
+      }
+      
+      .step-circle {
+        width: 20px; /* Reduced from 24px */
+        height: 20px;
+        font-size: 0.7rem; /* Smaller font */
+      }
+      
+      .step-text {
+        font-size: 0.8rem; /* Reduced from 0.9rem */
+      }
+      
+      .step-divider {
+        width: 20px; /* Shorter divider */
+        height: 1px;
+      }
+      
+      .calendar-container {
+        padding: 0 1rem 2rem 1rem; /* Add horizontal padding for proper spacing */
+      }
+      
+      .personalized-message {
+        padding: 0.5rem 1.25rem 1rem 1.25rem; /* Reduced vertical padding */
+      }
+      
+      .personalized-text {
+        font-size: 0.95rem;
+      }
+      
+      .calendar-divider {
+        width: 60px;
+      }
+      
+      /* Refined scrollable container solution */
+      .calendly-embed-container {
+        height: 800px; /* Reasonable viewport height */
+        padding: 0;
+        margin: 0; /* Remove margin to prevent alignment issues */
+        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-x: hidden;
+        position: relative;
+        background: rgba(15, 15, 15, 0.5); /* Subtle background */
+        -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+        scroll-behavior: smooth;
+        /* Define container boundaries */
+        border: 1px solid rgba(180, 180, 180, 0.15);
+        border-radius: 8px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Bottom scroll indicator gradient */
+      .calendly-embed-container::after {
+        content: '';
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, rgba(15, 15, 15, 0.95));
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 0 0 8px 8px;
+      }
+      
+      /* Top scroll indicator gradient */
+      .calendly-embed-container::before {
+        content: '';
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: linear-gradient(to top, transparent, rgba(15, 15, 15, 0.95));
+        pointer-events: none;
+        z-index: 10;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        border-radius: 8px 8px 0 0;
+      }
+      
+      /* Show gradients based on scroll position */
+      .calendly-embed-container.has-scroll-bottom::after {
+        opacity: 1;
+      }
+      
+      .calendly-embed-container.has-scroll-top::before {
+        opacity: 1;
+      }
+      
+      /* End of content indicator */
+      .scroll-end-indicator {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+        color: rgba(180, 180, 180, 0.6);
+        font-size: 0.85rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to bottom, transparent, rgba(15, 15, 15, 0.9));
+        pointer-events: none;
+      }
+      
+      .calendly-embed-container.at-bottom .scroll-end-indicator {
+        display: block;
+      }
+      
+      .calendly-inline-widget {
+        height: auto;
+        position: relative;
+        overflow: visible;
+      }
+      
+      /* Keep iframe tall to show all content */
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        width: 100% !important;
+        height: 1600px !important; /* Increased to accommodate full day schedules */
+        border: 0 !important;
+        display: block;
+        position: relative;
+        border-radius: 8px; /* Match container radius */
+      }
+      
+      #my-cal-inline-30min {
+        height: auto;
+        overflow: visible;
+        position: relative;
+      }
+      
+      .loading-container {
+        height: 600px;
+      }
+      
+      /* Styled scrollbar for better UX */
+      .calendly-embed-container::-webkit-scrollbar {
+        width: 6px;
+        background: transparent;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 3px;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        transition: background 0.2s ease;
+      }
+      
+      .calendly-embed-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
+      
+      /* Firefox scrollbar styling */
+      .calendly-embed-container {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Confirmation page mobile styles */
+      .confirmation-container {
+        padding: 3rem 1.25rem;
+      }
+      
+      .confirmation-heading {
+        font-size: 2rem;
+      }
+      
+      .confirmation-text {
+        font-size: 1.1rem;
+      }
+      
+      .confirmation-message {
+        font-size: 1rem;
+      }
+      
+      .confirmation-button {
+        font-size: 12px;
+        padding: 0.875rem 2.5rem;
+      }
+    }
+    
+    
+    /* Desktop styles */
+    @media screen and (min-width: 769px) {
+      /* Fix Cal.com embed height on desktop - show full content */
+      #my-cal-inline-30min {
+        min-height: 700px;
+        height: auto;
+      }
+      
+      .calendly-inline-widget {
+        min-height: 700px;
+        height: auto;
+      }
+      
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        height: 700px !important; /* Taller height for desktop to show full calendar */
+        min-height: 700px !important;
+      }
+      
+      /* Ensure scrollable container doesn't add scrollbars on desktop */
+      .calendly-embed-container {
+        height: auto !important;
+        overflow: visible !important;
+      }
+      
+      /* Reduce spacing for single-screen view */
+      .confirmation-video {
+        margin: 2rem 0;
+      }
+      
+      .ai-assistant-section {
+        margin: 2rem 0;
+      }
+      
+      .cal-calendar-section {
+        margin: 1.5rem 0 1rem 0;
+      }
+    }
+    
+    /* Laptop screens (smaller desktops) */
+    @media screen and (min-width: 1024px) and (max-width: 1440px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        height: 650px !important; /* Slightly shorter for laptops */
+        min-height: 650px !important;
+      }
+      
+      #my-cal-inline-30min {
+        min-height: 650px;
+      }
+      
+      .calendly-inline-widget {
+        min-height: 650px;
+      }
+    }
+    
+    /* Large desktop screens */
+    @media screen and (min-width: 1441px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        height: 750px !important; /* Even taller for large screens */
+        min-height: 750px !important;
+      }
+      
+      #my-cal-inline-30min {
+        min-height: 750px;
+      }
+      
+      .calendly-inline-widget {
+        min-height: 750px;
+      }
+    }
+    
+    /* For very small screens (iPhone SE, etc) */
+    @media screen and (max-width: 375px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe {
+        height: 1100px !important; /* Slightly less for smaller screens */
+      }
+      
+      /* Even more compact progress indicator */
+      .step-text {
+        display: none; /* Hide text labels to save space */
+      }
+      
+      .step-divider {
+        width: 15px; /* Even shorter divider */
+      }
+      
+      .progress-steps {
+        gap: 0.25rem; /* Minimal spacing */
+      }
+    }
+    
+    /* Mobile confirmation page overrides */
+    @media screen and (max-width: 768px) {
+      .calendly-embed-container.confirmation-page {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+      }
+      
+      .calendly-embed-container.confirmation-page::before,
+      .calendly-embed-container.confirmation-page::after {
+        display: none !important;
+      }
+      
+      .calendly-embed-container.confirmation-page iframe {
+        border-radius: 0 !important;
+      }
+    }
+    
+    /* Larger screens optimization */
+    @media screen and (min-width: 1280px) {
+      .calendly-embed-container {
+        max-width: 100%;
+      }
+      
+      .calendar-container {
+        max-width: 1400px;
+      }
+    }
+    
+    /* AI Discovery Section Styles - Premium Dark Design */
+    .ai-discovery-section {
+      padding: 1.5rem 2rem;
+      background: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    
+    .ai-discovery-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .ai-discovery-heading {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      text-align: center;
+    }
+    
+    .ai-discovery-subheading {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    
+    
+    /* Step Indicators for Visual Hierarchy */
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+    
+    .step-number-badge {
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
+    }
+    
+    .step-indicator h2,
+    .step-indicator h3 {
+      margin: 0;
+      font-size: 1.375rem !important;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    
+    /* Recommended Label */
+    .recommended-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    /* AI Discovery CTA - Simple rounded button style */
+    .ai-discovery-cta {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2.5rem;
+      background: var(--white);
+      color: var(--primary-black);
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'General Sans', -apple-system, sans-serif;
+    }
+    
+    .ai-discovery-cta:hover {
+      background: var(--grey);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    }
+    
+    .ai-discovery-cta .button-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .ai-discovery-cta .phone-icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+    
+    .button-text-block.bigger {
+      height: 1.4rem;
+    }
+    
+    /* Phone Input Form (hidden initially) */
+    .phone-form-container {
+      display: none;
+      max-width: 400px;
+      margin: 0 auto;
+      animation: fadeIn 0.4s ease;
+    }
+    
+    .phone-form-container.active {
+      display: block;
+    }
+    
+    .phone-input-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    
+    .phone-input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      background: var(--secondary-black);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 1.125rem;
+      font-family: 'General Sans', -apple-system, sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .phone-input:focus {
+      outline: none;
+      border-color: var(--white);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+    
+    .phone-input::placeholder {
+      color: var(--grey);
+    }
+    
+    .phone-input-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--grey);
+      width: 20px;
+      height: 20px;
+    }
+    
+    .submit-phone-button {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--white);
+      color: var(--primary-black);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .submit-phone-button:hover {
+      background: var(--grey);
+      transform: translateY(-1px);
+    }
+    
+    .submit-phone-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .ai-supporting-text {
+      font-size: 0.875rem;
+      color: var(--grey);
+      margin-top: 2rem;
+      line-height: 1.5;
+    }
+    
+    /* Success State */
+    .success-message {
+      display: none;
+      background: var(--secondary-black);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    /* Premium Calendar Section */
+    .cal-calendar-section {
+      padding: 0.5rem 2rem 1.5rem 2rem;
+      background: transparent;
+      text-align: center;
+      margin-top: 0;
+    }
+    
+    .cal-calendar-section h3 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0;
+      letter-spacing: -0.01em;
+    }
+    
+    .calendar-subtext {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 0.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
+    
+    .success-message.active {
+      display: block;
+      animation: slideUp 0.4s ease;
+    }
+    
+    .success-icon {
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 1rem;
+    }
+    
+    .success-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    
+    .success-text {
+      color: var(--grey);
+      font-size: 0.875rem;
+    }
+    
+    /* Footer Section - Premium Dark */
+    .confirmation-footer {
+      padding: 1.5rem;
+      background: #0f0f0f;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Import button styles from main site */
+    .link-button {
+      grid-column-gap: 3px;
+      grid-row-gap: 3px;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-decoration: none;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    .button-link-wrapper {
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      flex-flow: row;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+      position: relative;
+    }
+    
+    .button-text-block {
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 1rem;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .button-text {
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1rem;
+      transition: transform .3s cubic-bezier(.165, .84, .44, 1);
+      display: flex;
+      align-items: center;
+      height: 1rem;
+    }
+    
+    .button-text.is-hover {
+      color: rgba(255, 255, 255, 0.8);
+      position: absolute;
+      top: 1rem;
+    }
+    
+    .link-button:hover .button-text {
+      transform: translateY(-100%);
+    }
+    
+    .link-button:hover .button-text.is-hover {
+      transform: translateY(-100%);
+    }
+    
+    .arrow-button-block {
+      justify-content: center;
+      align-items: center;
+      width: 1rem;
+      height: 1rem;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .arrow-button {
+      color: rgba(255, 255, 255, 0.6);
+      width: 1rem;
+      height: 1rem;
+      display: block;
+      position: absolute;
+      inset: 0%;
+      transition: transform .3s cubic-bezier(.165, .84, .44, 1);
+    }
+    
+    .arrow-button._02 {
+      color: rgba(255, 255, 255, 0.8);
+      transform: translateX(-100%);
+    }
+    
+    .link-button:hover .arrow-button._01 {
+      transform: translateX(100%);
+    }
+    
+    .link-button:hover .arrow-button._02 {
+      transform: translateX(0);
+    }
+    
+    .underline {
+      background-color: rgba(255, 255, 255, 0.6);
+      width: 100%;
+      height: 1px;
+      margin-top: 3px;
+      transition: opacity .3s;
+    }
+    
+    .link-button:hover .underline {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer-divider {
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-block;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      /* Stack step indicators vertically on mobile */
+      .step-indicator {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+      
+      .step-indicator h2,
+      .step-indicator h3 {
+        text-align: center;
+      }
+      
+      .ai-discovery-section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .ai-discovery-heading {
+        font-size: 1.5rem;
+      }
+      
+      .ai-discovery-subheading {
+        font-size: 1rem;
+      }
+      
+      .link-button.ai-discovery-cta {
+        transform: scale(1);
+      }
+      
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .footer-divider {
+        display: none;
+      }
+      
+      .link-button {
+        transform: scale(1);
+        margin: 0.5rem 0;
+      }
+    }
+    
+    /* Professional Cal.com iframe responsive heights - FINAL OVERRIDES */
+    .calendly-inline-widget iframe,
+    #my-cal-inline-30min iframe,
+    .calendly-embed-container iframe {
+      width: 100% !important;
+      transition: height 0.3s ease; /* Smooth transition when heights change */
+      box-sizing: border-box !important;
+    }
+    
+    /* Desktop: 1024px and up - OVERRIDE ALL */
+    @media (min-width: 1024px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe,
+      .calendly-embed-container iframe,
+      .calendly-embed-container.confirmation-page iframe {
+        height: 1800px !important; /* Increased to prevent desktop cutoff */
+        min-height: 1800px !important;
+        max-height: none !important;
+      }
+    }
+    
+    /* Tablet: 768px to 1023px - OVERRIDE ALL */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe,
+      .calendly-embed-container iframe,
+      .calendly-embed-container.confirmation-page iframe {
+        height: 1500px !important; /* Increased for safety with dynamic content */
+        min-height: 1500px !important;
+        max-height: none !important;
+      }
+    }
+    
+    /* Mobile: up to 767px - OVERRIDE ALL */
+    @media (max-width: 767px) {
+      .calendly-inline-widget iframe,
+      #my-cal-inline-30min iframe,
+      .calendly-embed-container iframe,
+      .calendly-embed-container.confirmation-page iframe {
+        height: 1300px !important; /* Increased to fix mobile bottom cutoff */
+        min-height: 1300px !important;
+        max-height: none !important;
+      }
+    }
+  </style>
+  <!-- Cookie Consent Styles -->
+  <link href="css/cookie-consent.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+    <!-- Header Section -->
+    <header class="calendar-header">
+      <div class="padding-global">
+        <div class="container-large">
+          <h1>Book Your Strategy Session</h1>
+          <p>Let's map your highest-impact automations together in this personalized 30-minute consultation.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+      <div class="progress-steps">
+        <div class="progress-step">
+          <div class="step-circle completed">✓</div>
+          <span class="step-text">Assessment Complete</span>
+        </div>
+        <div class="step-divider"></div>
+        <div class="progress-step">
+          <div class="step-circle">2</div>
+          <span class="step-text">Book Your Session</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personalized Message Section -->
+    <div class="personalized-message" id="personalized-message" style="display: none;">
+      <p class="personalized-text" id="personalized-text">
+        <!-- Personalized message will be populated via JavaScript -->
+      </p>
+      <div class="calendar-divider"></div>
+    </div>
+    
+
+    <!-- Calendar Section -->
+    <main class="calendar-container">
+      <div class="calendly-embed-container">
+        <div class="loading-container" id="loading-container">
+          <div class="loading-spinner"></div>
+          <p>Loading your personalized booking calendar...</p>
+        </div>
+        
+        <div class="calendly-inline-widget" 
+             id="my-cal-inline-30min"
+             style="display: none;"
+             data-resize="true"
+             data-auto-resize="true">
+        </div>
+      </div>
+    </main>
+    
+    
+    <!-- Footer -->
+    <footer class="confirmation-footer">
+      <div class="footer-links">
+        <a href="mailto:hi@phunithichote.com" class="link-button w-inline-block">
+          <div class="button-link-wrapper">
+            <div class="button-text-block">
+              <div class="button-text is-hover">HI@PHUNITHICHOTE.COM</div>
+              <div class="button-text">HI@PHUNITHICHOTE.COM</div>
+            </div>
+          </div>
+          <div class="underline is-nav"></div>
+        </a>
+        <span class="footer-divider"></span>
+        <a href="/" class="link-button w-inline-block">
+          <div class="button-link-wrapper">
+            <div class="button-text-block">
+              <div class="button-text is-hover">BACK TO HOMEPAGE</div>
+              <div class="button-text">BACK TO HOMEPAGE</div>
+            </div>
+            <div class="arrow-button-block">
+              <div class="arrow-button _01 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg></div>
+              <div class="arrow-button _02 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                </svg></div>
+            </div>
+          </div>
+          <div class="underline is-nav"></div>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Security: Input sanitization function
+    function sanitizeInput(input) {
+      if (typeof input !== 'string') return input;
+      
+      // Remove any HTML tags
+      input = input.replace(/<[^>]*>/g, '');
+      
+      // Escape special characters
+      input = input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/\//g, '&#x2F;');
+      
+      // Remove any script tags or javascript: protocols
+      input = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+      input = input.replace(/javascript:/gi, '');
+      
+      // Trim whitespace
+      input = input.trim();
+      
+      // Limit length to prevent buffer overflow attacks
+      if (input.length > 500) {
+        input = input.substring(0, 500);
+      }
+      
+      return input;
+    }
+    
+    // Cal.com integration with metadata for questionnaire data passing
+    
+    // Helper function to get challenge label
+    function getChallengeLabel(challengeValue) {
+      const challengeLabels = {
+        'manual-tasks': 'Too many manual tasks',
+        'slow-processes': 'Slow, inefficient processes',
+        'scaling-issues': 'Can\'t scale operations',
+        'missed-opportunities': 'Missing opportunities'
+      };
+      return challengeLabels[challengeValue] || challengeValue;
+    }
+    
+    // Extract URL parameters and initialize calendar
+    function initializeCalendar() {
+      
+      // Get URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Try to get questionnaire data from sessionStorage first
+      let questionnaireData = null;
+      try {
+        const storedData = sessionStorage.getItem('questionnaireData');
+        if (storedData) {
+          questionnaireData = JSON.parse(storedData);
+        }
+      } catch (e) {
+      }
+      
+      // Extract user data with fallback to URL parameters
+      const userData = {
+        name: urlParams.get('name') || '',
+        email: urlParams.get('email') || '',
+        company: questionnaireData?.company || (urlParams.get('a1') ? urlParams.get('a1').replace('Company: ', '') : ''),
+        role: questionnaireData?.role || (urlParams.get('a2') ? urlParams.get('a2').replace('Role: ', '') : ''),
+        teamSize: questionnaireData?.teamSize || (urlParams.get('a3') ? urlParams.get('a3').replace('Team Size: ', '') : ''),
+        challenge: questionnaireData?.challenge || (urlParams.get('a4') ? urlParams.get('a4').replace('Challenge: ', '') : ''),
+        challengeLabel: questionnaireData?.challengeLabel || getChallengeLabel(questionnaireData?.challenge || urlParams.get('a4')?.replace('Challenge: ', '') || ''),
+        budget: questionnaireData?.budget || (urlParams.get('a5') ? urlParams.get('a5').replace('Budget: ', '') : '')
+      };
+      
+      // Extract UTM parameters for tracking
+      
+        utm_source: sessionStorage.getItem('utm_source'),
+        utm_medium: sessionStorage.getItem('utm_medium'),
+        utm_campaign: sessionStorage.getItem('utm_campaign'),
+        utm_term: sessionStorage.getItem('utm_term'),
+        utm_content: sessionStorage.getItem('utm_content')
+      });
+      
+      const utmData = {
+        utm_source: urlParams.get('utm_source') || sessionStorage.getItem('utm_source') || '',
+        utm_medium: urlParams.get('utm_medium') || sessionStorage.getItem('utm_medium') || '',
+        utm_campaign: urlParams.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || '',
+        utm_term: urlParams.get('utm_term') || sessionStorage.getItem('utm_term') || '',
+        utm_content: urlParams.get('utm_content') || sessionStorage.getItem('utm_content') || ''
+      };
+      
+      
+      // Store UTM parameters in sessionStorage for persistence
+      if (utmData.utm_source) sessionStorage.setItem('utm_source', utmData.utm_source);
+      if (utmData.utm_medium) sessionStorage.setItem('utm_medium', utmData.utm_medium);
+      if (utmData.utm_campaign) sessionStorage.setItem('utm_campaign', utmData.utm_campaign);
+      if (utmData.utm_term) sessionStorage.setItem('utm_term', utmData.utm_term);
+      if (utmData.utm_content) sessionStorage.setItem('utm_content', utmData.utm_content);
+      
+      
+      // Store user data in sessionStorage for AI Discovery form
+      sessionStorage.setItem('userName', userData.name);
+      sessionStorage.setItem('userEmail', userData.email);
+      sessionStorage.setItem('userCompany', userData.company);
+      sessionStorage.setItem('userRole', userData.role);
+      sessionStorage.setItem('userTeamSize', userData.teamSize);
+      sessionStorage.setItem('userChallenge', userData.challenge);
+      sessionStorage.setItem('userChallengeLabel', userData.challengeLabel);
+      sessionStorage.setItem('userBudget', userData.budget);
+      
+      // Display personalized message if available
+      if (userData.company || userData.role || userData.challenge) {
+        displayPersonalizedMessage(userData);
+      }
+      
+      // Initialize Cal.com embed with metadata
+      
+      // Hide loading and show calendar container
+      const loadingContainer = document.getElementById('loading-container');
+      const calendarEmbed = document.getElementById('my-cal-inline-30min');
+      
+      setTimeout(() => {
+        // Check if Cal is loaded
+        if (typeof Cal === 'undefined') {
+          console.error('Cal.com script not loaded yet, retrying...');
+          setTimeout(() => initializeCalendar(), 1000);
+          return;
+        }
+        
+        loadingContainer.style.display = 'none';
+        calendarEmbed.style.display = 'block';
+        
+        try {
+          // Initialize Cal.com embed using official template structure
+          
+          Cal.ns["30min"]("inline", {
+          elementOrSelector: "#my-cal-inline-30min",
+          config: {
+            "layout": "month_view",
+            "autoResize": true,
+            // Pass questionnaire data as metadata
+            "metadata[company]": userData.company || '',
+            "metadata[role]": userData.role || '',
+            "metadata[teamSize]": userData.teamSize || '',
+            "metadata[challenge]": userData.challenge || '',
+            "metadata[challengeLabel]": userData.challengeLabel || '',
+            "metadata[budget]": userData.budget || '',
+            "metadata[source]": 'website_questionnaire',
+            "metadata[original_source]": utmData.utm_source || '',
+            "metadata[original_medium]": utmData.utm_medium || '',
+            "metadata[original_campaign]": utmData.utm_campaign || '',
+            "metadata[original_term]": utmData.utm_term || '',
+            "metadata[original_content]": utmData.utm_content || '',
+            "metadata[timestamp]": new Date().toISOString()
+          },
+          calLink: "nithichote/30min",
+        });
+        
+        // Apply UI customization separately as per official template
+        Cal.ns["30min"]("ui", {
+          "theme": "dark",
+          "hideEventTypeDetails": true,
+          "layout": "month_view",
+          // CSS styling for dark theme
+          "styles": {
+            "body": {
+              "background": "#0f0f0f"
+            },
+            "eventTypeListItem": {
+              "background": "#202020",
+              "color": "#ffffff"
+            },
+            "branding": {
+              "brandColor": "#0f0f0f"
+            }
+          }
+        });
+        
+        
+        // Listen for Cal.com native events
+        Cal.ns["30min"]("on", {
+          action: "resize",
+          callback: (e) => {
+            if (e.data && e.data.height) {
+              const iframe = document.querySelector('#my-cal-inline-30min iframe');
+              if (iframe) {
+                const height = parseInt(e.data.height);
+                iframe.style.height = height + 'px';
+                iframe.style.minHeight = height + 'px';
+              }
+            }
+          }
+        });
+        
+        // Add event listeners for dynamic height handling
+        setupDynamicHeightHandling();
+        
+        // Try to inject styles into iframe after a delay
+        setTimeout(() => {
+          injectDarkThemeStyles();
+          
+          // Dynamic height will be handled by postMessage listener
+        }, 2000);
+        
+      } catch (error) {
+          console.error('Failed to initialize Cal.com embed:', error);
+          loadingContainer.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+              <p style="color: var(--white); margin-bottom: 1rem;">Unable to load booking calendar</p>
+              <p style="color: var(--grey); margin-bottom: 1.5rem;">Please refresh the page or try again later.</p>
+              <button onclick="location.reload()" style="padding: 0.75rem 1.5rem; background: var(--white); color: var(--primary-black); border: none; border-radius: 4px; cursor: pointer;">Refresh Page</button>
+            </div>
+          `;
+          loadingContainer.style.display = 'flex';
+        }
+      }, 500); // Increased delay to ensure Cal.com script loads
+    }
+    
+    // Inject dark theme styles directly
+    function injectDarkThemeStyles() {
+      try {
+        const iframe = document.querySelector('#my-cal-inline-30min iframe');
+        if (iframe) {
+          // Listen for iframe load
+          iframe.addEventListener('load', function() {
+            try {
+              // Inject CSS to hide branding
+              const style = document.createElement('style');
+              style.textContent = `
+                [class*="cal-com"], 
+                [class*="powered"], 
+                [class*="branding"],
+                footer,
+                a[href*="cal.com"]:not([href*="app.cal.com"]) {
+                  display: none !important;
+                }
+                body {
+                  background: #0f0f0f !important;
+                }
+              `;
+              iframe.contentDocument.head.appendChild(style);
+            } catch (e) {
+            }
+          });
+        }
+      } catch (e) {
+      }
+    }
+    
+    // Simplified event handling and custom confirmation
+    function setupDynamicHeightHandling() {
+      const embedContainer = document.getElementById('my-cal-inline-30min');
+      
+      // Ensure clean state
+      embedContainer.style.height = 'auto';
+      embedContainer.style.minHeight = 'unset';
+      
+      // Add scroll detection for mobile and tablets
+      if (window.innerWidth <= 768) {
+        const scrollContainer = document.querySelector('.calendly-embed-container');
+        if (scrollContainer) {
+          // Check if content is scrollable after iframe loads
+          setTimeout(() => {
+            updateScrollIndicators(scrollContainer);
+          }, 2000);
+          
+          // Update indicators on scroll
+          scrollContainer.addEventListener('scroll', () => {
+            updateScrollIndicators(scrollContainer);
+          });
+          
+          // Function to update scroll indicators
+          function updateScrollIndicators(container) {
+            const scrollTop = container.scrollTop;
+            const scrollHeight = container.scrollHeight;
+            const clientHeight = container.clientHeight;
+            const scrollBottom = scrollHeight - scrollTop - clientHeight;
+            
+            // Show/hide top indicator
+            if (scrollTop > 10) {
+              container.classList.add('has-scroll-top');
+            } else {
+              container.classList.remove('has-scroll-top');
+            }
+            
+            // Show/hide bottom indicator
+            if (scrollBottom > 10) {
+              container.classList.add('has-scroll-bottom');
+              container.classList.remove('at-bottom');
+            } else {
+              container.classList.remove('has-scroll-bottom');
+              // Check if we're truly at the bottom
+              if (scrollTop > 0 && scrollBottom <= 10) {
+                container.classList.add('at-bottom');
+              }
+            }
+          }
+        }
+      }
+      
+      // Listen for Cal.com booking success event
+      Cal.ns["30min"]("on", {
+        action: "bookingSuccessful",
+        callback: (e) => {
+          
+          // Get stored user data for personalization
+          let userData = {};
+          try {
+            const storedData = sessionStorage.getItem('questionnaireData');
+            if (storedData) {
+              userData = JSON.parse(storedData);
+            }
+          } catch (err) {
+          }
+          
+          // Create personalized message
+          const personalMessage = userData.challenge ? 
+            `Ready to tackle "${userData.challengeLabel || userData.challenge}" and transform ${userData.company ? 'how ' + userData.company + ' operates' : 'your operations'}!` : 
+            'Looking forward to mapping your AI automation strategy!';
+          
+          // Try to extract booking URL or UID from event
+          let calBookingUrl = null;
+          if (e.detail?.uid) {
+            calBookingUrl = `https://app.cal.com/booking/${e.detail.uid}`;
+          } else if (e.detail?.bookingId) {
+            calBookingUrl = `https://app.cal.com/booking/${e.detail.bookingId}`;
+          }
+          
+          // Get the Cal.com iframe to find confirmation elements
+          const iframe = embedContainer.querySelector('iframe');
+          
+          // Create enhanced content ABOVE the Cal.com confirmation
+          const enhancedContent = document.createElement('div');
+          enhancedContent.className = 'enhanced-confirmation';
+          enhancedContent.innerHTML = `
+            <div class="confirmation-container" style="padding-bottom: 1rem;">
+              <div class="confirmation-icon">🎯</div>
+              <h2 class="confirmation-heading">
+                Strategy Session Confirmed!
+              </h2>
+              <p class="confirmation-text">
+                Great! Your calendar is being updated below.
+              </p>
+              <p class="confirmation-message">
+                ${personalMessage}
+              </p>
+              
+              <!-- Video Section -->
+              <div class="confirmation-video">
+                <div class="step-indicator">
+                  <span class="step-number-badge">1</span>
+                  <h3>Watch My Quick Message</h3>
+                </div>
+                <div class="video-wrapper">
+                  <video 
+                    id="confirmation-video-player"
+                    controls
+                    controlsList="nodownload noplaybackrate nofullscreen"
+                    preload="metadata"
+                    playsinline>
+                    <source src="" type="video/mp4" id="video-source">
+                    Your browser does not support the video tag.
+                  </video>
+                  <!-- Custom play button overlay -->
+                  <div class="video-play-overlay" id="video-play-overlay">
+                    <div class="video-play-button"></div>
+                  </div>
+                  <!-- Loading state -->
+                  <div class="video-loading" id="video-loading" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--secondary-black); color: var(--grey);">
+                    <div style="text-align: center;">
+                      <div class="loading-spinner" style="margin: 0 auto 1rem;"></div>
+                      <p>Loading your personalized video...</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Divider -->
+              <div class="section-divider"></div>
+              
+              <!-- AI Discovery Section -->
+              <div class="ai-discovery-section">
+                <div class="ai-discovery-container">
+                  <div class="step-indicator">
+                    <span class="step-number-badge">2</span>
+                    <h2 class="ai-discovery-heading">Start Your AI Discovery Call</h2>
+                  </div>
+                  
+                  <p class="ai-discovery-subheading">
+                    Spend 5 minutes with my AI assistant to identify your top automation opportunities before our call.
+                  </p>
+                  
+                  <!-- Initial CTA Button -->
+                  <button class="ai-discovery-cta" id="aiCtaButton">
+                    <div class="button-content">
+                      <span>Call Me in 60 Seconds</span>
+                      <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                      </svg>
+                    </div>
+                  </button>
+                  
+                  <!-- Phone Form (hidden initially) -->
+                  <div class="phone-form-container" id="phoneFormContainer">
+                    <form id="aiPhoneForm">
+                      <div class="phone-input-wrapper">
+                        <svg class="phone-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <input 
+                          type="tel" 
+                          class="phone-input" 
+                          id="phoneInput"
+                          placeholder="+1 (555) 123-4567"
+                          required
+                        >
+                      </div>
+                      <button type="submit" class="submit-phone-button" id="submitPhoneButton">
+                        Call Me in 60 Seconds
+                      </button>
+                    </form>
+                    
+                    <!-- Success Message -->
+                    <div class="success-message" id="aiSuccessMessage">
+                      <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m9 12 2 2 4-4"></path>
+                      </svg>
+                      <div class="success-title">Call Initiated</div>
+                      <div class="success-text">
+                        Our AI assistant will call you within 60 seconds. Please keep your phone nearby and ready to answer.
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p class="ai-supporting-text">
+                    <strong>Why this matters:</strong> 73% of our most successful implementations started with this AI discovery call. You'll arrive to our strategy session with clarity, not confusion.
+                  </p>
+                </div>
+              </div>
+              
+              <!-- Divider -->
+              <div class="section-divider"></div>
+              
+              <!-- Cal.com Calendar Section (simplified) -->
+              <div class="cal-calendar-section">
+                <div class="step-indicator">
+                  <span class="step-number-badge">3</span>
+                  <h3>Your Calendar is Updated</h3>
+                </div>
+                <p class="calendar-subtext">Calendar invites are automatically sent via Cal.com. Check your inbox for confirmation details.</p>
+              </div>
+            </div>
+          `;
+          
+          // Add simple explanatory text above the Cal.com embed
+          const calEmbedIntro = document.createElement('div');
+          calEmbedIntro.className = 'cal-embed-intro';
+          calEmbedIntro.innerHTML = `
+            <p style="text-align: center; color: var(--grey); margin: 2rem 0 1rem 0; font-size: 1rem;">
+              Your meeting confirmation details are below:
+            </p>
+          `;
+          
+          // FIXED: Insert enhanced content OUTSIDE the scrollable container
+          // Find the main calendar container (parent of calendly-embed-container)
+          const calendarContainer = document.querySelector('.calendar-container');
+          const scrollableContainer = document.querySelector('.calendly-embed-container');
+          
+          // Insert the enhanced content BEFORE the scrollable container
+          calendarContainer.insertBefore(enhancedContent, scrollableContainer);
+          
+          // Insert the simple explanatory text right before the Cal.com embed
+          calendarContainer.insertBefore(calEmbedIntro, scrollableContainer);
+          
+          // Hide header and progress sections on confirmation
+          const header = document.querySelector('.calendar-header');
+          const progress = document.querySelector('.progress-indicator');
+          const personalizedMsg = document.querySelector('.personalized-message');
+          
+          if (header) header.style.display = 'none';
+          if (progress) progress.style.display = 'none';
+          if (personalizedMsg) personalizedMsg.style.display = 'none';
+          
+          // Adjust container for confirmation page - make it seamless
+          scrollableContainer.classList.add('confirmation-page');
+          
+          // Simple cleanup for confirmation page
+          scrollableContainer.style.height = 'auto';
+          scrollableContainer.style.overflow = 'visible';
+          scrollableContainer.style.background = 'transparent';
+          scrollableContainer.style.border = 'none';
+          scrollableContainer.classList.remove('has-scroll-bottom', 'has-scroll-top', 'at-bottom');
+          
+          // Let Cal.com handle its own layout
+          if (embedContainer) {
+            embedContainer.style.height = 'auto';
+            embedContainer.style.overflow = 'visible';
+          }
+          
+          // Simple height for confirmation page iframe
+          if (iframe) {
+            // Just ensure it's tall enough
+            iframe.style.height = '100vh';
+            iframe.style.minHeight = '1400px';
+            
+          }
+          
+          // Apply CSS to hide Cal.com branding but keep functionality
+          const style = document.createElement('style');
+          style.textContent = `
+            /* Hide Cal.com branding elements but keep calendar buttons */
+            #my-cal-inline-30min [class*="powered-by"],
+            #my-cal-inline-30min [class*="cal-branding"],
+            #my-cal-inline-30min a[href*="cal.com/signup"],
+            #my-cal-inline-30min a[href*="cal.com"][target="_blank"]:not([class*="calendar"]),
+            #my-cal-inline-30min div:has(> a[href*="cal.com/signup"]) {
+              display: none !important;
+              visibility: hidden !important;
+              height: 0 !important;
+            }
+            
+            /* Style the Cal.com confirmation to match our design */
+            #my-cal-inline-30min {
+              margin-top: 0;
+              background: transparent !important;
+            }
+            
+            /* Adjust Cal.com container styling */
+            .calendly-inline-widget {
+              background: transparent !important;
+              margin-top: -2rem; /* Pull up closer to our content */
+            }
+          `;
+          document.head.appendChild(style);
+          
+          // Store booking data if available
+          if (e.detail?.data?.date || e.detail?.startTime) {
+            const bookingDate = e.detail?.data?.date || e.detail?.startTime;
+            sessionStorage.setItem('bookingDate', bookingDate);
+          }
+          
+          // If we found a booking URL, add a fallback button
+          if (calBookingUrl) {
+            const calendarSection = enhancedContent.querySelector('.cal-calendar-section');
+            if (calendarSection) {
+              const fallbackButton = document.createElement('a');
+              fallbackButton.href = calBookingUrl;
+              fallbackButton.target = '_blank';
+              fallbackButton.className = 'calendar-button';
+              fallbackButton.style.marginTop = '1rem';
+              fallbackButton.innerHTML = '📅 Open Calendar Options in New Tab';
+              calendarSection.appendChild(fallbackButton);
+            }
+          }
+          
+          // Set up personalized video based on challenge type (wait for DOM to settle)
+          setTimeout(() => {
+            const videoPlayer = document.getElementById('confirmation-video-player');
+            const videoSource = document.getElementById('video-source');
+            const videoLoading = document.getElementById('video-loading');
+            const playOverlay = document.getElementById('video-play-overlay');
+            
+            if (videoPlayer && videoSource) {
+              // Map challenge types to video files
+              const videoMap = {
+                'manual-tasks': 'videos/manual-tasks-blueprint.mp4',
+                'slow-processes': 'videos/strategy-blueprint.mp4',
+                'scaling-issues': 'videos/scaling-blueprint.mp4',
+                'missed-opportunities': 'videos/lead-saving-blueprint.mp4'
+              };
+              
+              // Get the appropriate video based on challenge
+              const challengeType = userData.challenge || 'manual-tasks'; // Default fallback
+              const videoPath = videoMap[challengeType] || videoMap['manual-tasks'];
+              
+              
+              // Set video source and ensure it's loaded
+              videoSource.src = videoPath;
+              videoPlayer.src = videoPath; // Set src directly on video element too
+              
+              // Force video to load
+              videoPlayer.load();
+              
+              // Handle video load events
+              videoPlayer.addEventListener('loadedmetadata', () => {
+                if (videoLoading) {
+                  videoLoading.style.display = 'none';
+                }
+              });
+              
+              // Add canplay event to ensure video is ready
+              videoPlayer.addEventListener('canplay', () => {
+                if (videoLoading) {
+                  videoLoading.style.display = 'none';
+                }
+              });
+              
+              videoPlayer.addEventListener('error', (e) => {
+                console.error('Video loading error:', e);
+                if (videoLoading) {
+                  videoLoading.innerHTML = `
+                    <div style="text-align: center; padding: 2rem;">
+                      <p style="color: var(--white); margin-bottom: 1rem;">
+                        <strong>Video temporarily unavailable</strong>
+                      </p>
+                      <p style="color: var(--grey); font-size: 0.9rem;">
+                        Don't worry! I'll walk you through everything in our call.
+                      </p>
+                    </div>
+                  `;
+                }
+              });
+              
+              // Fallback: if video doesn't load after 3 seconds, hide loading
+              setTimeout(() => {
+                if (videoLoading && videoLoading.style.display !== 'none') {
+                  videoLoading.style.display = 'none';
+                }
+              }, 3000);
+              
+              // Setup custom play button overlay interaction
+              if (playOverlay) {
+                // Click overlay to play video
+                playOverlay.addEventListener('click', function() {
+                  videoPlayer.play();
+                  playOverlay.style.opacity = '0';
+                  setTimeout(() => {
+                    playOverlay.style.display = 'none';
+                  }, 300);
+                });
+                
+                // Show overlay when video is paused
+                videoPlayer.addEventListener('pause', function() {
+                  if (videoPlayer.currentTime < videoPlayer.duration && videoPlayer.currentTime > 0) {
+                    playOverlay.style.display = 'flex';
+                    setTimeout(() => {
+                      playOverlay.style.opacity = '1';
+                    }, 10);
+                  }
+                });
+                
+                // Hide overlay when video plays
+                videoPlayer.addEventListener('play', function() {
+                  playOverlay.style.opacity = '0';
+                  setTimeout(() => {
+                    playOverlay.style.display = 'none';
+                  }, 300);
+                });
+              }
+              
+              // Track video engagement
+              let videoStarted = false;
+              videoPlayer.addEventListener('play', () => {
+                if (!videoStarted) {
+                  videoStarted = true;
+                  // Could send this to n8n webhook
+                }
+              });
+              
+              videoPlayer.addEventListener('ended', () => {
+                // Could trigger AI assistant prompt or send to webhook
+              });
+            }
+          }, 500); // Wait for DOM to fully settle
+          
+          // Initialize AI Discovery after confirmation content is added
+          setTimeout(() => {
+            initializeAIDiscovery();
+          }, 800); // Give DOM time to render
+          
+        }
+      });
+      
+      // Set iframe attributes after a short delay
+      setTimeout(() => {
+        const iframe = embedContainer.querySelector('iframe');
+        if (iframe) {
+          iframe.setAttribute('scrolling', 'no');
+          iframe.style.overflow = 'hidden';
+        }
+      }, 500);
+    }
+    
+    function displayPersonalizedMessage(userData) {
+      const personalizedSection = document.getElementById('personalized-message');
+      const personalizedText = document.getElementById('personalized-text');
+      
+      // Hardcoded challenge-based messages for stability
+      const challengeMessages = {
+        'manual-tasks': "Let's unlock hours back in your week with smart automation",
+        'slow-processes': "Ready to accelerate your operations with intelligent workflows",
+        'scaling-issues': "Time to build systems that scale with your ambitions",
+        'missed-opportunities': "Let's capture every opportunity with automated systems"
+      };
+      
+      // Default message if no challenge or unknown challenge
+      const defaultMessage = "Ready to transform your business with automation";
+      
+      
+      // Get message based on challenge type
+      let message = challengeMessages[userData.challenge] || defaultMessage;
+      
+      // Display the message
+      if (message) {
+        personalizedText.textContent = message;
+        personalizedSection.style.display = 'block';
+      }
+    }
+    
+    // Cal.com loads automatically via the embed script in the header
+    // No need for dynamic script loading like with Calendly
+    
+    // Simplified - no dynamic height calculation needed
+    function setCalendarHeight() {
+      // No longer needed - using fixed heights
+    }
+    
+    // Simplified monitoring - just ensure minimum height
+    function setupConfirmationHeightMonitoring(iframe) {
+      if (!iframe) return;
+      
+      // Simple check to ensure minimum height is maintained
+      setTimeout(() => {
+        const minHeight = 1400;
+        const currentHeight = parseInt(iframe.style.height) || 0;
+        
+        if (currentHeight < minHeight) {
+          iframe.style.height = '100vh';
+          iframe.style.minHeight = minHeight + 'px';
+        }
+      }, 1000);
+    }
+    
+    // No longer using dynamic height - professional fixed heights are applied instead
+    
+    // Function to download ICS file for Apple Calendar
+    function downloadICS(encodedContent) {
+      const icsContent = atob(encodedContent);
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'ai-automation-strategy-session.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
+    
+    
+    // Calendar button functions
+    function addToGoogleCalendar(event) {
+      event.preventDefault();
+      const bookingData = getBookingData();
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('AI Automation Strategy Session')}&dates=${bookingData.startDate}/${bookingData.endDate}&details=${encodeURIComponent('30-minute strategy session to map your highest-impact AI automations')}&location=Online`;
+      window.open(googleUrl, '_blank');
+    }
+    
+    function addToAppleCalendar(event) {
+      event.preventDefault();
+      // This would trigger the ICS download that's already handled by Cal.com
+      // Apple Calendar note
+    }
+    
+    function addToOutlookCalendar(event) {
+      event.preventDefault();
+      const bookingData = getBookingData();
+      const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent('AI Automation Strategy Session')}&startdt=${bookingData.startDate}&enddt=${bookingData.endDate}&body=${encodeURIComponent('30-minute strategy session to map your highest-impact AI automations')}&location=Online`;
+      window.open(outlookUrl, '_blank');
+    }
+    
+    function getBookingData() {
+      // Try to get booking date from sessionStorage
+      const bookingDate = sessionStorage.getItem('bookingDate');
+      let startDate, endDate;
+      
+      if (bookingDate) {
+        const date = new Date(bookingDate);
+        startDate = date.toISOString().replace(/[-:]/g, '').replace('.000', '');
+        const endTime = new Date(date.getTime() + 30 * 60000); // Add 30 minutes
+        endDate = endTime.toISOString().replace(/[-:]/g, '').replace('.000', '');
+      } else {
+        // Fallback to tomorrow at 10am
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(10, 0, 0, 0);
+        startDate = tomorrow.toISOString().replace(/[-:]/g, '').replace('.000', '');
+        const endTime = new Date(tomorrow.getTime() + 30 * 60000);
+        endDate = endTime.toISOString().replace(/[-:]/g, '').replace('.000', '');
+      }
+      
+      return { startDate, endDate };
+    }
+    
+    // Professional fixed height implementation
+    function applyProfessionalHeights() {
+      // Apply responsive heights based on screen size
+      const width = window.innerWidth;
+      let targetHeight;
+      
+      if (width <= 767) {
+        // Mobile
+        targetHeight = 1300; // Increased to fix bottom cutoff
+      } else if (width <= 1023) {
+        // iPad/Tablet
+        targetHeight = 1500; // Increased for safety with dynamic content
+      } else {
+        // Desktop
+        targetHeight = 1800; // Increased to prevent desktop cutoff
+      }
+      
+      // Apply to ALL possible Cal.com iframes with multiple selectors
+      const iframes = document.querySelectorAll(
+        '#my-cal-inline-30min iframe, ' +
+        '.calendly-inline-widget iframe, ' +
+        '.calendly-embed-container iframe, ' +
+        'iframe[src*="cal.com"], ' +
+        'iframe[src*="app.cal.com"]'
+      );
+      
+      
+      iframes.forEach((iframe, index) => {
+        // Force apply all styles with setAttribute to override any inline styles
+        iframe.setAttribute('style', 
+          `height: ${targetHeight}px !important; ` +
+          `min-height: ${targetHeight}px !important; ` +
+          `max-height: none !important; ` +
+          `box-sizing: border-box !important; ` +
+          `width: 100% !important;`
+        );
+        
+        // Also set individual properties as backup
+        iframe.style.setProperty('height', targetHeight + 'px', 'important');
+        iframe.style.setProperty('min-height', targetHeight + 'px', 'important');
+        iframe.style.setProperty('max-height', 'none', 'important');
+        
+      });
+      
+      // Also check for any iframes that might be added later
+      setTimeout(() => {
+        const lateIframes = document.querySelectorAll('iframe[src*="cal.com"]');
+        lateIframes.forEach(iframe => {
+          iframe.setAttribute('style', 
+            `height: ${targetHeight}px !important; ` +
+            `min-height: ${targetHeight}px !important; ` +
+            `max-height: none !important; ` +
+            `box-sizing: border-box !important; ` +
+            `width: 100% !important;`
+          );
+        });
+      }, 3000);
+      
+      
+      // Also inject a style tag to ensure overrides
+      let styleTag = document.getElementById('professional-heights-override');
+      if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'professional-heights-override';
+        document.head.appendChild(styleTag);
+      }
+      
+      styleTag.textContent = `
+        /* FORCE OVERRIDE ALL IFRAME HEIGHTS */
+        iframe[src*="cal.com"],
+        iframe[src*="app.cal.com"],
+        #my-cal-inline-30min iframe,
+        .calendly-inline-widget iframe,
+        .calendly-embed-container iframe {
+          height: ${targetHeight}px !important;
+          min-height: ${targetHeight}px !important;
+          max-height: none !important;
+          box-sizing: border-box !important;
+          width: 100% !important;
+        }
+      `;
+    }
+    
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Check if we have questionnaire data
+      const storedData = sessionStorage.getItem('questionnaireData');
+      if (storedData) {
+      }
+      
+      initializeCalendar();
+      
+      // Apply professional heights multiple times to catch dynamically created iframes
+      // Initial attempt
+      setTimeout(() => {
+        applyProfessionalHeights();
+      }, 1000);
+      
+      // Second attempt after Cal.com likely loads
+      setTimeout(() => {
+        applyProfessionalHeights();
+      }, 2000);
+      
+      // Third attempt for confirmation page
+      setTimeout(() => {
+        applyProfessionalHeights();
+      }, 4000);
+      
+      // Final attempt
+      setTimeout(() => {
+        applyProfessionalHeights();
+      }, 6000);
+      
+      // Also monitor for DOM changes
+      const observer = new MutationObserver(() => {
+        const iframes = document.querySelectorAll('iframe[src*="cal.com"]');
+        if (iframes.length > 0) {
+          applyProfessionalHeights();
+        }
+      });
+      
+      // Start observing the calendar container
+      const calContainer = document.getElementById('my-cal-inline-30min');
+      if (calContainer) {
+        observer.observe(calContainer, {
+          childList: true,
+          subtree: true
+        });
+      }
+      
+      // Reapply heights on window resize
+      window.addEventListener('resize', () => {
+        applyProfessionalHeights();
+      });
+      
+      // Failsafe: Show error if still loading after 10 seconds
+      setTimeout(() => {
+        const loadingContainer = document.getElementById('loading-container');
+        if (loadingContainer && loadingContainer.style.display !== 'none') {
+          console.error('Cal.com failed to load after 10 seconds');
+          loadingContainer.innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+              <p style="color: var(--white); margin-bottom: 1rem;">Loading is taking longer than expected</p>
+              <p style="color: var(--grey); margin-bottom: 1.5rem;">Please check your internet connection and refresh the page.</p>
+              <button onclick="location.reload()" style="padding: 0.75rem 1.5rem; background: var(--white); color: var(--primary-black); border: none; border-radius: 4px; cursor: pointer;">Refresh Page</button>
+            </div>
+          `;
+        }
+      }, 10000);
+    });
+    
+    // AI Discovery Call Functionality
+    function initializeAIDiscovery() {
+      const aiCtaButton = document.getElementById('aiCtaButton');
+      const phoneFormContainer = document.getElementById('phoneFormContainer');
+      const aiPhoneForm = document.getElementById('aiPhoneForm');
+      const phoneInput = document.getElementById('phoneInput');
+      const submitPhoneButton = document.getElementById('submitPhoneButton');
+      const aiSuccessMessage = document.getElementById('aiSuccessMessage');
+      
+      // Phone number formatting
+      function formatPhoneNumber(value) {
+        const phoneNumber = value.replace(/[^\d]/g, '');
+        const phoneNumberLength = phoneNumber.length;
+        
+        if (phoneNumberLength < 4) return phoneNumber;
+        if (phoneNumberLength < 7) {
+          return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+        }
+        return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+      }
+      
+      // Show phone form when CTA is clicked
+      if (aiCtaButton && phoneFormContainer && phoneInput) {
+        aiCtaButton.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent default link behavior
+          aiCtaButton.style.display = 'none';
+          phoneFormContainer.classList.add('active');
+          phoneInput.focus();
+        });
+      }
+      
+      // Format phone number as user types
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+          const formattedInputValue = formatPhoneNumber(e.target.value);
+          e.target.value = formattedInputValue;
+        });
+      }
+      
+      // Handle form submission
+      if (aiPhoneForm) {
+        aiPhoneForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const phoneNumber = sanitizeInput(phoneInput.value.trim());
+        if (!phoneNumber) {
+          phoneInput.focus();
+          return;
+        }
+        
+        // Get user data for the AI call with sanitization
+        const userData = {
+          phone: phoneNumber,
+          name: sanitizeInput(sessionStorage.getItem('userName') || ''),
+          email: sanitizeInput(sessionStorage.getItem('userEmail') || ''),
+          company: sanitizeInput(sessionStorage.getItem('userCompany') || ''),
+          challenge: sanitizeInput(sessionStorage.getItem('userChallenge') || ''),
+          budget: sanitizeInput(sessionStorage.getItem('userBudget') || '')
+        };
+        
+        // Show loading state
+        submitPhoneButton.disabled = true;
+        submitPhoneButton.textContent = 'Initiating Call...';
+        
+        // Prepare webhook data as URL-encoded form data to avoid CORS preflight
+        const formData = new URLSearchParams();
+        formData.append('phone', phoneNumber);
+        formData.append('name', userData.name || '');
+        formData.append('email', userData.email || '');
+        formData.append('company', userData.company || '');
+        formData.append('challenge', userData.challenge || '');
+        formData.append('budget', userData.budget || '');
+        formData.append('timestamp', new Date().toISOString());
+        formData.append('source', 'confirmation_page_ai_discovery');
+        formData.append('bookingDate', sessionStorage.getItem('bookingDate') || new Date().toISOString());
+        
+        
+        // Make direct API call to n8n webhook using GET request (n8n webhook only accepts GET)
+        const queryParams = new URLSearchParams({
+          phone: phoneNumber,
+          name: userData.name || '',
+          email: userData.email || '',
+          company: userData.company || '',
+          challenge: userData.challenge || '',
+          budget: userData.budget || '',
+          timestamp: new Date().toISOString(),
+          source: 'confirmation_page_ai_discovery'
+        });
+        
+        fetch(`https://n8n.umbryth.com/webhook/d1c24b37-79c4-4a4a-8fae-34008bf985a0?${queryParams.toString()}`, {
+          method: 'GET'
+        })
+        .then(response => {
+          
+          // Check if response is ok
+          if (!response.ok) {
+            console.error('❌ Webhook returned error status:', response.status);
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          
+          // Try to parse JSON, but handle cases where response might be empty
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.indexOf("application/json") !== -1) {
+            return response.json();
+          } else {
+            // If not JSON, return the text response
+            return response.text().then(text => {
+              return { success: true, response: text };
+            });
+          }
+        })
+        .then(data => {
+          
+          // Hide form and show success
+          aiPhoneForm.style.display = 'none';
+          aiSuccessMessage.classList.add('active');
+          
+          // Store call initiated status
+          sessionStorage.setItem('aiDiscoveryInitiated', 'true');
+          sessionStorage.setItem('aiDiscoveryTime', new Date().toISOString());
+        })
+        .catch(error => {
+          console.error('❌ Error with AI Discovery webhook:', error);
+          console.error('🔍 Error details:', error.message);
+          
+          // Still show success message for better UX
+          aiPhoneForm.style.display = 'none';
+          aiSuccessMessage.classList.add('active');
+          
+          // Log for debugging but don't alert user
+        });
+      });
+      }
+    }
+    
+  </script>
+  
+  <!-- Cookie Consent Script -->
+  <script src="js/cookie-consent.js" type="text/javascript"></script>
+</body>
+</html>
