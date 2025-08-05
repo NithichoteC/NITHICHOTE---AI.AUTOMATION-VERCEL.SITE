@@ -1493,6 +1493,107 @@
       }
     </style>
     
+    <!-- Professional Section Spacing & Typography Consistency -->
+    <style>
+      /* Section spacing - more breathing room between sections */
+      .project-section {
+        padding-top: 2rem !important;
+      }
+      
+      /* Fix heading-13 top spacing - more space from logo carousel */
+      .heading-13 {
+        margin-top: 3rem !important;
+      }
+      
+      /* Mobile adjustments for heading-13 */
+      @media screen and (max-width: 991px) {
+        .heading-13 {
+          margin-top: 2.5rem !important;
+        }
+      }
+      
+      @media screen and (max-width: 767px) {
+        .heading-13 {
+          margin-top: 2rem !important;
+        }
+      }
+      
+      /* Consistent subheading spacing for ALL similar texts */
+      .centered-subheading,
+      .subtitle-text,
+      .paragraph-4 {
+        margin-top: 0.75rem !important; /* Tight connection to header */
+        margin-bottom: 2rem !important; /* Space before next content */
+      }
+      
+      /* Responsive subheading adjustments */
+      @media screen and (max-width: 991px) {
+        .centered-subheading,
+        .subtitle-text,
+        .paragraph-4 {
+          margin-top: 0.625rem !important;
+          margin-bottom: 1.75rem !important;
+        }
+      }
+      
+      @media screen and (max-width: 767px) {
+        .centered-subheading,
+        .subtitle-text,
+        .paragraph-4 {
+          margin-top: 0.5rem !important;
+          margin-bottom: 1.5rem !important;
+        }
+      }
+      
+      /* Fix specific spacing issues */
+      /* "Here's what that looks like" - ensure consistent spacing */
+      .centered-subheading {
+        display: block !important;
+        width: 100% !important;
+      }
+      
+      /* What You Get section - fix subtitle spacing */
+      #w-node-_507b7827-89c8-3a0e-a930-c9e589ec72f1-cca18e07 .subtitle-text {
+        margin-top: 0.75rem !important;
+        margin-bottom: 0 !important; /* No extra space at section start */
+      }
+      
+      /* Spacer-large should provide consistent spacing */
+      .spacer-large {
+        margin-top: 0 !important; /* Remove extra top margin */
+        margin-bottom: 0.75rem !important; /* Just enough for subheading */
+      }
+      
+      /* Override any conflicting margins on headers when followed by subheadings */
+      .heading-style-h2 + .centered-subheading,
+      .heading-style-h2 + .subtitle-text,
+      .heading-style-h2 + .paragraph-4,
+      .title-wrapper + .centered-subheading,
+      .title-wrapper + .subtitle-text,
+      .title-wrapper + .paragraph-4 {
+        margin-top: 0.75rem !important;
+      }
+      
+      /* Ensure headers in title-content have proper spacing */
+      .title-content .heading-style-h2 {
+        margin-bottom: 0 !important; /* Let subheading handle spacing */
+      }
+      
+      /* Fix iPad specific spacing */
+      @media screen and (min-width: 768px) and (max-width: 991px) {
+        .heading-13 {
+          margin-top: 2.25rem !important;
+        }
+        
+        .centered-subheading,
+        .subtitle-text,
+        .paragraph-4 {
+          margin-top: 0.625rem !important;
+          margin-bottom: 1.75rem !important;
+        }
+      }
+    </style>
+    
     <section class="project-section">
       <div class="padding-global">
         <div class="w-layout-blockcontainer container-large w-container">
@@ -1843,10 +1944,10 @@
             <div class="container">
               <div class="w-layout-grid top-grid">
                 <div id="w-node-ecc245b2-14cc-edc8-35c4-7dd6ae6feee9-cca18e07" class="title-content">
-                  <div class="subtitle-text">Full transparency—no black boxes</div>
                   <div class="title-wrapper">
                     <h2 class="heading-style-h2 text-align-center">Real AI&nbsp;systems, Built around real&nbsp;work</h2>
                   </div>
+                  <div class="subtitle-text">Full transparency—no black boxes</div>
                 </div>
               </div>
             </div>
