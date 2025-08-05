@@ -230,12 +230,18 @@
       color: var(--grey) !important;
     }
     
-    /* Tablet: Tighter grouping */
+    /* Tablet: Match paragraph-4 style */
     @media screen and (max-width: 991px) {
       #What-you-get .subtitle-text {
-        font-size: 0.95rem !important;
-        margin-top: 0.5rem !important; /* Reduced from 0.625rem */
-        margin-bottom: 0 !important; /* Remove bottom margin */
+        /* Match paragraph-4 styling */
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        font-weight: 400 !important;
+        color: rgba(255, 255, 255, 0.7) !important; /* Lighter like paragraph-4 */
+        opacity: 1 !important;
+        /* Spacing */
+        margin-top: 0.5rem !important;
+        margin-bottom: 0 !important;
       }
       
       /* Compensate with container padding */
@@ -244,12 +250,26 @@
       }
     }
     
-    /* Mobile: Minimal gap for tight grouping */
+    /* Mobile: Match paragraph-4 style exactly */
     @media screen and (max-width: 767px) {
       #What-you-get .subtitle-text {
-        font-size: 0.9rem !important;
-        margin-top: 0.375rem !important; /* Very tight - just 6px */
-        margin-bottom: 0 !important; /* No bottom margin */
+        /* Match paragraph-4 mobile styling */
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+        font-weight: 400 !important;
+        color: rgba(255, 255, 255, 0.7) !important; /* Lighter, more subtle */
+        opacity: 1 !important;
+        /* Remove quotes */
+        quotes: none !important;
+        /* Spacing */
+        margin-top: 0.375rem !important;
+        margin-bottom: 0 !important;
+      }
+      
+      /* Remove the quotes */
+      #What-you-get .subtitle-text::before,
+      #What-you-get .subtitle-text::after {
+        content: none !important;
       }
       
       /* Compensate with container */
