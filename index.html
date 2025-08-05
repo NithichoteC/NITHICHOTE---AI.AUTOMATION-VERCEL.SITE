@@ -4152,5 +4152,51 @@
       }
     }
   </style>
+  
+  <!-- Professional Logo Sizing -->
+  <style>
+    /* Navigation Logo - More subtle size */
+    .navbar .logo,
+    .nav-grid .logo {
+      height: 1.25rem !important; /* 20px - more subtle */
+      width: auto !important;
+      max-width: 150px !important; /* Prevent too wide */
+    }
+    
+    /* Footer Logo - Can be slightly larger */
+    .footer-logo-wrapper .logo {
+      height: 1.75rem !important; /* 28px - creates hierarchy */
+      width: auto !important;
+      max-width: 200px !important;
+    }
+    
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 767px) {
+      .navbar .logo,
+      .nav-grid .logo {
+        height: 1.125rem !important; /* 18px on mobile */
+        max-width: 130px !important;
+      }
+      
+      .footer-logo-wrapper .logo {
+        height: 1.5rem !important; /* 24px on mobile */
+        max-width: 170px !important;
+      }
+    }
+    
+    /* Small Mobile */
+    @media (max-width: 479px) {
+      .navbar .logo,
+      .nav-grid .logo {
+        height: 1rem !important; /* 16px on small screens */
+        max-width: 120px !important;
+      }
+    }
+    
+    /* Ensure smooth transitions */
+    .logo {
+      transition: opacity 0.3s ease;
+    }
+  </style>
 </body>
 </html>
