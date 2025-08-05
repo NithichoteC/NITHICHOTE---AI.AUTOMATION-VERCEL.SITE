@@ -221,65 +221,64 @@
       }
     }
     
-    /* 7. Professional header-subtitle grouping */
-    /* Desktop: Keep current spacing (looks good) */
+    /* 7. Match Real AI systems section exact styling */
+    /* Desktop: Keep current but improve consistency */
     #What-you-get .subtitle-text {
-      font-size: 1rem !important;
-      margin-top: 0.75rem !important;
-      margin-bottom: 2rem !important;
-      color: var(--grey) !important;
+      /* Match paragraph-4 style on ALL breakpoints */
+      font-size: 18px !important;
+      line-height: 36px !important;
+      font-weight: 400 !important;
+      color: var(--white) !important;
+      opacity: 0.7 !important; /* Slightly dimmed for subtitle effect */
+      text-align: center !important;
+      font-style: normal !important;
+      /* Remove quotes */
+      quotes: none !important;
     }
     
-    /* Tablet: Match paragraph-4 style */
+    /* Remove quotes on all breakpoints */
+    #What-you-get .subtitle-text::before,
+    #What-you-get .subtitle-text::after {
+      content: none !important;
+    }
+    
+    /* Add spacer-large equivalent spacing AFTER the title */
+    #What-you-get .title-wrapper {
+      margin-bottom: 3rem !important; /* Desktop spacer-large */
+    }
+    
+    /* Tablet spacing to match Real AI section */
     @media screen and (max-width: 991px) {
-      #What-you-get .subtitle-text {
-        /* Match paragraph-4 styling */
-        font-size: 18px !important;
-        line-height: 1.6 !important;
-        font-weight: 400 !important;
-        color: rgba(255, 255, 255, 0.7) !important; /* Lighter like paragraph-4 */
-        opacity: 1 !important;
-        /* Spacing */
-        margin-top: 0.5rem !important;
-        margin-bottom: 0 !important;
+      #What-you-get .title-wrapper {
+        margin-bottom: 2.5rem !important; /* Tablet spacer-large */
       }
       
-      /* Compensate with container padding */
-      #What-you-get .title-content {
-        margin-bottom: 1.5rem !important;
+      #What-you-get .subtitle-text {
+        /* Keep paragraph-4 responsive sizing */
+        line-height: 1.6 !important;
+        margin: 0 40px !important; /* Match paragraph-4 margins */
       }
     }
     
-    /* Mobile: Match paragraph-4 style exactly */
+    /* Mobile spacing to match Real AI section */
     @media screen and (max-width: 767px) {
+      #What-you-get .title-wrapper {
+        margin-bottom: 1.5rem !important; /* Mobile spacer-large */
+      }
+      
       #What-you-get .subtitle-text {
-        /* Match paragraph-4 mobile styling */
+        /* Mobile paragraph-4 style */
         font-size: 18px !important;
         line-height: 1.6 !important;
-        font-weight: 400 !important;
-        color: rgba(255, 255, 255, 0.7) !important; /* Lighter, more subtle */
-        opacity: 1 !important;
-        /* Remove quotes */
-        quotes: none !important;
-        /* Spacing */
-        margin-top: 0.375rem !important;
-        margin-bottom: 0 !important;
+        margin: 0 20px !important; /* Mobile margins */
       }
-      
-      /* Remove the quotes */
-      #What-you-get .subtitle-text::before,
-      #What-you-get .subtitle-text::after {
-        content: none !important;
-      }
-      
-      /* Compensate with container */
-      #What-you-get .title-content {
-        margin-bottom: 1rem !important;
-      }
-      
-      /* Remove top-grid bottom padding on mobile */
-      #What-you-get .top-grid {
-        padding-bottom: 0 !important;
+    }
+    
+    /* Small mobile adjustments */
+    @media screen and (max-width: 479px) {
+      #What-you-get .subtitle-text {
+        font-size: 16px !important; /* Slightly smaller on very small screens */
+        line-height: 1.5 !important;
       }
     }
     
@@ -303,7 +302,17 @@
     
     /* Professional header bottom margin control */
     #What-you-get .heading-style-h2 {
-      margin-bottom: 0 !important; /* Let subtitle handle spacing */
+      margin-bottom: 0 !important; /* Let title-wrapper handle spacing */
+    }
+    
+    /* Remove any competing margins */
+    #What-you-get .title-content {
+      margin-bottom: 0 !important;
+    }
+    
+    #What-you-get .subtitle-text {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
     }
     
     /* Remove extra padding from what-you-get section */
