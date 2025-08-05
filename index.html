@@ -2,6 +2,10 @@
 <html data-wf-page="686bac2b4d1341d4cca18e07" data-wf-site="686bac2b4d1341d4cca18daf" lang="en">
 <head>
   <meta charset="utf-8">
+  <!-- Force cache refresh - Updated at 2025-08-04 22:15:00 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>AI Automation Consultant - Reclaim 10+&nbsp;Hours/Week | Free Strategy Call</title>
   <meta content="Transform your business with AI&nbsp;automation. Get a free 30-minute strategy&nbsp;call to identify your highest-impact automations and reclaim 10+&nbsp;hours every week. Zero sales pressure, pure strategic insight." name="description">
   <meta content="AI Automation Consultant - Reclaim 10+&nbsp;Hours/Week | Free Strategy Call" property="og:title">
@@ -98,19 +102,6 @@
       line-height: 1.6 !important;
     }
     
-    /* Update subtitle-text to match */
-    .subtitle-text {
-      text-align: center !important;
-      max-width: 530px !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      color: var(--grey) !important;
-      font-size: 1rem !important;
-      font-weight: 400 !important;
-      text-transform: none !important; /* Remove uppercase */
-      margin-bottom: 10px !important;
-      line-height: 1.6 !important;
-    }
     
     /* Responsive typography for professional scaling */
     @media (max-width: 991px) and (min-width: 768px) {
@@ -119,6 +110,10 @@
       .paragraph-4,
       .subtitle-text {
         font-size: 0.9rem !important;
+      }
+      /* Override for pre-header subtitle-text */
+      #w-node-ecc245b2-14cc-edc8-35c4-7dd6ae6feee9-cca18e07 .subtitle-text {
+        font-size: 0.8rem !important;
       }
     }
     
@@ -151,6 +146,171 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-5F668SP9');</script>
   <!-- End Google Tag Manager -->
+  
+  <!-- COMPREHENSIVE SPACING FIX - FINAL OVERRIDE -->
+  <style>
+    /* ========================================
+       FORCE PROPER SPACING - MAXIMUM SPECIFICITY
+       This MUST override all other rules
+       ======================================== */
+    
+    /* 1. Force spacing on ALL sections */
+    body section,
+    .page-wrapper section,
+    html body section {
+      margin-top: 8rem !important;
+      margin-bottom: 0 !important;
+    }
+    
+    /* First section needs no top margin */
+    body > section:first-of-type,
+    .page-wrapper > section:first-of-type,
+    body > .header-section,
+    body > section:first-child {
+      margin-top: 0 !important;
+    }
+    
+    /* 2. Fix dividers - make them spacers, not just lines */
+    body > div[style*="padding-top"],
+    .page-wrapper > div[style*="padding-top"],
+    div:has(> .w-layout-blockcontainer > .divider-stripe) {
+      /* Remove their padding */
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      /* Add margin instead */
+      margin-top: 4rem !important;
+      margin-bottom: 4rem !important;
+    }
+    
+    /* 3. Mobile/Tablet section spacing */
+    @media screen and (max-width: 991px) {
+      body section,
+      .page-wrapper section,
+      html body section {
+        margin-top: 6rem !important;
+      }
+      
+      body > div[style*="padding-top"],
+      .page-wrapper > div[style*="padding-top"],
+      div:has(> .w-layout-blockcontainer > .divider-stripe) {
+        margin-top: 3rem !important;
+        margin-bottom: 3rem !important;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      body section,
+      .page-wrapper section,
+      html body section {
+        margin-top: 4rem !important;
+      }
+      
+      body > div[style*="padding-top"],
+      .page-wrapper > div[style*="padding-top"],
+      div:has(> .w-layout-blockcontainer > .divider-stripe) {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+      }
+    }
+    
+    /* 4. Fix heading-13 once and for all */
+    .heading-13,
+    h1.heading-13,
+    body .heading-13 {
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    /* 5. Fix subtitle-text with MAXIMUM specificity */
+    /* Pre-header text (small, dimmed) */
+    body #SYSTEM .title-content .subtitle-text:first-child,
+    body #SYSTEM .subtitle-text {
+      font-size: 0.875rem !important;
+      opacity: 0.8 !important;
+      margin-bottom: 0.75rem !important;
+      margin-top: 0 !important;
+      text-transform: none !important;
+      font-weight: 400 !important;
+      color: #999 !important;
+    }
+    
+    /* Post-header subtitle (normal size) */
+    body #What-you-get .title-content .subtitle-text,
+    body .title-wrapper + .subtitle-text {
+      font-size: 1rem !important;
+      opacity: 1 !important;
+      margin-top: 0.75rem !important;
+      margin-bottom: 2rem !important;
+      color: var(--grey) !important;
+      text-align: center !important;
+      font-style: normal !important;
+      text-transform: none !important;
+      font-weight: 400 !important;
+    }
+    
+    /* 6. Ensure consistent subheading spacing */
+    body .centered-subheading,
+    body .paragraph-4 {
+      margin-top: 0.75rem !important;
+      margin-bottom: 2rem !important;
+    }
+    
+    /* 7. Remove any extra spacing that's breaking the layout */
+    .spacer-large {
+      margin: 0 !important;
+      padding-bottom: 0.5rem !important;
+    }
+    
+    /* DEBUG: Visualize spacing - ENABLED at 22:15 */
+    
+    section {
+      border: 3px solid red !important;
+      position: relative !important;
+    }
+    section::before {
+      content: attr(id) " section";
+      position: absolute;
+      top: -25px;
+      left: 10px;
+      background: red;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+      z-index: 9999;
+      font-family: monospace;
+    }
+    div[style*="padding-top"] {
+      background: rgba(0, 255, 0, 0.2) !important;
+      border: 2px solid green !important;
+      position: relative !important;
+    }
+    div[style*="padding-top"]::before {
+      content: "DIVIDER";
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      background: green;
+      color: white;
+      padding: 3px 8px;
+      font-size: 11px;
+      z-index: 9999;
+      font-family: monospace;
+    }
+    
+    /* Show computed spacing values */
+    section::after {
+      content: "8rem margin-top applied";
+      position: absolute;
+      top: -25px;
+      right: 10px;
+      background: blue;
+      color: white;
+      padding: 5px 10px;
+      font-size: 11px;
+      z-index: 9999;
+      font-family: monospace;
+    }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -1495,19 +1655,33 @@
     
     <!-- Professional Section Spacing & Typography Consistency -->
     <style>
-      /* Section spacing - more breathing room between sections */
-      .project-section {
-        padding-top: 2rem !important;
+      /* REAL section-to-section spacing that will be VISIBLE */
+      section + section {
+        margin-top: 8rem !important; /* Match padding-section-large value */
       }
       
-      /* Fix heading-13 top spacing - now with divider, less margin needed */
+      /* Mobile section spacing */
+      @media screen and (max-width: 991px) {
+        section + section {
+          margin-top: 6rem !important;
+        }
+      }
+      
+      @media screen and (max-width: 767px) {
+        section + section {
+          margin-top: 4rem !important;
+        }
+      }
+      
+      /* Fix heading-13 - remove all extra margin since divider handles it */
       .heading-13 {
-        margin-top: 0 !important; /* Divider provides the spacing */
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
       
-      /* Consistent subheading spacing for ALL similar texts */
+      /* Consistent subheading spacing for centered-subheading and paragraph-4 */
+      /* subtitle-text is handled separately above */
       .centered-subheading,
-      .subtitle-text,
       .paragraph-4 {
         margin-top: 0.75rem !important; /* Tight connection to header */
         margin-bottom: 2rem !important; /* Space before next content */
@@ -1576,44 +1750,95 @@
         }
       }
       
-      /* Mobile-specific divider spacing - more compact */
+      /* Make dividers MORE SUBSTANTIAL for visible spacing */
+      /* Desktop: 4rem + 4rem = 8rem total (128px) */
+      div[style*="padding-top: 3rem"] {
+        padding-top: 4rem !important;
+        padding-bottom: 4rem !important;
+      }
+      
+      /* Tablet divider spacing */
+      @media screen and (max-width: 991px) {
+        div[style*="padding-top: 3rem"],
+        div[style*="padding-top: 4rem"] {
+          padding-top: 3rem !important;
+          padding-bottom: 3rem !important;
+        }
+      }
+      
+      /* Mobile divider spacing */
       @media screen and (max-width: 767px) {
-        /* All dividers get reduced spacing on mobile */
-        div[style*="padding-top: 3rem"] {
+        div[style*="padding-top: 3rem"],
+        div[style*="padding-top: 4rem"] {
+          padding-top: 2.5rem !important;
+          padding-bottom: 2.5rem !important;
+        }
+      }
+      
+      /* Small mobile divider spacing */
+      @media screen and (max-width: 479px) {
+        div[style*="padding-top: 3rem"],
+        div[style*="padding-top: 4rem"],
+        div[style*="padding-top: 2.5rem"] {
           padding-top: 2rem !important;
           padding-bottom: 2rem !important;
         }
       }
       
-      /* Even smaller on very small screens */
-      @media screen and (max-width: 479px) {
-        div[style*="padding-top: 3rem"],
-        div[style*="padding-top: 2rem"] {
-          padding-top: 1.5rem !important;
-          padding-bottom: 1.5rem !important;
-        }
-      }
+      /* SPECIFIC subtitle-text styling with HIGH specificity */
       
-      /* Pre-header text styling (like FAQ's "Everything you need to know...") */
-      .subtitle-text {
-        font-size: 0.875rem !important; /* Smaller text */
+      /* Pre-header text (appears BEFORE header) - "Full transparency—no black boxes" */
+      #SYSTEM .title-content .subtitle-text:first-child {
+        font-size: 0.875rem !important;
         opacity: 0.8 !important;
         margin-bottom: 0.75rem !important;
         margin-top: 0 !important;
+        text-transform: none !important;
+        font-weight: 400 !important;
       }
       
-      /* Ensure proper order: pre-header text → header → subheading */
-      .title-content .subtitle-text + .title-wrapper {
-        margin-top: 0 !important;
-      }
-      
-      .title-wrapper + .subtitle-text {
-        /* This is a post-header subtitle - different styling */
+      /* Post-header subtitle (appears AFTER header) - "Everything you need..." */
+      #What-you-get .title-content .subtitle-text {
         font-size: 1rem !important;
         opacity: 1 !important;
         margin-top: 0.75rem !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 0 !important;
+        color: var(--grey) !important;
+        text-align: center !important;
+        max-width: 530px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        font-style: normal !important;
+        text-transform: none !important;
+        font-weight: 400 !important;
       }
+      
+      /* Override any general subtitle-text rules */
+      .subtitle-text {
+        /* Reset to defaults */
+        all: revert;
+        /* Then apply consistent base styles */
+        text-align: center !important;
+        display: block !important;
+      }
+      
+      /* TEMPORARY: Visual debugging to see spacing changes */
+      /* Remove these after confirming spacing works */
+      /*
+      section {
+        border: 2px dashed red !important;
+      }
+      
+      div[style*="padding-top"] {
+        background: rgba(0, 255, 0, 0.1) !important;
+        border: 1px solid green !important;
+      }
+      
+      .divider-stripe {
+        background: yellow !important;
+        height: 2px !important;
+      }
+      */
     </style>
     
     <section class="project-section">
@@ -2862,13 +3087,6 @@
         </div>
       </div><img src="images/bg-pattern-03.svg" loading="lazy" alt="Graphical element pattern" class="service-bg"><img src="images/bg-pattern-09.svg" loading="lazy" alt="Graphical element pattern" class="service-bg _02">
     </section>
-    
-    <!-- Divider after What You Get section -->
-    <div style="padding-top: 3rem; padding-bottom: 3rem;">
-      <div class="w-layout-blockcontainer container-large w-container">
-        <div class="divider-stripe"></div>
-      </div>
-    </div>
     
     <section id="CTA" class="call-to-action">
       <div class="padding-global">
