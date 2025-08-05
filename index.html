@@ -147,118 +147,165 @@
   })(window,document,'script','dataLayer','GTM-5F668SP9');</script>
   <!-- End Google Tag Manager -->
   
-  <!-- COMPREHENSIVE SPACING FIX - FINAL OVERRIDE -->
+  <!-- PROFESSIONAL RESPONSIVE SPACING SYSTEM -->
   <style>
     /* ========================================
-       FORCE PROPER SPACING - MAXIMUM SPECIFICITY
-       This MUST override all other rules
+       PROFESSIONAL RESPONSIVE SPACING
+       Proportional scaling based on device size
        ======================================== */
     
-    /* 1. Force spacing on ALL sections */
-    body section,
-    .page-wrapper section,
-    html body section {
+    /* 1. Responsive section spacing with proportional scaling */
+    /* Desktop: Full spacing */
+    section {
       margin-top: 8rem !important;
       margin-bottom: 0 !important;
     }
     
-    /* First section needs no top margin */
-    body > section:first-of-type,
-    .page-wrapper > section:first-of-type,
-    body > .header-section,
-    body > section:first-child {
+    /* First section never has top margin */
+    section:first-of-type,
+    .header-section {
       margin-top: 0 !important;
     }
     
-    /* 2. Fix dividers - make them spacers, not just lines */
-    body > div[style*="padding-top"],
-    .page-wrapper > div[style*="padding-top"],
-    div:has(> .w-layout-blockcontainer > .divider-stripe) {
-      /* Remove their padding */
+    /* 2. Tablet spacing (75% of desktop) */
+    @media screen and (max-width: 991px) {
+      section {
+        margin-top: 5rem !important;
+      }
+    }
+    
+    /* 3. Mobile spacing (50% of desktop) */
+    @media screen and (max-width: 767px) {
+      section {
+        margin-top: 3rem !important;
+      }
+    }
+    
+    /* 4. Small mobile (40% of desktop) */
+    @media screen and (max-width: 479px) {
+      section {
+        margin-top: 2.5rem !important;
+      }
+    }
+    
+    /* 5. Remove divider before What You Get */
+    /* The divider is inside the CTA section, not between sections */
+    .section-cta .divider-stripe:last-of-type {
+      display: none !important;
+    }
+    
+    /* Hide the parent div that contains only the divider */
+    .section-cta > div:last-child:has(.divider-stripe) {
+      display: none !important;
+    }
+    
+    /* 6. Professional divider spacing */
+    div[style*="padding-top"]:has(.divider-stripe) {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
-      /* Add margin instead */
       margin-top: 4rem !important;
       margin-bottom: 4rem !important;
     }
     
-    /* 3. Mobile/Tablet section spacing */
     @media screen and (max-width: 991px) {
-      body section,
-      .page-wrapper section,
-      html body section {
-        margin-top: 6rem !important;
-      }
-      
-      body > div[style*="padding-top"],
-      .page-wrapper > div[style*="padding-top"],
-      div:has(> .w-layout-blockcontainer > .divider-stripe) {
-        margin-top: 3rem !important;
-        margin-bottom: 3rem !important;
+      div[style*="padding-top"]:has(.divider-stripe) {
+        margin-top: 2.5rem !important;
+        margin-bottom: 2.5rem !important;
       }
     }
     
     @media screen and (max-width: 767px) {
-      body section,
-      .page-wrapper section,
-      html body section {
-        margin-top: 4rem !important;
-      }
-      
-      body > div[style*="padding-top"],
-      .page-wrapper > div[style*="padding-top"],
-      div:has(> .w-layout-blockcontainer > .divider-stripe) {
-        margin-top: 2rem !important;
-        margin-bottom: 2rem !important;
+      div[style*="padding-top"]:has(.divider-stripe) {
+        margin-top: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
       }
     }
     
-    /* 4. Fix heading-13 once and for all */
-    .heading-13,
-    h1.heading-13,
-    body .heading-13 {
-      margin-top: 0 !important;
-      margin-bottom: 1rem !important;
-    }
-    
-    /* 5. Fix subtitle-text with MAXIMUM specificity */
-    /* Pre-header text (small, dimmed) */
-    body #SYSTEM .title-content .subtitle-text:first-child,
-    body #SYSTEM .subtitle-text {
-      font-size: 0.875rem !important;
-      opacity: 0.8 !important;
-      margin-bottom: 0.75rem !important;
-      margin-top: 0 !important;
-      text-transform: none !important;
-      font-weight: 400 !important;
-      color: #999 !important;
-    }
-    
-    /* Post-header subtitle (normal size) */
-    body #What-you-get .title-content .subtitle-text,
-    body .title-wrapper + .subtitle-text {
+    /* 7. Fix subtitle spacing proportionally */
+    /* Desktop subtitle */
+    #What-you-get .subtitle-text {
       font-size: 1rem !important;
-      opacity: 1 !important;
       margin-top: 0.75rem !important;
       margin-bottom: 2rem !important;
       color: var(--grey) !important;
-      text-align: center !important;
-      font-style: normal !important;
-      text-transform: none !important;
-      font-weight: 400 !important;
     }
     
-    /* 6. Ensure consistent subheading spacing */
-    body .centered-subheading,
-    body .paragraph-4 {
-      margin-top: 0.75rem !important;
-      margin-bottom: 2rem !important;
+    /* Tablet subtitle */
+    @media screen and (max-width: 991px) {
+      #What-you-get .subtitle-text {
+        font-size: 0.95rem !important;
+        margin-top: 0.625rem !important;
+        margin-bottom: 1.5rem !important;
+      }
     }
     
-    /* 7. Remove any extra spacing that's breaking the layout */
-    .spacer-large {
-      margin: 0 !important;
-      padding-bottom: 0.5rem !important;
+    /* Mobile subtitle */
+    @media screen and (max-width: 767px) {
+      #What-you-get .subtitle-text {
+        font-size: 0.9rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 1rem !important;
+      }
+    }
+    
+    /* 8. Section-specific adjustments */
+    /* What You Get - tighter spacing due to subtitle */
+    #What-you-get {
+      margin-top: 6rem !important;
+    }
+    
+    @media screen and (max-width: 991px) {
+      #What-you-get {
+        margin-top: 4rem !important;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      #What-you-get {
+        margin-top: 2.5rem !important;
+      }
+    }
+    
+    /* Ensure subtitle doesn't add extra spacing */
+    #What-you-get .title-content {
+      margin-bottom: 0 !important;
+    }
+    
+    /* Remove extra padding from what-you-get section */
+    #what-you-get-section {
+      padding-top: 2rem !important;
+    }
+    
+    @media screen and (max-width: 991px) {
+      #what-you-get-section {
+        padding-top: 1.5rem !important;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      #what-you-get-section {
+        padding-top: 1rem !important;
+      }
+    }
+    
+    /* 9. Clean up heading-13 */
+    .heading-13 {
+      margin-top: 0 !important;
+      margin-bottom: 0.75rem !important;
+      font-size: 1.625rem !important;
+    }
+    
+    @media screen and (max-width: 991px) {
+      .heading-13 {
+        font-size: 1.375rem !important;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      .heading-13 {
+        font-size: 1.125rem !important;
+        margin-bottom: 0.5rem !important;
+      }
     }
     
     /* DEBUG: Visualize spacing - ENABLED at 22:15 */
@@ -297,18 +344,50 @@
       font-family: monospace;
     }
     
-    /* Show computed spacing values */
-    section::after {
-      content: "8rem margin-top applied";
-      position: absolute;
-      top: -25px;
-      right: 10px;
-      background: blue;
-      color: white;
-      padding: 5px 10px;
-      font-size: 11px;
-      z-index: 9999;
-      font-family: monospace;
+    /* Show responsive spacing values */
+    @media screen and (min-width: 992px) {
+      section::after {
+        content: "Desktop: 8rem spacing";
+        position: absolute;
+        top: -25px;
+        right: 10px;
+        background: blue;
+        color: white;
+        padding: 5px 10px;
+        font-size: 11px;
+        z-index: 9999;
+        font-family: monospace;
+      }
+    }
+    
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+      section::after {
+        content: "Tablet: 5rem spacing";
+        position: absolute;
+        top: -25px;
+        right: 10px;
+        background: blue;
+        color: white;
+        padding: 5px 10px;
+        font-size: 11px;
+        z-index: 9999;
+        font-family: monospace;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      section::after {
+        content: "Mobile: 3rem spacing";
+        position: absolute;
+        top: -25px;
+        right: 10px;
+        background: blue;
+        color: white;
+        padding: 5px 10px;
+        font-size: 11px;
+        z-index: 9999;
+        font-family: monospace;
+      }
     }
   </style>
 </head>
