@@ -2571,20 +2571,8 @@ blockquote {
   }
 }
 
-/* Professional Logo Carousel */
-.logo-track {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  animation: infinite-scroll 60s linear infinite;
-  -webkit-animation: infinite-scroll 60s linear infinite;
-  width: max-content;
-  will-change: transform, opacity;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+/* Professional Logo Carousel - MOVED TO INLINE CSS TO AVOID CONFLICTS */
+/* .logo-track CSS is now defined in index.html for better control */
 
 .logo-item {
   flex-shrink: 0;
@@ -4796,12 +4784,8 @@ blockquote {
 
   /* div-block-31 no longer used - logo-track handles all responsiveness */
   
-  /* Mobile logo animation fixes */
-  .logo-track {
-    gap: 30px;
-    animation-duration: 50s;
-    -webkit-animation-duration: 50s;
-  }
+  /* Mobile logo animation - MOVED TO INLINE CSS */
+  /* .logo-track animation-duration now controlled in index.html */
   
   .logo-item {
     height: 80px;
@@ -5327,12 +5311,8 @@ blockquote {
 
   /* div-block-31 no longer used - logo-track handles all responsiveness */
   
-  /* Extra small mobile logo animation fixes */
-  .logo-track {
-    gap: 25px;
-    animation-duration: 45s;
-    -webkit-animation-duration: 45s;
-  }
+  /* Extra small mobile logo animation - MOVED TO INLINE CSS */
+  /* .logo-track animation-duration now controlled in index.html */
   
   .logo-item {
     height: 60px;
