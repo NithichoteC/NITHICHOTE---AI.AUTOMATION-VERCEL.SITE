@@ -4198,5 +4198,83 @@
       transition: opacity 0.3s ease;
     }
   </style>
+
+  <!-- Mobile UI Professional Fixes -->
+  <style>
+    /* Mobile Hero Section Optimization */
+    @media screen and (max-width: 479px) {
+      /* Fix cramped hero section */
+      .header-block {
+        top: -2rem !important; /* Reduced from -4rem to give more breathing room */
+      }
+      
+      /* Optimize profile image size for mobile */
+      .main-image {
+        width: 6rem !important; /* 96px - better mobile proportion */
+        height: 6rem !important;
+        margin-bottom: 1.5rem !important; /* More space below image */
+      }
+      
+      /* Increase hero section padding */
+      .header-section {
+        padding-top: 1.5rem !important;
+        padding-bottom: 2rem !important;
+      }
+      
+      /* Better spacing for hero content */
+      .header-content {
+        gap: 1rem !important; /* Add consistent spacing between elements */
+      }
+      
+      /* CTA button spacing */
+      .link-button.bigger {
+        margin-top: 2rem !important; /* More space above button */
+      }
+      
+      /* Typography breathing room */
+      .heading-title {
+        line-height: 1.3 !important; /* Better line height for readability */
+        margin-bottom: 1rem !important;
+      }
+      
+      .subtitle-text {
+        line-height: 1.5 !important;
+        margin-bottom: 0.75rem !important;
+      }
+    }
+    
+    /* Hamburger Menu Professional Styling */
+    .menu-button {
+      border: none !important; /* Remove the square border */
+      background-color: transparent !important;
+      padding: 12px 10px !important; /* Optimized padding for 44px hit target */
+      transition: all 0.3s ease !important;
+    }
+    
+    /* Hamburger hover state */
+    .menu-button:hover {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    /* Mobile-specific hamburger adjustments */
+    @media screen and (max-width: 767px) {
+      .menu-button {
+        padding: 10px 8px !important; /* Slightly smaller on mobile */
+      }
+      
+      /* Ensure menu lines stay proportional */
+      .menu-button-flex {
+        width: 1.375rem !important; /* 22px - slightly smaller for mobile */
+      }
+    }
+    
+    /* Additional mobile padding improvements */
+    @media screen and (max-width: 479px) {
+      .padding-global {
+        padding-left: 1.5rem !important; /* Increased from 1.25rem */
+        padding-right: 1.5rem !important;
+      }
+    }
+  </style>
 </body>
 </html>
