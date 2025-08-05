@@ -109,7 +109,7 @@
             </div>
             <div class="hero-content-wrapper" style="text-align: center; margin: 1.5rem 0 2.5rem 0; max-width: 900px; margin-left: auto; margin-right: auto;">
               <p class="hero-tagline" style="color: #b4b4b4; font-size: 1.75rem; line-height: 1.6; margin: 0; font-weight: 300;">First AI&nbsp;automation live in <span style="color: #fff; font-weight: 400;">48&nbsp;hours</span>. 10+&nbsp;hours saved weekly within <span style="color: #fff; font-weight: 400;">14&nbsp;days</span>. Full&nbsp;ROI in <span style="color: #fff; font-weight: 400;">60&nbsp;days</span>—or I work for&nbsp;free until you do.</p>
-              <p class="hero-sub-tagline" style="color: #808080; font-size: 1.1rem; margin-top: 1rem; font-weight: 300; line-height: 1.4;">Limited spots. Hands-on implementation. <span style="white-space: nowrap;">No tech skills required.</span></p>
+              <p class="hero-sub-tagline" style="color: #808080; font-size: 1.1rem; margin-top: 1rem; font-weight: 300; line-height: 1.4;">Limited spots • Hands-on implementation • No tech skills required</p>
             </div>
             <!-- CTA moved inside content for better flow -->
             <div class="hero-cta-wrapper" style="text-align: center; margin-top: 1.5rem;">
@@ -4212,7 +4212,7 @@
       .main-image {
         width: 6rem !important; /* 96px - better mobile proportion */
         height: 6rem !important;
-        margin-bottom: 1.5rem !important; /* More space below image */
+        margin-bottom: 0.75rem !important; /* Tighter space below image */
       }
       
       /* Increase hero section padding */
@@ -4223,23 +4223,43 @@
       
       /* Better spacing for hero content */
       .header-content {
-        gap: 1rem !important; /* Add consistent spacing between elements */
+        gap: 0.5rem !important; /* Tighter spacing between elements */
       }
       
       /* CTA button spacing */
       .link-button.bigger {
-        margin-top: 2rem !important; /* More space above button */
+        margin-top: 1.25rem !important; /* Reduced space above button */
       }
       
       /* Typography breathing room */
       .heading-title {
-        line-height: 1.3 !important; /* Better line height for readability */
-        margin-bottom: 1rem !important;
+        line-height: 1.2 !important; /* Tighter line height */
+        margin-bottom: 0.25rem !important; /* Much less gap to subtitle */
+      }
+      
+      /* Specific for h2 subtitle */
+      h2.heading-title {
+        margin-bottom: 0.75rem !important; /* Tighter gap after subtitle */
       }
       
       .subtitle-text {
         line-height: 1.5 !important;
         margin-bottom: 0.75rem !important;
+      }
+      
+      /* Tighten hero content wrapper */
+      .hero-content-wrapper {
+        margin: 0.5rem 0 1rem 0 !important; /* Much tighter spacing */
+      }
+      
+      /* Reduce sub-tagline spacing */
+      .hero-sub-tagline {
+        margin-top: 0.5rem !important; /* Tighter to main content */
+      }
+      
+      /* CTA wrapper tighter spacing */
+      .hero-cta-wrapper {
+        margin-top: 1rem !important; /* Closer to content */
       }
     }
     
