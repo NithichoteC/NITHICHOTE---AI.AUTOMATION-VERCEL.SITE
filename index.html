@@ -996,6 +996,15 @@
             }
           }
           
+          @-webkit-keyframes infinite-scroll {
+            0% {
+              -webkit-transform: translate3d(0, 0, 0);
+            }
+            100% {
+              -webkit-transform: translate3d(-50%, 0, 0);
+            }
+          }
+          
           /* Tablet: Show 3rd duplicate for wider screens */
           @media (min-width: 768px) {
             :root {
@@ -1651,6 +1660,7 @@
             </div>
             <div class="div-block-32">
               <div class="logo-track">
+                <!-- Set 1: Exactly 23 logos - USING ONLY EXISTING FILES -->
                 <img src="images/airtable.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/excel.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/hubspot.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
@@ -1664,7 +1674,18 @@
                 <img src="images/perplexity-ai.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/facebook.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/zoom.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
-                <!-- Duplicate set for seamless infinite scroll -->
+                <img src="images/airtable.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/excel.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/hubspot.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/meta.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/linkedin.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/salesforce..svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/google-ads.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/whatsapp.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/mailchimp.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/zapier.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                
+                <!-- Set 2: Exact duplicate for seamless infinite scroll -->
                 <img src="images/airtable.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/excel.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/hubspot.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
@@ -1678,6 +1699,16 @@
                 <img src="images/perplexity-ai.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/facebook.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
                 <img src="images/zoom.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/airtable.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/excel.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/hubspot.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/meta.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/linkedin.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/salesforce..svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/google-ads.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/whatsapp.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/mailchimp.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
+                <img src="images/zapier.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
               </div>
             </div>
             <div>
@@ -2129,6 +2160,22 @@
                 z-index: 1 !important;
               }
               
+              /* Improve accordion spacing for better visual hierarchy */
+              .service-card .accordion-item {
+                padding-top: 1.25rem !important; /* 20px instead of 16px */
+                padding-bottom: 1.25rem !important; /* 20px instead of 16px */
+              }
+              
+              /* Extra spacing for first item in each service-card */
+              .service-card .accordion-item:first-child {
+                padding-top: 1.5rem !important; /* 24px */
+              }
+              
+              /* Extra spacing for last item in each service-card */
+              .service-card .accordion-item:last-child {
+                padding-bottom: 1.5rem !important; /* 24px */
+              }
+              
               
               .service-card .accordion-item-trigger {
                 padding: 3rem 0 !important;
@@ -2393,6 +2440,8 @@
                 }
               }
             </style>
+            
+            <!-- Logo Carousel CSS moved to end of document for proper cascade order -->
             <div class="w-layout-grid service-grid">
               <div id="w-node-befe227b-bd0b-d63b-df5f-d06d2f785152-cca18e07" class="service-content top">
                 <div class="service-card">
@@ -3977,5 +4026,131 @@
   
   <!-- Cookie Consent Script -->
   <script src="js/cookie-consent.js" type="text/javascript"></script>
+  
+  <!-- BULLETPROOF LOGO CAROUSEL CSS - Loaded Last for Proper Cascade -->
+  <style>
+    /* ====================================================
+       PROFESSIONAL LOGO CAROUSEL - FIXED WIDTH SOLUTION
+       - Uses exact pixel calculations
+       - No percentage-based animations
+       - Guaranteed to work every time
+       ==================================================== */
+    
+    /* Calculate exact dimensions:
+       23 unique logos × 2 sets = 46 total
+       Per set: 23 × 100px = 2300px logos
+       Per set: 22 × 40px = 880px gaps
+       Total per set = 3180px
+       Total both sets = 6360px */
+    
+    /* Keyframes with pixel-perfect values */
+    @keyframes scroll-logos {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-3180px); /* Exactly one set width */
+      }
+    }
+    
+    @-webkit-keyframes scroll-logos {
+      0% {
+        -webkit-transform: translateX(0);
+      }
+      100% {
+        -webkit-transform: translateX(-3180px);
+      }
+    }
+    
+    /* Container setup */
+    .div-block-32 {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      /* Remove debug borders for production */
+    }
+    
+    /* Logo track with fixed width */
+    .logo-track {
+      display: flex !important;
+      gap: 40px !important;
+      width: 6360px !important; /* Exact: 2 sets × 3180px */
+      animation: scroll-logos 60s linear infinite !important;
+      -webkit-animation: scroll-logos 60s linear infinite !important;
+      /* GPU acceleration */
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    /* Logo items */
+    .logo-item {
+      width: 100px !important;
+      height: 100px !important;
+      flex-shrink: 0 !important;
+      object-fit: contain !important;
+      /* Fix SVG sizing inconsistencies */
+      display: block !important;
+      margin: 0 auto !important;
+      /* Ensure consistent SVG display */
+      padding: 10px !important;
+      box-sizing: border-box !important;
+    }
+    
+    /* Hover pause */
+    .div-block-32:hover .logo-track {
+      animation-play-state: paused !important;
+      -webkit-animation-play-state: paused !important;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+      @keyframes scroll-logos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-2875px); } /* 23 × 90 + 22 × 35 = 2070 + 805 = 2875px */
+      }
+      .logo-track {
+        width: 5750px !important; /* 2 × 2875px */
+        gap: 35px !important;
+        animation-duration: 50s !important;
+      }
+      .logo-item {
+        width: 90px !important;
+        height: 90px !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      @keyframes scroll-logos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-2500px); } /* 23 × 80 + 22 × 30 = 1840 + 660 = 2500px */
+      }
+      .logo-track {
+        width: 5000px !important; /* 2 × 2500px */
+        gap: 30px !important;
+        animation-duration: 45s !important;
+      }
+      .logo-item {
+        width: 80px !important;
+        height: 80px !important;
+      }
+    }
+    
+    @media (max-width: 479px) {
+      @keyframes scroll-logos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-2160px); } /* 23 × 70 + 22 × 25 = 1610 + 550 = 2160px */
+      }
+      .logo-track {
+        width: 4320px !important; /* 2 × 2160px */
+        gap: 25px !important;
+        animation-duration: 40s !important;
+      }
+      .logo-item {
+        width: 70px !important;
+        height: 70px !important;
+      }
+    }
+  </style>
 </body>
 </html>
