@@ -26,17 +26,17 @@
   <link href="css/cookie-consent.css" rel="stylesheet" type="text/css">
   <!-- Mobile Overflow Fixes -->
   <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css">
-  <!-- iOS Overscroll Prevention -->
+  <!-- iOS Overscroll Prevention & Mobile Polish -->
   <style>
-    /* Prevent iOS bounce effect (rubber band scrolling) */
+    /* Allow pull-to-refresh but prevent bottom bounce */
     html {
-      overscroll-behavior: none;
+      overscroll-behavior-y: contain; /* Allows refresh but prevents chain scrolling */
       position: relative;
       height: 100%;
     }
     
     body {
-      overscroll-behavior: none;
+      overscroll-behavior-x: none; /* Prevent horizontal overscroll */
       overflow-x: hidden;
       -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling */
       position: relative;
@@ -47,6 +47,101 @@
     .page-wrapper {
       position: relative;
       min-height: 100vh;
+    }
+    
+    /* Prevent image selection and save dialog on mobile */
+    img, .main-image, .header-image, .service-image, .overlay-image {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: auto; /* Keep images clickable if needed */
+    }
+    
+    /* Allow text selection in content areas */
+    p, h1, h2, h3, h4, h5, h6, .text-block, .paragraph, span {
+      -webkit-user-select: text;
+      -khtml-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+    
+    /* Ensure form inputs remain functional */
+    input, textarea, select, [contenteditable="true"] {
+      -webkit-user-select: auto !important;
+      -khtml-user-select: auto !important;
+      -moz-user-select: auto !important;
+      -ms-user-select: auto !important;
+      user-select: auto !important;
+      -webkit-touch-callout: default !important;
+    }
+    
+    /* Prevent tap highlight on non-interactive elements */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Professional text consistency - matching centered-subheading style */
+    .paragraph-4 {
+      text-align: center !important;
+      max-width: 530px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      color: var(--grey) !important;
+      font-size: 1rem !important;
+      font-weight: 400 !important;
+      font-style: normal !important; /* Remove italic */
+      line-height: 1.6 !important;
+    }
+    
+    /* Update subtitle-text to match */
+    .subtitle-text {
+      text-align: center !important;
+      max-width: 530px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      color: var(--grey) !important;
+      font-size: 1rem !important;
+      font-weight: 400 !important;
+      text-transform: none !important; /* Remove uppercase */
+      margin-bottom: 10px !important;
+      line-height: 1.6 !important;
+    }
+    
+    /* Responsive typography for professional scaling */
+    @media (max-width: 991px) and (min-width: 768px) {
+      /* Tablet - scale down by ~10% */
+      .centered-subheading,
+      .paragraph-4,
+      .subtitle-text {
+        font-size: 0.9rem !important;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      /* Mobile - professional smaller text */
+      .centered-subheading,
+      .paragraph-4,
+      .subtitle-text {
+        font-size: 0.875rem !important; /* 14px */
+        line-height: 1.5 !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+    }
+    
+    @media (max-width: 479px) {
+      /* Small mobile - even tighter */
+      .centered-subheading,
+      .paragraph-4,
+      .subtitle-text {
+        font-size: 0.8125rem !important; /* 13px */
+        line-height: 1.4 !important;
+      }
     }
   </style>
   <!-- Google Tag Manager -->
@@ -1751,7 +1846,7 @@
               </div>
             </div>
             <div class="spacer-large"></div>
-            <p class="paragraph-4"><em class="italic-text-3">Silent systems that turn repetitive tasks into strategic advantage</em></p>
+            <p class="paragraph-4">Silent systems that turn repetitive tasks into strategic advantage</p>
             <div class="w-embed"><!--  
   AI System Diagram - Custom Built for Each Client
  -->
