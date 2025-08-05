@@ -1500,22 +1500,9 @@
         padding-top: 2rem !important;
       }
       
-      /* Fix heading-13 top spacing - more space from logo carousel */
+      /* Fix heading-13 top spacing - now with divider, less margin needed */
       .heading-13 {
-        margin-top: 3rem !important;
-      }
-      
-      /* Mobile adjustments for heading-13 */
-      @media screen and (max-width: 991px) {
-        .heading-13 {
-          margin-top: 2.5rem !important;
-        }
-      }
-      
-      @media screen and (max-width: 767px) {
-        .heading-13 {
-          margin-top: 2rem !important;
-        }
+        margin-top: 0 !important; /* Divider provides the spacing */
       }
       
       /* Consistent subheading spacing for ALL similar texts */
@@ -1581,16 +1568,51 @@
       
       /* Fix iPad specific spacing */
       @media screen and (min-width: 768px) and (max-width: 991px) {
-        .heading-13 {
-          margin-top: 2.25rem !important;
-        }
-        
         .centered-subheading,
         .subtitle-text,
         .paragraph-4 {
           margin-top: 0.625rem !important;
           margin-bottom: 1.75rem !important;
         }
+      }
+      
+      /* Mobile-specific divider spacing - more compact */
+      @media screen and (max-width: 767px) {
+        /* All dividers get reduced spacing on mobile */
+        div[style*="padding-top: 3rem"] {
+          padding-top: 2rem !important;
+          padding-bottom: 2rem !important;
+        }
+      }
+      
+      /* Even smaller on very small screens */
+      @media screen and (max-width: 479px) {
+        div[style*="padding-top: 3rem"],
+        div[style*="padding-top: 2rem"] {
+          padding-top: 1.5rem !important;
+          padding-bottom: 1.5rem !important;
+        }
+      }
+      
+      /* Pre-header text styling (like FAQ's "Everything you need to know...") */
+      .subtitle-text {
+        font-size: 0.875rem !important; /* Smaller text */
+        opacity: 0.8 !important;
+        margin-bottom: 0.75rem !important;
+        margin-top: 0 !important;
+      }
+      
+      /* Ensure proper order: pre-header text → header → subheading */
+      .title-content .subtitle-text + .title-wrapper {
+        margin-top: 0 !important;
+      }
+      
+      .title-wrapper + .subtitle-text {
+        /* This is a post-header subtitle - different styling */
+        font-size: 1rem !important;
+        opacity: 1 !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 2rem !important;
       }
     </style>
     
@@ -1944,10 +1966,10 @@
             <div class="container">
               <div class="w-layout-grid top-grid">
                 <div id="w-node-ecc245b2-14cc-edc8-35c4-7dd6ae6feee9-cca18e07" class="title-content">
+                  <div class="subtitle-text">Full transparency—no black boxes</div>
                   <div class="title-wrapper">
                     <h2 class="heading-style-h2 text-align-center">Real AI&nbsp;systems, Built around real&nbsp;work</h2>
                   </div>
-                  <div class="subtitle-text">Full transparency—no black boxes</div>
                 </div>
               </div>
             </div>
@@ -2015,6 +2037,14 @@
                 <img src="images/zapier.svg" loading="lazy" width="Auto" height="100" alt="" class="logo-item">
               </div>
             </div>
+            
+            <!-- Divider after logo carousel -->
+            <div style="padding-top: 3rem; padding-bottom: 3rem;">
+              <div class="w-layout-blockcontainer container-large w-container">
+                <div class="divider-stripe"></div>
+              </div>
+            </div>
+            
             <div>
               <h1 class="heading-13">The <strong>way you work</strong> every day <strong>is a</strong> <strong>system.</strong><br> With the <strong>right automations</strong>, it becomes a <strong>compounding advantage</strong>.</h1>
             </div>
@@ -2832,6 +2862,14 @@
         </div>
       </div><img src="images/bg-pattern-03.svg" loading="lazy" alt="Graphical element pattern" class="service-bg"><img src="images/bg-pattern-09.svg" loading="lazy" alt="Graphical element pattern" class="service-bg _02">
     </section>
+    
+    <!-- Divider after What You Get section -->
+    <div style="padding-top: 3rem; padding-bottom: 3rem;">
+      <div class="w-layout-blockcontainer container-large w-container">
+        <div class="divider-stripe"></div>
+      </div>
+    </div>
+    
     <section id="CTA" class="call-to-action">
       <div class="padding-global">
         <div class="w-layout-blockcontainer container-large w-container">
