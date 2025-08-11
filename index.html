@@ -111,10 +111,6 @@
       .subtitle-text {
         font-size: 0.9rem !important;
       }
-      /* Override for pre-header subtitle-text */
-      #w-node-ecc245b2-14cc-edc8-35c4-7dd6ae6feee9-cca18e07 .subtitle-text {
-        font-size: 0.8rem !important;
-      }
     }
     
     @media (max-width: 767px) {
@@ -147,175 +143,31 @@
   })(window,document,'script','dataLayer','GTM-5F668SP9');</script>
   <!-- End Google Tag Manager -->
   
-  <!-- PROFESSIONAL RESPONSIVE SPACING SYSTEM -->
+  <!-- Section Spacing Fixes -->
   <style>
-    /* ========================================
-       PROFESSIONAL RESPONSIVE SPACING
-       Proportional scaling based on device size
-       ======================================== */
-    
-    /* 1. Responsive section spacing with proportional scaling */
-    /* Desktop: Full spacing */
-    section {
-      margin-top: 8rem !important;
-      margin-bottom: 0 !important;
-    }
-    
-    /* First section never has top margin */
-    section:first-of-type,
-    .header-section {
-      margin-top: 0 !important;
-    }
-    
-    /* 2. Tablet spacing (75% of desktop) */
-    @media screen and (max-width: 991px) {
-      section {
-        margin-top: 5rem !important;
-      }
-    }
-    
-    /* 3. Mobile spacing (50% of desktop) */
-    @media screen and (max-width: 767px) {
-      section {
-        margin-top: 3rem !important;
-      }
-    }
-    
-    /* 4. Small mobile (40% of desktop) */
-    @media screen and (max-width: 479px) {
-      section {
-        margin-top: 2.5rem !important;
-      }
-    }
-    
-    /* 5. Remove divider before What You Get */
-    /* The divider is inside the CTA section, not between sections */
-    .section-cta .divider-stripe:last-of-type {
+    /* 1. Remove divider after logo carousel but add proper spacing */
+    .div-block-32 + div[style*="padding-top"] {
       display: none !important;
     }
     
-    /* Hide the parent div that contains only the divider */
-    .section-cta > div:last-child:has(.divider-stripe) {
-      display: none !important;
-    }
-    
-    /* 6. Professional divider spacing */
-    div[style*="padding-top"]:has(.divider-stripe) {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      margin-top: 4rem !important;
-      margin-bottom: 4rem !important;
+    /* Add space after logo carousel (match SCALE framework spacing) */
+    .div-block-32 {
+      margin-bottom: 3rem !important;
     }
     
     @media screen and (max-width: 991px) {
-      div[style*="padding-top"]:has(.divider-stripe) {
-        margin-top: 2.5rem !important;
-        margin-bottom: 2.5rem !important;
+      .div-block-32 {
+        margin-bottom: 2rem !important;
       }
     }
     
     @media screen and (max-width: 767px) {
-      div[style*="padding-top"]:has(.divider-stripe) {
-        margin-top: 1.5rem !important;
+      .div-block-32 {
         margin-bottom: 1.5rem !important;
       }
     }
     
-    /* 7. Match Real AI systems section exact styling */
-    /* Desktop: Keep current but improve consistency */
-    #What-you-get .subtitle-text {
-      /* Match paragraph-4 style on ALL breakpoints */
-      font-size: 18px !important;
-      line-height: 36px !important;
-      font-weight: 400 !important;
-      color: var(--white) !important;
-      opacity: 0.7 !important; /* Slightly dimmed for subtitle effect */
-      text-align: center !important;
-      font-style: normal !important;
-      /* Remove quotes */
-      quotes: none !important;
-    }
-    
-    /* Remove quotes on all breakpoints */
-    #What-you-get .subtitle-text::before,
-    #What-you-get .subtitle-text::after {
-      content: none !important;
-    }
-    
-    /* Add spacer-large equivalent spacing AFTER the title */
-    #What-you-get .title-wrapper {
-      margin-bottom: 3rem !important; /* Desktop spacer-large */
-    }
-    
-    /* Tablet spacing to match Real AI section */
-    @media screen and (max-width: 991px) {
-      #What-you-get .title-wrapper {
-        margin-bottom: 2.5rem !important; /* Tablet spacer-large */
-      }
-      
-      #What-you-get .subtitle-text {
-        /* Keep paragraph-4 responsive sizing */
-        line-height: 1.6 !important;
-        margin: 0 40px !important; /* Match paragraph-4 margins */
-      }
-    }
-    
-    /* Mobile spacing to match Real AI section */
-    @media screen and (max-width: 767px) {
-      #What-you-get .title-wrapper {
-        margin-bottom: 1.5rem !important; /* Mobile spacer-large */
-      }
-      
-      #What-you-get .subtitle-text {
-        /* Mobile paragraph-4 style */
-        font-size: 18px !important;
-        line-height: 1.6 !important;
-        margin: 0 20px !important; /* Mobile margins */
-      }
-    }
-    
-    /* Small mobile adjustments */
-    @media screen and (max-width: 479px) {
-      #What-you-get .subtitle-text {
-        font-size: 16px !important; /* Slightly smaller on very small screens */
-        line-height: 1.5 !important;
-      }
-    }
-    
-    /* 8. Section-specific adjustments */
-    /* What You Get - tighter spacing due to subtitle */
-    #What-you-get {
-      margin-top: 6rem !important;
-    }
-    
-    @media screen and (max-width: 991px) {
-      #What-you-get {
-        margin-top: 4rem !important;
-      }
-    }
-    
-    @media screen and (max-width: 767px) {
-      #What-you-get {
-        margin-top: 2.5rem !important;
-      }
-    }
-    
-    /* Professional header bottom margin control */
-    #What-you-get .heading-style-h2 {
-      margin-bottom: 0 !important; /* Let title-wrapper handle spacing */
-    }
-    
-    /* Remove any competing margins */
-    #What-you-get .title-content {
-      margin-bottom: 0 !important;
-    }
-    
-    #What-you-get .subtitle-text {
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-    }
-    
-    /* Remove extra padding from what-you-get section */
+    /* 2. Fix What You Get section padding to match SCALE framework */
     #what-you-get-section {
       padding-top: 2rem !important;
       padding-bottom: 2rem !important;
@@ -323,119 +175,327 @@
     
     @media screen and (max-width: 991px) {
       #what-you-get-section {
-        padding-top: 1.5rem !important;
+        padding-top: 1rem !important;
         padding-bottom: 1.5rem !important;
       }
     }
     
     @media screen and (max-width: 767px) {
       #what-you-get-section {
-        padding-top: 1rem !important;
+        padding-top: 1.5rem !important;
         padding-bottom: 1rem !important;
       }
     }
     
-    /* 9. Clean up heading-13 */
+    /* 3. Add space between "The way you work..." and "THIS IS WHAT..." */
     .heading-13 {
-      margin-top: 0 !important;
-      margin-bottom: 0.75rem !important;
-      font-size: 1.625rem !important;
+      margin-bottom: 3rem !important;
     }
     
     @media screen and (max-width: 991px) {
       .heading-13 {
-        font-size: 1.375rem !important;
+        margin-bottom: 2rem !important;
       }
     }
     
     @media screen and (max-width: 767px) {
       .heading-13 {
-        font-size: 1.125rem !important;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 1.5rem !important;
       }
     }
     
-    /* DEBUG: Visualize spacing - ENABLED at 22:15 */
     
-    section {
-      border: 3px solid red !important;
-      position: relative !important;
-    }
-    section::before {
-      content: attr(id) " section";
-      position: absolute;
-      top: -25px;
-      left: 10px;
-      background: red;
-      color: white;
-      padding: 5px 10px;
-      font-size: 12px;
-      z-index: 9999;
-      font-family: monospace;
-    }
-    div[style*="padding-top"] {
-      background: rgba(0, 255, 0, 0.2) !important;
-      border: 2px solid green !important;
-      position: relative !important;
-    }
-    div[style*="padding-top"]::before {
-      content: "DIVIDER";
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      background: green;
-      color: white;
-      padding: 3px 8px;
-      font-size: 11px;
-      z-index: 9999;
-      font-family: monospace;
+    /* Ensure images don't stretch */
+    .comparison-table img {
+      flex-shrink: 0 !important;
+      width: 15px !important;
+      height: 15px !important;
     }
     
-    /* Show responsive spacing values */
-    @media screen and (min-width: 992px) {
-      section::after {
-        content: "Desktop: 8rem spacing";
-        position: absolute;
-        top: -25px;
-        right: 10px;
-        background: blue;
-        color: white;
-        padding: 5px 10px;
-        font-size: 11px;
-        z-index: 9999;
-        font-family: monospace;
+    /* Ensure text wraps properly */
+    .comparison-table .heading-4,
+    .comparison-table .heading-5 {
+      flex: 1 !important;
+      margin: 0 !important;
+    }
+    
+    
+    /* Comparison Table Improvements */
+    /* Force grid alignment */
+    .div-block-17 {
+      align-items: start !important;
+    }
+    
+    /* Target the second comparison-table specifically (right column) */
+    .div-block-17 .comparison-table:nth-child(2) {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+    
+    /* Ensure both tables align at top */
+    .comparison-table {
+      margin: 0 !important;
+      align-self: start !important;
+      display: grid !important;
+    }
+    
+    /* 1. Fix headers - same height and centered text */
+    .div-block-2, .div-block-3 {
+      min-height: 80px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 20px 24px !important;
+      margin: 0 !important;
+      margin-top: 0 !important;
+    }
+    
+    .div-block-2 {
+      background-color: white !important;
+      border-top: none !important;
+    }
+    
+    .div-block-3 {
+      background-color: #202020 !important;
+      border-top: none !important;
+    }
+    
+    /* Center the header text and remove all margins - FORCE override Webflow CSS */
+    .heading-2, .heading-12 {
+      margin: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-top: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      text-align: center !important;
+    }
+    
+    /* Specifically override the mobile CSS that adds margin-top to heading-2 */
+    @media screen and (max-width: 479px) {
+      .heading-2 {
+        margin-top: 0 !important;
       }
     }
     
-    @media screen and (max-width: 991px) and (min-width: 768px) {
-      section::after {
-        content: "Tablet: 5rem spacing";
-        position: absolute;
-        top: -25px;
-        right: 10px;
-        background: blue;
-        color: white;
-        padding: 5px 10px;
-        font-size: 11px;
-        z-index: 9999;
-        font-family: monospace;
+    /* 2. Increase font size for better readability */
+    .heading-4, .heading-5 {
+      font-size: 16px !important; /* Match body text */
+    }
+    
+    /* 3. Increase row padding for better spacing */
+    .div-block-4, .div-block-5, 
+    .div-block-7, .div-block-8,
+    .div-block-9, .div-block-10,
+    .div-block-11, .div-block-12,
+    .div-block-13, .div-block-14 {
+      padding-top: 30px !important;
+      padding-bottom: 30px !important;
+    }
+    
+    /* Tablet adjustments */
+    @media screen and (max-width: 991px) {
+      .heading-4, .heading-5 {
+        font-size: 15px !important;
+      }
+      
+      .div-block-4, .div-block-5, 
+      .div-block-7, .div-block-8,
+      .div-block-9, .div-block-10,
+      .div-block-11, .div-block-12,
+      .div-block-13, .div-block-14 {
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
+      }
+    }
+    
+    /* Mobile adjustments */
+    @media screen and (max-width: 767px) {
+      .heading-4, .heading-5 {
+        font-size: 13px !important; /* Reduced to prevent wrapping */
+      }
+      
+      .div-block-4, .div-block-5, 
+      .div-block-7, .div-block-8,
+      .div-block-9, .div-block-10,
+      .div-block-11, .div-block-12,
+      .div-block-13, .div-block-14 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        padding-left: 12px !important; /* Equal to icon-to-text spacing */
+        padding-right: 12px !important; /* Balanced spacing */
+      }
+    }
+    
+    /* Mobile/Tablet - keep icons centered in rows */
+    @media screen and (max-width: 991px) {
+      .div-block-4, .div-block-5, 
+      .div-block-7, .div-block-8,
+      .div-block-9, .div-block-10,
+      .div-block-11, .div-block-12,
+      .div-block-13, .div-block-14 {
+        align-items: center !important; /* Keep centered */
+      }
+      
+      /* Ensure icons don't shrink */
+      .div-block-4 img, .div-block-5 img,
+      .div-block-7 img, .div-block-8 img,
+      .div-block-9 img, .div-block-10 img,
+      .div-block-11 img, .div-block-12 img,
+      .div-block-13 img, .div-block-14 img {
+        flex-shrink: 0 !important;
+        margin-right: 12px !important; /* Consistent spacing from text */
+      }
+    }
+    
+    /* Header-to-Table Spacing Improvements (Mobile/Tablet) */
+    @media screen and (max-width: 991px) {
+      .div-block-17 {
+        margin-top: 30px !important; /* Reduced from 60px for tablet */
+      }
+      
+      .centered-subheading {
+        margin-bottom: 0.75rem !important; /* Consistent with other sections */
+      }
+      
+      /* Fix CSS specificity conflict - override global heading margin */
+      .title-content .heading-style-h2 {
+        margin-bottom: 0 !important; /* Stronger specificity than global rule */
       }
     }
     
     @media screen and (max-width: 767px) {
-      section::after {
-        content: "Mobile: 3rem spacing";
-        position: absolute;
-        top: -25px;
-        right: 10px;
-        background: blue;
-        color: white;
-        padding: 5px 10px;
-        font-size: 11px;
-        z-index: 9999;
-        font-family: monospace;
+      .div-block-17 {
+        margin-top: 24px !important; /* Further reduced for mobile */
+      }
+      
+      .centered-subheading {
+        margin-bottom: 0.5rem !important; /* Tighter on mobile */
+      }
+      
+      /* Ensure mobile override works */
+      .title-content .heading-style-h2 {
+        margin-bottom: 0 !important; /* Remove excessive 2rem margin */
       }
     }
+    
+    
+    
+    /* Color & Spacing Consistency Improvements */
+    .centered-subheading {
+      color: var(--grey) !important; /* Match "The result..." text color (#b4b4b4) */
+      margin-top: 0 !important; /* Remove browser default p tag margin */
+    }
+    
+    /* Desktop: Generous spacing to match section consistency */
+    .div-block-17 {
+      margin-top: 80px !important; /* Increased from 60px for professional spacing */
+    }
+    
+    /* NUCLEAR RESET: Remove all existing margin rules */
+    
+    /* ===== SINGLE SOURCE OF TRUTH - ULTRA-HIGH SPECIFICITY ===== */
+    /* Override ALL existing margin rules for perfect consistency */
+    
+    /* Primary rule - matches all section structures */
+    .w-layout-grid + .centered-subheading,
+    .top-grid + .centered-subheading,
+    .title-content + .centered-subheading {
+      margin-top: 0.75rem !important; /* Desktop: 12px */
+      margin-bottom: 2rem !important;
+      display: block !important;
+      text-align: center !important;
+      max-width: 530px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      line-height: 1.4 !important; /* Professional multi-line spacing */
+    }
+    
+    /* Tablet breakpoint */
+    @media screen and (max-width: 991px) {
+      .w-layout-grid + .centered-subheading,
+      .top-grid + .centered-subheading,
+      .title-content + .centered-subheading {
+        margin-top: 0.625rem !important; /* Tablet: 10px */
+        margin-bottom: 1.75rem !important;
+        line-height: 1.3 !important; /* Tighter for tablet screens */
+      }
+    }
+    
+    /* Mobile breakpoint */
+    @media screen and (max-width: 767px) {
+      .w-layout-grid + .centered-subheading,
+      .top-grid + .centered-subheading,
+      .title-content + .centered-subheading {
+        margin-top: 0.5rem !important; /* Mobile: 8px */
+        margin-bottom: 1.5rem !important;
+        line-height: 1.2 !important; /* Tight for mobile screens */
+      }
+    }
+    
+    /* Fix grid row gap that adds unwanted spacing */
+    .top-grid {
+      grid-row-gap: 0 !important; /* Prevent extra grid spacing */
+    }
+    
+    /* Ensure h2 headers have consistent bottom margin */
+    .heading-style-h2.text-align-center {
+      margin-bottom: 0 !important; /* Reset margin, spacing handled by subheading */
+    }
+    
+    /* Ensure all headers in title wrappers have zero margin */
+    .title-wrapper .heading-style-h2,
+    .title-content .heading-style-h2 {
+      margin-bottom: 0 !important; /* Force zero margin */
+      margin-top: 0 !important;
+    }
+    
+    /* All sections now have identical structure - no title-overlay needed */
+    
+    #what-you-get-section .subtitle-text {
+      margin-top: -0.5rem !important; /* Already has tighter spacing, minor adjustment */
+    }
+    
+    
+    /* Keep natural container spacing for professional consistency */
+    /* The 62px margin-bottom on .container at ≤991px provides the proper spacing */
+    
+    /* Fix heading-13 box padding and centering on all devices */
+    .heading-13 {
+      max-width: 1000px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-top: 0 !important; /* Remove the 100px top margin */
+      padding-left: 40px !important; /* Consistent padding on desktop */
+      padding-right: 40px !important;
+    }
+    
+    @media screen and (max-width: 991px) {
+      .heading-13 {
+        padding-left: 30px !important; /* Good padding for tablet/iPad */
+        padding-right: 30px !important;
+      }
+    }
+    
+    @media screen and (max-width: 767px) {
+      .heading-13 {
+        padding-left: 20px !important; /* Keep existing mobile padding */
+        padding-right: 20px !important;
+      }
+    }
+    
+    /* Fix double margin issue - remove div-block-18 margin and control spacing with div-block-21 only */
+    .div-block-18 {
+      margin-bottom: 0 !important; /* Remove to prevent double margin */
+    }
+    
+    /* Match visual spacing between sections */
+    .div-block-21 {
+      margin-bottom: 2rem !important; /* Adjusted to match visual spacing to heading-13 box */
+    }
+    
+    /* The negative margins above already handle the spacing correctly */
+    /* No additional rules needed - the -1.5rem, -1rem, -0.5rem margins are perfect */
   </style>
 </head>
 <body>
@@ -1805,32 +1865,6 @@
         margin-bottom: 0 !important;
       }
       
-      /* Consistent subheading spacing for centered-subheading and paragraph-4 */
-      /* subtitle-text is handled separately above */
-      .centered-subheading,
-      .paragraph-4 {
-        margin-top: 0.75rem !important; /* Tight connection to header */
-        margin-bottom: 2rem !important; /* Space before next content */
-      }
-      
-      /* Responsive subheading adjustments */
-      @media screen and (max-width: 991px) {
-        .centered-subheading,
-        .subtitle-text,
-        .paragraph-4 {
-          margin-top: 0.625rem !important;
-          margin-bottom: 1.75rem !important;
-        }
-      }
-      
-      @media screen and (max-width: 767px) {
-        .centered-subheading,
-        .subtitle-text,
-        .paragraph-4 {
-          margin-top: 0.5rem !important;
-          margin-bottom: 1.5rem !important;
-        }
-      }
       
       /* Fix specific spacing issues */
       /* "Here's what that looks like" - ensure consistent spacing */
@@ -1839,11 +1873,6 @@
         width: 100% !important;
       }
       
-      /* What You Get section - fix subtitle spacing */
-      #w-node-_507b7827-89c8-3a0e-a930-c9e589ec72f1-cca18e07 .subtitle-text {
-        margin-top: 0.75rem !important;
-        margin-bottom: 0 !important; /* No extra space at section start */
-      }
       
       /* Spacer-large should provide consistent spacing */
       .spacer-large {
@@ -1851,30 +1880,12 @@
         margin-bottom: 0.75rem !important; /* Just enough for subheading */
       }
       
-      /* Override any conflicting margins on headers when followed by subheadings */
-      .heading-style-h2 + .centered-subheading,
-      .heading-style-h2 + .subtitle-text,
-      .heading-style-h2 + .paragraph-4,
-      .title-wrapper + .centered-subheading,
-      .title-wrapper + .subtitle-text,
-      .title-wrapper + .paragraph-4 {
-        margin-top: 0.75rem !important;
-      }
       
       /* Ensure headers in title-content have proper spacing */
       .title-content .heading-style-h2 {
         margin-bottom: 0 !important; /* Let subheading handle spacing */
       }
       
-      /* Fix iPad specific spacing */
-      @media screen and (min-width: 768px) and (max-width: 991px) {
-        .centered-subheading,
-        .subtitle-text,
-        .paragraph-4 {
-          margin-top: 0.625rem !important;
-          margin-bottom: 1.75rem !important;
-        }
-      }
       
       /* Make dividers MORE SUBSTANTIAL for visible spacing */
       /* Desktop: 4rem + 4rem = 8rem total (128px) */
@@ -1911,33 +1922,7 @@
         }
       }
       
-      /* SPECIFIC subtitle-text styling with HIGH specificity */
       
-      /* Pre-header text (appears BEFORE header) - "Full transparency—no black boxes" */
-      #SYSTEM .title-content .subtitle-text:first-child {
-        font-size: 0.875rem !important;
-        opacity: 0.8 !important;
-        margin-bottom: 0.75rem !important;
-        margin-top: 0 !important;
-        text-transform: none !important;
-        font-weight: 400 !important;
-      }
-      
-      /* Post-header subtitle (appears AFTER header) - "Everything you need..." */
-      #What-you-get .title-content .subtitle-text {
-        font-size: 1rem !important;
-        opacity: 1 !important;
-        margin-top: 0.75rem !important;
-        margin-bottom: 0 !important;
-        color: var(--grey) !important;
-        text-align: center !important;
-        max-width: 530px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        font-style: normal !important;
-        text-transform: none !important;
-        font-weight: 400 !important;
-      }
       
       /* Override any general subtitle-text rules */
       .subtitle-text {
@@ -1948,23 +1933,7 @@
         display: block !important;
       }
       
-      /* TEMPORARY: Visual debugging to see spacing changes */
-      /* Remove these after confirming spacing works */
-      /*
-      section {
-        border: 2px dashed red !important;
-      }
-      
-      div[style*="padding-top"] {
-        background: rgba(0, 255, 0, 0.1) !important;
-        border: 1px solid green !important;
-      }
-      
-      .divider-stripe {
-        background: yellow !important;
-        height: 2px !important;
-      }
-      */
+      /* Production spacing optimization complete */
     </style>
     
     <section class="project-section">
@@ -1979,8 +1948,8 @@
                   </div>
                 </div>
               </div>
+              <p class="centered-subheading">Here's what that looks like.</p>
             </div>
-            <p class="centered-subheading">Here's what that looks like.</p>
                 <div class="div-block-17" style="max-width: 900px; margin-left: auto; margin-right: auto; margin-top: 60px;">
                   <div class="comparison-table">
                     <div class="div-block-3">
@@ -2002,9 +1971,9 @@
                       <h4 class="heading-4">Still spend hours on manual work and stying ai</h4>
                     </div>
                   </div>
-                  <div class="comparison-table">
+                  <div class="comparison-table" style="margin-top: 0 !important; padding-top: 0 !important;">
                     <div class="div-block-2">
-                      <h3 class="heading-2">HOW WE DO IT RIGHT</h3>
+                      <h3 class="heading-2" style="margin: 0 !important;">HOW WE DO IT RIGHT</h3>
                     </div>
                     <div class="div-block-5"><img src="images/checkmark.svg" loading="lazy" width="15" alt="" class="image-3">
                       <h4 class="heading-5">Design custom systems around your exact needs</h4>
@@ -2044,15 +2013,14 @@
                     <div class="w-layout-grid top-grid">
                       <div id="w-node-title-content-scale-cca18e07" class="title-content">
                         <div class="title-wrapper">
-                          <div style="-webkit-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="title-overlay"></div>
                           <h2 class="heading-style-h2 text-align-center">The SCALE Framework</h2>
                         </div>
                       </div>
                     </div>
+                    <p class="centered-subheading">My proven methodology for transforming your operations with AI</p>
                   </div>
-                  <p class="centered-subheading">My proven methodology for transforming your operations with AI</p>
-              
-              <style>
+                  
+                  <style>
                 .scale-timeline-container {
                   max-width: 1200px;
                   margin: 2rem auto 0;
@@ -2297,12 +2265,10 @@
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-          
-        </div>
-      </div>
-    </section>
+                </div>
+              </div>
+            </div>
+          </section>
     
     <!-- Divider after SCALE Framework -->
     <div style="padding-top: 3rem; padding-bottom: 3rem;">
@@ -2317,15 +2283,12 @@
             <div class="container">
               <div class="w-layout-grid top-grid">
                 <div id="w-node-ecc245b2-14cc-edc8-35c4-7dd6ae6feee9-cca18e07" class="title-content">
-                  <div class="subtitle-text">Full transparency—no black boxes</div>
                   <div class="title-wrapper">
                     <h2 class="heading-style-h2 text-align-center">Real AI&nbsp;systems, Built around real&nbsp;work</h2>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="spacer-large">
-              <p class="paragraph-4">Transparent, custom‑built automations and AI agents that reflect your playbook—so you stay in control and watch your growth accelerate</p>
+              <p class="centered-subheading">Full transparency—no black boxes. Transparent, custom‑built automations and AI agents that reflect your playbook—so you stay in control and watch your growth accelerate</p>
             </div>
             <div class="div-block-18">
               <div>
@@ -2396,21 +2359,19 @@
               </div>
             </div>
             
-            <div>
+            <div style="margin-bottom: 3rem;">
               <h1 class="heading-13">The <strong>way you work</strong> every day <strong>is a</strong> <strong>system.</strong><br> With the <strong>right automations</strong>, it becomes a <strong>compounding advantage</strong>.</h1>
             </div>
             <div class="container">
               <div class="w-layout-grid top-grid">
                 <div id="w-node-ba41c4f9-78e6-862c-3592-fd3cd57df007-cca18e07" class="title-content">
                   <div class="title-wrapper">
-                    <div style="-webkit-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="title-overlay"></div>
                     <h2 class="heading-style-h2 text-align-center">THIS IS WHAT WORK GETS DOWN TO WHEN THE NOISE DISAPPEARS</h2>
                   </div>
                 </div>
               </div>
+              <p class="centered-subheading">Silent systems that turn repetitive tasks into strategic advantage</p>
             </div>
-            <div class="spacer-large"></div>
-            <p class="paragraph-4">Silent systems that turn repetitive tasks into strategic advantage</p>
             <div class="w-embed"><!--  
   AI System Diagram - Custom Built for Each Client
  -->
@@ -2787,12 +2748,11 @@
               <div class="w-layout-grid top-grid">
                 <div id="w-node-_507b7827-89c8-3a0e-a930-c9e589ec72f1-cca18e07" class="title-content">
                   <div class="title-wrapper">
-                    <div style="-webkit-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, -100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" class="title-overlay"></div>
-                    <h3 class="heading-style-h2 text-align-center">What You Get</h3>
+                    <h2 class="heading-style-h2 text-align-center">What You Get</h2>
                   </div>
-                  <div class="subtitle-text">&quot;Everything you need to turn busywork into growth.&quot;</div>
                 </div>
               </div>
+              <p class="centered-subheading">Everything you need to turn busywork into growth.</p>
             </div>
             <style>
               /* Professional collapsible animations for What You Get section */
@@ -3386,7 +3346,8 @@
               /* Enhanced mobile/tablet typography hierarchy */
               @media (max-width: 991px) {
                 /* Section headers - larger for better hierarchy */
-                .heading-style-h2.text-align-center {
+                /* Exclude section headers in title-content to prevent spacing issues */
+                .heading-style-h2.text-align-center:not(.title-content .heading-style-h2) {
                   font-size: 2.5rem !important;
                   margin-bottom: 2rem !important;
                   line-height: 1.2 !important;
@@ -3407,7 +3368,8 @@
               
               @media (max-width: 767px) {
                 /* Section headers - responsive sizing */
-                .heading-style-h2.text-align-center {
+                /* Exclude section headers in title-content to prevent spacing issues */
+                .heading-style-h2.text-align-center:not(.title-content .heading-style-h2) {
                   font-size: 2.25rem !important;
                   margin-bottom: 2rem !important;
                   padding: 0 20px !important;
@@ -3429,7 +3391,8 @@
               
               @media (max-width: 479px) {
                 /* Section headers - mobile sizing */
-                .heading-style-h2.text-align-center {
+                /* Exclude section headers in title-content to prevent spacing issues */
+                .heading-style-h2.text-align-center:not(.title-content .heading-style-h2) {
                   font-size: 2rem !important;
                   padding: 0 20px !important;
                 }
@@ -3448,117 +3411,123 @@
                 }
               }
               
+              /* ===== CRITICAL FIX: ULTRA-HIGH SPECIFICITY OVERRIDES ===== */
+              /* These MUST come AFTER the global typography rules to override them */
+              
+              /* Desktop - prevent any default margins */
+              body .title-content .heading-style-h2.text-align-center {
+                margin-bottom: 0 !important;
+                margin-top: 0 !important;
+              }
+              
+              /* Tablet override - comes AFTER global tablet rules (line 3364) */
+              @media (max-width: 991px) {
+                body .title-content .heading-style-h2.text-align-center {
+                  margin-bottom: 0 !important;
+                  margin-top: 0 !important;
+                }
+              }
+              
+              /* Mobile override - comes AFTER global mobile rules (line 3385) */
+              @media (max-width: 767px) {
+                body .title-content .heading-style-h2.text-align-center {
+                  margin-bottom: 0 !important;
+                  margin-top: 0 !important;
+                }
+              }
+              
+              /* Small mobile override - comes AFTER small mobile rules (line 3405) */
+              @media (max-width: 479px) {
+                body .title-content .heading-style-h2.text-align-center {
+                  margin-bottom: 0 !important;
+                  margin-top: 0 !important;
+                }
+              }
+              
               /* SECTION SPACING STANDARDIZATION - Match perfected FAQ/CTA spacing */
+              
+              /* Standardized section padding for mathematical consistency */
+              /* All sections use same base padding, spacing differences handled by content margins */
               
               /* Most try. Few do it right section */
               #most-try-section {
-                /* Top: 2rem padding + ~6rem margins (heading + subheading) = 8rem visual */
-                padding-top: 2rem !important;
-                /* Bottom: Reduce to compensate for div-block-17 margin-top: 60px (3.75rem) */
-                padding-bottom: 4rem !important;
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
               }
               
               /* SCALE Framework section */
               #scale-framework-section {
-                /* Top: 2rem padding + ~6rem margins (heading + subheading) = 8rem visual */
-                padding-top: 2rem !important;
-                /* Bottom: Further reduce - user confirmed still too wide */
-                padding-bottom: 2rem !important;
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
               }
               
               /* Real AI systems section */
               #real-ai-systems-section {
-                /* Top: 2rem padding + ~6rem margins (subtitle + heading) = 8rem visual */
-                padding-top: 2rem !important;
-                /* Bottom: Match What You Get visual standard - stop over-compensating */
-                padding-bottom: 6rem !important;
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
               }
               
-              /* What You Get section */
-              #what-you-get-section {
-                /* Top: Compensate for heading (2rem) + subtitle margins */
-                padding-top: 3rem !important;
-                /* Bottom: Match top spacing for visual balance */
-                padding-bottom: 8rem !important;
-              }
+              /* What You Get section - REMOVED conflicting rules */
               
               /* Mobile and tablet consistency - match FAQ section scaling */
               @media (max-width: 991px) {
-                /* Most try section - compensated spacing */
+                /* Consistent tablet padding */
                 #most-try-section {
-                  padding-top: 1rem !important;
-                  padding-bottom: 2.5rem !important; /* Reduced for internal spacing */
-                }
-                
-                /* SCALE section - further reduced */
-                #scale-framework-section {
-                  padding-top: 1rem !important;
-                  padding-bottom: 1.5rem !important; /* Further reduced */
-                }
-                
-                /* Real AI systems - match visual standard */
-                #real-ai-systems-section {
-                  padding-top: 1rem !important;
-                  padding-bottom: 3.5rem !important; /* Match visual standard */
-                }
-                
-                /* What You Get section - compensated spacing */
-                #what-you-get-section {
                   padding-top: 2rem !important;
-                  padding-bottom: 5rem !important;
+                  padding-bottom: 2rem !important;
                 }
+                
+                #scale-framework-section {
+                  padding-top: 2rem !important;
+                  padding-bottom: 2rem !important;
+                }
+                
+                #real-ai-systems-section {
+                  padding-top: 2rem !important;
+                  padding-bottom: 2rem !important;
+                }
+                
+                /* What You Get section - REMOVED conflicting rules */
               }
               
               @media (max-width: 767px) {
-                /* Most try section - compensated spacing */
+                /* Consistent mobile padding */
                 #most-try-section {
                   padding-top: 1.5rem !important;
-                  padding-bottom: 2rem !important; /* Reduced for internal spacing */
+                  padding-bottom: 1.5rem !important;
                 }
                 
-                /* SCALE section - further reduced */
                 #scale-framework-section {
                   padding-top: 1.5rem !important;
-                  padding-bottom: 1rem !important; /* Further reduced */
+                  padding-bottom: 1.5rem !important;
                 }
                 
-                /* Real AI systems - match visual standard */
                 #real-ai-systems-section {
                   padding-top: 1.5rem !important;
-                  padding-bottom: 2.5rem !important; /* Match visual standard */
+                  padding-bottom: 1.5rem !important;
                 }
                 
-                /* What You Get section - compensated spacing */
-                #what-you-get-section {
-                  padding-top: 2.5rem !important;
-                  padding-bottom: 4rem !important;
-                }
+                /* What You Get section - REMOVED conflicting rules */
               }
               
               @media (min-width: 1200px) {
-                /* Most try section - compensated spacing */
+                /* Consistent large desktop padding */
                 #most-try-section {
-                  padding-top: 2rem !important;
-                  padding-bottom: 4rem !important; /* Reduced for internal spacing */
-                }
-                
-                /* SCALE section - further reduced */
-                #scale-framework-section {
-                  padding-top: 2rem !important;
-                  padding-bottom: 2rem !important; /* Further reduced */
-                }
-                
-                /* Real AI systems - match visual standard */
-                #real-ai-systems-section {
-                  padding-top: 2rem !important;
-                  padding-bottom: 6rem !important; /* Match visual standard */
-                }
-                
-                /* What You Get section - compensated spacing */
-                #what-you-get-section {
                   padding-top: 3rem !important;
-                  padding-bottom: 5.5rem !important;
+                  padding-bottom: 3rem !important;
                 }
+                
+                #scale-framework-section {
+                  padding-top: 3rem !important;
+                  padding-bottom: 3rem !important;
+                }
+                
+                #real-ai-systems-section {
+                  padding-top: 3rem !important;
+                  padding-bottom: 3rem !important;
+                }
+                
+                /* What You Get section - REMOVED conflicting rules */
               }
             </style>
             <!-- Category Tabs -->
@@ -4753,7 +4722,7 @@
       overflow: hidden !important;
       width: 100% !important;
       position: relative !important;
-      /* Remove debug borders for production */
+      /* Production-ready styling */
     }
     
     /* Logo track with fixed width */
