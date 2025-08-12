@@ -3906,8 +3906,12 @@
       display: block;
     }
 
-    /* Success Message Container - Clean Simple Centering */
+    /* Success Message Container - Professional Perfect Centering */
     .success-message-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       padding: 0.75rem 0; /* Remove side padding for perfect text centering */
       background: var(--secondary-black);
@@ -4933,8 +4937,8 @@
               <!-- ZERO-DEPENDENCY PHONE COMPONENT IN DYNAMIC TEMPLATE -->
               <div id="phoneComponentContainer" style="position: relative; width: 100%; max-width: 400px; height: 80px; margin: 2rem auto;">
                 <div id="buttonContainer" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 1; transform: translateY(0); pointer-events: auto; transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; z-index: 3;">
-                  <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 48px; background: white; border: 1px solid #e5e5e5; border-radius: 8px; color: #333333; font-size: 14px; font-weight: 500; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #333333;">
+                  <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%; height: 48px; background: white; border: 1px solid #e5e5e5; border-radius: 8px; color: #333333; font-size: 13px; font-weight: 500; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #333333;">
                       <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     Get AI Strategy Call in 60 Seconds
@@ -6571,16 +6575,30 @@
           background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
         }
         
-        /* PROFESSIONAL RESPONSIVE TYPOGRAPHY: Small Mobile (320px-479px) */
-        @media screen and (max-width: 29.9375rem) {
+        /* ULTRA-COMPACT MOBILE: iPhone 12 Pro 390px and similar */
+        @media screen and (max-width: 24.375rem) { /* 390px */
           #ctaButton {
-            font-size: 14px !important; /* Smaller text for small screens */
-            gap: 6px !important; /* Tighter spacing */
+            font-size: 10px !important; /* Ultra-compact for 390px screens */
+            gap: 2px !important; /* Minimal spacing */
+            padding: 0 6px !important; /* Tight padding */
           }
           
           #ctaButton svg {
-            width: 16px !important; /* Consistent icon size */
-            height: 16px !important;
+            width: 12px !important; /* Tiny icon for maximum text space */
+            height: 12px !important;
+          }
+        }
+
+        /* SMALL MOBILE: 391px-479px */
+        @media screen and (min-width: 24.4375rem) and (max-width: 29.9375rem) {
+          #ctaButton {
+            font-size: 11px !important; /* Small but readable */
+            gap: 3px !important; /* Minimal spacing */
+          }
+          
+          #ctaButton svg {
+            width: 14px !important; /* Small icon */
+            height: 14px !important;
           }
         }
 
