@@ -5933,7 +5933,7 @@
                 // Check various storage keys that might contain questionnaire data
                 const calMetadata = JSON.parse(localStorage.getItem('cal_metadata') || '{}');
                 const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
-                const sessionData = JSON.parse(sessionStorage.getItem('questionnaire_data') || '{}');
+                const sessionData = JSON.parse(sessionStorage.getItem('questionnaireData') || '{}');
                 
                 return {
                   email: calMetadata.email || formData.email || sessionData.email || '',
@@ -6431,7 +6431,7 @@
             try {
               const calMetadata = JSON.parse(localStorage.getItem('cal_metadata') || '{}');
               const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
-              const sessionData = JSON.parse(sessionStorage.getItem('questionnaire_data') || '{}');
+              const sessionData = JSON.parse(sessionStorage.getItem('questionnaireData') || '{}');
               
               return {
                 email: calMetadata.email || formData.email || sessionData.email || '',
