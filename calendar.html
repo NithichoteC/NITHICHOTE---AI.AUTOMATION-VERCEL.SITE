@@ -418,7 +418,7 @@
     .professional-video-container {
       position: relative;
       width: 100%;
-      max-width: 640px; /* Match child container for consistent sizing */
+      max-width: 1800px; /* Ultimate size for maximum visibility */
       margin: 0 auto 3rem;
       /* Remove aspect-ratio to let child container control dimensions */
       background: #202020;
@@ -672,54 +672,67 @@
       }
     }
     
-    /* Confirmation Page Styling - Matches Landing Page Design */
+    /* Professional Confirmation Section - Matches Homepage Style */
     .confirmation-container {
       text-align: center;
-      padding: 2.5rem 2rem 1rem;
+      padding: 8rem 2rem; /* Match .padding-section-large */
       min-height: auto;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
-      font-family: 'General Sans', -apple-system, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f; /* Match site background */
+      margin: 0;
     }
     
-    .confirmation-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
+    .confirmation-success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(74, 222, 128, 0.1);
+      color: #4ade80;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(74, 222, 128, 0.2);
     }
     
     .confirmation-heading {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       margin-bottom: 1.5rem;
-      color: var(--white);
+      color: #ffffff;
       font-weight: 600;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      text-transform: uppercase;
-      font-family: 'General Sans', -apple-system, sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
     }
     
-    .confirmation-text {
-      font-size: 1.2rem;
-      color: var(--grey);
-      margin-bottom: 1.5rem;
+    .confirmation-tagline {
+      font-size: 1.25rem;
+      color: #b4b4b4;
+      margin-bottom: 2rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.4;
-      font-family: 'General Sans', -apple-system, sans-serif;
+      line-height: 1.6;
+      font-weight: 300;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     .confirmation-message {
-      font-size: 1.2rem;
-      color: var(--white);
+      font-size: 1.1rem;
+      color: #ffffff;
       margin-bottom: 3rem;
-      max-width: 600px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.5;
+      line-height: 1.6;
       font-weight: 400;
-      font-family: 'General Sans', -apple-system, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     .confirmation-button {
@@ -757,6 +770,10 @@
     .confirmation-video {
       margin: 1.5rem 0;
       text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
     }
     
     .confirmation-video h3 {
@@ -767,7 +784,7 @@
     }
     
     .video-wrapper {
-      max-width: 720px;
+      max-width: 1800px; /* Ultimate size for maximum visibility */
       margin: 0 auto;
       position: relative;
       background: #202020;
@@ -803,11 +820,14 @@
     /* Video player styling - enhanced visibility and professional appearance */
     #confirmation-video-player {
       width: 100%;
+      max-width: 1800px; /* Ultimate size for maximum visibility */
       height: auto;
+      min-height: 700px; /* Ultimate minimum height for maximum visibility */
       display: block;
       object-fit: cover;
       background: #202020;
       border-radius: 12px;
+      margin: 0 auto; /* Center the video */
     }
     
     #confirmation-video-player:hover {
@@ -925,7 +945,7 @@
     .professional-video-player {
       position: relative !important;
       width: 100% !important;
-      max-width: 640px !important;
+      max-width: 1200px !important;
       height: 0 !important; /* Required for padding-top technique */
       padding-top: 56.25% !important; /* 16:9 aspect ratio (9/16 * 100) */
       margin: 0 auto !important;
@@ -1249,6 +1269,309 @@
       border-radius: 50%;
       width: 72px;
       height: 72px;
+    }
+
+    /* 2025 Minimal Typography Confirmation - Match Steps */
+    .minimal-confirmation {
+      text-align: center;
+      padding: 1rem 0 2rem 0;
+      font-family: General Sans, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Main Title - Match Step Headers */
+    .minimal-title {
+      color: var(--white);
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      line-height: 1.3;
+      text-transform: uppercase;
+      font-family: General Sans, Arial, sans-serif;
+    }
+
+    .minimal-subtitle {
+      color: var(--grey);
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin: 0 0 2rem 0;
+      line-height: 1.6;
+      font-family: General Sans, Arial, sans-serif;
+    }
+
+    /* Clean Divider */
+    .minimal-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--grey);
+      margin: 0 auto 2rem auto;
+      opacity: 0.3;
+    }
+
+    /* Professional Preparation Accordion - Based on FAQ Section */
+    .prep-section {
+      margin-top: 2rem;
+      margin-bottom: 0;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .prep-title {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0 0 1.5rem 0;
+      font-family: General Sans, Arial, sans-serif;
+      text-align: center;
+    }
+
+    .prep-accordion {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .prep-item {
+      margin-bottom: 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transition: background-color 0.2s ease;
+    }
+
+    .prep-item:first-child {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .prep-question {
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+      font-family: General Sans, Arial, sans-serif;
+    }
+
+    .prep-question:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .prep-toggle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.4);
+      transition: transform 0.25s ease-out, color 0.2s ease;
+      line-height: 1;
+      font-weight: 300;
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .prep-item:hover .prep-toggle {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .prep-item.active .prep-question {
+      color: #fff;
+    }
+
+    .prep-item.active .prep-toggle {
+      color: #fff;
+      transform: rotate(45deg);
+    }
+
+    .prep-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s ease-out;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .prep-answer-content {
+      overflow: hidden;
+      min-height: 0;
+      padding: 0;
+      margin: 0;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.25s ease-out, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .prep-item.active .prep-answer {
+      grid-template-rows: 1fr;
+    }
+
+    .prep-item.active .prep-answer-content {
+      padding: 0 0 1.5rem 0;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .prep-answer p {
+      margin: 0;
+      font-family: General Sans, Arial, sans-serif;
+    }
+
+    /* Email Link - Match Footer Style */
+    .minimal-contact {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    
+    .minimal-contact .link-button {
+      display: inline-block !important;
+      width: auto !important;
+    }
+
+    /* MAXIMUM SPECIFICITY: Show underline by default, animate to right and disappear on hover */
+    body .minimal-contact .link-button .underline,
+    body .minimal-contact .link-button .underline.is-nav,
+    body .minimal-contact a.link-button .underline,
+    body .minimal-contact a.link-button .underline.is-nav {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+      width: 100% !important;
+      height: 1px !important;
+      margin-top: 3px !important;
+      transform: scaleX(1) !important;
+      transform-origin: left !important;
+      transition: transform 0.3s ease !important;
+      display: block !important;
+      -webkit-transform: scaleX(1) !important;
+      -moz-transform: scaleX(1) !important;
+      -ms-transform: scaleX(1) !important;
+    }
+    
+    body .minimal-contact .link-button .underline.is-nav,
+    body .minimal-contact a.link-button .underline.is-nav {
+      background-color: rgba(255, 255, 255, 0.8) !important;
+    }
+    
+    body .minimal-contact .link-button:hover .underline,
+    body .minimal-contact .link-button:hover .underline.is-nav,
+    body .minimal-contact a.link-button:hover .underline,
+    body .minimal-contact a.link-button:hover .underline.is-nav {
+      transform: scaleX(0) !important;
+      transform-origin: right !important;
+      -webkit-transform: scaleX(0) !important;
+      -moz-transform: scaleX(0) !important;
+      -ms-transform: scaleX(0) !important;
+    }
+
+
+    /* Mobile Responsive - Match Steps */
+    @media (max-width: 991px) {
+      .minimal-confirmation {
+        padding: 2rem 0 1.5rem 0;
+      }
+
+      .minimal-title {
+        font-size: 1.8rem;
+      }
+
+      .minimal-subtitle {
+        font-size: 1rem;
+      }
+
+      .minimal-section-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .minimal-confirmation {
+        padding: 1.5rem 1rem;
+        text-align: center;
+      }
+
+      .minimal-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .minimal-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .prep-section {
+        max-width: 100%;
+        margin-top: 2rem;
+      }
+
+      .prep-title {
+        font-size: 0.95rem;
+        margin-bottom: 1.125rem;
+      }
+
+      .prep-section {
+        max-width: 100%;
+        padding: 0 1rem;
+      }
+
+      .prep-question {
+        padding: 1.25rem 0;
+        font-size: 0.95rem;
+      }
+
+      .prep-answer {
+        font-size: 0.9rem;
+      }
+
+      .prep-item.active .prep-answer-content {
+        padding: 0 0 1.25rem 0;
+      }
+
+      .prep-list {
+        max-width: 100%;
+      }
+
+      .minimal-divider {
+        margin: 0 auto 1.5rem auto;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .minimal-title {
+        font-size: 1.3rem;
+      }
+
+      .minimal-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .prep-title {
+        font-size: 0.9rem;
+      }
+
+      .prep-section {
+        padding: 0 0.75rem;
+      }
+
+      .prep-question {
+        padding: 1.125rem 0;
+        font-size: 0.9rem;
+      }
+
+      .prep-answer {
+        font-size: 0.85rem;
+      }
+
+      .prep-item.active .prep-answer-content {
+        padding: 0 0 1rem 0;
+      }
     }
 
     .confirmation-text {
@@ -1950,16 +2273,22 @@
         scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.05);
       }
       
-      /* Confirmation page mobile styles */
+      /* Confirmation page mobile styles - Match homepage responsive */
       .confirmation-container {
-        padding: 3rem 1.25rem;
+        padding: 4rem 1.25rem;
+      }
+      
+      .confirmation-success-badge {
+        font-size: 0.8rem;
+        padding: 0.625rem 1.25rem;
       }
       
       .confirmation-heading {
-        font-size: 2rem;
+        font-size: clamp(2rem, 8vw, 2.5rem);
+        line-height: 1.2;
       }
       
-      .confirmation-text {
+      .confirmation-tagline {
         font-size: 1.1rem;
       }
       
@@ -2097,13 +2426,13 @@
       }
       
       .calendar-container {
-        max-width: 1400px;
+        max-width: 1800px;
       }
     }
     
     /* AI Discovery Section Styles - Premium Dark Design */
     .ai-discovery-section {
-      padding: 3rem 2rem;
+      padding: 8rem 2rem; /* Match homepage .padding-section-large standard */
       background-color: var(--primary-black);
       position: relative;
       overflow: hidden;
@@ -2328,13 +2657,13 @@
       display: none !important; /* Hide icon for clean main site aesthetic */
     }
     
-    /* Supporting text styling with proper spacing */
+    /* Supporting text styling with mathematically balanced spacing */
     .ai-supporting-text {
       color: var(--grey);
       font-size: 0.95rem;
       line-height: 1.6;
-      margin: 2rem 0 3rem 0;
-      padding: 1.5rem;
+      margin: 1.625rem 0 0.625rem 0; /* Increased for perfect balance: +0.625rem top, +0.125rem bottom */
+      padding: 1rem 1.5rem; 
       background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
       border-left: 3px solid var(--primary-blue);
@@ -2780,7 +3109,7 @@
     }
     
     .professional-ai-cta .button-text {
-      font-weight: 600;
+      font-weight: 400; /* Change from 600 to 400 for normal weight */
       letter-spacing: -0.01em;
       color: var(--primary-black) !important;
       text-shadow: none !important;
@@ -3563,15 +3892,141 @@
       transform: translateX(-2px);
     }
 
-    /* AI Success Message Styling */
+    /* AI Success Message Styling - Mobile-First Responsive Design */
     .ai-success-message {
       display: none;
-      margin-top: 1.5rem;
+      /* Match button container dimensions for perfect alignment */
+      width: calc(100% - 16px);
+      max-width: 390px;
+      margin: 1.5rem auto 0 auto; /* Perfect horizontal centering like button */
       animation: fadeIn 0.4s ease;
     }
 
     .ai-success-message.active {
       display: block;
+    }
+
+    /* Success Message Container - Clean Simple Centering */
+    .success-message-container {
+      text-align: center;
+      padding: 0.75rem 0; /* Remove side padding for perfect text centering */
+      background: var(--secondary-black);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      max-width: 100%;
+      box-sizing: border-box;
+      margin: 0 auto; /* Ensure perfect centering */
+      width: 100%; /* Force full width utilization */
+    }
+
+    /* Success Emoji - Responsive Sizing */
+    .success-emoji {
+      color: #4CAF50;
+      font-size: 2rem; /* Mobile: smaller emoji */
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+
+    /* Success Heading - Clean Centering */
+    .success-heading {
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem; /* Mobile: smaller heading */
+      font-weight: 600;
+      line-height: 1.3;
+      text-align: center;
+      display: block;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    /* Success Text - Clean Simple Centering */
+    .success-text {
+      color: var(--grey);
+      margin: 0 auto;
+      font-size: 0.85rem;
+      line-height: 1.3;
+      text-align: center;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Extra Small Mobile Optimization (320px-375px) */
+    @media screen and (max-width: 375px) {
+      .success-message-container {
+        padding: 0.5rem; /* Consistent padding all around */
+      }
+      
+      .success-text {
+        font-size: 0.8rem; /* Even smaller text */
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+      }
+      
+      .success-heading {
+        font-size: 1.1rem; /* Smaller heading for tiny screens */
+        text-align: center;
+        margin: 0 auto 0.75rem auto;
+      }
+      
+      .success-emoji {
+        font-size: 1.75rem; /* Smaller emoji */
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+    }
+
+    /* Tablet Responsive Design (768px+) */
+    @media screen and (min-width: 768px) {
+      .ai-success-message {
+        max-width: 400px; /* Match button container max-width on tablet+ */
+        margin: 1.5rem auto 0 auto; /* Maintain perfect centering */
+      }
+      
+      .success-message-container {
+        padding: 1rem 1.5rem 0.75rem 1.5rem; /* Tablet: moderate padding */
+      }
+      
+      .success-emoji {
+        font-size: 2.5rem; /* Tablet: medium emoji */
+        margin-bottom: 1rem;
+      }
+      
+      .success-heading {
+        font-size: 1.375rem; /* Tablet: medium heading */
+        margin-bottom: 1rem;
+      }
+      
+      .success-text {
+        font-size: 0.95rem; /* Tablet: medium text */
+        text-align: center; /* Maintain centering on tablet */
+      }
+    }
+
+    /* Desktop Responsive Design (1024px+) */
+    @media screen and (min-width: 1024px) {
+      .success-message-container {
+        padding: 1rem 2rem 0.75rem 2rem; /* Desktop: original generous padding */
+      }
+      
+      .success-emoji {
+        font-size: 3rem; /* Desktop: large emoji */
+      }
+      
+      .success-heading {
+        font-size: 1.5rem; /* Desktop: large heading */
+      }
+      
+      .success-text {
+        font-size: 1rem; /* Desktop: standard text */
+        text-align: center; /* Maintain centering on desktop */
+      }
     }
     
     .submit-phone-button {
@@ -3600,7 +4055,8 @@
     .ai-supporting-text {
       font-size: 0.875rem;
       color: var(--grey);
-      margin-top: 2.5rem;
+      margin-top: 1.625rem !important; /* Consistent with main definition - perfect balance */
+      margin-bottom: 0.625rem !important; /* Consistent with main definition - perfect balance */
       line-height: 1.5;
     }
     
@@ -3780,11 +4236,18 @@
       width: 100%;
       height: 1px;
       margin-top: 3px;
-      transition: opacity .3s;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .underline.is-nav {
+      background-color: rgba(255, 255, 255, 0.8);
     }
     
     .link-button:hover .underline {
       background-color: rgba(255, 255, 255, 0.8);
+      transform: scaleX(1);
     }
     
     .footer-divider {
@@ -3832,7 +4295,7 @@
       }
       
       .ai-discovery-section {
-        padding: 3rem 1.5rem;
+        padding: 5rem 1.5rem; /* Match homepage mobile .padding-section-large */
       }
       
       .ai-discovery-heading {
@@ -4013,16 +4476,28 @@
         
         // Initialize Cal.com with questionnaire data
         document.addEventListener('DOMContentLoaded', function() {
-          // Collect questionnaire data from sessionStorage
+          // Collect questionnaire data from localStorage (persistent) with sessionStorage fallback
           let questionnaireData = {};
           try {
-            const storedData = sessionStorage.getItem('questionnaireData');
+            // Try localStorage first (survives page refresh)
+            let storedData = localStorage.getItem('questionnaireData');
+            if (!storedData) {
+              // Fallback to sessionStorage for compatibility
+              storedData = sessionStorage.getItem('questionnaireData');
+              console.log('📊 Using sessionStorage fallback (data may not persist on refresh)');
+            } else {
+              console.log('📊 Using localStorage data (persistent across refresh)');
+            }
+            
             if (storedData) {
               questionnaireData = JSON.parse(storedData);
               console.log('📊 Questionnaire data found:', questionnaireData);
+            } else {
+              console.log('⚠️ No questionnaire data found in localStorage or sessionStorage');
             }
           } catch (err) {
-            console.log('No questionnaire data found, using defaults');
+            console.log('❌ Error loading questionnaire data:', err);
+            console.log('Using defaults');
           }
 
           // Prepare metadata for Cal.com
@@ -4354,12 +4829,23 @@
       // Get stored user data for personalization
       let userData = {};
       try {
-        const storedData = sessionStorage.getItem('questionnaireData');
+        // Try localStorage first (persistent), then sessionStorage (temporary)
+        // Try localStorage first (survives page refresh), then sessionStorage
+        let storedData = localStorage.getItem('questionnaireData');
+        if (!storedData) {
+          storedData = sessionStorage.getItem('questionnaireData');
+          console.log('📊 Using sessionStorage fallback (data may not persist on refresh)');
+        } else {
+          console.log('📊 Using localStorage data (persistent across refreshes)');
+        }
         if (storedData) {
           userData = JSON.parse(storedData);
+          console.log('📊 User data loaded for AI call:', userData);
+        } else {
+          console.log('⚠️ No questionnaire data found for AI call');
         }
       } catch (err) {
-        console.log('No questionnaire data found');
+        console.log('❌ Error loading questionnaire data for AI call:', err);
       }
       
       // Create personalized message
@@ -4371,15 +4857,18 @@
       const enhancedContent = document.createElement('div');
       enhancedContent.className = 'enhanced-confirmation';
       enhancedContent.innerHTML = `
-        <div class="confirmation-container" style="padding-bottom: 1rem;">
-          <div class="confirmation-icon">🎯</div>
-          <h2 class="confirmation-heading">
-            Strategy Session Confirmed!
-          </h2>
-          <p class="confirmation-text">
-            Great! Your calendar is being updated below.
-          </p>
-          <p class="confirmation-message">
+        <div class="confirmation-container">
+          <div class="confirmation-success-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22,4 12,14.01 9,11.01"></polyline>
+            </svg>
+            Strategy Session Confirmed
+          </div>
+          <h1 class="confirmation-heading">
+            Your AI automation strategy session is confirmed
+          </h1>
+          <p class="confirmation-tagline">
             ${personalMessage}
           </p>
           
@@ -4434,18 +4923,18 @@
               
               <!-- Success Message (initially hidden) -->
               <div class="ai-success-message" id="aiSuccessMessage">
-                <div style="text-align: center; padding: 2rem; background: var(--secondary-black); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
-                  <div style="color: #4CAF50; font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                  <h3 style="color: var(--white); margin-bottom: 1rem;">AI Discovery Call Starting!</h3>
-                  <p style="color: var(--grey); margin-bottom: 0;">You'll receive a call within 60 seconds. Have your automation challenges ready!</p>
+                <div class="success-message-container">
+                  <div class="success-emoji">✅</div>
+                  <h3 class="success-heading">AI Discovery Call Starting!</h3>
+                  <p class="success-text">Call coming in 60 seconds!</p>
                 </div>
               </div>
               
               <!-- ZERO-DEPENDENCY PHONE COMPONENT IN DYNAMIC TEMPLATE -->
               <div id="phoneComponentContainer" style="position: relative; width: 100%; max-width: 400px; height: 80px; margin: 2rem auto;">
                 <div id="buttonContainer" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 1; transform: translateY(0); pointer-events: auto; transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; z-index: 3;">
-                  <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 48px; background: white; border: 1px solid #e5e5e5; border-radius: 8px; color: #333333; font-size: 16px; font-weight: bold; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #333333;">
+                  <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; height: 48px; background: white; border: 1px solid #e5e5e5; border-radius: 8px; color: #333333; font-size: 14px; font-weight: 500; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: #333333;">
                       <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     Get AI Strategy Call in 60 Seconds
@@ -4454,14 +4943,14 @@
                 <div id="phoneFormContainer" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(5px); pointer-events: none; transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; z-index: 5;">
                   <div style="position: relative; display: flex; align-items: stretch; width: 100%; height: 48px; gap: 8px;">
                     <input type="tel" id="phoneInput" placeholder="(555) 123-4567" maxlength="14" autocomplete="tel" style="flex: 1; height: 48px; padding: 0 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px 0 0 8px; color: white; font-size: 16px; font-weight: normal; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; cursor: text; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; text-shadow: none; box-sizing: border-box; z-index: 1;" />
-                    <button type="button" id="callButton" style="flex: 0 0 100px; height: 48px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0 8px 8px 0; color: rgba(255, 255, 255, 0.5); font-size: 14px; font-weight: 600; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; cursor: not-allowed; pointer-events: auto; display: flex; align-items: center; justify-content: center; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-sizing: border-box; z-index: 2; opacity: 0.6;">Call Me</button>
+                    <button type="button" id="callButton" style="height: 48px; background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5); font-weight: 600; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; cursor: not-allowed; pointer-events: auto; display: flex; align-items: center; justify-content: center; -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-sizing: border-box; z-index: 2; opacity: 0.6;"><span class="call-button-text">Call Me</span></button>
                   </div>
                   <p id="statusMessage" style="all: initial; color: rgba(255, 255, 255, 0.6); font-size: 12px; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; margin: 16px 0 0 0; text-align: center; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; text-shadow: none; line-height: 1.4;"></p>
                 </div>
               </div>
               
               <p class="ai-supporting-text">
-                <strong>Why this matters:</strong> 73% of our most successful implementations started with this AI discovery call. You'll arrive to our strategy session with clarity, not confusion.
+                <strong>Why this matters:</strong> 73% of my most successful implementations started with this AI discovery call. You'll arrive to your strategy session with clarity, not confusion.
               </p>
             </div>
           </div>
@@ -4469,29 +4958,84 @@
           <!-- Section Divider -->
           <div class="section-divider"></div>
 
-          <!-- Professional Next Steps - Moved to proper location -->
-          
-          <!-- Cal.com Confirmation Section -->
-          <div class="cal-confirmation-section">
-            <div class="step-indicator">
-              <span class="step-number-badge">3</span>
-              <h3>Meeting Confirmed</h3>
-            </div>
-            <div class="confirmation-details">
-              <div class="confirmation-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22,4 12,14.01 9,11.01"></polyline>
-                </svg>
+          <!-- Step 3: Meeting Details -->
+          <div class="ai-discovery-section">
+            <div class="ai-discovery-container">
+              <div class="step-indicator">
+                <span class="step-number-badge">3</span>
+                <h2 class="ai-discovery-heading">Meeting Confirmed</h2>
               </div>
-              <p class="confirmation-text">Your strategy session has been successfully scheduled. You'll receive a calendar invitation and meeting details at your email shortly.</p>
-              <div class="next-steps">
-                <h4>What's Next:</h4>
-                <ul>
-                  <li>Check your email for the calendar invitation</li>
-                  <li>Add the meeting to your calendar</li>
-                  <li>Prepare your automation challenges for discussion</li>
-                </ul>
+              
+              <p class="ai-discovery-subheading">
+                You'll receive a calendar invitation and meeting details at your email shortly.
+              </p>
+              
+              <!-- 2025 Minimal Typography Confirmation -->
+              <div class="minimal-confirmation">
+                
+                <!-- Professional Preparation Accordion -->
+                <div class="prep-section">
+                  <h3 class="prep-title">How to Prepare</h3>
+                  <div class="prep-accordion">
+                    <div class="prep-item">
+                      <div class="prep-question" onclick="togglePrepItem(this)">
+                        <span>Prepare automation examples</span>
+                        <span class="prep-toggle">+</span>
+                      </div>
+                      <div class="prep-answer">
+                        <div class="prep-answer-content">
+                          <p>Think of specific tasks you do repeatedly in your business. Examples: sending follow-up emails, data entry, scheduling, invoice processing, or customer onboarding. Having concrete examples helps me identify the best automation opportunities for you.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="prep-item">
+                      <div class="prep-question" onclick="togglePrepItem(this)">
+                        <span>Think about time-consuming tasks</span>
+                        <span class="prep-toggle">+</span>
+                      </div>
+                      <div class="prep-answer">
+                        <div class="prep-answer-content">
+                          <p>Identify tasks that take up significant time in your day or week. Consider administrative work, data management, communication workflows, or any process that feels tedious. These are prime candidates for automation.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="prep-item">
+                      <div class="prep-question" onclick="togglePrepItem(this)">
+                        <span>Consider repetitive processes</span>
+                        <span class="prep-toggle">+</span>
+                      </div>
+                      <div class="prep-answer">
+                        <div class="prep-answer-content">
+                          <p>Look for patterns in your work - tasks you do the same way every time. This could include report generation, customer communications, file organization, or routine check-ins. Repetitive work is often the easiest to automate.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="prep-item">
+                      <div class="prep-question" onclick="togglePrepItem(this)">
+                        <span>Identify manual work to automate</span>
+                        <span class="prep-toggle">+</span>
+                      </div>
+                      <div class="prep-answer">
+                        <div class="prep-answer-content">
+                          <p>Note any manual data entry, copying information between systems, or tasks that require switching between multiple tools. These manual touchpoints are perfect automation targets that can save hours each week.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Email Button - Match Footer Style -->
+                <div class="minimal-contact">
+                  <a href="mailto:hi@nithichote.com?subject=Meeting Question" class="link-button w-inline-block">
+                    <div class="button-link-wrapper">
+                      <div class="button-text-block">
+                        <div class="button-text">Questions? Email me</div>
+                        <div class="button-text is-hover">QUESTIONS? EMAIL ME</div>
+                      </div>
+                    </div>
+                    <div class="underline is-nav"></div>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -4522,7 +5066,7 @@
         }
       }
       
-      // Hide header, progress sections, and Cal.com embed on confirmation
+      // Hide header and progress sections but SHOW Cal.com confirmation
       const header = document.querySelector('.calendar-header');
       const progress = document.querySelector('.progress-indicator');
       const personalizedMsg = document.querySelector('.personalized-message');
@@ -4533,10 +5077,10 @@
       if (progress) progress.style.display = 'none';
       if (personalizedMsg) personalizedMsg.style.display = 'none';
       
-      // CRITICAL: Hide Cal.com embed to prevent reload booking form issue
+      // HIDE Cal.com embed during confirmation to prevent booking form reappearing on reload
       if (calcomContainer) {
         calcomContainer.style.display = 'none';
-        if (!isProduction) console.log('✅ Cal.com embed hidden to prevent reload issues');
+        if (!isProduction) console.log('✅ Cal.com embed hidden during confirmation to prevent reload issues');
       }
       
       // Show footer only during confirmation page
@@ -4643,39 +5187,49 @@
     // Initialize when page loads
     document.addEventListener('DOMContentLoaded', function() {
       
-      // Professional UX: Check if confirmation page should be restored
+      // Professional UX: Restore confirmation state if recently confirmed
       const confirmationActive = sessionStorage.getItem('confirmationPageActive');
       const confirmationTimestamp = sessionStorage.getItem('confirmationTimestamp');
       
       if (confirmationActive === 'true' && confirmationTimestamp) {
-        // Only restore if less than 24 hours old (prevent stale confirmations)
         const timestamp = parseInt(confirmationTimestamp);
         const hoursSinceConfirmation = (Date.now() - timestamp) / (1000 * 60 * 60);
         
-        if (hoursSinceConfirmation < 24 && (window.location.href.includes('#confirmed') || window.location.href.includes('calendar'))) {
-          if (!isProduction) console.log('🔄 Restoring confirmation page state from previous session');
-          
-          // Hide Cal.com embed immediately to prevent showing booking form
-          const calcomContainer = document.getElementById('my-cal-inline-30min');
-          if (calcomContainer) {
-            calcomContainer.style.display = 'none';
-            if (!isProduction) console.log('✅ Cal.com embed hidden on state restoration');
-          }
+        // Show confirmation if within last 24 hours AND URL has confirmation indicator
+        if (hoursSinceConfirmation < 24 && 
+            (window.location.href.includes('#confirmed') || 
+             window.location.href.includes('confirmed') ||
+             confirmationActive === 'true')) {
+          if (!isProduction) console.log('🔄 Restoring confirmation page state from recent session');
           
           // Restore confirmation page without triggering new confirmation detection
           setTimeout(() => {
             window.createConfirmationPage({detail: {source: 'state_restoration', text: 'Restored from session'}});
-          }, 1000);
+          }, 500);
         } else {
           // Clean up old confirmation state
           sessionStorage.removeItem('confirmationPageActive');
           sessionStorage.removeItem('confirmationTimestamp');
+          if (!isProduction) console.log('🧹 Cleaned up old confirmation state');
         }
+      } else {
+        // Fresh page load - show booking form
+        if (!isProduction) console.log('📅 Showing fresh Cal.com booking form - new session');
       }
       
-      // Check if we have questionnaire data
-      const storedData = sessionStorage.getItem('questionnaireData');
+      // Check if we have questionnaire data (try localStorage first, then sessionStorage)
+      // Try localStorage first (survives page refresh), then sessionStorage
+      let storedData = localStorage.getItem('questionnaireData');
+      if (!storedData) {
+        storedData = sessionStorage.getItem('questionnaireData');
+        console.log('📊 Using sessionStorage fallback (data may not persist on refresh)');
+      } else {
+        console.log('📊 Using localStorage data (persistent across refreshes)');
+      }
       if (storedData) {
+        console.log('📊 Questionnaire data available for Cal.com integration');
+      } else {
+        console.log('⚠️ No questionnaire data found - Cal.com will use defaults');
       }
       
       // Cal.com inline embed initializes automatically via script in HTML
@@ -5715,6 +6269,545 @@
           font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
         }
         
+        /* CSS Custom Properties for Professional Consistency */
+        :root {
+          --phone-component-padding-mobile: 1.75rem auto 0.25rem auto;
+          --phone-component-padding-tablet: 2.25rem auto 0.5rem auto;
+          --phone-component-padding-desktop: 2.75rem auto 0.75rem auto;
+          --button-height-mobile: 44px;
+          --button-height-tablet: 48px;
+          --button-height-desktop: 52px;
+          --touch-target-min: 44px;
+          
+          /* Fluid Typography with clamp() */
+          --font-size-cta: clamp(0.875rem, 0.8rem + 0.5vw, 1rem);
+          --font-size-input: clamp(0.875rem, 0.85rem + 0.3vw, 1rem);
+          --font-size-call-button: clamp(0.75rem, 0.7rem + 0.3vw, 0.875rem);
+          
+          /* Accessibility & Colors */
+          --focus-color: #2563eb;
+          --focus-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+          --button-border-hover: #d1d5db;
+          --button-bg-hover: #f8f9fa;
+        }
+        
+        /* PROFESSIONAL MOBILE-FIRST CONTAINER DESIGN */
+        #phoneComponentContainer {
+          /* Mobile Base - Optimized for button content fit */
+          width: calc(100% - 16px) !important; 
+          max-width: 390px !important;
+          margin: var(--phone-component-padding-mobile) !important; /* Override inline style */
+          height: 80px !important; /* Fixed height to prevent layout shifts */
+          position: relative !important;
+          box-sizing: border-box !important;
+        }
+        
+        /* OVERRIDE INLINE MARGIN STYLE */
+        #phoneComponentContainer[style*="margin: 2rem auto"] {
+          margin: var(--phone-component-padding-mobile) !important;
+        }
+        
+        #buttonContainer,
+        #phoneFormContainer {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          box-sizing: border-box !important;
+        }
+        
+        /* PROFESSIONAL CTA BUTTON - MOBILE FIRST WITH ACCESSIBILITY */
+        #ctaButton {
+          /* Mobile Base Design - Fixed sizing to prevent wrapping */
+          width: 100% !important;
+          height: var(--button-height-mobile) !important;
+          font-size: 13px !important; /* Fixed small size for mobile to fit text */
+          font-weight: 500 !important;
+          gap: 0.5rem !important;
+          padding: 0 0.75rem !important; /* Reduced padding for more text space */
+          box-sizing: border-box !important;
+          transition: all 0.2s ease !important;
+          min-height: var(--touch-target-min) !important;
+          white-space: nowrap !important; /* Prevent text wrapping */
+          
+          /* Enhanced Accessibility */
+          line-height: 1.2 !important;
+          text-rendering: optimizeLegibility !important;
+          -webkit-font-smoothing: antialiased !important;
+          -moz-osx-font-smoothing: grayscale !important;
+        }
+        
+        #ctaButton svg {
+          width: 14px !important; /* Fixed size for mobile */
+          height: 14px !important;
+          flex-shrink: 0 !important;
+          transition: color 0.2s ease !important;
+          background: transparent !important; /* Ensure no background on SVG */
+          border: none !important;
+          outline: none !important;
+        }
+        
+        #ctaButton svg path {
+          transition: stroke 0.2s ease !important;
+          fill: none !important; /* Ensure no fill conflicts */
+          background: transparent !important;
+        }
+        
+
+        /* HOVER STATE - WHITE BACKGROUND WITH BLACK TEXT */
+        div#buttonContainer button#ctaButton:hover,
+        div#buttonContainer button#ctaButton:hover:active,
+        button#ctaButton:hover,
+        button#ctaButton:hover:active,
+        #ctaButton:hover,
+        #ctaButton:hover:active,
+        button[style*="all: initial"]:hover,
+        button[style*="all: initial"]:hover:active,
+        button[style*="color: #333333"]:hover,
+        button[style*="color: #333333"]:hover:active,
+        #ctaButton[style*="all: initial"]:hover,
+        #ctaButton[style*="all: initial"]:hover:active,
+        #ctaButton[style*="color: #333333"]:hover,
+        #ctaButton[style*="color: #333333"]:hover:active {
+          /* VISUAL PROPERTIES - BLACK TEXT ON WHITE BACKGROUND */
+          background: #f8f9fa !important;
+          border-color: #d1d5db !important;
+          color: #000000 !important; /* BLACK TEXT ON HOVER + ACTIVE */
+          transform: translateY(-1px) !important;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+          /* REMOVE ANY GLOW EFFECTS */
+          outline: none !important;
+          -webkit-tap-highlight-color: transparent !important;
+          -webkit-focus-ring-color: transparent !important;
+        }
+        
+        /* SVG ICON DEFAULT STATE - ENSURE CORRECT BASE COLOR */
+        div#buttonContainer button#ctaButton svg,
+        button#ctaButton svg,
+        #ctaButton svg,
+        svg[style*="color: #333333"] {
+          color: #333333 !important; /* DEFAULT GRAY ICON */
+          fill: currentColor !important;
+          stroke: currentColor !important;
+        }
+
+        /* SVG ICON HOVER STATE - BLACK ON HOVER */
+        div#buttonContainer button#ctaButton:hover svg,
+        div#buttonContainer button#ctaButton:hover:active svg,
+        button#ctaButton:hover svg,
+        button#ctaButton:hover:active svg,
+        #ctaButton:hover svg,
+        #ctaButton:hover:active svg,
+        button[style*="all: initial"]:hover svg,
+        button[style*="all: initial"]:hover:active svg,
+        button[style*="all: initial"]:hover svg[style*="color: #333333"],
+        button[style*="all: initial"]:hover:active svg[style*="color: #333333"],
+        #ctaButton:hover svg[style*="color: #333333"],
+        #ctaButton:hover:active svg[style*="color: #333333"],
+        button[style*="color: #333333"]:hover svg[style*="color: #333333"],
+        button[style*="color: #333333"]:hover:active svg[style*="color: #333333"] {
+          color: #000000 !important; /* BLACK ICON ON HOVER + ACTIVE */
+          fill: currentColor !important; /* Ensure fill follows color */
+          stroke: currentColor !important; /* Ensure stroke follows color */
+        }
+        
+        /* SVG PATH DEFAULT STATE */
+        div#buttonContainer button#ctaButton svg path,
+        button#ctaButton svg path,
+        #ctaButton svg path {
+          stroke: #333333 !important; /* DEFAULT GRAY STROKE */
+          fill: none !important; /* Keep as stroke-only icon */
+        }
+
+        /* SVG PATH HOVER STATE */
+        div#buttonContainer button#ctaButton:hover svg path,
+        div#buttonContainer button#ctaButton:hover:active svg path,
+        button#ctaButton:hover svg path,
+        button#ctaButton:hover:active svg path,
+        #ctaButton:hover svg path,
+        #ctaButton:hover:active svg path,
+        button[style*="all: initial"]:hover svg path,
+        button[style*="all: initial"]:hover:active svg path {
+          stroke: #000000 !important; /* BLACK STROKE ON HOVER + ACTIVE */
+          color: #000000 !important; /* BLACK COLOR ON HOVER + ACTIVE */
+          fill: none !important; /* Keep as stroke-only icon */
+        }
+        
+        /* MAXIMUM SPECIFICITY - OVERRIDE JAVASCRIPT INLINE STYLES */
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover,
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover:active {
+          color: #000000 !important; /* NUCLEAR BLACK TEXT */
+          background: #f8f9fa !important; /* NUCLEAR WHITE BACKGROUND */
+          border-color: #d1d5db !important; /* NUCLEAR BORDER */
+        }
+
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover svg,
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover:active svg {
+          color: #000000 !important; /* NUCLEAR BLACK SVG */
+          stroke: #000000 !important; /* NUCLEAR BLACK STROKE */
+        }
+
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover svg path,
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:hover:active svg path {
+          stroke: #000000 !important; /* NUCLEAR BLACK PATH STROKE */
+          color: #000000 !important; /* NUCLEAR BLACK PATH COLOR */
+        }
+
+        /* ULTIMATE OVERRIDE - TARGET ELEMENTS WITH SPECIFIC INLINE STYLES */
+        button[style*="color: #333333"][id="ctaButton"]:hover,
+        button[style*="color: #333333"][id="ctaButton"]:hover:active,
+        button[style*="all: initial"][id="ctaButton"]:hover,
+        button[style*="all: initial"][id="ctaButton"]:hover:active {
+          color: #000000 !important; /* ULTIMATE BLACK TEXT OVERRIDE */
+        }
+
+        button[id="ctaButton"]:hover svg[style*="color: #333333"],
+        button[id="ctaButton"]:hover:active svg[style*="color: #333333"] {
+          color: #000000 !important; /* ULTIMATE BLACK SVG OVERRIDE */
+          stroke: #000000 !important; /* ULTIMATE BLACK STROKE OVERRIDE */
+        }
+
+        #ctaButton:active {
+          transform: translateY(0) !important;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* REMOVE ALL FOCUS/OUTLINE EFFECTS - CLEAN PROFESSIONAL LOOK */
+        #ctaButton:focus,
+        #ctaButton:focus-visible,
+        #ctaButton:focus-within,
+        #ctaButton:-webkit-any-link:focus,
+        button#ctaButton:focus,
+        button#ctaButton:focus-visible,
+        button#ctaButton:focus-within,
+        div#buttonContainer button#ctaButton:focus,
+        div#buttonContainer button#ctaButton:focus-visible,
+        div#buttonContainer button#ctaButton:focus-within,
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:focus,
+        html body div#phoneComponentContainer div#buttonContainer button#ctaButton:focus-visible {
+          outline: none !important;
+          outline-width: 0 !important;
+          outline-color: transparent !important;
+          outline-style: none !important;
+          outline-offset: 0 !important;
+          box-shadow: none !important;
+          border: 1px solid #e5e5e5 !important; /* Keep original border */
+          -webkit-focus-ring-color: transparent !important;
+          -webkit-tap-highlight-color: transparent !important;
+        }
+
+        /* FIX EXCESSIVE BOTTOM SPACING FROM EMPTY STATUS MESSAGE */
+        #statusMessage:empty,
+        p#statusMessage:empty,
+        #statusMessage:not(:has(*)):not([style*="display: block"]) {
+          margin: 0 !important; /* Remove 16px margin when empty */
+          padding: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
+        }
+
+        /* ALSO TARGET WHEN STATUSMESSAGE HAS ONLY WHITESPACE */
+        #statusMessage:blank {
+          margin: 0 !important;
+          padding: 0 !important;
+          height: 0 !important;
+        }
+        
+        /* REMOVED CONFLICTING :active RULE - WAS RESETTING COLORS TO GRAY */
+        /* This was preventing hover states from working properly */
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+          #ctaButton {
+            transition: none !important;
+          }
+          
+          #ctaButton:hover {
+            transform: none !important;
+          }
+        }
+        
+        /* PROFESSIONAL CALL BUTTON - PROGRESSIVE ENHANCEMENT */
+        #callButton {
+          /* Mobile: Icon-only design for space efficiency */
+          flex: 0 0 var(--touch-target-min) !important;
+          width: var(--touch-target-min) !important;
+          padding: 0 !important;
+          box-sizing: border-box !important;
+          position: relative !important;
+          border-radius: 8px !important;
+        }
+        
+        /* Hide original text on all screens, control via pseudo-elements */
+        #callButton .call-button-text {
+          font-size: 0 !important;
+          color: transparent !important;
+          position: relative !important;
+        }
+        
+        #callButton:before {
+          content: "" !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 100% !important;
+          height: 100% !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          z-index: 1 !important;
+          background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z' stroke='rgba(255,255,255,0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+          background-repeat: no-repeat !important;
+          background-position: center !important;
+          background-size: 16px 16px !important;
+          transition: background-image 0.2s ease !important;
+        }
+        
+        /* Fix phone icon color when button is enabled */
+        #callButton.enabled:before {
+          background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+        }
+        
+        /* PROFESSIONAL RESPONSIVE TYPOGRAPHY: Small Mobile (320px-479px) */
+        @media screen and (max-width: 29.9375rem) {
+          #ctaButton {
+            font-size: 14px !important; /* Smaller text for small screens */
+            gap: 6px !important; /* Tighter spacing */
+          }
+          
+          #ctaButton svg {
+            width: 16px !important; /* Consistent icon size */
+            height: 16px !important;
+          }
+        }
+
+        /* PROGRESSIVE ENHANCEMENT: Large Mobile (480px+) */
+        @media screen and (min-width: 30rem) {
+          #phoneComponentContainer,
+          #phoneComponentContainer[style*="margin: 2rem auto"] {
+            width: calc(100% - 16px) !important;
+            margin: var(--phone-component-padding-tablet) !important;
+          }
+          
+          #ctaButton {
+            font-size: 15px !important; /* Fixed size for large mobile */
+            gap: 0.625rem !important;
+            padding: 0 1rem !important; /* Restore normal padding */
+          }
+          
+          #ctaButton svg {
+            width: 16px !important; /* Fixed size */
+            height: 16px !important;
+          }
+        }
+          
+          #callButton {
+            flex: 0 0 3.75rem !important; /* 60px */
+            width: 3.75rem !important;
+            white-space: nowrap !important;
+          }
+          
+          /* Show "Call" text, hide icon */
+          #callButton:before {
+            display: none !important; /* Remove icon */
+          }
+          
+          #callButton .call-button-text:after {
+            content: "Call" !important;
+            font-size: 0.75rem !important; /* Fixed size */
+            color: rgba(255, 255, 255, 0.5) !important;
+            position: absolute !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            font-weight: 600 !important;
+            line-height: 1.2 !important;
+            text-rendering: optimizeLegibility !important;
+            white-space: nowrap !important;
+          }
+          
+          /* Fix enabled state text color for large mobile */
+          #callButton.enabled .call-button-text:after {
+            color: #333333 !important; /* Dark text on white background */
+          }
+          
+          #callButton.enabled:hover .call-button-text:after {
+            color: #000000 !important; /* Even darker on hover */
+          }
+        }
+        
+        /* TABLET DESIGN (768px+) */
+        @media screen and (min-width: 48rem) {
+          #phoneComponentContainer,
+          #phoneComponentContainer[style*="margin: 2rem auto"] {
+            max-width: 400px !important;
+            margin: var(--phone-component-padding-tablet) !important;
+          }
+        }
+          
+          #ctaButton {
+            height: var(--button-height-tablet) !important;
+            font-size: 16px !important; /* Fixed size for tablet */
+            gap: 0.75rem !important;
+            padding: 0 1.25rem !important;
+          }
+          
+          #ctaButton svg {
+            width: 18px !important; /* Fixed size */
+            height: 18px !important;
+          }
+          
+          #callButton {
+            flex: 0 0 5.5rem !important; /* 88px - increased for proper text fit */
+            width: 5.5rem !important;
+            white-space: nowrap !important; /* Prevent text wrapping */
+          }
+          
+          /* Update to "Call Me" text on tablet+ */
+          #callButton .call-button-text:after {
+            content: "Call Me" !important;
+            font-size: 0.875rem !important; /* Fixed size instead of variable */
+            white-space: nowrap !important;
+          }
+          
+          /* Fix enabled state text color for tablet+ */
+          #callButton.enabled .call-button-text:after {
+            color: #333333 !important; /* Dark text on white background */
+          }
+          
+          #callButton.enabled:hover .call-button-text:after {
+            color: #000000 !important; /* Even darker on hover */
+          }
+        }
+        
+        /* DESKTOP OPTIMIZATION (1024px+) */
+        @media screen and (min-width: 64rem) {
+          #phoneComponentContainer,
+          #phoneComponentContainer[style*="margin: 2rem auto"] {
+            margin: var(--phone-component-padding-desktop) !important;
+          }
+        }
+          
+          #ctaButton {
+            height: var(--button-height-desktop) !important;
+            font-size: 1rem !important;
+            padding: 0 1.5rem !important;
+          }
+          
+          #ctaButton:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15) !important;
+          }
+        }
+        
+        /* PHONE FORM RESPONSIVE DESIGN */
+        #phoneFormContainer > div {
+          display: flex !important;
+          align-items: stretch !important;
+          width: 100% !important;
+          gap: 8px !important; /* Consistent gap across all devices */
+          box-sizing: border-box !important;
+        }
+        
+        #phoneInput {
+          flex: 1 !important;
+          min-width: 0 !important; /* Allow shrinking */
+          border-radius: 8px !important; /* Full rounded corners with gap */
+          font-size: var(--font-size-input) !important;
+          box-sizing: border-box !important;
+          
+          /* Enhanced Accessibility */
+          line-height: 1.2 !important;
+          text-rendering: optimizeLegibility !important;
+          -webkit-font-smoothing: antialiased !important;
+          -moz-osx-font-smoothing: grayscale !important;
+        }
+        
+        /* Accessible focus states for input - Subtle styling */
+        #phoneInput:focus,
+        #phoneInput:focus-visible {
+          outline: none !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+          background: rgba(255, 255, 255, 0.08) !important;
+        }
+        
+        /* Call button accessibility improvements - Subtle focus */
+        #callButton:focus,
+        #callButton:focus-visible {
+          outline: none !important;
+          box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3) !important;
+          border-color: rgba(255, 255, 255, 0.4) !important;
+        }
+        
+        /* Responsive input sizing */
+        @media screen and (min-width: 30rem) {
+          #phoneFormContainer > div {
+            gap: 8px !important; /* Maintain consistent gap */
+          }
+          
+          #phoneInput {
+            border-radius: 8px !important;
+          }
+          
+          #callButton {
+            border-radius: 8px !important;
+          }
+        }
+        
+        /* High contrast support */
+        @media (prefers-contrast: high) {
+          #ctaButton {
+            border-width: 2px !important;
+            font-weight: 600 !important;
+          }
+          
+          #callButton {
+            border-width: 2px !important;
+          }
+          
+          #phoneInput {
+            border-width: 2px !important;
+          }
+        }
+        
+        /* Reduced motion for all animations */
+        @media (prefers-reduced-motion: reduce) {
+          #phoneComponentContainer,
+          #buttonContainer,
+          #phoneFormContainer,
+          #ctaButton,
+          #callButton,
+          #phoneInput {
+            transition: none !important;
+            animation: none !important;
+          }
+          
+          #ctaButton:hover,
+          #ctaButton:active {
+            transform: none !important;
+          }
+        }
+        
+        /* Print styles */
+        @media print {
+          #phoneComponentContainer {
+            background: white !important;
+            color: black !important;
+            box-shadow: none !important;
+          }
+          
+          #ctaButton,
+          #callButton {
+            background: white !important;
+            color: black !important;
+            border: 2px solid black !important;
+          }
+        }
+        
         /* AGGRESSIVE CURSOR ENFORCEMENT - NUCLEAR OPTION */
         #phoneFormContainer * {
           cursor: inherit !important;
@@ -5820,6 +6913,23 @@
       return true;
     }
 
+
+    // Preparation Accordion Toggle Function
+    function togglePrepItem(element) {
+      const prepItem = element.parentElement;
+      const isActive = prepItem.classList.contains('active');
+      
+      // Close all other prep items
+      const allPrepItems = document.querySelectorAll('.prep-item');
+      allPrepItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Toggle current item
+      if (!isActive) {
+        prepItem.classList.add('active');
+      }
+    }
 
     // TEST: Verify script is loading
     console.log('🔥 SCRIPT IS LOADING - This should appear immediately!');
@@ -5933,7 +7043,12 @@
                 // Check various storage keys that might contain questionnaire data
                 const calMetadata = JSON.parse(localStorage.getItem('cal_metadata') || '{}');
                 const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
-                const sessionData = JSON.parse(sessionStorage.getItem('questionnaireData') || '{}');
+                // Try localStorage first (survives page refresh), then sessionStorage
+                let questionnaireData = localStorage.getItem('questionnaireData');
+                if (!questionnaireData) {
+                  questionnaireData = sessionStorage.getItem('questionnaireData');
+                }
+                const sessionData = JSON.parse(questionnaireData || '{}');
                 
                 return {
                   email: calMetadata.email || formData.email || sessionData.email || '',
@@ -6444,7 +7559,12 @@
             try {
               const calMetadata = JSON.parse(localStorage.getItem('cal_metadata') || '{}');
               const formData = JSON.parse(localStorage.getItem('form_data') || '{}');
-              const sessionData = JSON.parse(sessionStorage.getItem('questionnaireData') || '{}');
+              // Try localStorage first (survives page refresh), then sessionStorage
+              let questionnaireData = localStorage.getItem('questionnaireData');
+              if (!questionnaireData) {
+                questionnaireData = sessionStorage.getItem('questionnaireData');
+              }
+              const sessionData = JSON.parse(questionnaireData || '{}');
               
               return {
                 email: calMetadata.email || formData.email || sessionData.email || '',
@@ -7004,6 +8124,7 @@
         }
       }
     }, 10000); // Check every 10 seconds
+    
     
   </script>
   
