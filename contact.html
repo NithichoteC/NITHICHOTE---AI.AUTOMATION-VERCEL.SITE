@@ -22,6 +22,8 @@
   <link href="icon-192.png" rel="icon" type="image/png" sizes="192x192">
   <link href="icon-512.png" rel="icon" type="image/png" sizes="512x512">
   <link rel="manifest" href="manifest.json">
+  <!-- Mobile Overflow Fixes -->
+  <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css">
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -207,18 +209,25 @@
     /* Perfect centering for all question content */
     .question-slide {
       width: 100%;
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      visibility: hidden;
       opacity: 0;
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .question-slide.active {
+      transform: scale(0.95);
+      transition: all 0.3s ease-out;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+    }
+    
+    .question-slide.active {
+      visibility: visible;
       opacity: 1;
-      height: 100%;
+      transform: scale(1);
     }
     
     .question-content {
@@ -329,10 +338,10 @@
     }
     
     .pill-option.selected {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.3);
-      color: var(--white);
-      font-weight: 500;
+      background: rgba(255, 255, 255, 0.12) !important;
+      border-color: rgba(255, 255, 255, 0.3) !important;
+      color: var(--white) !important;
+      font-weight: 500 !important;
     }
     
     /* Minimal Input Styles */
@@ -1267,6 +1276,8 @@
     </footer>
   
   <script>
+    // Production questionnaire initialization
+    
     // Security: Input sanitization function
     function sanitizeInput(input) {
       if (typeof input !== 'string') return input;
@@ -1332,7 +1343,7 @@
       if (questionElement) {
         setTimeout(() => {
           questionElement.classList.add('active');
-        }, 100);
+        }, 50);
       }
       
       // Handle scrolling for Calendly page
@@ -1421,25 +1432,34 @@
       }
     }
     
-    function selectPillOption(element) {
+    // Simple pill selection function
+    window.selectPill = function(element) {
       const fieldName = element.getAttribute('data-field');
       const value = element.getAttribute('data-value');
       
-      // Remove selection from siblings
+      // Remove selected class from all pills in this group
       const container = element.parentElement;
-      container.querySelectorAll('.pill-option').forEach(pill => {
-        pill.classList.remove('selected');
-      });
+      const pills = container.querySelectorAll('.pill-option');
+      pills.forEach(pill => pill.classList.remove('selected'));
       
-      // Add selection to clicked pill
+      // Add selected class to clicked pill
       element.classList.add('selected');
       
       // Set hidden field value
       const hiddenField = document.getElementById(fieldName);
       if (hiddenField) {
         hiddenField.value = value;
+        console.log('✅ Selected:', element.textContent, '- Value set to:', value);
+        
+        // Production: Log selection for analytics
+        if (window.gtag) {
+          gtag('event', 'form_interaction', {
+            event_category: 'questionnaire',
+            event_label: fieldName + ':' + value
+          });
+        }
       }
-    }
+    };
     
     function selectOption(element, fieldName) {
       // Remove selection from siblings
@@ -1474,7 +1494,15 @@
         budget: sanitizeInput(document.getElementById('budget-range')?.value || '')
       };
       
-      // Save questionnaire data to sessionStorage for n8n webhook
+      // Capture UTM parameters for complete attribution tracking
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmSource = urlParams.get('utm_source') || sessionStorage.getItem('utm_source') || 'direct';
+      const utmMedium = urlParams.get('utm_medium') || sessionStorage.getItem('utm_medium') || 'none';
+      const utmCampaign = urlParams.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || 'none';
+      const utmTerm = urlParams.get('utm_term') || sessionStorage.getItem('utm_term') || '';
+      const utmContent = urlParams.get('utm_content') || sessionStorage.getItem('utm_content') || '';
+      
+      // Save questionnaire data to sessionStorage for n8n webhook (with complete UTM tracking)
       const dataForWebhook = {
         company: questionnaireData.company,
         role: questionnaireData.role,
@@ -1482,6 +1510,11 @@
         challenge: questionnaireData.challenge,
         challengeLabel: getChallengeLabel(questionnaireData.challenge),
         budget: questionnaireData.budget,
+        original_source: utmSource,
+        original_medium: utmMedium,
+        original_campaign: utmCampaign,
+        original_term: utmTerm,
+        original_content: utmContent,
         submittedAt: new Date().toISOString()
       };
       
@@ -1498,21 +1531,14 @@
       if (questionnaireData.budget) calendarPageParams.append('a5', `Budget: ${questionnaireData.budget}`);
       
       // Preserve original UTM parameters from URL or sessionStorage
-      const urlParams = new URLSearchParams(window.location.search);
+      const calendarUrlParams = new URLSearchParams(window.location.search);
       
       const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-      
-        utm_source: sessionStorage.getItem('utm_source'),
-        utm_medium: sessionStorage.getItem('utm_medium'),
-        utm_campaign: sessionStorage.getItem('utm_campaign'),
-        utm_term: sessionStorage.getItem('utm_term'),
-        utm_content: sessionStorage.getItem('utm_content')
-      });
       
       let hasUTM = false;
       utmParams.forEach(param => {
         // Check URL first, then sessionStorage
-        const urlValue = urlParams.get(param);
+        const urlValue = calendarUrlParams.get(param);
         const sessionValue = sessionStorage.getItem(param);
         const value = urlValue || sessionValue;
         
@@ -1610,7 +1636,13 @@
         }
         
       } catch (error) {
-        console.error('Form submission error:', error);
+        // Production error logging
+        if (window.gtag) {
+          gtag('event', 'exception', {
+            description: 'Form submission error: ' + error.message,
+            fatal: false
+          });
+        }
         
         // Show error message
         document.getElementById('errorMessage').style.display = 'block';
@@ -1636,22 +1668,58 @@
     document.addEventListener('DOMContentLoaded', function() {
       showQuestion(1);
       
-      // Add pill option click handlers
-      document.querySelectorAll('.pill-option').forEach(pill => {
-        pill.addEventListener('click', function() {
-          selectPillOption(this);
+      // IMMEDIATE click handlers - no delay needed
+      function attachClickHandlers() {
+        console.log('🔧 Attaching click handlers...');
+        
+        // Add direct click handlers to all pill options
+        const allPills = document.querySelectorAll('.pill-option');
+        console.log('🔍 Found', allPills.length, 'pill-option elements');
+        
+        allPills.forEach((pill, index) => {
+          console.log(`🔍 Pill ${index}:`, pill.textContent.trim());
+          
+          // Remove any existing listeners first
+          pill.removeEventListener('click', pill._clickHandler);
+          
+          // Create new click handler
+          pill._clickHandler = function(e) {
+            console.log('🎯 PILL CLICKED:', this.textContent.trim());
+            e.preventDefault();
+            e.stopPropagation();
+            selectPill(this);
+          };
+          
+          pill.addEventListener('click', pill._clickHandler);
         });
-      });
+        
+        // Add direct click handlers to all option cards  
+        const allCards = document.querySelectorAll('.option-card');
+        console.log('🔍 Found', allCards.length, 'option-card elements');
+        
+        allCards.forEach(card => {
+          // Remove any existing listeners first
+          card.removeEventListener('click', card._clickHandler);
+          
+          card._clickHandler = function(e) {
+            console.log('🎯 CARD CLICKED:', this.textContent.trim());
+            e.preventDefault();
+            e.stopPropagation();
+            const hiddenField = this.closest('.question-slide').querySelector('input[type="hidden"]');
+            if (hiddenField) {
+              selectOption(this, hiddenField.id);
+            }
+          };
+          
+          card.addEventListener('click', card._clickHandler);
+        });
+        
+        console.log('✅ Click handlers attached successfully!');
+      }
       
-      // Add option card click handlers
-      document.querySelectorAll('.option-card').forEach(card => {
-        card.addEventListener('click', function() {
-          const hiddenField = this.closest('.question-slide').querySelector('input[type="hidden"]');
-          if (hiddenField) {
-            selectOption(this, hiddenField.id);
-          }
-        });
-      });
+      // Attach handlers immediately and also after a short delay
+      attachClickHandlers();
+      setTimeout(attachClickHandlers, 100);
       
       // Add form submit handler
       document.getElementById('automation-questionnaire').addEventListener('submit', function(e) {
