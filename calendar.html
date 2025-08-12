@@ -5978,14 +5978,27 @@
             console.log('📡 Webhook payload:', webhookData);
             console.log('📡 Sending to:', webhookUrl);
             
-            // Send webhook with enhanced debugging
-            console.log('🚀 WEBHOOK: Starting fetch request...');
-            fetch(webhookUrl, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(webhookData)
+            // Send webhook as GET request with query parameters (your n8n webhook only accepts GET)
+            const params = new URLSearchParams({
+              phone: webhookData.phone,
+              formatted_phone: webhookData.formatted_phone,
+              source: webhookData.source,
+              timestamp: webhookData.timestamp,
+              email: webhookData.matching_data.email || '',
+              name: webhookData.matching_data.name || '',
+              company: webhookData.matching_data.company || '',
+              role: webhookData.matching_data.role || '',
+              teamSize: webhookData.matching_data.teamSize || '',
+              challenge: webhookData.matching_data.challenge || '',
+              call_type: webhookData.call_request.type
+            });
+            
+            const getWebhookUrl = `${webhookUrl}?${params.toString()}`;
+            console.log('🚀 WEBHOOK: Starting GET request with params...');
+            console.log('📡 GET URL:', getWebhookUrl);
+            
+            fetch(getWebhookUrl, {
+              method: 'GET'
             })
             .then(response => {
               console.log('📡 WEBHOOK RESPONSE:', {
@@ -6475,14 +6488,27 @@
           
           console.log('📡 EVENT DELEGATION Webhook payload:', webhookData);
           
-          // Send webhook with enhanced debugging
-          console.log('🚀 EVENT DELEGATION WEBHOOK: Starting fetch request...');
-          fetch(webhookUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(webhookData)
+          // Send webhook as GET request with query parameters (your n8n webhook only accepts GET)
+          const params = new URLSearchParams({
+            phone: webhookData.phone,
+            formatted_phone: webhookData.formatted_phone,
+            source: webhookData.source,
+            timestamp: webhookData.timestamp,
+            email: webhookData.matching_data.email || '',
+            name: webhookData.matching_data.name || '',
+            company: webhookData.matching_data.company || '',
+            role: webhookData.matching_data.role || '',
+            teamSize: webhookData.matching_data.teamSize || '',
+            challenge: webhookData.matching_data.challenge || '',
+            call_type: webhookData.call_request.type
+          });
+          
+          const getWebhookUrl = `${webhookUrl}?${params.toString()}`;
+          console.log('🚀 EVENT DELEGATION WEBHOOK: Starting GET request with params...');
+          console.log('📡 EVENT DELEGATION GET URL:', getWebhookUrl);
+          
+          fetch(getWebhookUrl, {
+            method: 'GET'
           })
           .then(response => {
             console.log('📡 EVENT DELEGATION WEBHOOK RESPONSE:', {
