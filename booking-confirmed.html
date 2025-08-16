@@ -328,6 +328,49 @@
       transform: translateY(0);
     }
     
+    /* Mobile Responsive Text Sizing */
+    @media (max-width: 767px) {
+      .confirmation-heading {
+        font-size: clamp(1.5rem, 4vw, 2rem) !important;
+        line-height: 1.2 !important;
+      }
+      
+      .confirmation-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+        margin: 0 0 2rem 0 !important;
+      }
+      
+      .card-title {
+        font-size: 0.9rem !important;
+      }
+      
+      .card-description {
+        font-size: 0.85rem !important;
+        line-height: 1.4 !important;
+      }
+      
+      .confirmation-container {
+        padding: 1rem !important;
+      }
+      
+      .confirmation-card {
+        padding: 1.5rem !important;
+        margin: 0 0 1.5rem 0 !important;
+      }
+      
+      .card-section {
+        margin-bottom: 1rem !important;
+        padding: 0.25rem !important;
+      }
+      
+      /* Improve button sizing on mobile */
+      .link-button {
+        font-size: 0.9rem !important;
+        padding: 0.75rem 1.5rem !important;
+      }
+    }
+    
     .icon {
       width: 16px;
       height: 16px;
