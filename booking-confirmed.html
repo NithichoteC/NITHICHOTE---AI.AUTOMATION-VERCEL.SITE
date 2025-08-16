@@ -1,0 +1,543 @@
+<!DOCTYPE html><!--  Professional Booking Confirmation Page  -->
+<html data-wf-page="booking-confirmed" data-wf-site="686bac2b4d1341d4cca18daf" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Strategy Session Confirmed - Nithichote</title>
+  <meta content="Your AI automation strategy session is confirmed. Check your email for meeting details and prepare for your personalized consultation." name="description">
+  <meta content="Strategy Session Confirmed - Nithichote" property="og:title">
+  <meta content="Your AI automation strategy session is confirmed. Check your email for meeting details and prepare for your personalized consultation." property="og:description">
+  <meta content="Strategy Session Confirmed - Nithichote" property="twitter:title">
+  <meta content="Your AI automation strategy session is confirmed. Check your email for meeting details and prepare for your personalized consultation." property="twitter:description">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/phuns-fresh-site.webflow.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href="favicon.ico" rel="icon" type="image/x-icon">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="icon-192.png" rel="icon" type="image/png" sizes="192x192">
+  <link href="icon-512.png" rel="icon" type="image/png" sizes="512x512">
+  <link rel="manifest" href="manifest.json">
+  <!-- Mobile Overflow Fixes -->
+  <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5F668SP9');</script>
+  <!-- End Google Tag Manager -->
+  
+  <style>
+    /* Professional Booking Confirmation Design - Vercel/Apple Aesthetic */
+    :root {
+      --primary-black: #0f0f0f;
+      --white: white;
+      --border: #b4b4b414;
+      --grey: #b4b4b4;
+      --dark: #202020;
+      --secondary-black: #202020;
+      --success-green: #22c55e;
+      --success-green-light: rgba(34, 197, 94, 0.1);
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--primary-black);
+      color: var(--white);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.6;
+    }
+    
+    .confirmation-container {
+      max-width: 600px;
+      width: 100%;
+      padding: 3rem 2rem 2rem 2rem;
+      text-align: center;
+    }
+    
+    .status-indicator {
+      width: 80px;
+      height: 80px;
+      border-radius: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem auto;
+      position: relative;
+      animation: successPulse 2s ease-in-out;
+    }
+    
+    @keyframes successPulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .status-indicator::before {
+      content: '✓';
+      font-size: 2rem;
+      color: var(--primary-black);
+      font-weight: 600;
+    }
+    
+    .confirmation-heading {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    
+    .confirmation-subtitle {
+      font-size: 1.25rem;
+      color: var(--grey);
+      margin: 0 0 3rem 0;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .confirmation-card {
+      background: var(--secondary-black);
+      border: 1px solid var(--border);
+      border-radius: 0;
+      padding: 2rem;
+      margin: 0 0 2rem 0;
+      text-align: left;
+    }
+    
+    .card-section {
+      margin-bottom: 1.5rem;
+      padding: 0.5rem;
+      border-radius: 0;
+      transition: all 0.2s ease;
+    }
+    
+    /* Removed hover effect for cleaner static appearance */
+    
+    .card-section:last-child {
+      margin-bottom: 0;
+    }
+    
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .card-description {
+      font-size: 0.95rem;
+      color: var(--grey);
+      margin: 0;
+    }
+    
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+      align-items: center;
+    }
+    
+    /* Site's exact button styles */
+    .link-button {
+      grid-column-gap: 3px;
+      grid-row-gap: 3px;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-decoration: none;
+      display: flex;
+      overflow: hidden;
+    }
+    
+    .link-button.bigger {
+      margin-top: 0;
+      transform: scale(1.2);
+    }
+    
+    .button-link-wrapper {
+      grid-column-gap: 5px;
+      grid-row-gap: 5px;
+      flex-flow: row;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+      position: relative;
+    }
+    
+    .button-text-block {
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 14px;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .button-text-block.bigger {
+      height: 14px;
+    }
+    
+    .button-text {
+      color: var(--white);
+      text-transform: uppercase;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+    }
+    
+    /* Ensure both buttons have same font size */
+    .link-button .button-text {
+      font-size: 14px;
+    }
+    
+    .button-text.is-hover {
+      color: var(--grey);
+    }
+    
+    /* Return Home button hover text should be white */
+    .link-button.bigger .button-text.is-hover {
+      color: var(--white);
+    }
+    
+    .arrow-button-block {
+      justify-content: center;
+      align-items: center;
+      width: 1rem;
+      height: 1rem;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .arrow-button {
+      color: var(--white);
+      width: 1rem;
+      height: 1rem;
+      line-height: 1;
+      position: absolute;
+      inset: 0%;
+    }
+    
+    .arrow-button._02 {
+      color: var(--grey);
+    }
+    
+    /* Secondary button styling - grey to match Return Home hover state */
+    .link-button:not(.bigger) .button-text {
+      color: var(--grey);
+    }
+    
+    .link-button:not(.bigger) .button-text.is-hover {
+      color: var(--grey);
+    }
+    
+    /* Site's exact underline animation system - visible by default, disappears on hover */
+    .underline {
+      background-color: white;
+      width: 100%;
+      height: 1px;
+      margin-top: 3px;
+      transform: scaleX(1);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .underline.is-nav {
+      background-color: var(--grey);
+    }
+
+    .link-button:hover .underline {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+    
+    /* Arrow animations matching site exactly */
+    .arrow-button._01 {
+      transition: transform 0.3s ease;
+      transform: translateX(0);
+    }
+    
+    .arrow-button._02 {
+      transition: transform 0.3s ease;
+      transform: translateX(100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .link-button:hover .arrow-button._01 {
+      transform: translateX(-100%);
+    }
+    
+    .link-button:hover .arrow-button._02 {
+      transform: translateX(0);
+    }
+    
+    /* Text sliding animation on hover */
+    .button-text {
+      transition: transform 0.3s ease;
+      transform: translateY(0);
+    }
+    
+    .button-text.is-hover {
+      transition: transform 0.3s ease;
+      transform: translateY(-100%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    
+    .link-button:hover .button-text {
+      transform: translateY(100%);
+    }
+    
+    .link-button:hover .button-text.is-hover {
+      transform: translateY(0);
+    }
+    
+    .icon {
+      width: 16px;
+      height: 16px;
+      opacity: 0.8;
+      transition: transform 0.2s ease;
+    }
+    
+    /* Removed icon hover effect for cleaner static appearance */
+    
+    @media (max-width: 768px) {
+      .confirmation-container {
+        padding: 2rem 1.5rem 1.5rem 1.5rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      
+      .status-indicator {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 1.5rem auto;
+      }
+      
+      .status-indicator::before {
+        font-size: 1.5rem;
+      }
+      
+      .confirmation-heading {
+        font-size: clamp(1.5rem, 6vw, 2.25rem);
+        margin: 0 0 0.75rem 0;
+      }
+      
+      .confirmation-subtitle {
+        font-size: 1rem;
+        margin: 0 0 2rem 0;
+      }
+      
+      .confirmation-card {
+        padding: 1.25rem;
+        margin: 0 0 1.5rem 0;
+      }
+      
+      .action-buttons {
+        gap: 1.25rem;
+        margin-top: 2rem;
+      }
+      
+      .link-button.bigger {
+        transform: scale(1);
+        margin-top: 0;
+      }
+      
+      .button-text {
+        font-size: 13px;
+      }
+    }
+    
+    @media (min-width: 769px) {
+      .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 3rem;
+      }
+      
+      .link-button.bigger {
+        margin-top: 0;
+        transform: scale(1.1);
+      }
+    }
+    
+    @media (max-width: 479px) {
+      .confirmation-container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .status-indicator {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 1rem auto;
+      }
+      
+      .status-indicator::before {
+        font-size: 1.25rem;
+      }
+      
+      .confirmation-heading {
+        font-size: clamp(1.25rem, 7vw, 2rem);
+        margin: 0 0 0.5rem 0;
+      }
+      
+      .confirmation-subtitle {
+        font-size: 0.9rem;
+        margin: 0 0 1.5rem 0;
+      }
+      
+      .confirmation-card {
+        padding: 1rem;
+        margin: 0 0 1.25rem 0;
+      }
+      
+      .card-title {
+        font-size: 0.9rem;
+      }
+      
+      .card-description {
+        font-size: 0.85rem;
+      }
+      
+      .action-buttons {
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      
+      .button-text {
+        font-size: 12px;
+      }
+      
+      .icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/gtm.ns.html?id=GTM-5F668SP9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="confirmation-container">
+    <div class="status-indicator"></div>
+    
+    <h1 class="confirmation-heading">Strategy Session Confirmed</h1>
+    <p class="confirmation-subtitle">Your AI automation strategy session is scheduled. Check your email for meeting details and calendar invitation.</p>
+    
+    <div class="confirmation-card">
+      <div class="card-section">
+        <div class="card-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Check Your Email
+        </div>
+        <p class="card-description">You'll receive a calendar invitation with meeting details, Zoom link, and preparation materials within the next few minutes.</p>
+      </div>
+      
+      <div class="card-section">
+        <div class="card-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 6v6l4 2"/>
+            <circle cx="12" cy="12" r="10"/>
+          </svg>
+          Meeting Preparation
+        </div>
+        <p class="card-description">Complete the video and AI discovery steps to ensure we maximize your 30-minute strategy session.</p>
+      </div>
+      
+      <div class="card-section">
+        <div class="card-title">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/>
+          </svg>
+          Add to Calendar
+        </div>
+        <p class="card-description">Add the meeting to your preferred calendar app to receive reminders and ensure you don't miss your session.</p>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="contact.html?schedule_another=true" class="link-button w-inline-block">
+        <div class="button-link-wrapper">
+          <div class="button-text-block">
+            <div class="button-text">Schedule Another Session</div>
+            <div class="button-text is-hover">SCHEDULE ANOTHER SESSION</div>
+          </div>
+        </div>
+        <div class="underline is-nav"></div>
+      </a>
+      <a href="index.html" class="link-button bigger w-inline-block">
+        <div class="button-link-wrapper">
+          <div class="button-text-block bigger">
+            <div class="button-text">Return Home</div>
+            <div class="button-text is-hover">RETURN HOME</div>
+          </div>
+        </div>
+        <div class="underline"></div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Track page view for confirmed bookings
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'page_view', {
+        page_title: 'Booking Confirmed',
+        page_location: window.location.href
+      });
+    }
+    
+    // Store confirmation view
+    localStorage.setItem('confirmationViewed', 'true');
+    localStorage.setItem('confirmationViewTime', new Date().toISOString());
+  </script>
+</body>
+</html>
