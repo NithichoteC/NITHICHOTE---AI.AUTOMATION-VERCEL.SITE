@@ -150,3 +150,38 @@ h1, h2, h3, h4, h5, h6, p {
 /* * {
   outline: 1px solid red !important;
 } */
+
+/* 11. iOS Form Field Fixes - Professional Mobile UX */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  font-size: 16px !important; /* Prevents zoom on iOS */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0 !important; /* Remove iOS default curved edges */
+  background-clip: padding-box;
+}
+
+/* Cal.com iframe form fixes */
+#my-cal-inline-30min iframe {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 12. Professional Mobile Touch Handling */
+@media (max-width: 767px) {
+  /* Remove iOS touch highlights and improve button responsiveness */
+  a, button, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    touch-action: manipulation;
+  }
+  
+  /* Prevent overscroll bounce on iOS for professional feel */
+  body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+}
