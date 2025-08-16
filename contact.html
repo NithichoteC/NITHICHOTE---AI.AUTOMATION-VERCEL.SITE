@@ -1518,7 +1518,10 @@
         submittedAt: new Date().toISOString()
       };
       
+      // Store in both localStorage (persistent) and sessionStorage (temporary) for compatibility
+      localStorage.setItem('questionnaireData', JSON.stringify(dataForWebhook));
       sessionStorage.setItem('questionnaireData', JSON.stringify(dataForWebhook));
+      console.log('💾 Questionnaire data stored in both localStorage and sessionStorage for maximum reliability');
       
       // Build URL parameters for calendar page
       const calendarPageParams = new URLSearchParams();
@@ -1555,6 +1558,14 @@
         calendarPageParams.append('utm_source', 'website');
         calendarPageParams.append('utm_medium', 'questionnaire-completion');
       } else {
+      }
+      
+      // 🔄 PASS THROUGH SCHEDULE_ANOTHER PARAMETER - Essential for rescheduling flow
+      const currentUrlParams = new URLSearchParams(window.location.search);
+      const scheduleAnother = currentUrlParams.get('schedule_another');
+      if (scheduleAnother === 'true') {
+        calendarPageParams.append('schedule_another', 'true');
+        console.log('🔄 Passing schedule_another=true parameter to calendar.html for fresh booking flow');
       }
       
       // Build calendar page URL
@@ -1753,6 +1764,85 @@
       document.querySelectorAll('.question-slide').forEach(slide => {
         observer.observe(slide, { attributes: true });
       });
+      
+      // Professional booking detection - redirect to confirmation page
+      function checkExistingBooking() {
+        try {
+          console.log('🔍 === BOOKING CHECK DEBUG ===');
+          console.log('🔍 Current URL:', window.location.href);
+          console.log('🔍 Document referrer:', document.referrer);
+          
+          // Check if user explicitly wants to schedule another session
+          const urlParams = new URLSearchParams(window.location.search);
+          const scheduleAnother = urlParams.get('schedule_another') === 'true';
+          const fromConfirmation = document.referrer.includes('booking-confirmed.html');
+          
+          console.log('🔍 schedule_another parameter:', urlParams.get('schedule_another'));
+          console.log('🔍 scheduleAnother:', scheduleAnother);
+          console.log('🔍 fromConfirmation:', fromConfirmation);
+          
+          // Don't redirect if user is intentionally scheduling another session
+          if (scheduleAnother || fromConfirmation) {
+            console.log('🔄 Allowing fresh booking flow (schedule_another=true or from confirmation)');
+            return;
+          }
+          
+          const existingBooking = localStorage.getItem('questionnaireData');
+          const bookingConfirmed = localStorage.getItem('bookingConfirmed');
+          
+          console.log('🔍 existingBooking:', !!existingBooking);
+          console.log('🔍 bookingConfirmed:', bookingConfirmed);
+          console.log('🔍 Should redirect to static confirmation?', !!(existingBooking || bookingConfirmed)); 
+          
+          if (existingBooking || bookingConfirmed) {
+            // Show professional site-matching loading overlay
+            const loadingMessage = document.createElement('div');
+            loadingMessage.style.cssText = `
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(15, 15, 15, 0.98);
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              z-index: 10000;
+              font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+              color: white;
+            `;
+            loadingMessage.innerHTML = `
+              <div style="width: 60px; height: 60px; border: 2px solid rgba(255, 255, 255, 0.1); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 2rem;"></div>
+              <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: white;">Taking You to Your Confirmation</div>
+              <div style="font-size: 1rem; color: #b4b4b4; max-width: 400px; text-align: center; line-height: 1.5;">You've already booked your session. Redirecting to your confirmation page...</div>
+            `;
+            
+            // Add professional spin animation
+            const style = document.createElement('style');
+            style.textContent = `
+              @keyframes spin { 
+                0% { transform: rotate(0deg); } 
+                100% { transform: rotate(360deg); } 
+              }
+            `;
+            document.head.appendChild(style);
+            
+            document.body.appendChild(loadingMessage);
+            
+            // Redirect after brief delay
+            setTimeout(() => {
+              console.log('🔄 Redirecting returning user to static confirmation page');
+              window.location.href = 'booking-confirmed.html';
+            }, 800);
+          }
+        } catch (err) {
+          console.log('Booking check error:', err);
+        }
+      }
+      
+      // Run booking check IMMEDIATELY on page load - no delay to prevent bypass
+      checkExistingBooking();
     });
   </script>
   <!-- Cookie Consent Script -->
