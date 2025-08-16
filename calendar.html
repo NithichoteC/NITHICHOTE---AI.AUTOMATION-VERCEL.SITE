@@ -5970,33 +5970,27 @@
           const confirmationCSS = document.createElement('style');
           confirmationCSS.id = 'dynamic-confirmation-styles';
           confirmationCSS.textContent = `
-            /* Professional Booking Confirmation Design - Dynamic Page Styles */
+            /* RESTORED ORIGINAL: Professional Booking Confirmation - Dynamic Page Styles */
             .enhanced-confirmation {
               min-height: 100vh;
               background: var(--primary-black, #0f0f0f);
               color: var(--white, white);
               font-family: 'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
               line-height: 1.6;
-            }
-            
-            .enhanced-confirmation :root {
-              --primary-black: #0f0f0f;
-              --white: white;
-              --border: #b4b4b414;
-              --grey: #b4b4b4;
-              --dark: #202020;
-              --secondary-black: #202020;
-              --success-green: #22c55e;
-              --success-green-light: rgba(34, 197, 94, 0.1);
+              position: relative;
+              display: block;
+              visibility: visible;
+              opacity: 1;
             }
 
-            /* Confirmation Page Structure - Professional Spacing */
+            /* Confirmation Page Structure - Original Professional Spacing */
             .confirmation-container {
-              max-width: 900px;
+              max-width: 1000px;
               width: 100%;
-              padding: 8rem 2rem 1.5rem 2rem; /* Significantly increased top padding for much more space above header */
+              padding: 4rem 2rem 2rem 2rem;
               text-align: center;
               margin: 0 auto;
+              position: relative;
             }
 
             .confirmation-success-badge {
@@ -6013,85 +6007,60 @@
             }
 
             .confirmation-heading {
-              font-size: clamp(2rem, 5vw, 2.75rem);
+              font-size: clamp(2.5rem, 5vw, 3rem);
               font-weight: 700;
               margin: 0 0 1rem 0;
               letter-spacing: -0.02em;
               color: var(--white, white);
+              line-height: 1.2;
             }
 
-            /* Split tagline for better visual hierarchy */
-            .confirmation-problem-statement {
+            .confirmation-tagline {
               font-size: 1.25rem;
               color: var(--grey, #b4b4b4);
-              margin: 0 0 0.5rem 0;
-              max-width: 700px;
+              margin: 0 0 3rem 0;
+              max-width: 800px;
               margin-left: auto;
               margin-right: auto;
               font-weight: 400;
+              line-height: 1.4;
             }
 
-            .confirmation-action-statement {
-              font-size: 1.125rem;
-              color: var(--white, white);
-              margin: 0 0 2rem 0;
-              max-width: 700px;
-              margin-left: auto;
-              margin-right: auto;
-              font-weight: 500;
-              letter-spacing: -0.01em;
-            }
-
-            /* Small dividers for visual separation */
-            .confirmation-divider {
-              height: 1px;
-              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-              width: 100px;
-              margin: 1rem auto;
-            }
-
-            .confirmation-section-divider {
-              height: 1px;
-              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-              width: 200px;
-              margin: 2rem auto 3rem auto;
-            }
-
-            /* Step Structure - Fixed alignment */
+            /* Step Structure - Original Clean Design */
             .step-indicator {
               display: flex;
               align-items: center;
               gap: 0.75rem;
-              margin-bottom: 1.5rem;
+              margin-bottom: 2rem;
               justify-content: center;
             }
 
             .step-number-badge {
-              background: var(--white, white);
-              color: var(--primary-black, #0f0f0f);
-              width: 2rem;
-              height: 2rem;
+              width: 32px;
+              height: 32px;
+              background: transparent;
+              border: 1px solid rgba(255, 255, 255, 0.3);
               border-radius: 50%;
               display: flex;
               align-items: center;
               justify-content: center;
-              font-weight: 700;
-              font-size: 0.875rem;
+              font-size: 1rem;
+              font-weight: 600;
+              color: rgba(255, 255, 255, 0.8);
               flex-shrink: 0;
-              text-align: center;
-              line-height: 1;
             }
 
             .step-indicator h2, .step-indicator h3 {
-              font-size: 1.5rem;
-              font-weight: 600;
-              color: var(--white, white);
               margin: 0;
+              font-size: 1.375rem !important;
+              font-weight: 600;
+              color: var(--white);
+              letter-spacing: -0.01em;
             }
 
-            /* Video Player Styles - Professional Spacing */
+            /* Video Player Styles - Original Design */
             .confirmation-video {
-              margin: 1.25rem 0; /* Reduced from 2rem for tighter layout */
+              margin: 2rem 0;
             }
 
             .professional-video-container {
@@ -6165,28 +6134,46 @@
               margin: 0;
             }
 
-            /* AI Discovery Section */
+            /* AI Discovery Section - Original Spacing */
             .ai-discovery-section {
-              margin: 1.5rem 0; /* Reduced from 3rem to half for tighter step spacing */
-              text-align: center;
+              padding: 4rem 2rem;
+              background-color: var(--primary-black);
+              position: relative;
+              overflow: hidden;
+              display: block;
+              visibility: visible;
+              opacity: 1;
+              min-height: 200px;
             }
 
             .ai-discovery-container {
-              max-width: 700px;
+              max-width: 1000px;
               margin: 0 auto;
+              position: relative;
+              z-index: 1;
             }
 
             .ai-discovery-heading {
-              font-size: 1.5rem;
+              font-size: 2rem;
               font-weight: 600;
-              color: var(--white, white);
-              margin: 0 0 1rem 0;
+              color: var(--white);
+              margin-bottom: 0.75rem;
+              line-height: 1.2;
+              letter-spacing: -0.02em;
+              text-align: center;
+              display: block;
+              visibility: visible;
             }
 
             .ai-discovery-subheading {
-              font-size: 1rem;
-              color: var(--grey, #b4b4b4);
-              margin: 0 0 2rem 0;
+              font-size: 1.125rem;
+              color: rgba(255, 255, 255, 0.6);
+              margin-bottom: 2.5rem;
+              line-height: 1.4;
+              max-width: 600px;
+              margin-left: auto;
+              margin-right: auto;
+              text-align: center;
             }
 
             .ai-supporting-text {
@@ -6196,17 +6183,17 @@
               text-align: center;
             }
 
-            /* Section Dividers */
+            /* Section Dividers - Original Style */
             .section-divider {
               height: 1px;
               background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
               width: 80%;
-              margin: 1.5rem auto; /* Reduced from 3rem to half for tighter spacing */
+              margin: 3rem auto;
             }
 
-            /* Accordion Styles - Professional Spacing */
+            /* Accordion Styles - Original Professional Design */
             .prep-section {
-              margin: 1.5rem 0; /* Reduced from 2rem for better flow */
+              margin: 2rem 0;
               text-align: left;
             }
 
@@ -6315,9 +6302,9 @@
               font-family: General Sans, Arial, sans-serif;
             }
 
-            /* Button Styles - Professional Spacing */
+            /* Button Styles - Original Professional Design */
             .minimal-contact {
-              margin: 1.5rem 0 1rem 0; /* Reduced bottom margin for cleaner footer */
+              margin: 2rem 0;
               text-align: center;
             }
 
@@ -6378,10 +6365,14 @@
               background-color: var(--grey, #b4b4b4);
               width: 100%;
               height: 1px;
-              margin-top: 3px;
+              margin-top: 1px;
               transform: scaleX(1);
               transform-origin: right;
               transition: transform 0.3s ease;
+            }
+
+            .underline.is-nav {
+              background-color: var(--grey, #b4b4b4);
             }
 
             .link-button:hover .underline {
@@ -6397,64 +6388,72 @@
               transform: translateY(0);
             }
 
-            /* Responsive Design - Professional Mobile Spacing */
+            /* Confirmation Footer */
+            .confirmation-footer {
+              padding: 1.5rem 1.5rem 0.75rem 1.5rem;
+              background: var(--primary-black);
+              border-top: 1px solid rgba(255, 255, 255, 0.05);
+              text-align: center;
+              display: block !important;
+            }
+
+            /* Mobile Responsive - Original Design */
             @media (max-width: 768px) {
-              .confirmation-container {
-                padding: 4rem 1.5rem 1rem 1.5rem; /* Increased top padding for mobile too */
+              .step-indicator {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
               }
               
-              .confirmation-heading {
-                font-size: clamp(1.5rem, 6vw, 2.25rem);
-                margin: 0 0 0.75rem 0;
+              .step-indicator h2,
+              .step-indicator h3 {
+                text-align: center;
               }
               
-              .confirmation-problem-statement {
-                font-size: 1.1rem;
-                margin: 0 0 0.25rem 0;
-              }
-              
-              .confirmation-action-statement {
-                font-size: 1rem;
-                margin: 0 0 1.25rem 0;
-              }
-              
-              .confirmation-section-divider {
-                width: 150px;
-                margin: 1.5rem auto 2rem auto;
-              }
-              
-              .step-indicator h2, .step-indicator h3 {
-                font-size: 1.25rem;
+              .ai-discovery-section {
+                padding: 3rem 1.5rem;
               }
               
               .ai-discovery-heading {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
+              }
+              
+              .confirmation-container {
+                padding: 3rem 1.5rem 1.5rem 1.5rem;
+              }
+              
+              .confirmation-heading {
+                font-size: clamp(2rem, 6vw, 2.5rem);
+                margin: 0 0 0.75rem 0;
+              }
+              
+              .confirmation-tagline {
+                font-size: 1.1rem;
+                margin: 0 0 2rem 0;
               }
             }
 
             @media (max-width: 479px) {
               .confirmation-container {
-                padding: 3rem 1rem 0.75rem 1rem; /* Increased top padding for very small screens */
+                padding: 2rem 1rem 1rem 1rem;
               }
               
               .confirmation-heading {
-                font-size: clamp(1.25rem, 7vw, 2rem);
+                font-size: clamp(1.5rem, 7vw, 2rem);
                 margin: 0 0 0.5rem 0;
               }
               
-              .confirmation-problem-statement {
-                font-size: 0.95rem;
-                margin: 0 0 0.25rem 0;
+              .confirmation-tagline {
+                font-size: 1rem;
+                margin: 0 0 1.5rem 0;
               }
               
-              .confirmation-action-statement {
-                font-size: 0.9rem;
-                margin: 0 0 1rem 0;
+              .ai-discovery-section {
+                padding: 2rem 1rem;
               }
               
-              .confirmation-section-divider {
-                width: 120px;
-                margin: 1rem auto 1.5rem auto;
+              .ai-discovery-heading {
+                font-size: 1.25rem;
               }
               
               .button-text {
