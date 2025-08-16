@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5, h6, p {
   overflow-wrap: break-word !important;
 }
 
-/* 10. Debug helper - uncomment to find overflow elements */
+/* 10. Production overflow prevention - all elements constrained */
 /* * {
   outline: 1px solid red !important;
 } */
