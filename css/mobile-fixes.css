@@ -203,6 +203,11 @@ select {
     margin-bottom: 0 !important;
   }
   
+  /* Fix underline spacing site-wide - make it tighter */
+  .underline {
+    margin-top: 1px !important; /* Reduced from 3px to 1px for professional look */
+  }
+  
   /* Fix button wrapper spacing */
   .button-link-wrapper {
     gap: 0.5rem !important;
