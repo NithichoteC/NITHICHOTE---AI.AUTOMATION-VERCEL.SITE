@@ -4667,15 +4667,42 @@
         utm_content: sessionStorage.getItem('utm_content')
       });
       
-      // Update questionnaire links to preserve UTM parameters
+      // Check for return users and handle CTA button behavior
+      const bookingConfirmed = localStorage.getItem('bookingConfirmed');
       const questionnaireLinks = document.querySelectorAll('a[href*="contact.html"]');
       
-      questionnaireLinks.forEach((link, index) => {
-        const href = link.getAttribute('href');
-        const separator = href.includes('?') ? '&' : '?';
-        const newHref = href + separator + urlParams.toString();
-        link.setAttribute('href', newHref);
-      });
+      if (bookingConfirmed === 'true') {
+        console.log('🔄 Return user detected - modifying CTA behavior');
+        
+        // Modify CTA buttons for confirmed users
+        questionnaireLinks.forEach((link, index) => {
+          const originalText = link.querySelector('.button-text:not(.is-hover)')?.textContent;
+          
+          // Update text for return users
+          if (originalText && originalText.toLowerCase().includes('get')) {
+            const buttonTextMain = link.querySelector('.button-text:not(.is-hover)');
+            const buttonTextHover = link.querySelector('.button-text.is-hover');
+            
+            if (buttonTextMain) buttonTextMain.textContent = 'View Your Session';
+            if (buttonTextHover) buttonTextHover.textContent = 'VIEW YOUR SESSION';
+          }
+          
+          // Redirect to static confirmation instead of form
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('🔄 Redirecting return user to static confirmation');
+            window.location.href = 'booking-confirmed.html';
+          });
+        });
+      } else {
+        // Normal flow for new users - preserve UTM parameters
+        questionnaireLinks.forEach((link, index) => {
+          const href = link.getAttribute('href');
+          const separator = href.includes('?') ? '&' : '?';
+          const newHref = href + separator + urlParams.toString();
+          link.setAttribute('href', newHref);
+        });
+      }
     });
   </script>
   
