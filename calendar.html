@@ -1005,9 +1005,6 @@
         padding: 2.5rem 1.5rem; /* Reduced further for mobile proportions */
       }
       
-      .confirmation-video {
-        margin: 1rem 0 1.5rem 0; /* Reduce bottom margin */
-      }
       
       .ai-supporting-text {
         margin: 0.75rem 0 !important; /* Tighter mobile spacing */
@@ -1030,15 +1027,6 @@
       }
     }
     
-    /* Enhanced Confirmation Page Styles */
-    .confirmation-video {
-      margin: 1rem 0 2rem 0;
-      text-align: center;
-      width: 100%;
-      max-width: 900px; /* Match professional laptop-friendly size */
-      margin-left: auto;
-      margin-right: auto;
-    }
     
     .confirmation-video h3 {
       font-size: 1.375rem;
@@ -1193,7 +1181,7 @@
       position: relative !important;
       display: block !important;
       width: 100% !important;
-      max-width: 900px !important;
+      max-width: 1200px !important;
       margin: 0 auto 3rem !important;
       
       /* Background and visibility */
@@ -1241,7 +1229,7 @@
     .professional-video-player {
       position: relative !important;
       width: 100% !important;
-      max-width: 900px !important; /* Professional laptop-friendly size */
+      max-width: 1200px !important; /* Professional laptop-friendly size */
       height: 0 !important; /* Required for padding-top technique */
       padding-top: 56.25% !important; /* 16:9 aspect ratio (9/16 * 100) */
       margin: 0 auto !important;
@@ -2744,9 +2732,6 @@
       }
       
       /* Reduce spacing for single-screen view */
-      .confirmation-video {
-        margin: 2rem 0;
-      }
       
       .ai-assistant-section {
         margin: 2rem 0;
@@ -5552,48 +5537,47 @@
           mainVideo.src = videoPath;
           mainVideo.preload = 'metadata';
           
-          // Enhanced iOS/Mobile Video Player Fix - Professional Implementation
+          // Professional iOS Video Player - Clean Implementation
           const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-          const isLowPowerMode = navigator.hardwareConcurrency <= 2; // Heuristic
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
           
           if (isIOS) {
-            console.log('📱 iOS detected - applying comprehensive mobile video optimizations');
+            console.log('📱 iOS detected - applying clean video optimizations');
             
-            // Essential iOS attributes for inline playback
+            // Essential iOS attributes for inline playback (NO native controls)
             mainVideo.setAttribute('playsinline', 'playsinline');
             mainVideo.setAttribute('webkit-playsinline', 'webkit-playsinline'); 
-            mainVideo.setAttribute('muted', 'muted'); // Required for autoplay
-            mainVideo.setAttribute('controls', 'controls'); // Critical for iOS playback
+            mainVideo.setAttribute('muted', 'muted');
+            // NOTE: NO controls attribute - we use custom overlay only
             
-            // Additional iOS compatibility attributes
-            mainVideo.setAttribute('x-webkit-airplay', 'allow');
-            mainVideo.setAttribute('x5-playsinline', ''); // QQ browser compatibility
-            mainVideo.setAttribute('x5-video-player-type', 'h5');
-            mainVideo.setAttribute('x5-video-player-fullscreen', 'false');
-            
-            // Prevent iOS native behaviors that interfere
+            // Prevent all iOS native behaviors
             mainVideo.style.webkitTouchCallout = 'none';
             mainVideo.style.webkitUserSelect = 'none';
             mainVideo.style.touchAction = 'manipulation';
             
-            // Force GPU acceleration for smoother playback
+            // Force hardware acceleration
             mainVideo.style.webkitTransform = 'translate3d(0, 0, 0)';
             mainVideo.style.webkitBackfaceVisibility = 'hidden';
             
-            // Prevent native fullscreen behavior
+            // Comprehensive fullscreen prevention
             mainVideo.addEventListener('webkitbeginfullscreen', function(e) {
-              console.log('📱 iOS: Preventing native fullscreen');
+              console.log('📱 iOS: Blocking fullscreen attempt');
               e.preventDefault();
-              if (mainVideo.webkitExitFullscreen) {
-                mainVideo.webkitExitFullscreen();
-              }
+              e.stopPropagation();
+              return false;
             });
             
-            // Handle iOS-specific video events
             mainVideo.addEventListener('webkitfullscreenchange', function(e) {
-              console.log('📱 iOS: Fullscreen change detected, maintaining inline mode');
+              if (mainVideo.webkitDisplayingFullscreen) {
+                console.log('📱 iOS: Force exiting fullscreen');
+                if (mainVideo.webkitExitFullscreen) {
+                  mainVideo.webkitExitFullscreen();
+                }
+              }
             });
+          } else {
+            // Non-iOS devices get minimal controls for better compatibility
+            mainVideo.removeAttribute('controls');
           }
           
           // YOUTUBE-STYLE SOLUTION: Extract first frame with blur effect
@@ -5837,7 +5821,6 @@
                 <span class="tagline-problem">${problemStatement}</span>
                 <span class="tagline-action">${actionStatement}</span>
               </div>
-              <div class="confirmation-section-divider"></div>
               
               <!-- Step 1: Video Section -->
               <div class="confirmation-video">
@@ -6111,7 +6094,7 @@
               display: flex;
               align-items: center;
               gap: 0.75rem;
-              margin-bottom: 2rem;
+              margin-bottom: 1rem;
               justify-content: center;
             }
 
@@ -6140,7 +6123,14 @@
 
             /* Video Player Styles - Perfect Balance */
             .confirmation-video {
-              margin: 2rem 0; /* Equal 2rem spacing above and below video */
+              margin: 2rem 0 2rem 0 !important; /* 2rem above and below for proper spacing */
+            }
+            
+            /* iPad specific video sizing */
+            @media (min-width: 768px) and (max-width: 1024px) {
+              .professional-video-player {
+                max-width: 1024px !important;
+              }
             }
 
             .professional-video-container {
@@ -6220,13 +6210,15 @@
               margin: 0;
             }
 
-            /* iOS-specific video optimizations */
+            /* Professional iOS Video Solution - Embrace Native Controls */
             @supports (-webkit-touch-callout: none) {
+              /* Enable smooth iOS video performance */
               .main-video {
-                -webkit-transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+                -webkit-transform: translate3d(0, 0, 0);
                 -webkit-backface-visibility: hidden;
               }
               
+              /* Style custom overlay for non-iOS devices */
               .video-play-overlay {
                 -webkit-tap-highlight-color: transparent;
                 -webkit-touch-callout: none;
@@ -6236,20 +6228,26 @@
                 -webkit-tap-highlight-color: transparent;
                 -webkit-touch-callout: none;
               }
+              
+              /* Professional video container */
+              .professional-video-player {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+              }
             }
 
             /* Mobile responsive spacing adjustments */
             @media (max-width: 767px) {
               .confirmation-video {
-                margin: 1.5rem 0; /* Tighter spacing on mobile */
+                margin: 1.5rem 0 1.5rem 0 !important; /* Balanced mobile spacing */
               }
               
               .section-divider {
-                margin: 1.5rem auto;
+                margin: 0.75rem auto;
               }
               
               .step-indicator {
-                margin-bottom: 1.5rem; /* Consistent mobile spacing */
+                margin-bottom: 0.75rem; /* Consistent mobile spacing */
               }
               
               .professional-video-player {
@@ -6259,15 +6257,15 @@
 
             @media (max-width: 479px) {
               .confirmation-video {
-                margin: 1rem 0; /* Even tighter on very small screens */
+                margin: 1rem 0 1rem 0 !important; /* Even tighter on very small screens */
               }
               
               .section-divider {
-                margin: 1rem auto;
+                margin: 0.5rem auto;
               }
               
               .step-indicator {
-                margin-bottom: 1rem;
+                margin-bottom: 0.5rem;
               }
             }
 
@@ -6325,7 +6323,7 @@
               height: 1px;
               background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
               width: 80%;
-              margin: 2rem auto; /* Reduced from 3rem for balanced spacing */
+              margin: 1rem auto; /* Reduced for perfect balance */
             }
 
             /* Accordion Styles - Original Professional Design */
@@ -6629,6 +6627,25 @@
               const isIPhone = /iPhone/i.test(navigator.userAgent);
               const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
               
+              // CRITICAL iOS FIRST: Handle iOS native controls immediately
+              if (isIOS) {
+                console.log('📱 iOS DETECTED: Implementing native controls strategy immediately');
+                
+                // Enable native controls and remove custom overlay completely
+                videoPlayer.controls = true;
+                videoPlayer.style.pointerEvents = 'auto';
+                
+                // Remove overlay from DOM completely on iOS
+                if (playOverlay) {
+                  playOverlay.remove();
+                  console.log('📱 iOS: Custom overlay removed from DOM');
+                }
+                
+                // For iOS, skip all custom logic and return early
+                console.log('📱 iOS: Native controls active, custom logic bypassed');
+                return;
+              }
+              
               // CRITICAL: Initialize video with proper source FIRST
               const userData = {
                 challenge: window.userChallenge || 'missed-opportunities'
@@ -6647,84 +6664,138 @@
               // Enable video controls for pause capability
               videoPlayer.controls = false; // Start without controls
               
-              // Play button click handler
-              playButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('🎥 Play button clicked');
-                
-                if (videoPlayer.paused) {
-                  playOverlay.classList.add('hidden');
-                  videoPlayer.controls = true; // Enable controls when playing
-                  videoPlayer.play().catch(err => {
-                    console.error('Video play error:', err);
-                    playOverlay.classList.remove('hidden');
-                  });
-                }
-              });
+              // Professional Video Interaction System
+              let isLoading = false;
+              let hasPlayed = false;
               
-              // Overlay click handler with iOS optimization
-              playOverlay.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('🎥 Video overlay clicked');
-                
-                if (videoPlayer.paused) {
-                  playOverlay.classList.add('hidden');
-                  videoPlayer.controls = true; // Enable controls when playing
-                  
-                  // iOS-specific: Prevent overlay from reappearing by removing certain event listeners
-                  if (isIOS) {
-                    console.log('📱 iOS: Configuring overlay to stay hidden during playback');
-                    playOverlay.style.pointerEvents = 'none'; // Temporarily disable overlay interactions
-                    
-                    // Re-enable overlay only when video is paused/ended
-                    const enableOverlayForIOS = () => {
-                      playOverlay.style.pointerEvents = 'auto';
-                      console.log('📱 iOS: Overlay interactions re-enabled');
-                    };
-                    
-                    videoPlayer.addEventListener('pause', enableOverlayForIOS, { once: true });
-                    videoPlayer.addEventListener('ended', enableOverlayForIOS, { once: true });
-                  }
-                  
-                  videoPlayer.play().catch(err => {
-                    console.error('Video play error:', err);
-                    playOverlay.classList.remove('hidden');
-                    if (isIOS) {
-                      playOverlay.style.pointerEvents = 'auto'; // Re-enable on error
+              // Create loading indicator
+              const createLoadingIndicator = () => {
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'video-loading-indicator';
+                loadingDiv.style.cssText = `
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  right: 0;
+                  bottom: 0;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  background: rgba(0, 0, 0, 0.5);
+                  z-index: 10;
+                `;
+                loadingDiv.innerHTML = `
+                  <div style="
+                    color: white;
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                  ">
+                    <div style="
+                      width: 16px;
+                      height: 16px;
+                      border: 2px solid rgba(255,255,255,0.3);
+                      border-top: 2px solid white;
+                      border-radius: 50%;
+                      animation: spin 1s linear infinite;
+                    "></div>
+                    Loading...
+                  </div>
+                  <style>
+                    @keyframes spin {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
                     }
-                  });
-                }
-              });
+                  </style>
+                `;
+                return loadingDiv;
+              };
               
-              // Video click to pause (when playing) - improved with proper toggle
-              videoPlayer.addEventListener('click', (e) => {
+              // Professional play function with loading states
+              const playVideo = async () => {
+                if (isLoading) return;
+                
+                console.log('🎥 Professional play initiated');
+                isLoading = true;
+                
+                // Show loading indicator
+                const loadingIndicator = createLoadingIndicator();
+                playOverlay.appendChild(loadingIndicator);
+                playButton.style.opacity = '0.5';
+                
+                try {
+                  // Clean controls handling - no native controls (non-iOS only)
+                  videoPlayer.controls = false;
+                  console.log('📱 Using custom controls only (non-iOS)');
+                  
+                  await videoPlayer.play();
+                  
+                  // Success - hide overlay
+                  playOverlay.classList.add('hidden');
+                  hasPlayed = true;
+                  console.log('✅ Video playing successfully');
+                  
+                } catch (err) {
+                  console.error('❌ Video play failed:', err);
+                  // Show error state
+                  const videoCaption = playOverlay.querySelector('.video-caption');
+                  if (videoCaption) {
+                    videoCaption.textContent = 'Unable to play - Click to retry';
+                  }
+                } finally {
+                  // Cleanup loading state
+                  isLoading = false;
+                  playButton.style.opacity = '1';
+                  if (loadingIndicator && loadingIndicator.parentNode) {
+                    loadingIndicator.parentNode.removeChild(loadingIndicator);
+                  }
+                }
+              };
+              
+              // Single unified click handler
+              const handlePlayClick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                if (!videoPlayer.paused) {
-                  console.log('🎥 Video clicked - pausing');
-                  videoPlayer.pause();
+                
+                if (videoPlayer.paused) {
+                  playVideo();
                 } else {
-                  console.log('🎥 Video clicked - playing');
-                  playOverlay.classList.add('hidden');
-                  videoPlayer.controls = true;
-                  videoPlayer.play();
+                  // Pause functionality
+                  console.log('⏸️ Pausing video');
+                  videoPlayer.pause();
                 }
-              });
+              };
               
-              // Video event handlers
+              // Apply click handlers
+              playButton.addEventListener('click', handlePlayClick);
+              playOverlay.addEventListener('click', handlePlayClick);
+              
+              // Professional container-based interaction (iOS-safe)
+              const videoContainer = document.querySelector('.professional-video-player');
+              if (videoContainer) {
+                videoContainer.addEventListener('click', (e) => {
+                  // Only handle clicks when not clicking on specific buttons
+                  if (!e.target.closest('.clean-play-button') && !isLoading) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handlePlayClick(e);
+                  }
+                });
+              }
+              
+              // NOTE: iOS logic moved to top of function for immediate handling
+              
+              // Event handlers for overlay management
               videoPlayer.addEventListener('play', () => {
-                console.log('🎥 Video started playing');
+                console.log('▶️ Video playing');
                 playOverlay.classList.add('hidden');
-                videoPlayer.controls = true;
               });
               
               videoPlayer.addEventListener('pause', () => {
-                console.log('🎥 Video paused');
-                if (!videoPlayer.ended) {
+                console.log('⏸️ Video paused');
+                if (!videoPlayer.ended && hasPlayed) {
                   playOverlay.classList.remove('hidden');
-                  // Update overlay text for resume
                   const videoCaption = playOverlay.querySelector('.video-caption');
                   if (videoCaption) {
                     videoCaption.textContent = 'Click to resume video';
@@ -6733,14 +6804,15 @@
               });
               
               videoPlayer.addEventListener('ended', () => {
-                console.log('🎥 Video ended');
+                console.log('🏁 Video ended');
                 playOverlay.classList.remove('hidden');
-                videoPlayer.controls = false;
-                // Update overlay text for replay
+                hasPlayed = false; // Reset for replay
                 const videoCaption = playOverlay.querySelector('.video-caption');
                 if (videoCaption) {
                   videoCaption.textContent = 'Click to replay video';
                 }
+                // Reset to beginning for clean replay
+                videoPlayer.currentTime = 0;
               });
               
               console.log('✅ Video player functionality initialized with proper play/pause');
@@ -7273,7 +7345,6 @@
             <span class="tagline-problem">${problemStatement}</span>
             <span class="tagline-action">${actionStatement}</span>
           </div>
-          <div class="confirmation-section-divider"></div>
           
           <!-- Video Section -->
           <div class="confirmation-video">
