@@ -5457,8 +5457,14 @@
         <script type="text/javascript">
         // RESTORED: Function definition to fix syntax error
         // EARLY LOAD: Accordion function must be available immediately
-        window.togglePrepItem = function(question) {
+        window.togglePrepItem = function(question, event) {
           console.log('🎯 Accordion clicked! Function is working!');
+          
+          // Prevent event bubbling and default behavior
+          if (event) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
           
           try {
             const clickedItem = question.parentElement;
@@ -5837,7 +5843,9 @@
                       preload="metadata"
                       playsinline
                       webkit-playsinline
-                      poster=""
+                      muted
+                      poster="images/video-poster.jpg"
+                      style="width: 100%; height: auto; background: #000;"
                     >
                       <source src="" type="video/mp4" id="videoSource">
                       Your browser does not support the video tag.
@@ -6623,36 +6631,55 @@
             if (videoPlayer && playButton && playOverlay) {
               console.log('✅ Video player elements found, setting up functionality...');
               
-              // iOS Detection for video player optimization
-              const isIPhone = /iPhone/i.test(navigator.userAgent);
-              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-              
-              // CRITICAL iOS FIRST: Handle iOS native controls immediately
-              if (isIOS) {
-                console.log('📱 iOS DETECTED: Implementing native controls strategy immediately');
-                
-                // Enable native controls and remove custom overlay completely
-                videoPlayer.controls = true;
-                videoPlayer.style.pointerEvents = 'auto';
-                
-                // Remove overlay from DOM completely on iOS
-                if (playOverlay) {
-                  playOverlay.remove();
-                  console.log('📱 iOS: Custom overlay removed from DOM');
-                }
-                
-                // For iOS, skip all custom logic and return early
-                console.log('📱 iOS: Native controls active, custom logic bypassed');
-                return;
-              }
-              
-              // CRITICAL: Initialize video with proper source FIRST
+              // CRITICAL: Initialize video source FIRST - before any device detection
               const userData = {
                 challenge: window.userChallenge || 'missed-opportunities'
               };
               
+              // Set up video source and attributes immediately
+              const videoMapping = {
+                'slow-processes': 'videos/strategy-blueprint.mp4',
+                'missed-opportunities': 'videos/lead-saving-blueprint.mp4',
+                'team-scaling': 'videos/team-automation-blueprint.mp4',
+                'data-chaos': 'videos/data-organization-blueprint.mp4'
+              };
+              
+              const videoPath = videoMapping[userData.challenge] || 'videos/lead-saving-blueprint.mp4';
+              console.log('🎬 Setting video source:', videoPath);
+              
+              // Add iOS-friendly attributes FIRST
+              videoPlayer.setAttribute('playsinline', '');
+              videoPlayer.setAttribute('webkit-playsinline', '');
+              videoPlayer.setAttribute('preload', 'metadata');
+              videoPlayer.src = videoPath + '#t=0.001'; // iOS first frame fix
+              
+              // iOS Detection for video player optimization
+              const isIPhone = /iPhone/i.test(navigator.userAgent);
+              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+              
+              // Handle device-specific controls AFTER video is initialized
+              if (isIOS) {
+                console.log('📱 iOS DETECTED: Using native controls with initialized video');
+                
+                // Enable native controls for iOS
+                videoPlayer.controls = true;
+                videoPlayer.setAttribute('muted', ''); // Required for autoplay on iOS
+                videoPlayer.style.pointerEvents = 'auto';
+                
+                // Remove custom overlay for iOS
+                if (playOverlay) {
+                  playOverlay.remove();
+                  console.log('📱 iOS: Custom overlay removed, native controls active');
+                }
+                
+                // For iOS, video is ready - skip custom logic
+                console.log('📱 iOS: Video initialized with native controls');
+                return;
+              }
+              
+              // For non-iOS devices, use custom video player with full functionality
               if (typeof window.initializeCustomVideoPlayer === 'function') {
-                console.log('🎬 Calling video initialization...');
+                console.log('🎬 Calling custom video initialization for desktop...');
                 window.initializeCustomVideoPlayer(userData);
               } else {
                 console.log('❌ Video initialization function not available');
@@ -6830,10 +6857,35 @@
               console.log('✅ Accordion elements found, setting up functionality...');
               
               prepItems.forEach((item, index) => {
-                // REMOVED CONFLICTING EVENT LISTENERS
-                // The old toggle('active') listeners were conflicting with our togglePrepItem function
-                // Now only using the onclick="togglePrepItem(this)" handlers for clean accordion behavior
-                console.log('🚫 Removed conflicting toggle listener for item', index);
+                // ENHANCED: Clean up any existing event listeners and add modern touch support
+                const question = item.querySelector('.prep-question');
+                if (question) {
+                  // Remove any existing event listeners
+                  if (question._accordionHandler) {
+                    question.removeEventListener('click', question._accordionHandler);
+                    question.removeEventListener('touchstart', question._accordionHandler);
+                  }
+                  
+                  // Add modern event handler with touch support
+                  const handler = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.togglePrepItem(this, e);
+                  };
+                  
+                  // Support both click and touch
+                  question.addEventListener('click', handler, { passive: false });
+                  question.addEventListener('touchstart', handler, { passive: false });
+                  question._accordionHandler = handler;
+                  
+                  // Add visual feedback for touch
+                  question.style.cursor = 'pointer';
+                  question.style.userSelect = 'none';
+                  question.style.webkitUserSelect = 'none';
+                  question.style.webkitTouchCallout = 'none';
+                  
+                  console.log('✅ Enhanced accordion item', index, 'with touch support');
+                }
               });
               
               console.log('✅ Accordion functionality initialized');
@@ -7453,7 +7505,7 @@
                   <h3 class="prep-title">How to Prepare</h3>
                   <div class="prep-accordion">
                     <div class="prep-item">
-                      <div class="prep-question" onclick="togglePrepItem(this)">
+                      <div class="prep-question" onclick="togglePrepItem(this, event)" ontouchstart="togglePrepItem(this, event)"
                         <span>Review your current software tools</span>
                         <span class="prep-toggle">+</span>
                       </div>
@@ -7464,7 +7516,7 @@
                       </div>
                     </div>
                     <div class="prep-item">
-                      <div class="prep-question" onclick="togglePrepItem(this)">
+                      <div class="prep-question" onclick="togglePrepItem(this, event)" ontouchstart="togglePrepItem(this, event)"
                         <span>Identify what takes up most of your time</span>
                         <span class="prep-toggle">+</span>
                       </div>
@@ -7475,7 +7527,7 @@
                       </div>
                     </div>
                     <div class="prep-item">
-                      <div class="prep-question" onclick="togglePrepItem(this)">
+                      <div class="prep-question" onclick="togglePrepItem(this, event)" ontouchstart="togglePrepItem(this, event)"
                         <span>Think about tasks you do the same way repeatedly</span>
                         <span class="prep-toggle">+</span>
                       </div>
@@ -7486,7 +7538,7 @@
                       </div>
                     </div>
                     <div class="prep-item">
-                      <div class="prep-question" onclick="togglePrepItem(this)">
+                      <div class="prep-question" onclick="togglePrepItem(this, event)" ontouchstart="togglePrepItem(this, event)"
                         <span>Consider what you wish happened automatically</span>
                         <span class="prep-toggle">+</span>
                       </div>
