@@ -185,3 +185,27 @@ select {
     -webkit-overflow-scrolling: touch;
   }
 }
+
+/* 13. Fix CTA Button Underline Spacing on Mobile */
+@media (max-width: 767px) {
+  .link-button.bigger {
+    line-height: 1.2 !important;
+  }
+  
+  .button-text-block {
+    line-height: inherit !important;
+    padding: 0 !important;
+  }
+  
+  .button-text {
+    border-bottom-width: 1px !important;
+    padding-bottom: 2px !important; /* Reduce space between text and underline */
+    margin-bottom: 0 !important;
+  }
+  
+  /* Fix button wrapper spacing */
+  .button-link-wrapper {
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+}
