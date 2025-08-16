@@ -14,7 +14,7 @@
   <meta content="Transform your business with AI&nbsp;automation. Get a free 30-minute strategy&nbsp;call to identify your highest-impact automations and reclaim 10+&nbsp;hours every week. Zero sales pressure, pure strategic insight." property="twitter:description">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -1138,6 +1138,32 @@
                   /* Bottom positioning */
                   flex-shrink: 0 !important;
                   margin-bottom: 0.75rem !important;
+                }
+              }
+              
+              /* Hero CTA Button Mobile Fix - Ensure Always Clickable */
+              @media (max-width: 767px) {
+                .link-button.bigger {
+                  position: relative !important;
+                  z-index: 10 !important;
+                  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+                  touch-action: manipulation !important;
+                  display: block !important;
+                  cursor: pointer !important;
+                }
+                
+                /* Fix any overlapping elements */
+                .hero-content-wrapper,
+                .hero-cta-wrapper {
+                  position: relative !important;
+                  z-index: 5 !important;
+                }
+                
+                /* Ensure button has proper touch target size */
+                .button-link-wrapper {
+                  min-height: 44px !important; /* iOS recommended touch target */
+                  display: flex !important;
+                  align-items: center !important;
                 }
               }
               
