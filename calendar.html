@@ -5552,6 +5552,22 @@
           mainVideo.src = videoPath;
           mainVideo.preload = 'metadata';
           
+          // iOS/iPhone Video Player Fix - Prevent Double Overlay
+          const isIPhone = /iPhone/i.test(navigator.userAgent);
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+          
+          if (isIOS) {
+            console.log('📱 iOS detected - applying mobile video optimizations');
+            // Prevent native fullscreen and use inline playback
+            mainVideo.setAttribute('playsinline', '');
+            mainVideo.setAttribute('webkit-playsinline', '');
+            mainVideo.setAttribute('x-webkit-airplay', 'allow');
+            
+            // iOS-specific styles to prevent native controls from interfering
+            mainVideo.style.webkitTouchCallout = 'none';
+            mainVideo.style.webkitUserSelect = 'none';
+          }
+          
           // YOUTUBE-STYLE SOLUTION: Extract first frame with blur effect
           console.log('🎬 Implementing YouTube-style first frame preview...');
           
@@ -5789,12 +5805,10 @@
               <h1 class="confirmation-heading">
                 Your AI automation strategy session is confirmed
               </h1>
-              <p class="confirmation-problem-statement">
-                ${problemStatement}
-              </p>
-              <p class="confirmation-action-statement">
-                ${actionStatement}
-              </p>
+              <div class="confirmation-tagline">
+                <span class="tagline-problem">${problemStatement}</span>
+                <span class="tagline-action">${actionStatement}</span>
+              </div>
               <div class="confirmation-section-divider"></div>
               
               <!-- Step 1: Video Section -->
@@ -6041,13 +6055,27 @@
 
             .confirmation-tagline {
               font-size: 1.25rem;
-              color: var(--grey, #b4b4b4);
               margin: 0 0 3rem 0;
               max-width: 800px;
               margin-left: auto;
               margin-right: auto;
-              font-weight: 400;
               line-height: 1.4;
+              text-align: center;
+            }
+
+            .tagline-problem {
+              color: rgba(255, 255, 255, 0.9);
+              font-weight: 500;
+              letter-spacing: -0.01em;
+              display: block;
+              margin-bottom: 0.5rem;
+            }
+
+            .tagline-action {
+              color: rgba(255, 255, 255, 0.6);
+              font-weight: 400;
+              font-size: 1.125rem;
+              letter-spacing: 0;
             }
 
             /* Step Structure - Original Clean Design */
@@ -6082,9 +6110,9 @@
               letter-spacing: -0.01em;
             }
 
-            /* Video Player Styles - Original Design */
+            /* Video Player Styles - Balanced Spacing */
             .confirmation-video {
-              margin: 2rem 0;
+              margin: 2rem 0 3rem 0; /* Equal spacing: 2rem top (from step header), 3rem bottom (to divider) */
             }
 
             .professional-video-container {
@@ -6512,6 +6540,10 @@
             if (videoPlayer && playButton && playOverlay) {
               console.log('✅ Video player elements found, setting up functionality...');
               
+              // iOS Detection for video player optimization
+              const isIPhone = /iPhone/i.test(navigator.userAgent);
+              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+              
               // CRITICAL: Initialize video with proper source FIRST
               const userData = {
                 challenge: window.userChallenge || 'missed-opportunities'
@@ -6546,7 +6578,7 @@
                 }
               });
               
-              // Overlay click handler (same as play button)
+              // Overlay click handler with iOS optimization
               playOverlay.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -6555,9 +6587,28 @@
                 if (videoPlayer.paused) {
                   playOverlay.classList.add('hidden');
                   videoPlayer.controls = true; // Enable controls when playing
+                  
+                  // iOS-specific: Prevent overlay from reappearing by removing certain event listeners
+                  if (isIOS) {
+                    console.log('📱 iOS: Configuring overlay to stay hidden during playback');
+                    playOverlay.style.pointerEvents = 'none'; // Temporarily disable overlay interactions
+                    
+                    // Re-enable overlay only when video is paused/ended
+                    const enableOverlayForIOS = () => {
+                      playOverlay.style.pointerEvents = 'auto';
+                      console.log('📱 iOS: Overlay interactions re-enabled');
+                    };
+                    
+                    videoPlayer.addEventListener('pause', enableOverlayForIOS, { once: true });
+                    videoPlayer.addEventListener('ended', enableOverlayForIOS, { once: true });
+                  }
+                  
                   videoPlayer.play().catch(err => {
                     console.error('Video play error:', err);
                     playOverlay.classList.remove('hidden');
+                    if (isIOS) {
+                      playOverlay.style.pointerEvents = 'auto'; // Re-enable on error
+                    }
                   });
                 }
               });
@@ -7133,12 +7184,10 @@
           <h1 class="confirmation-heading">
             Your AI automation strategy session is confirmed
           </h1>
-          <p class="confirmation-problem-statement">
-            ${problemStatement}
-          </p>
-          <p class="confirmation-action-statement">
-            ${actionStatement}
-          </p>
+          <div class="confirmation-tagline">
+            <span class="tagline-problem">${problemStatement}</span>
+            <span class="tagline-action">${actionStatement}</span>
+          </div>
           <div class="confirmation-section-divider"></div>
           
           <!-- Video Section -->
