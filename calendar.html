@@ -10848,6 +10848,169 @@
     
     // Complex debugging code removed - restored original functionality
     
+    // ===============================================
+    // MISSING FEATURE: Dynamic Confirmation Page
+    // ===============================================
+    
+    // Create dynamic confirmation page function
+    function createConfirmationPage(bookingData) {
+      console.log('🎯 Creating dynamic confirmation page with data:', bookingData);
+      
+      // Store confirmation state for persistence
+      localStorage.setItem('confirmationViewed', 'true');
+      localStorage.setItem('bookingConfirmed', 'true');
+      localStorage.setItem('bookingTimestamp', Date.now().toString());
+      localStorage.setItem('latestBookingData', JSON.stringify(bookingData));
+      
+      // Get challenge-specific content
+      const questionnaireData = JSON.parse(localStorage.getItem('questionnaireData') || '{}');
+      const challenge = questionnaireData.challenge || 'manual-tasks';
+      
+      // Challenge-specific video mapping
+      const challengeVideos = {
+        'manual-tasks': 'videos/manual-tasks-blueprint.mp4',
+        'slow-processes': 'videos/strategy-blueprint.mp4',
+        'scaling-issues': 'videos/scaling-blueprint.mp4',
+        'missed-opportunities': 'videos/lead-saving-blueprint.mp4'
+      };
+      
+      const videoSrc = challengeVideos[challenge] || challengeVideos['manual-tasks'];
+      
+      // Replace entire page with confirmation content
+      document.body.innerHTML = `
+        <div style="
+          background: #292929;
+          color: white;
+          min-height: 100vh;
+          font-family: 'General Sans', sans-serif;
+          padding: 2rem 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        ">
+          <div style="max-width: 600px; text-align: center;">
+            <div style="
+              width: 80px;
+              height: 80px;
+              background: white;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 2rem;
+              color: #292929;
+              margin: 0 auto 2rem;
+            ">✓</div>
+            
+            <h1 style="
+              font-size: clamp(1.5rem, 4vw, 2.5rem);
+              margin: 0 0 1rem 0;
+              font-weight: 700;
+            ">Strategy Session Confirmed!</h1>
+            
+            <p style="
+              font-size: 1.1rem;
+              color: #b4b4b4;
+              margin: 0 0 2rem 0;
+              line-height: 1.5;
+            ">Thank you ${bookingData.name || 'for booking'}! Check your email for meeting details.</p>
+            
+            <div style="
+              background: #202020;
+              border: 1px solid rgba(255,255,255,0.1);
+              padding: 1.5rem;
+              margin: 2rem 0;
+              text-align: left;
+              border-radius: 4px;
+            ">
+              <h3 style="margin: 0 0 1rem 0; color: white;">Your Challenge-Specific Blueprint</h3>
+              <video 
+                controls 
+                poster="images/video-poster.jpg"
+                style="width: 100%; border-radius: 4px;"
+              >
+                <source src="${videoSrc}" type="video/mp4">
+                Your browser doesn't support video playback.
+              </video>
+            </div>
+            
+            <div style="
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+              flex-wrap: wrap;
+              margin-top: 2rem;
+            ">
+              <a href="index.html" style="
+                background: white;
+                color: #292929;
+                padding: 0.75rem 1.5rem;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: 600;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+              ">← Back to Home</a>
+              
+              <a href="contact.html?schedule_another=true" style="
+                background: transparent;
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                padding: 0.75rem 1.5rem;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: 600;
+              ">Schedule Another</a>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      console.log('✅ Dynamic confirmation page created and displayed');
+    }
+    
+    // Cal.com event listener for booking success
+    window.addEventListener('message', function(event) {
+      if (event.origin !== 'https://app.cal.com') return;
+      
+      console.log('📅 Cal.com event received:', event.data);
+      
+      if (event.data && event.data.type === 'booking_successful') {
+        console.log('🎉 BOOKING SUCCESS detected!');
+        
+        // Extract booking data
+        const bookingData = {
+          name: event.data.name || 'Valued Client',
+          email: event.data.email,
+          eventType: event.data.eventType,
+          date: event.data.date,
+          bookingId: event.data.uid || event.data.bookingId
+        };
+        
+        // Create confirmation page
+        setTimeout(() => {
+          createConfirmationPage(bookingData);
+        }, 500); // Small delay for smooth transition
+      }
+    });
+    
+    // On page load, restore confirmation if it exists
+    document.addEventListener('DOMContentLoaded', function() {
+      const confirmationViewed = localStorage.getItem('confirmationViewed');
+      const bookingConfirmed = localStorage.getItem('bookingConfirmed');
+      
+      // If user has completed booking and reloads page, show confirmation
+      if (confirmationViewed === 'true' && bookingConfirmed === 'true') {
+        const savedData = JSON.parse(localStorage.getItem('latestBookingData') || '{}');
+        console.log('🔄 Restoring confirmation page from localStorage');
+        createConfirmationPage(savedData);
+      }
+    });
+    
+    console.log('✅ Dynamic confirmation system initialized');
+    
     
   </script>
   
