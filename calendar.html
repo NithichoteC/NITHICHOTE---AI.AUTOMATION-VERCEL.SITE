@@ -7674,7 +7674,7 @@
       
       // CRITICAL FIX: Check if user is coming from form (new booking flow)
       const referrer = document.referrer;
-      const isFromForm = referrer && (referrer.includes('contact.html') || referrer.includes('index.html'));
+      const isFromForm = referrer && (referrer.includes('contact') || referrer.includes('index'));
       const isReload = !referrer || referrer === window.location.href;
       
       console.log('🔄 === PROFESSIONAL RELOAD PERSISTENCE CHECK ===');
@@ -10215,7 +10215,7 @@
       const referrerUrl = new URL(document.referrer || window.location.href);
       const isSchedulingAnother = referrerUrl.searchParams.get('schedule_another') === 'true';
       const referrer = document.referrer;
-      const isFromForm = referrer && (referrer.includes('contact.html') || referrer.includes('index.html'));
+      const isFromForm = referrer && (referrer.includes('contact') || referrer.includes('index'));
       const isReload = !referrer || referrer === window.location.href;
       
       // Enhanced debug logging for early detection
