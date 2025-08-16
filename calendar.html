@@ -5837,33 +5837,32 @@
                 <div class="professional-video-container">
                   <!-- Professional Cross-Device Video Player -->
                   <div class="professional-video-player" id="professionalVideoPlayer">
-                    <!-- Universal Video Element with Device-Optimized Attributes -->
+                    <!-- Simple Bulletproof Video Player -->
                     <video 
                       id="mainVideo"
                       class="main-video"
-                      preload="metadata"
+                      controls
+                      preload="auto"
                       playsinline
                       webkit-playsinline
                       muted
-                      poster="images/video-poster.jpg"
-                      data-src-slow="videos/strategy-blueprint.mp4"
-                      data-src-missed="videos/lead-saving-blueprint.mp4"
-                      data-src-team="videos/team-automation-blueprint.mp4" 
-                      data-src-data="videos/data-organization-blueprint.mp4"
+                      poster="thumbnails/lead-saving-blueprint-poster.jpg"
                       style="width: 100%; height: auto; background: #000; aspect-ratio: 16/9;"
                     >
-                      <source src="" type="video/mp4" id="videoSource">
+                      <source src="videos/lead-saving-blueprint.mp4#t=0.001" type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                     
-                    <!-- Professional Overlay - Hidden on iOS via CSS -->
-                    <div class="video-play-overlay" id="videoPlayOverlay" style="display: none;">
-                      <button class="clean-play-button" id="cleanPlayButton" aria-label="Play personalized video">
-                        ▶
+                    <!-- Simple Unmute Button -->
+                    <div class="video-controls" id="videoControls" style="position: absolute; top: 10px; right: 10px; z-index: 100;">
+                      <button 
+                        id="unmuteButton" 
+                        class="unmute-btn"
+                        style="background: rgba(0,0,0,0.7); color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 14px;"
+                        onclick="unmuteVideo()"
+                      >
+                        🔊 Unmute
                       </button>
-                      <div class="video-info">
-                        <p class="video-caption">Click to play personalized video</p>
-                      </div>
                     </div>
                   </div>
                 </div>
