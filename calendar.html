@@ -5552,20 +5552,48 @@
           mainVideo.src = videoPath;
           mainVideo.preload = 'metadata';
           
-          // iOS/iPhone Video Player Fix - Prevent Double Overlay
-          const isIPhone = /iPhone/i.test(navigator.userAgent);
-          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+          // Enhanced iOS/Mobile Video Player Fix - Professional Implementation
+          const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+          const isLowPowerMode = navigator.hardwareConcurrency <= 2; // Heuristic
           
           if (isIOS) {
-            console.log('📱 iOS detected - applying mobile video optimizations');
-            // Prevent native fullscreen and use inline playback
-            mainVideo.setAttribute('playsinline', '');
-            mainVideo.setAttribute('webkit-playsinline', '');
-            mainVideo.setAttribute('x-webkit-airplay', 'allow');
+            console.log('📱 iOS detected - applying comprehensive mobile video optimizations');
             
-            // iOS-specific styles to prevent native controls from interfering
+            // Essential iOS attributes for inline playback
+            mainVideo.setAttribute('playsinline', 'playsinline');
+            mainVideo.setAttribute('webkit-playsinline', 'webkit-playsinline'); 
+            mainVideo.setAttribute('muted', 'muted'); // Required for autoplay
+            mainVideo.setAttribute('controls', 'controls'); // Critical for iOS playback
+            
+            // Additional iOS compatibility attributes
+            mainVideo.setAttribute('x-webkit-airplay', 'allow');
+            mainVideo.setAttribute('x5-playsinline', ''); // QQ browser compatibility
+            mainVideo.setAttribute('x5-video-player-type', 'h5');
+            mainVideo.setAttribute('x5-video-player-fullscreen', 'false');
+            
+            // Prevent iOS native behaviors that interfere
             mainVideo.style.webkitTouchCallout = 'none';
             mainVideo.style.webkitUserSelect = 'none';
+            mainVideo.style.touchAction = 'manipulation';
+            
+            // Force GPU acceleration for smoother playback
+            mainVideo.style.webkitTransform = 'translate3d(0, 0, 0)';
+            mainVideo.style.webkitBackfaceVisibility = 'hidden';
+            
+            // Prevent native fullscreen behavior
+            mainVideo.addEventListener('webkitbeginfullscreen', function(e) {
+              console.log('📱 iOS: Preventing native fullscreen');
+              e.preventDefault();
+              if (mainVideo.webkitExitFullscreen) {
+                mainVideo.webkitExitFullscreen();
+              }
+            });
+            
+            // Handle iOS-specific video events
+            mainVideo.addEventListener('webkitfullscreenchange', function(e) {
+              console.log('📱 iOS: Fullscreen change detected, maintaining inline mode');
+            });
           }
           
           // YOUTUBE-STYLE SOLUTION: Extract first frame with blur effect
@@ -6110,9 +6138,9 @@
               letter-spacing: -0.01em;
             }
 
-            /* Video Player Styles - Balanced Spacing */
+            /* Video Player Styles - Perfect Balance */
             .confirmation-video {
-              margin: 2rem 0 3rem 0; /* Equal spacing: 2rem top (from step header), 3rem bottom (to divider) */
+              margin: 2rem 0; /* Equal 2rem spacing above and below video */
             }
 
             .professional-video-container {
@@ -6123,11 +6151,17 @@
 
             .professional-video-player {
               position: relative;
-              background: var(--secondary-black, #202020);
+              background: #000; /* Pure black for professional video player look */
               border: 1px solid var(--border, #b4b4b414);
-              border-radius: 0;
+              border-radius: 8px; /* Subtle rounding for modern feel */
               overflow: hidden;
               aspect-ratio: 16/9;
+              /* Prevent iOS touch behaviors */
+              -webkit-touch-callout: none;
+              -webkit-user-select: none;
+              touch-action: manipulation;
+              /* Smooth performance */
+              will-change: transform;
             }
 
             .main-video {
@@ -6186,6 +6220,57 @@
               margin: 0;
             }
 
+            /* iOS-specific video optimizations */
+            @supports (-webkit-touch-callout: none) {
+              .main-video {
+                -webkit-transform: translate3d(0, 0, 0); /* Force GPU acceleration */
+                -webkit-backface-visibility: hidden;
+              }
+              
+              .video-play-overlay {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+              }
+              
+              .clean-play-button {
+                -webkit-tap-highlight-color: transparent;
+                -webkit-touch-callout: none;
+              }
+            }
+
+            /* Mobile responsive spacing adjustments */
+            @media (max-width: 767px) {
+              .confirmation-video {
+                margin: 1.5rem 0; /* Tighter spacing on mobile */
+              }
+              
+              .section-divider {
+                margin: 1.5rem auto;
+              }
+              
+              .step-indicator {
+                margin-bottom: 1.5rem; /* Consistent mobile spacing */
+              }
+              
+              .professional-video-player {
+                border-radius: 6px; /* Slightly less rounding on mobile */
+              }
+            }
+
+            @media (max-width: 479px) {
+              .confirmation-video {
+                margin: 1rem 0; /* Even tighter on very small screens */
+              }
+              
+              .section-divider {
+                margin: 1rem auto;
+              }
+              
+              .step-indicator {
+                margin-bottom: 1rem;
+              }
+            }
+
             /* AI Discovery Section - Original Spacing */
             .ai-discovery-section {
               padding: 4rem 2rem;
@@ -6240,7 +6325,7 @@
               height: 1px;
               background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
               width: 80%;
-              margin: 3rem auto;
+              margin: 2rem auto; /* Reduced from 3rem for balanced spacing */
             }
 
             /* Accordion Styles - Original Professional Design */
