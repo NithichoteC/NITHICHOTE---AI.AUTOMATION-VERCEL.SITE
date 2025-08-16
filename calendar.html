@@ -5016,6 +5016,29 @@
             console.log('✅ All confirmation state cleared - User will see fresh Cal.com widget');
           }
           
+          // CRITICAL FIX: Clear old booking states for form users BEFORE persistence check
+          const referrer = document.referrer;
+          const isFromForm = referrer && (referrer.includes('contact') || referrer.includes('index'));
+          const isReload = !referrer || referrer === window.location.href;
+          
+          if (isFromForm && !isSchedulingAnother && !isReload) {
+            console.log('🧹 FORM USER DETECTED - Clearing ALL booking state before persistence check');
+            
+            // Clear ALL confirmation state (same as schedule_another cleanup)
+            localStorage.removeItem('confirmationViewed');
+            localStorage.removeItem('bookingConfirmed');
+            localStorage.removeItem('bookingTimestamp');
+            localStorage.removeItem('bookingEventType');
+            localStorage.removeItem('latestBookingData');
+            
+            sessionStorage.removeItem('confirmationPageActive');
+            sessionStorage.removeItem('confirmationTimestamp');
+            sessionStorage.removeItem('confirmationSource');
+            sessionStorage.removeItem('confirmationPriority');
+            
+            console.log('✅ Form user state cleared - Fresh Cal.com widget will be shown');
+          }
+          
           // SIMPLIFIED PERSISTENCE CHECK: Just check if we have confirmation flags
           const confirmationViewed = localStorage.getItem('confirmationViewed');
           const bookingConfirmed = localStorage.getItem('bookingConfirmed');
