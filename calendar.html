@@ -5835,8 +5835,9 @@
                   <h3>Watch My Quick Message</h3>
                 </div>
                 <div class="professional-video-container">
-                  <!-- Professional Video Player - Clean & Modern -->
+                  <!-- Professional Cross-Device Video Player -->
                   <div class="professional-video-player" id="professionalVideoPlayer">
+                    <!-- Universal Video Element with Device-Optimized Attributes -->
                     <video 
                       id="mainVideo"
                       class="main-video"
@@ -5845,14 +5846,18 @@
                       webkit-playsinline
                       muted
                       poster="images/video-poster.jpg"
-                      style="width: 100%; height: auto; background: #000;"
+                      data-src-slow="videos/strategy-blueprint.mp4"
+                      data-src-missed="videos/lead-saving-blueprint.mp4"
+                      data-src-team="videos/team-automation-blueprint.mp4" 
+                      data-src-data="videos/data-organization-blueprint.mp4"
+                      style="width: 100%; height: auto; background: #000; aspect-ratio: 16/9;"
                     >
                       <source src="" type="video/mp4" id="videoSource">
                       Your browser does not support the video tag.
                     </video>
                     
-                    <!-- Professional Play Button Overlay -->
-                    <div class="video-play-overlay" id="videoPlayOverlay">
+                    <!-- Professional Overlay - Hidden on iOS via CSS -->
+                    <div class="video-play-overlay" id="videoPlayOverlay" style="display: none;">
                       <button class="clean-play-button" id="cleanPlayButton" aria-label="Play personalized video">
                         ▶
                       </button>
@@ -6139,6 +6144,145 @@
               .professional-video-player {
                 max-width: 1024px !important;
               }
+            }
+            
+            /* Universal Cross-Device Video System - Netflix/YouTube 2025 Standard */
+            .professional-video-player {
+              position: relative;
+              max-width: min(100vw - 2rem, 1200px);
+              margin: 0 auto;
+              aspect-ratio: 16/9;
+              background: #000;
+              border-radius: 12px;
+              overflow: hidden;
+              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Professional video element styling */
+            .professional-video-player video {
+              width: 100% !important;
+              height: 100% !important;
+              object-fit: cover;
+              background: #000;
+              border-radius: inherit;
+            }
+            
+            /* Device-Specific Optimizations */
+            
+            /* Large Desktop (>1400px) */
+            @media (min-width: 1400px) {
+              .professional-video-player {
+                max-width: 1200px;
+              }
+            }
+            
+            /* Desktop (1024px - 1400px) */ 
+            @media (min-width: 1024px) and (max-width: 1400px) {
+              .professional-video-player {
+                max-width: min(90vw, 1000px);
+              }
+            }
+            
+            /* Tablet Landscape (768px - 1024px) */
+            @media (min-width: 768px) and (max-width: 1024px) {
+              .professional-video-player {
+                max-width: min(95vw, 800px);
+                border-radius: 10px;
+              }
+            }
+            
+            /* Tablet Portrait & Large Mobile (480px - 768px) */
+            @media (min-width: 480px) and (max-width: 768px) {
+              .professional-video-player {
+                max-width: calc(100vw - 1rem);
+                margin: 0 0.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+              }
+            }
+            
+            /* Small Mobile (<480px) */
+            @media (max-width: 480px) {
+              .professional-video-player {
+                max-width: 100vw;
+                margin: 0;
+                border-radius: 6px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              }
+            }
+            
+            /* iOS Safari Detection via CSS - Hide overlay immediately */
+            @supports (-webkit-touch-callout: none) {
+              .video-play-overlay {
+                display: none !important;
+              }
+              
+              #mainVideo {
+                controls: initial !important;
+              }
+            }
+            
+            /* Performance & Accessibility Optimizations */
+            
+            /* Reduce motion for users who prefer it */
+            @media (prefers-reduced-motion: reduce) {
+              .professional-video-player {
+                transition: none;
+              }
+              
+              .video-play-overlay {
+                animation: none;
+              }
+            }
+            
+            /* High contrast mode support */
+            @media (prefers-contrast: high) {
+              .professional-video-player {
+                border: 2px solid white;
+              }
+              
+              .video-play-overlay {
+                background: rgba(0, 0, 0, 0.9);
+                border: 1px solid white;
+              }
+            }
+            
+            /* Touch device optimizations */
+            @media (hover: none) and (pointer: coarse) {
+              .professional-video-player {
+                /* Larger touch targets for mobile */
+              }
+              
+              .clean-play-button {
+                min-width: 44px;
+                min-height: 44px;
+                padding: 12px;
+              }
+            }
+            
+            /* Professional loading states */
+            .professional-video-player[data-loading="true"] {
+              opacity: 0.7;
+            }
+            
+            .professional-video-player[data-loading="true"]::after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              width: 24px;
+              height: 24px;
+              margin: -12px 0 0 -12px;
+              border: 2px solid rgba(255, 255, 255, 0.3);
+              border-top: 2px solid white;
+              border-radius: 50%;
+              animation: spin 1s linear infinite;
+            }
+            
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
             }
 
             .professional-video-container {
@@ -6628,65 +6772,196 @@
             const playButton = document.getElementById('cleanPlayButton');
             const playOverlay = document.getElementById('videoPlayOverlay');
             
-            if (videoPlayer && playButton && playOverlay) {
-              console.log('✅ Video player elements found, setting up functionality...');
+            if (videoPlayer) {
+              console.log('✅ Universal video player found, initializing cross-device system...');
               
-              // CRITICAL: Initialize video source FIRST - before any device detection
-              const userData = {
-                challenge: window.userChallenge || 'missed-opportunities'
-              };
-              
-              // Set up video source and attributes immediately
-              const videoMapping = {
-                'slow-processes': 'videos/strategy-blueprint.mp4',
-                'missed-opportunities': 'videos/lead-saving-blueprint.mp4',
-                'team-scaling': 'videos/team-automation-blueprint.mp4',
-                'data-chaos': 'videos/data-organization-blueprint.mp4'
-              };
-              
-              const videoPath = videoMapping[userData.challenge] || 'videos/lead-saving-blueprint.mp4';
-              console.log('🎬 Setting video source:', videoPath);
-              
-              // Add iOS-friendly attributes FIRST
-              videoPlayer.setAttribute('playsinline', '');
-              videoPlayer.setAttribute('webkit-playsinline', '');
-              videoPlayer.setAttribute('preload', 'metadata');
-              videoPlayer.src = videoPath + '#t=0.001'; // iOS first frame fix
-              
-              // iOS Detection for video player optimization
-              const isIPhone = /iPhone/i.test(navigator.userAgent);
-              const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-              
-              // Handle device-specific controls AFTER video is initialized
-              if (isIOS) {
-                console.log('📱 iOS DETECTED: Using native controls with initialized video');
+              // PROFESSIONAL: Universal Video Architecture (Netflix/YouTube 2025 Standard)
+              const VideoArchitecture = {
+                // Device Detection with Capabilities
+                detectDevice() {
+                  const ua = navigator.userAgent;
+                  const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+                  const isAndroid = /Android/i.test(ua);
+                  const isMobile = /Mobi|Android/i.test(ua);
+                  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                  
+                  return { isIOS, isAndroid, isMobile, isTouch, ua };
+                },
                 
-                // Enable native controls for iOS
+                // Video Configuration by Device
+                getConfig(device) {
+                  if (device.isIOS) {
+                    return {
+                      strategy: 'native_only',
+                      controls: true,
+                      overlay: false,
+                      autoplay: false, // Prevent iOS autoplay issues
+                      events: ['volumechange', 'pause', 'play'] // Monitor iOS-specific events
+                    };
+                  } else if (device.isAndroid || device.isMobile) {
+                    return {
+                      strategy: 'hybrid',
+                      controls: true,
+                      overlay: 'minimal',
+                      autoplay: false,
+                      events: ['play', 'pause', 'ended']
+                    };
+                  } else {
+                    return {
+                      strategy: 'custom',
+                      controls: false,
+                      overlay: true,
+                      autoplay: false,
+                      events: ['play', 'pause', 'ended', 'loadstart']
+                    };
+                  }
+                },
+                
+                // Initialize Video Source
+                initializeSource() {
+                  const userData = { challenge: window.userChallenge || 'missed-opportunities' };
+                  const videoMapping = {
+                    'slow-processes': 'videos/strategy-blueprint.mp4',
+                    'missed-opportunities': 'videos/lead-saving-blueprint.mp4', 
+                    'team-scaling': 'videos/team-automation-blueprint.mp4',
+                    'data-chaos': 'videos/data-organization-blueprint.mp4'
+                  };
+                  
+                  const videoPath = videoMapping[userData.challenge] || 'videos/lead-saving-blueprint.mp4';
+                  const finalPath = videoPath + '#t=0.001'; // iOS first frame fix
+                  
+                  videoPlayer.src = finalPath;
+                  console.log('🎬 Universal video source set:', finalPath);
+                  return { userData, videoPath: finalPath };
+                },
+                
+                // iOS Mute/Unmute Recovery System (Fixes iOS Safari Bug)
+                setupIOSRecovery(video) {
+                  console.log('🔧 Setting up iOS recovery system...');
+                  
+                  let lastVolume = video.volume;
+                  let wasPlaying = false;
+                  
+                  // Monitor volume changes that break iOS video
+                  video.addEventListener('volumechange', (e) => {
+                    console.log('🔊 iOS Volume change detected');
+                    
+                    // Check if video stopped due to volume change
+                    setTimeout(() => {
+                      if (video.paused && wasPlaying && video.currentTime > 0) {
+                        console.log('🚨 iOS video paused due to volume change - attempting recovery');
+                        
+                        // Recovery attempt
+                        video.play().then(() => {
+                          console.log('✅ iOS video recovery successful');
+                        }).catch((err) => {
+                          console.log('❌ iOS video recovery failed:', err);
+                          // Show user feedback
+                          VideoArchitecture.showIOSRecoveryMessage();
+                        });
+                      }
+                    }, 100);
+                  });
+                  
+                  // Track playing state
+                  video.addEventListener('play', () => {
+                    wasPlaying = true;
+                    console.log('📱 iOS video playing');
+                  });
+                  
+                  video.addEventListener('pause', () => {
+                    wasPlaying = false;
+                    console.log('📱 iOS video paused');
+                  });
+                  
+                  console.log('✅ iOS recovery system active');
+                },
+                
+                // Show iOS Recovery Message
+                showIOSRecoveryMessage() {
+                  const message = document.createElement('div');
+                  message.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: rgba(0,0,0,0.8);
+                    color: white;
+                    padding: 12px 16px;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    z-index: 100;
+                    text-align: center;
+                  `;
+                  message.textContent = 'Tap to resume video';
+                  
+                  const container = document.querySelector('.professional-video-player');
+                  if (container) {
+                    container.appendChild(message);
+                    
+                    // Auto-remove after 3 seconds
+                    setTimeout(() => {
+                      if (message.parentNode) {
+                        message.parentNode.removeChild(message);
+                      }
+                    }, 3000);
+                  }
+                }
+              };
+              
+              // EXECUTE: Universal Video Initialization
+              const device = VideoArchitecture.detectDevice();
+              const config = VideoArchitecture.getConfig(device);
+              const { userData, videoPath } = VideoArchitecture.initializeSource();
+              
+              console.log('🔍 Device detected:', device);
+              console.log('⚙️ Video config:', config);
+              
+              // Apply Device-Specific Configuration
+              if (config.strategy === 'native_only') {
+                // iOS: Pure Native Strategy
+                console.log('📱 iOS: Implementing pure native strategy');
                 videoPlayer.controls = true;
-                videoPlayer.setAttribute('muted', ''); // Required for autoplay on iOS
+                videoPlayer.setAttribute('muted', '');
                 videoPlayer.style.pointerEvents = 'auto';
                 
-                // Remove custom overlay for iOS
+                // iOS Mute/Unmute Recovery System
+                VideoArchitecture.setupIOSRecovery(videoPlayer);
+                
+                console.log('📱 iOS: Pure native controls active');
+                return;
+                
+              } else if (config.strategy === 'hybrid') {
+                // Android/Mobile: Hybrid Strategy  
+                console.log('📱 Mobile: Implementing hybrid strategy');
+                videoPlayer.controls = true;
+                
                 if (playOverlay) {
-                  playOverlay.remove();
-                  console.log('📱 iOS: Custom overlay removed, native controls active');
+                  playOverlay.style.display = 'flex';
+                  playOverlay.style.opacity = '0.8';
                 }
                 
-                // For iOS, video is ready - skip custom logic
-                console.log('📱 iOS: Video initialized with native controls');
-                return;
-              }
-              
-              // For non-iOS devices, use custom video player with full functionality
-              if (typeof window.initializeCustomVideoPlayer === 'function') {
-                console.log('🎬 Calling custom video initialization for desktop...');
-                window.initializeCustomVideoPlayer(userData);
               } else {
-                console.log('❌ Video initialization function not available');
+                // Desktop: Custom Strategy
+                console.log('🖥️ Desktop: Implementing custom strategy');
+                videoPlayer.controls = false;
+                
+                if (playOverlay) {
+                  playOverlay.style.display = 'flex';
+                }
+                
+                // Initialize custom video player for desktop
+                if (typeof window.initializeCustomVideoPlayer === 'function') {
+                  window.initializeCustomVideoPlayer(userData);
+                }
               }
               
-              // Initially show overlay with blur effect
-              playOverlay.classList.remove('hidden');
+              // Professional overlay management for non-iOS devices
+              if (config.overlay && playOverlay) {
+                playOverlay.style.display = 'flex';
+                playOverlay.classList.remove('hidden');
+                console.log('🎭 Professional overlay activated for', config.strategy);
+              }
               
               // Enable video controls for pause capability
               videoPlayer.controls = false; // Start without controls
