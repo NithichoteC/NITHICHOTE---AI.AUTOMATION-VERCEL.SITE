@@ -835,7 +835,7 @@
     }
     
     /* Responsive adjustments */
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .video-title {
         font-size: 1.5rem;
       }
@@ -939,16 +939,19 @@
     }
     
     .confirmation-tagline {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: #b4b4b4;
-      margin-bottom: 3rem; /* Increased from 2rem for better spacing before step 1 */
+      margin-bottom: 2.5rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.6;
-      font-weight: 300;
+      line-height: 1.5;
+      font-weight: 400;
       font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      position: relative;
     }
+    
+    /* Professional typography hierarchy - no need for additional divider */
     
     .confirmation-message {
       font-size: 1.1rem;
@@ -1479,7 +1482,7 @@
     }
     
     /* Mobile responsive styles for clean video player */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       .professional-video-player {
         max-width: 100%;
         margin: 0;
@@ -1834,13 +1837,6 @@
         padding: 1.5rem 1rem;
         text-align: center;
       }
-      
-      /* FIXED: Make accordion inherit natural container width like title/subtitle */
-      .prep-section {
-        margin-top: 2rem;
-        margin-bottom: 0;
-        /* Remove width constraints - let it use full container width like title/subtitle */
-      }
 
       .minimal-title {
         font-size: 1.5rem;
@@ -1852,10 +1848,63 @@
         margin-bottom: 1.5rem;
       }
 
+      /* FIXED: Make accordion inherit natural container width like title/subtitle */
       .prep-section {
-        /* Basic mobile overrides, viewport breakout handled in specific breakpoints */
-        max-width: none;
         margin-top: 2rem;
+        margin-bottom: 0;
+        /* Remove width constraints - let it use full container width like title/subtitle */
+      }
+    }
+
+    /* NUCLEAR BUTTON CENTERING - ALL SCREEN SIZES */
+    html body .enhanced-confirmation div#phoneComponentContainer[style],
+    html body div#phoneComponentContainer[style*="position: relative"],
+    html body div#phoneComponentContainer[style*="width: 100%"],
+    html body div#phoneComponentContainer[style*="max-width: 400px"],
+    html body .page-wrapper div#phoneComponentContainer,
+    html body .confirmation-container div#phoneComponentContainer,
+    div#phoneComponentContainer {
+      margin: 2.25rem auto 0.5rem auto !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      left: auto !important;
+      right: auto !important;
+      transform: none !important;
+      position: relative !important;
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+      max-width: 400px !important;
+    }
+
+    /* ===== MOBILE PHONE COMPONENT CENTERING - NUCLEAR OVERRIDE ===== */
+    @media screen and (max-width: 767px) {
+      /* Let the responsive rules handle phoneComponentContainer positioning */
+      
+      /* Keep buttonContainer simple - inherit from parent centering */
+      html body div#phoneComponentContainer div#buttonContainer[style] {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+      }
+
+    /* ===== ENHANCED MOBILE BUTTON CENTERING - NUCLEAR-LEVEL SPECIFICITY ===== */
+      .call-to-action-button-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        text-align: center !important;
+      }
+      
+      .call-to-action-button-wrapper .button {
+        margin: 0 auto !important;
+        text-align: center !important;
+        justify-self: center !important;
+        align-self: center !important;
+        display: block !important;
+        width: fit-content !important;
       }
 
       .prep-title {
@@ -1886,6 +1935,64 @@
       .minimal-divider {
         margin: 0 auto 1.5rem auto;
       }
+
+      /* Enhanced accordion text layout - FULL WIDTH ON MOBILE */
+      .prep-question, .prep-answer {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      /* Force accordion items to use full container width */
+      .prep-item {
+        width: 100% !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      
+      /* Keep prep-question as flex for proper icon alignment */
+      .prep-item .prep-question {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      
+      /* Ensure prep list container uses full width */
+      .prep-list {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      
+      /* MOBILE SCROLL POSITION FIX - Prevent page jump glitch */
+      html, body {
+        scroll-behavior: auto !important;
+        overflow-anchor: none !important;
+      }
+      
+      /* Force page to start at top on mobile */
+      .enhanced-confirmation {
+        scroll-margin-top: 0 !important;
+        scroll-snap-align: start !important;
+      }
+      
+      /* Remove tap highlight effects on iPad/mobile */
+      .prep-item, .prep-question {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        user-select: none !important;
+      }
+      
+      .prep-item:active, .prep-question:active {
+        background: transparent !important;
+      }
     }
 
     @media (max-width: 479px) {
@@ -1908,20 +2015,54 @@
       }
 
       .prep-question {
-        padding: 1.125rem 0; /* Balanced vertical spacing */
+        padding: 1.5rem 0 1.0rem 0; /* Reduced for better expanded accordion balance */
         font-size: 0.85rem; /* Optimized for very small screens and text fitting */
-        line-height: 1.32; /* Tight but readable for multi-line consistency */
+        line-height: 1.32; /* Restore original mobile line-height for proper text spacing */
         letter-spacing: -0.005em; /* Subtle spacing optimization */
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+      }
+
+      .prep-toggle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.4);
+        line-height: 1;
+        font-weight: 300;
+        transition: transform 0.25s ease-out, color 0.2s ease;
+      }
+
+      .prep-item.active .prep-toggle {
+        color: #fff;
+        transform: rotate(45deg);
       }
 
       .prep-answer {
         font-size: 0.85rem;
         line-height: 1.45; /* Better small screen readability */
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.25s ease-out;
+      }
+
+      .prep-item.active .prep-answer {
+        grid-template-rows: 1fr;
+      }
+
+      .prep-answer-content {
+        overflow: hidden;
+        opacity: 0;
+        transform: scale(0.98);
+        transition: opacity 0.2s ease, transform 0.2s ease;
       }
 
       .prep-item.active .prep-answer-content {
-        padding: 0 0 1.125rem 0; /* Match question vertical spacing for visual balance */
+        padding: 0 0 1.2rem 0; /* Reduced bottom space for better visual balance */
+        opacity: 1;
+        transform: scale(1);
       }
+
+      /* MOBILE BUTTON: Additional mobile specificity (covered by nuclear CSS above) */
     }
 
     .confirmation-text {
@@ -2285,7 +2426,7 @@
     }
     
     /* Mobile: Fixed height to prevent excess space */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       .calendly-embed-container.confirmation-page iframe {
         width: 100%;
         height: 1000px !important;
@@ -2304,7 +2445,7 @@
     }
     
     /* Mobile Responsive Styles */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       /* Video wrapper already has 75% padding */
       
       .calendar-buttons {
@@ -2681,18 +2822,21 @@
       }
       
       .confirmation-success-badge {
-        font-size: 0.8rem;
-        padding: 0.625rem 1.25rem;
+        gap: 0.375rem;
       }
       
       .confirmation-heading {
-        font-size: clamp(2rem, 8vw, 2.5rem);
-        line-height: 1.2;
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        line-height: 1.3;
       }
       
       .confirmation-tagline {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
+        margin: 0 0 2rem 0;
+        position: relative;
       }
+      
+      /* Clean typography without extra dividers */
       
       .confirmation-message {
         font-size: 1rem;
@@ -2800,7 +2944,7 @@
     }
     
     /* Mobile confirmation page overrides */
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 767px) {
       .calendly-embed-container.confirmation-page {
         background: transparent !important;
         border: none !important;
@@ -2937,7 +3081,7 @@
       margin: 0 1rem;
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .progress-steps {
         margin: 1.5rem 0 2rem 0;
       }
@@ -2963,7 +3107,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       justify-content: center;
     }
     
@@ -3463,7 +3607,7 @@
     }
 
     /* Professional Mobile Optimizations */
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .btn:hover, .cta-button:hover, .ai-cta-button:hover {
         transform: none;
         box-shadow: none;
@@ -3808,7 +3952,7 @@
     }
 
     /* Mobile Optimizations */
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       .smart-phone-cta {
         max-width: 100%;
         height: 60px;
@@ -4903,7 +5047,7 @@
     }
     
     /* Responsive Styles */
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       /* Stack step indicators vertically on mobile */
       .step-indicator {
         flex-direction: column;
@@ -5004,7 +5148,7 @@
     }
     
     /* Enhanced Responsive Design for Professional Presentation */
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       #my-cal-inline-30min {
         margin: 0;
         border-radius: 4px;
@@ -5094,12 +5238,27 @@
         font-size: 14px !important;
       }
       
-      /* Container responsive fix */
-      #phoneComponentContainer {
-        max-width: calc(100vw - 32px) !important;
-        margin-left: 16px !important;
-        margin-right: 16px !important;
+      /* SURGICAL FIX - Match higher specificity rule at line 1857 */
+      html body .confirmation-container div#phoneComponentContainer[style*="width: 100%"],
+      html body .confirmation-container div#phoneComponentContainer[style*="max-width: 400px"],
+      html body .enhanced-confirmation div#phoneComponentContainer[style] {
+        width: calc(100% - 40px) !important;
+        max-width: 340px !important;
+        margin: 1.75rem auto 0.25rem auto !important;
+        position: relative !important;
+        box-sizing: border-box !important;
       }
+      
+    }
+    
+    /* GLOBAL BUTTON OVERRIDE - Outside media query */
+    html body div#phoneComponentContainer button#ctaButton[style*="background: #0f0f0f"] {
+      background: red !important;
+      width: 250px !important;
+      max-width: 250px !important;
+      margin: 8px auto !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
     }
 
     /* Ultra-small screens - Change "Call Me" to "Call" */
@@ -5750,7 +5909,7 @@
           
           // Create split messaging for better visual hierarchy
           const problemStatement = userData.challenge ? 
-            `Ready to solve ${userData.challengeLabel || userData.challenge}?` : 
+            `Ready to solve ${(userData.challengeLabel || userData.challenge).toLowerCase()}?` : 
             'Ready for your strategy session?';
           const actionStatement = 'Complete the steps below:';
           
@@ -5777,6 +5936,7 @@
               <h1 class="confirmation-heading">
                 Your AI automation strategy session is confirmed
               </h1>
+              <div class="heading-divider" style="width: 40px; height: 2px; background: rgba(255,255,255,0.3); margin: 1rem auto 1.75rem auto; border-radius: 1px;"></div>
               <div class="confirmation-tagline">
                 <span class="tagline-problem">${problemStatement}</span>
                 <span class="tagline-action">${actionStatement}</span>
@@ -5807,9 +5967,6 @@
                 </div>
               </div>
               
-              <!-- Divider -->
-              <div class="section-divider"></div>
-              
               <!-- Step 2: AI Discovery Section -->
               <div class="ai-discovery-section">
                 <div class="ai-discovery-container">
@@ -5826,7 +5983,7 @@
                   <!-- Phone Component -->
                   <div id="phoneComponentContainer" style="position: relative; width: 100%; max-width: 400px; height: 84px; margin: 2.25rem auto 0.5rem auto; pointer-events: auto;">
                     <div id="buttonContainer" style="position: absolute; top: 0; left: 0; width: 100%; opacity: 1; transform: translateY(0); pointer-events: auto; transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out; z-index: 3;">
-                      <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%; height: 48px; background: #0f0f0f; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 500; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; padding: 0 8px;">
+                      <button id="ctaButton" style="all: initial; display: flex; align-items: center; justify-content: center; gap: 4px; width: 100%; height: 48px; background: #0f0f0f; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: rgba(255, 255, 255, 0.9); font-size: 13px; font-weight: 500; font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; cursor: pointer; pointer-events: auto; -webkit-appearance: none; -moz-appearance: none; appearance: none; -webkit-text-stroke: 0; -moz-text-stroke: 0; text-stroke: 0; -webkit-text-stroke-width: 0; -webkit-text-stroke-color: transparent; text-shadow: none; outline: none !important; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; padding: 0 16px; box-sizing: border-box;">
                         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: rgba(255, 255, 255, 0.9); fill: none !important;">
                           <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59533 1.99522 8.06814 2.16708 8.43999 2.48353C8.81184 2.79999 9.06334 3.23945 9.14999 3.72C9.31071 4.68007 9.58887 5.61273 9.97999 6.5C10.1018 6.80258 10.1445 7.13162 10.1044 7.45606C10.0642 7.78049 9.94218 8.09014 9.74999 8.35L8.52999 9.57C9.85999 12.0756 11.9544 14.17 14.46 15.5L15.68 14.28C15.9399 14.0878 16.2495 13.9658 16.574 13.9256C16.8984 13.8855 17.2274 13.9282 17.53 14.05C18.4173 14.4411 19.3499 14.7193 20.31 14.88C20.7955 14.9685 21.2387 15.2239 21.5547 15.5997C21.8707 15.9755 22.0397 16.4499 22.03 16.94L22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                         </svg>
@@ -5958,6 +6115,14 @@
           pageWrapper.innerHTML = '';
           pageWrapper.appendChild(enhancedContent);
           
+          // FIX: Prevent scroll position glitch - always load at top
+          setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            console.log('📍 SCROLL: Page positioned at top to prevent glitch');
+          }, 0);
+          
           // CRITICAL: Inject comprehensive CSS styles for dynamic confirmation page
           const confirmationCSS = document.createElement('style');
           confirmationCSS.id = 'dynamic-confirmation-styles';
@@ -5988,20 +6153,22 @@
             .confirmation-success-badge {
               display: inline-flex;
               align-items: center;
-              gap: 0.5rem;
+              gap: clamp(0.375rem, 1vw, 0.5rem);
               background: rgba(74, 222, 128, 0.1);
               color: #4ade80;
-              padding: 0.75rem 1.5rem;
+              padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
               border-radius: 50px;
-              font-size: 0.875rem;
+              font-size: clamp(0.75rem, 2vw, 0.875rem);
               font-weight: 500;
               margin: 0 auto 2rem auto;
+              border: 1px solid rgba(74, 222, 128, 0.2);
+              max-width: fit-content;
             }
 
             .confirmation-heading {
-              font-size: clamp(2.5rem, 5vw, 3rem);
+              font-size: clamp(1.75rem, 4.5vw, 2.25rem);
               font-weight: 700;
-              margin: 0 0 1rem 0;
+              margin: 0 0 0.75rem 0;
               letter-spacing: -0.02em;
               color: var(--white, white);
               line-height: 1.2;
@@ -6018,22 +6185,26 @@
             }
 
             .tagline-problem {
-              color: rgba(255, 255, 255, 0.9);
-              font-weight: 500;
+              color: rgba(255, 255, 255, 0.95);
+              font-weight: 600;
               letter-spacing: -0.01em;
               display: block;
               margin-bottom: 0.75rem;
+              font-size: 1.1rem;
             }
 
             .tagline-action {
-              color: rgba(255, 255, 255, 0.7);
-              font-weight: 400;
+              color: rgba(255, 255, 255, 0.65);
+              font-weight: 500;
               display: block;
+              font-size: 0.8rem;
+              text-transform: uppercase;
+              letter-spacing: 0.02em;
             }
 
             /* Video Section Styling */
             .confirmation-video {
-              margin: 0 0 4rem 0;
+              margin: 0;
             }
 
             .step-indicator {
@@ -6041,7 +6212,7 @@
               align-items: center;
               gap: 1rem;
               justify-content: center;
-              margin-bottom: 2rem;
+              margin-bottom: 1.5rem;
             }
 
             .step-number-badge {
@@ -6066,7 +6237,7 @@
 
             /* AI Discovery Section */
             .ai-discovery-section {
-              margin: 4rem 0;
+              margin: 1rem 0 2rem 0;
             }
 
             .ai-discovery-container {
@@ -6096,11 +6267,11 @@
               text-align: center;
             }
 
-            /* Section Divider */
+            /* Section Divider - Minimal video spacing */
             .section-divider {
               height: 1px;
               background: rgba(255, 255, 255, 0.1);
-              margin: 4rem auto;
+              margin: 0.25rem auto 2rem auto;
               max-width: 400px;
             }
 
@@ -6111,7 +6282,7 @@
             }
 
             /* Mobile Responsive */
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
               .confirmation-container {
                 padding: 2rem 1rem;
               }
@@ -6132,7 +6303,7 @@
               }
 
               .prep-question {
-                padding: 0.875rem 1rem;
+                padding: 1.5rem 0 1.0rem 0;
                 font-size: 0.9rem;
               }
 
