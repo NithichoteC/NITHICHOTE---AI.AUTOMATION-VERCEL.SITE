@@ -5452,6 +5452,12 @@
               calcomContainer.style.display = 'none';
             }
             
+            // IMMEDIATE: Force scroll to top on reload
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            console.log('📍 SCROLL: Reload - Immediate scroll to top');
+            
             // Create confirmation page immediately with enhanced debugging
             console.log('🔄 Creating confirmation page for reload persistence...');
             try {
@@ -5963,6 +5969,49 @@
                       <source src="` + videoPath + `" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
+                    
+                    <!-- Professional Center Play Button Overlay -->
+                    <div id="customPlayButton" class="custom-play-overlay" style="
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 80px;
+                      height: 80px;
+                      background: rgba(0, 0, 0, 0.8);
+                      border-radius: 50%;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                      z-index: 10;
+                      backdrop-filter: blur(10px);
+                      border: 3px solid rgba(255, 255, 255, 0.3);
+                    ">
+                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: white; margin-left: 3px;">
+                        <path d="M8 5v14l11-7z" fill="currentColor"/>
+                      </svg>
+                    </div>
+                    
+                    <!-- Video Progress Message -->
+                    <div id="videoProgressMessage" class="video-progress-message" style="
+                      position: absolute;
+                      bottom: 20px;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      background: rgba(0, 0, 0, 0.9);
+                      color: white;
+                      padding: 8px 16px;
+                      border-radius: 20px;
+                      font-size: 14px;
+                      display: none;
+                      z-index: 11;
+                      backdrop-filter: blur(10px);
+                      border: 1px solid rgba(255, 255, 255, 0.2);
+                    ">
+                      Please watch the video to continue
+                    </div>
                   </div>
                 </div>
               </div>
@@ -6111,17 +6160,23 @@
             </div>
           `;
           
+          // IMMEDIATE: Force scroll to top BEFORE content replacement
+          window.scrollTo({ top: 0, behavior: 'instant' });
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+          console.log('📍 SCROLL: Immediate scroll to top before content replacement');
+          
           // Insert the confirmation page
           pageWrapper.innerHTML = '';
           pageWrapper.appendChild(enhancedContent);
           
-          // FIX: Prevent scroll position glitch - always load at top
-          setTimeout(() => {
+          // DOUBLE-CHECK: Ensure scroll position is at top after content load
+          requestAnimationFrame(() => {
             window.scrollTo({ top: 0, behavior: 'instant' });
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
-            console.log('📍 SCROLL: Page positioned at top to prevent glitch');
-          }, 0);
+            console.log('📍 SCROLL: Confirmed page positioned at top after content load');
+          });
           
           // CRITICAL: Inject comprehensive CSS styles for dynamic confirmation page
           const confirmationCSS = document.createElement('style');
@@ -6321,6 +6376,79 @@
           
           // Add styles to head
           document.head.appendChild(confirmationCSS);
+          
+          // Initialize professional video player with soft enforcement
+          console.log('🎥 Setting up professional video player...');
+          setTimeout(() => {
+            const video = document.getElementById('mainVideo');
+            const customPlayButton = document.getElementById('customPlayButton');
+            const progressMessage = document.getElementById('videoProgressMessage');
+            
+            if (video && customPlayButton) {
+              let hasWatchedComplete = false;
+              let currentProgress = 0;
+              
+              // Custom play button functionality
+              customPlayButton.addEventListener('click', () => {
+                video.play();
+                customPlayButton.style.display = 'none';
+              });
+              
+              // Show custom play button when video is paused
+              video.addEventListener('pause', () => {
+                if (!video.ended) {
+                  customPlayButton.style.display = 'flex';
+                }
+              });
+              
+              // Hide custom play button when video is playing
+              video.addEventListener('play', () => {
+                customPlayButton.style.display = 'none';
+              });
+              
+              // Professional hover effects
+              customPlayButton.addEventListener('mouseenter', () => {
+                customPlayButton.style.transform = 'translate(-50%, -50%) scale(1.1)';
+                customPlayButton.style.background = 'rgba(0, 0, 0, 0.9)';
+              });
+              
+              customPlayButton.addEventListener('mouseleave', () => {
+                customPlayButton.style.transform = 'translate(-50%, -50%) scale(1)';
+                customPlayButton.style.background = 'rgba(0, 0, 0, 0.8)';
+              });
+              
+              // Soft enforcement: Disable seeking until first complete watch
+              video.addEventListener('seeking', (e) => {
+                if (!hasWatchedComplete && video.currentTime > currentProgress + 5) {
+                  video.currentTime = currentProgress;
+                  progressMessage.style.display = 'block';
+                  setTimeout(() => {
+                    progressMessage.style.display = 'none';
+                  }, 3000);
+                }
+              });
+              
+              // Track progress and enable full controls after complete watch
+              video.addEventListener('timeupdate', () => {
+                currentProgress = Math.max(currentProgress, video.currentTime);
+                
+                // If video completed, allow full seeking
+                if (video.currentTime >= video.duration - 2) {
+                  hasWatchedComplete = true;
+                  progressMessage.style.display = 'none';
+                }
+              });
+              
+              // Video ended - full controls enabled
+              video.addEventListener('ended', () => {
+                hasWatchedComplete = true;
+                customPlayButton.style.display = 'flex';
+                progressMessage.style.display = 'none';
+              });
+              
+              console.log('✅ Professional video player initialized');
+            }
+          }, 500);
           
           // Initialize interactive elements
           console.log('🔧 Setting up confirmation page interactions...');
