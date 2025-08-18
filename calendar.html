@@ -2,7 +2,7 @@
 <html data-wf-page="686bac2b4d1341d4cca18e08" data-wf-site="686bac2b4d1341d4cca18daf" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Book Your Strategy Session - AI Automation Consultation</title>
+  <title>🔥 TESTING 123 - VIDEO SIZE FIX TEST</title>
   <meta content="Book your personalized 30-minute AI automation strategy session. Let's map your highest-impact automations together." name="description">
   <meta content="Book Your Strategy Session - AI Automation Consultation" property="og:title">
   <meta content="Book your personalized 30-minute AI automation strategy session. Let's map your highest-impact automations together." property="og:description">
@@ -645,7 +645,7 @@
     .professional-video-container {
       position: relative;
       width: 100%;
-      max-width: 900px; /* Professional laptop-friendly size */
+      max-width: 900px; /* Professional desktop size */
       margin: 0 auto 3rem;
       /* Remove aspect-ratio to let child container control dimensions */
       background: transparent;
@@ -857,6 +857,17 @@
         width: 24px;
         height: 24px;
       }
+      
+      /* Mobile video container responsive */
+      .professional-video-container {
+        max-width: calc(100% - 1rem) !important;
+        margin: 0 auto 2rem !important;
+        padding: 0 !important;
+      }
+      
+      .video-wrapper {
+        max-width: 100% !important;
+      }
     }
     
     /* Week Days Header */
@@ -902,7 +913,7 @@
     /* Professional Confirmation Section - Matches Homepage Style */
     .confirmation-container {
       text-align: center;
-      padding: 4rem 2rem; /* Reduced from 8rem for better top spacing */
+      padding: 4rem 0.5rem; /* FIXED: Minimal horizontal padding for maximum video width */
       min-height: auto;
       display: flex;
       flex-direction: column;
@@ -1004,7 +1015,7 @@
       
       /* Reduce spacing between confirmation sections on mobile */
       .confirmation-container {
-        padding: 2.5rem 1.5rem; /* Reduced further for mobile proportions */
+        padding: 2.5rem 0.5rem; /* FIXED: Minimal horizontal padding for larger mobile video */
       }
       
       
@@ -1020,7 +1031,7 @@
       }
       
       .confirmation-container {
-        padding: 2rem 1rem; /* Even more compact for very small screens */
+        padding: 2rem 0.25rem; /* FIXED: Maximum video width on small screens */
       }
       
       .ai-supporting-text {
@@ -1038,7 +1049,7 @@
     }
     
     .video-wrapper {
-      max-width: 900px; /* Professional laptop-friendly size */
+      max-width: 900px; /* Professional desktop size */
       margin: 0 auto;
       position: relative;
       background: transparent;
@@ -1074,7 +1085,7 @@
     /* Video player styling - enhanced visibility and professional appearance */
     #confirmation-video-player {
       width: 100%;
-      max-width: 900px; /* Professional laptop-friendly size */
+      max-width: 1400px; /* FIXED: Enlarged for professional prominence */
       height: auto;
       min-height: 400px; /* More proportional minimum height */
       display: block;
@@ -1183,7 +1194,7 @@
       position: relative !important;
       display: block !important;
       width: 100% !important;
-      max-width: 1200px !important;
+      /* max-width: 1200px !important; */ /* REMOVED: Let video player handle sizing */
       margin: 0 auto 3rem !important;
       
       /* Background and visibility */
@@ -1227,31 +1238,30 @@
       /* Don't override background - let overlay styles handle it */
     }
     
-    /* Professional Video Player Container - FIXED: High contrast background for visibility */
+    /* Professional Video Player Container - DISABLED: Conflicting with inline styles */
+    /*
     .professional-video-player {
       position: relative !important;
       width: 100% !important;
-      max-width: 1200px !important; /* Professional laptop-friendly size */
-      height: 0 !important; /* Required for padding-top technique */
-      padding-top: 56.25% !important; /* 16:9 aspect ratio (9/16 * 100) */
+      max-width: 1200px !important;
+      height: 0 !important;
+      padding-top: 56.25% !important;
       margin: 0 auto !important;
       border-radius: 12px !important;
       overflow: hidden !important;
-      /* FIXED: Use higher contrast background - more visible against page #0f0f0f */
       background: #2a2a2a !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Subtle border for definition */
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
       
-      /* Force exact dimensions - no browser/extension override */
       max-height: none !important;
       min-height: unset !important;
       flex-grow: 0 !important;
       flex-shrink: 0 !important;
-      /* NUCLEAR override for aspect ratio conflicts */
       aspect-ratio: unset !important;
       display: block !important;
       box-sizing: border-box !important;
     }
+    */
     
     /* Main Video Element - Force Fill Container Completely */
     .professional-video-player .main-video,
@@ -2295,7 +2305,7 @@
     /* Enhanced confirmation wrapper */
     .enhanced-confirmation {
       width: 100%;
-      max-width: 900px;
+      max-width: 100%;
       margin: 0 auto;
     }
     
@@ -5292,6 +5302,21 @@
     /* Modern CSS eliminates the need for complex height overrides */
     
     /* 🎯 PROFESSIONAL: Metadata-only approach - no customer-facing technical data */
+    
+    /* Professional Video Player Responsive Optimization */
+    @media (max-width: 768px) {
+      .professional-video-player {
+        max-width: calc(100vw - 1rem) !important;
+        padding: 0 0.5rem !important;
+      }
+    }
+    
+    @media (max-width: 479px) {
+      .professional-video-player {
+        max-width: calc(100vw - 0.5rem) !important;
+        padding: 0 0.25rem !important;
+      }
+    }
   </style>
   <!-- Cookie Consent Styles -->
   <link href="css/cookie-consent.css" rel="stylesheet" type="text/css">
@@ -5346,8 +5371,25 @@
       <!-- Cal inline embed code begins -->
       <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-30min"></div>
       <script type="text/javascript">
+        // PROFESSIONAL: Disable browser scroll restoration
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+          console.log('📍 SCROLL: Browser scroll restoration disabled');
+        }
+        
+        // AGGRESSIVE: Force scroll to top immediately
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        
         // Initialize Cal.com with questionnaire data (using Cal loader from header)
         document.addEventListener('DOMContentLoaded', function() {
+          // IMMEDIATE: Force scroll to top on DOM ready
+          window.scrollTo({ top: 0, behavior: 'auto' });
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
+          console.log('📍 SCROLL: DOM ready - forced to top');
+          
           // CRITICAL: Initialize Cal.com (this was missing!)
           console.log('🚀 Initializing Cal.com...');
           Cal("init");
@@ -5452,11 +5494,13 @@
               calcomContainer.style.display = 'none';
             }
             
-            // IMMEDIATE: Force scroll to top on reload
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            // PROFESSIONAL: Aggressive scroll reset for reload
+            history.scrollRestoration = 'manual';
+            window.scrollTo({ top: 0, behavior: 'auto' });
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
-            console.log('📍 SCROLL: Reload - Immediate scroll to top');
+            document.body.style.scrollBehavior = 'auto';
+            console.log('📍 SCROLL: Reload - Professional scroll reset applied');
             
             // Create confirmation page immediately with enhanced debugging
             console.log('🔄 Creating confirmation page for reload persistence...');
@@ -5924,6 +5968,7 @@
           enhancedContent.className = 'enhanced-confirmation';
           enhancedContent.style.cssText = `
             width: 100% !important;
+            max-width: 100% !important;
             margin: 0 auto !important;
             padding: 0 !important;
             box-sizing: border-box !important;
@@ -5956,59 +6001,140 @@
                 </div>
                 <div class="professional-video-container">
                   <!-- Professional Cross-Device Video Player -->
-                  <div class="simple-video-container" style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+                  <!-- Professional Minimal Video Player -->
+                  <div class="professional-video-player" style="
+                    position: relative !important; 
+                    width: 100% !important; 
+                    max-width: 900px !important; 
+                    margin: 0 auto !important; 
+                    padding: 0 !important;
+                    border-radius: 12px !important; 
+                    overflow: hidden !important; 
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+                    background: #000 !important;
+                    aspect-ratio: 16/9 !important;
+                  ">
+                    <!-- Raw Video Element (No Native Controls) -->
                     <video 
                       id="mainVideo"
-                      controls
                       preload="metadata"
                       playsinline
                       webkit-playsinline
                       poster="` + posterPath + `"
-                      style="width: 100%; height: auto; display: block; background: #000;"
+                      style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%; 
+                        height: 100%; 
+                        display: block; 
+                        background: #000;
+                        object-fit: contain;
+                        z-index: 1;
+                      "
                     >
                       <source src="` + videoPath + `" type="video/mp4">
                       Your browser does not support HTML5 video.
                     </video>
                     
-                    <!-- Professional Center Play Button Overlay -->
-                    <div id="customPlayButton" class="custom-play-overlay" style="
+                    <!-- Minimal Progress Bar (Bottom) -->
+                    <div class="progress-container" style="
+                      position: absolute;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      width: 100%;
+                      height: 3px;
+                      background: rgba(255,255,255,0.2);
+                      z-index: 10;
+                      pointer-events: none;
+                    ">
+                      <div id="progressBar" style="
+                        height: 100%;
+                        background: rgba(255,255,255,0.9);
+                        width: 0%;
+                        transition: width 0.1s ease;
+                      "></div>
+                    </div>
+                    
+                    <!-- Mute Button (Top Right) -->
+                    <button id="volumeBtn" style="
+                      position: absolute;
+                      top: 15px;
+                      right: 15px;
+                      background: rgba(0,0,0,0.6);
+                      border: none;
+                      color: white;
+                      cursor: pointer;
+                      padding: 10px;
+                      border-radius: 50%;
+                      pointer-events: auto;
+                      transition: all 0.2s ease;
+                      z-index: 15;
+                      backdrop-filter: blur(10px);
+                      width: 45px;
+                      height: 45px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                    " onmouseover="this.style.background='rgba(0,0,0,0.8)'" onmouseout="this.style.background='rgba(0,0,0,0.6)'">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path id="volumeOnIcon" d="M3 9v6h4l5 5V4l-5 5H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" fill="currentColor"/>
+                        <path id="volumeOffIcon" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" fill="currentColor" style="display: none;"/>
+                      </svg>
+                    </button>
+                    
+                    <!-- Blur Overlay (When Paused) -->
+                    <div id="blurOverlay" style="
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      backdrop-filter: blur(8px);
+                      background: rgba(0,0,0,0.3);
+                      z-index: 5;
+                      transition: all 0.3s ease;
+                    "></div>
+                    
+                    <!-- Center Play Button -->
+                    <div id="centerPlayBtn" style="
                       position: absolute;
                       top: 50%;
                       left: 50%;
                       transform: translate(-50%, -50%);
-                      width: 80px;
-                      height: 80px;
-                      background: rgba(0, 0, 0, 0.8);
+                      width: 90px;
+                      height: 90px;
+                      background: rgba(255,255,255,0.95);
                       border-radius: 50%;
                       display: flex;
                       align-items: center;
                       justify-content: center;
                       cursor: pointer;
                       transition: all 0.3s ease;
-                      z-index: 10;
-                      backdrop-filter: blur(10px);
-                      border: 3px solid rgba(255, 255, 255, 0.3);
-                    ">
-                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: white; margin-left: 3px;">
-                        <path d="M8 5v14l11-7z" fill="currentColor"/>
+                      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                      z-index: 20;
+                    " onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(255,255,255,1)'" onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(255,255,255,0.95)'">
+                      <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
+                        <path d="M8 5v14l11-7z" fill="#000" style="margin-left: 3px;"/>
                       </svg>
                     </div>
                     
-                    <!-- Video Progress Message -->
-                    <div id="videoProgressMessage" class="video-progress-message" style="
+                    <!-- Seeking Prevention Message -->
+                    <div id="seekingMessage" style="
                       position: absolute;
-                      bottom: 20px;
+                      top: 50%;
                       left: 50%;
-                      transform: translateX(-50%);
-                      background: rgba(0, 0, 0, 0.9);
+                      transform: translate(-50%, -50%);
+                      background: rgba(0,0,0,0.9);
                       color: white;
-                      padding: 8px 16px;
-                      border-radius: 20px;
+                      padding: 12px 20px;
+                      border-radius: 8px;
                       font-size: 14px;
                       display: none;
-                      z-index: 11;
                       backdrop-filter: blur(10px);
-                      border: 1px solid rgba(255, 255, 255, 0.2);
+                      border: 1px solid rgba(255,255,255,0.2);
+                      z-index: 20;
                     ">
                       Please watch the video to continue
                     </div>
@@ -6160,22 +6286,31 @@
             </div>
           `;
           
-          // IMMEDIATE: Force scroll to top BEFORE content replacement
-          window.scrollTo({ top: 0, behavior: 'instant' });
+          // PROFESSIONAL: Complete scroll reset before content replacement
+          history.scrollRestoration = 'manual';
+          window.scrollTo({ top: 0, behavior: 'auto' });
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
-          console.log('📍 SCROLL: Immediate scroll to top before content replacement');
+          document.body.style.scrollBehavior = 'auto';
+          console.log('📍 SCROLL: Professional scroll reset before content replacement');
           
           // Insert the confirmation page
           pageWrapper.innerHTML = '';
           pageWrapper.appendChild(enhancedContent);
           
-          // DOUBLE-CHECK: Ensure scroll position is at top after content load
+          // TRIPLE-CHECK: Multiple scroll reset attempts
           requestAnimationFrame(() => {
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            window.scrollTo({ top: 0, behavior: 'auto' });
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
-            console.log('📍 SCROLL: Confirmed page positioned at top after content load');
+            
+            // Additional scroll reset after small delay
+            setTimeout(() => {
+              window.scrollTo({ top: 0, behavior: 'auto' });
+              document.documentElement.scrollTop = 0;
+              document.body.scrollTop = 0;
+              console.log('📍 SCROLL: Triple-checked - page confirmed at top');
+            }, 50);
           });
           
           // CRITICAL: Inject comprehensive CSS styles for dynamic confirmation page
@@ -6197,9 +6332,9 @@
 
             /* Confirmation Page Structure - Original Professional Spacing */
             .confirmation-container {
-              max-width: 1000px;
+              max-width: 100%;
               width: 100%;
-              padding: 4rem 2rem 2rem 2rem;
+              padding: 4rem 0.5rem 2rem 0.5rem;
               text-align: center;
               margin: 0 auto;
               position: relative;
@@ -6260,6 +6395,7 @@
             /* Video Section Styling */
             .confirmation-video {
               margin: 0;
+              width: 100%;
             }
 
             .step-indicator {
@@ -6377,77 +6513,138 @@
           // Add styles to head
           document.head.appendChild(confirmationCSS);
           
-          // Initialize professional video player with soft enforcement
-          console.log('🎥 Setting up professional video player...');
+          // Initialize Minimal Professional Video Player
+          console.log('🎥 Setting up minimal professional video player...');
           setTimeout(() => {
             const video = document.getElementById('mainVideo');
-            const customPlayButton = document.getElementById('customPlayButton');
-            const progressMessage = document.getElementById('videoProgressMessage');
+            const centerPlayBtn = document.getElementById('centerPlayBtn');
+            const progressBar = document.getElementById('progressBar');
+            const volumeBtn = document.getElementById('volumeBtn');
+            const blurOverlay = document.getElementById('blurOverlay');
+            const seekingMessage = document.getElementById('seekingMessage');
+            const volumeOnIcon = document.getElementById('volumeOnIcon');
+            const volumeOffIcon = document.getElementById('volumeOffIcon');
             
-            if (video && customPlayButton) {
-              let hasWatchedComplete = false;
-              let currentProgress = 0;
-              
-              // Custom play button functionality
-              customPlayButton.addEventListener('click', () => {
+            if (!video) return;
+            
+            let hasWatchedComplete = false;
+            let currentProgress = 0;
+            let isPlaying = false;
+            
+            // Show/hide blur overlay
+            function showBlurOverlay() {
+              if (blurOverlay) {
+                blurOverlay.style.display = 'block';
+                blurOverlay.style.opacity = '1';
+              }
+              if (centerPlayBtn) {
+                centerPlayBtn.style.display = 'flex';
+              }
+            }
+            
+            function hideBlurOverlay() {
+              if (blurOverlay) {
+                blurOverlay.style.opacity = '0';
+                setTimeout(() => {
+                  if (blurOverlay) blurOverlay.style.display = 'none';
+                }, 300);
+              }
+              if (centerPlayBtn) {
+                centerPlayBtn.style.display = 'none';
+              }
+            }
+            
+            // Update volume button appearance
+            function updateVolumeButton() {
+              if (volumeOnIcon && volumeOffIcon) {
+                if (video.muted) {
+                  volumeOnIcon.style.display = 'none';
+                  volumeOffIcon.style.display = 'block';
+                } else {
+                  volumeOnIcon.style.display = 'block';
+                  volumeOffIcon.style.display = 'none';
+                }
+              }
+            }
+            
+            // Play/Pause functionality
+            function togglePlayPause() {
+              if (video.paused) {
                 video.play();
-                customPlayButton.style.display = 'none';
-              });
-              
-              // Show custom play button when video is paused
-              video.addEventListener('pause', () => {
-                if (!video.ended) {
-                  customPlayButton.style.display = 'flex';
-                }
-              });
-              
-              // Hide custom play button when video is playing
-              video.addEventListener('play', () => {
-                customPlayButton.style.display = 'none';
-              });
-              
-              // Professional hover effects
-              customPlayButton.addEventListener('mouseenter', () => {
-                customPlayButton.style.transform = 'translate(-50%, -50%) scale(1.1)';
-                customPlayButton.style.background = 'rgba(0, 0, 0, 0.9)';
-              });
-              
-              customPlayButton.addEventListener('mouseleave', () => {
-                customPlayButton.style.transform = 'translate(-50%, -50%) scale(1)';
-                customPlayButton.style.background = 'rgba(0, 0, 0, 0.8)';
-              });
-              
-              // Soft enforcement: Disable seeking until first complete watch
-              video.addEventListener('seeking', (e) => {
-                if (!hasWatchedComplete && video.currentTime > currentProgress + 5) {
-                  video.currentTime = currentProgress;
-                  progressMessage.style.display = 'block';
-                  setTimeout(() => {
-                    progressMessage.style.display = 'none';
-                  }, 3000);
-                }
-              });
-              
-              // Track progress and enable full controls after complete watch
-              video.addEventListener('timeupdate', () => {
+              } else {
+                video.pause();
+              }
+            }
+            
+            // Center play button
+            if (centerPlayBtn) {
+              centerPlayBtn.addEventListener('click', togglePlayPause);
+            }
+            
+            // Video click to play/pause
+            video.addEventListener('click', togglePlayPause);
+            
+            // Video events
+            video.addEventListener('play', () => {
+              isPlaying = true;
+              hideBlurOverlay();
+            });
+            
+            video.addEventListener('pause', () => {
+              isPlaying = false;
+              if (!video.ended) {
+                showBlurOverlay();
+              }
+            });
+            
+            video.addEventListener('ended', () => {
+              hasWatchedComplete = true;
+              isPlaying = false;
+              showBlurOverlay();
+            });
+            
+            // Progress update (visual only, no seeking)
+            video.addEventListener('timeupdate', () => {
+              if (video.duration) {
+                const progress = (video.currentTime / video.duration) * 100;
+                if (progressBar) progressBar.style.width = progress + '%';
+                
+                // Track furthest point for enforcement
                 currentProgress = Math.max(currentProgress, video.currentTime);
                 
-                // If video completed, allow full seeking
-                if (video.currentTime >= video.duration - 2) {
+                // Enable full seeking after watching 90%
+                if (video.currentTime >= video.duration * 0.9) {
                   hasWatchedComplete = true;
-                  progressMessage.style.display = 'none';
                 }
+              }
+            });
+            
+            // Prevent seeking by disabling video seeking events
+            video.addEventListener('seeking', (e) => {
+              if (!hasWatchedComplete && video.currentTime > currentProgress + 10) {
+                video.currentTime = currentProgress;
+                if (seekingMessage) {
+                  seekingMessage.style.display = 'block';
+                  setTimeout(() => {
+                    seekingMessage.style.display = 'none';
+                  }, 2000);
+                }
+              }
+            });
+            
+            // Volume toggle with visual feedback
+            if (volumeBtn) {
+              volumeBtn.addEventListener('click', () => {
+                video.muted = !video.muted;
+                updateVolumeButton();
               });
-              
-              // Video ended - full controls enabled
-              video.addEventListener('ended', () => {
-                hasWatchedComplete = true;
-                customPlayButton.style.display = 'flex';
-                progressMessage.style.display = 'none';
-              });
-              
-              console.log('✅ Professional video player initialized');
             }
+            
+            // Initialize states
+            showBlurOverlay(); // Show blur on load
+            updateVolumeButton(); // Set initial volume button state
+            
+            console.log('✅ Minimal professional video player initialized');
           }, 500);
           
           // Initialize interactive elements
