@@ -411,7 +411,25 @@
     p:has(> a[href*="cal.com"]),
     /* Target the specific text on confirmation */
     *:has-text("Create your own booking link"),
-    *:has-text("Try it for free") {
+    *:has-text("Try it for free"),
+    /* Additional promotional content targeting */
+    [class*="cal-com-banner"],
+    [class*="cal-promotion"],
+    [id*="cal-banner"],
+    [id*="cal-promotion"],
+    /* Target any back-to-home or homepage links in cal.com embed */
+    #my-cal-inline-30min a[href="/"],
+    #my-cal-inline-30min a[href*="home"],
+    #my-cal-inline-30min *[class*="back-to"],
+    #my-cal-inline-30min *[class*="homepage"],
+    /* Target bottom promotional sections */
+    #my-cal-inline-30min > div:last-child:has(a[href*="cal.com"]),
+    /* Generic promotional text patterns */
+    *:has-text("Get your own booking page"),
+    *:has-text("Start accepting bookings"),
+    *:has-text("cal.com"),
+    *:has-text("back to home"),
+    *:has-text("homepage") {
       display: none !important;
       visibility: hidden !important;
       height: 0 !important;
@@ -1779,7 +1797,7 @@
 
     /* Email Link - Match Footer Style */
     .minimal-contact {
-      margin-top: 2rem;
+      margin: 2rem 0 2.5rem 0;
       text-align: center;
     }
     
@@ -6247,12 +6265,36 @@
                   </div>
                   
                   <!-- Email Button -->
-                  <div class="minimal-contact">
+                  <div class="minimal-contact" style="margin-bottom: 3rem !important;">
                     <a href="mailto:hi@nithichote.com?subject=Meeting Question" class="link-button w-inline-block">
                       <div class="button-link-wrapper">
                         <div class="button-text-block">
-                          <div class="button-text">Questions? Email Me</div>
+                          <div class="button-text">Questions? Email me</div>
                           <div class="button-text is-hover">QUESTIONS? EMAIL ME</div>
+                        </div>
+                      </div>
+                      <div class="underline is-nav"></div>
+                    </a>
+                  </div>
+                  
+                  <!-- Divider -->
+                  <div style="width: 100px; height: 1px; background: rgba(255, 255, 255, 0.1); margin: 0 auto 1.5rem auto;"></div>
+                  
+                  <!-- Back to Homepage Button -->
+                  <div style="text-align: center; margin-bottom: 1rem;">
+                    <a href="/" class="link-button w-inline-block back-to-home-button">
+                      <div class="button-link-wrapper">
+                        <div class="button-text-block">
+                          <div class="button-text">BACK TO HOMEPAGE</div>
+                          <div class="button-text is-hover">BACK TO HOMEPAGE</div>
+                        </div>
+                        <div class="arrow-button-block">
+                          <div class="arrow-button _01 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                            </svg></div>
+                          <div class="arrow-button _02 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                            </svg></div>
                         </div>
                       </div>
                       <div class="underline is-nav"></div>
@@ -6261,28 +6303,6 @@
                 </div>
               </div>
               
-              <!-- Bottom Navigation Bar -->
-              <footer class="confirmation-footer" style="display: block !important; padding: 1.5rem 1.5rem 0.75rem 1.5rem; background: var(--primary-black); border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center;">
-                <div class="footer-links">
-                  <a href="/" class="link-button w-inline-block">
-                    <div class="button-link-wrapper">
-                      <div class="button-text-block">
-                        <div class="button-text is-hover">BACK TO HOMEPAGE</div>
-                        <div class="button-text">BACK TO HOMEPAGE</div>
-                      </div>
-                      <div class="arrow-button-block">
-                        <div class="arrow-button _01 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                          </svg></div>
-                        <div class="arrow-button _02 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                          </svg></div>
-                      </div>
-                    </div>
-                    <div class="underline is-nav"></div>
-                  </a>
-                </div>
-              </footer>
             </div>
           `;
           
@@ -6466,10 +6486,106 @@
               max-width: 400px;
             }
 
-            /* Contact Section */
-            .minimal-contact {
-              margin: 2rem 0 0 0;
-              text-align: center;
+            /* Contact Section - Removed conflicting CSS, using static styles */
+
+            /* Button Animation Styles - Essential for hover effects */
+            .link-button {
+              grid-column-gap: 3px;
+              grid-row-gap: 3px;
+              flex-flow: column;
+              justify-content: flex-start;
+              align-items: center;
+              text-decoration: none;
+              display: flex;
+              overflow: hidden;
+            }
+
+            .button-link-wrapper {
+              grid-column-gap: 5px;
+              grid-row-gap: 5px;
+              flex-flow: row;
+              justify-content: flex-start;
+              align-items: center;
+              display: flex;
+              position: relative;
+            }
+
+            .button-text-block {
+              flex-flow: column;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 1rem;
+              display: flex;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .button-text {
+              color: rgba(255, 255, 255, 0.6);
+              text-transform: uppercase;
+              white-space: nowrap;
+              font-size: 12px;
+              font-weight: 500;
+              line-height: 1rem;
+              transition: transform .3s cubic-bezier(.165, .84, .44, 1);
+              display: flex;
+              align-items: center;
+              height: 1rem;
+            }
+
+            .button-text.is-hover {
+              color: rgba(255, 255, 255, 0.8);
+              position: absolute;
+              top: 1rem;
+            }
+
+            .link-button:hover .button-text {
+              transform: translateY(-100%);
+            }
+
+            .link-button:hover .button-text.is-hover {
+              transform: translateY(-100%);
+            }
+
+            /* Underline styles for buttons */
+            .minimal-contact .link-button .underline,
+            .minimal-contact .link-button .underline.is-nav,
+            .minimal-contact a.link-button .underline,
+            .minimal-contact a.link-button .underline.is-nav {
+              background-color: rgba(255, 255, 255, 0.8) !important;
+              width: 100% !important;
+              height: 1px !important;
+              margin-top: 3px !important;
+              transform: scaleX(1) !important;
+              transform-origin: left !important;
+              transition: transform 0.3s ease !important;
+              display: block !important;
+            }
+
+            .minimal-contact .link-button:hover .underline,
+            .minimal-contact .link-button:hover .underline.is-nav,
+            .minimal-contact a.link-button:hover .underline,
+            .minimal-contact a.link-button:hover .underline.is-nav {
+              transform: scaleX(0) !important;
+              transform-origin: right !important;
+            }
+
+            .arrow-button-block {
+              justify-content: center;
+              align-items: center;
+              width: 1rem;
+              height: 1rem;
+              display: flex;
+              position: relative;
+              overflow: hidden;
+            }
+
+            /* Fix Back to Homepage button underline width */
+            .back-to-home-button .underline {
+              width: auto !important;
+              max-width: 120px !important;
+              margin: 3px auto 0 auto !important;
             }
 
             /* Mobile Responsive */
@@ -7388,39 +7504,6 @@
       <!-- Cal inline embed code ends -->
     </main>
     
-    
-    <!-- Footer -->
-    <footer class="confirmation-footer">
-      <div class="footer-links">
-        <a href="mailto:hi@phunithichote.com" class="link-button w-inline-block">
-          <div class="button-link-wrapper">
-            <div class="button-text-block">
-              <div class="button-text is-hover">HI@PHUNITHICHOTE.COM</div>
-              <div class="button-text">HI@PHUNITHICHOTE.COM</div>
-            </div>
-          </div>
-          <div class="underline is-nav"></div>
-        </a>
-        <span class="footer-divider"></span>
-        <a href="/" class="link-button w-inline-block">
-          <div class="button-link-wrapper">
-            <div class="button-text-block">
-              <div class="button-text is-hover">BACK TO HOMEPAGE</div>
-              <div class="button-text">BACK TO HOMEPAGE</div>
-            </div>
-            <div class="arrow-button-block">
-              <div class="arrow-button _01 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                </svg></div>
-              <div class="arrow-button _02 w-embed"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                </svg></div>
-            </div>
-          </div>
-          <div class="underline is-nav"></div>
-        </a>
-      </div>
-    </footer>
   </div>
 
   <!-- Cookie Consent Script -->
