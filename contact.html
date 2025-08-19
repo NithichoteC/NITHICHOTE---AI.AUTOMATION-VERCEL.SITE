@@ -33,6 +33,12 @@
   <!-- End Google Tag Manager -->
   
   <style>
+    /* iOS Pull-to-Refresh Prevention */
+    html {
+      overscroll-behavior-y: none !important; /* Safari 16+ - Prevent pull-to-refresh */
+      overscroll-behavior: none !important; /* Prevent all overscroll behaviors */
+    }
+    
     /* Professional Questionnaire Design */
     :root {
       --primary-black: #0f0f0f;
@@ -56,7 +62,7 @@
       position: relative;
     }
     
-    /* Ensure no scroll on mobile */
+    /* Ensure no scroll on mobile - Fix iOS pull-to-refresh */
     @media (max-width: 767px) {
       body {
         overflow: hidden !important;
@@ -64,7 +70,7 @@
         width: 100% !important;
         height: 100vh !important;
         overscroll-behavior: none !important; /* Prevent pull-to-refresh */
-        touch-action: none !important; /* Prevent unwanted touch behaviors */
+        /* REMOVED: touch-action: none - it blocks all scrolling! */
       }
       
       .page-wrapper {
@@ -188,17 +194,43 @@
         padding: 0.5rem 0 2rem 0 !important; /* Start content immediately visible */
         align-items: flex-start !important;
         background: var(--primary-black) !important;
-        overscroll-behavior: contain !important; /* Contain scroll within this element */
+        overscroll-behavior-y: contain !important; /* Contain scroll within this element */
         touch-action: pan-y !important; /* Allow only vertical scrolling */
+      }
+      
+      /* FIX CRITICAL: Change absolute positioning to relative for mobile scrolling */
+      .question-slide {
+        position: relative !important; /* Change from absolute to relative */
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(100vh - 180px) !important; /* Ensure full viewport coverage */
+        display: none !important; /* Hide by default instead of using visibility */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important; /* Remove scale transforms */
+        opacity: 1 !important;
+        transition: none !important; /* Remove transitions for instant display */
+      }
+      
+      .question-slide.active {
+        display: flex !important; /* Show when active */
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Start from top, not center */
+        align-items: center !important;
+        visibility: visible !important;
       }
       
       /* Ensure question content can expand naturally and starts at top */
       .question-card {
+        position: relative !important; /* Remove absolute positioning */
         min-height: auto !important; /* Remove fixed height constraints */
         height: auto !important;
         align-items: flex-start !important;
-        padding: 1rem 0 0 0 !important; /* Start content immediately after header */
+        padding: 0.5rem 0 0 0 !important; /* Minimal top padding */
         margin-top: 0 !important;
+        width: 100% !important;
       }
     }
     
@@ -984,8 +1016,32 @@
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
         padding: 0.25rem 0 1.5rem 0 !important; /* Minimal top padding for immediate visibility */
-        overscroll-behavior: contain !important;
+        overscroll-behavior-y: contain !important;
         touch-action: pan-y !important;
+      }
+      
+      /* FIX CRITICAL: Apply same positioning fixes for smaller mobile */
+      .question-slide {
+        position: relative !important; /* Change from absolute to relative */
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(100vh - 160px - env(safe-area-inset-bottom)) !important;
+        display: none !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+      }
+      
+      .question-slide.active {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        visibility: visible !important;
       }
       
       .question-content {
@@ -1928,6 +1984,40 @@
       
       // Run booking check IMMEDIATELY on page load - no delay to prevent bypass
       checkExistingBooking();
+      
+      // iOS Pull-to-Refresh Prevention - JavaScript Fallback for Safari < 16
+      let startY = 0;
+      let isQuestionContainerTouch = false;
+      
+      document.addEventListener('touchstart', function(e) {
+        startY = e.touches[0].pageY;
+        
+        // Check if touch started on question container
+        const container = document.querySelector('.question-container');
+        isQuestionContainerTouch = container && container.contains(e.target);
+      }, { passive: false });
+      
+      document.addEventListener('touchmove', function(e) {
+        if (!isQuestionContainerTouch) {
+          // Only prevent default if touching outside question container
+          const touchY = e.touches[0].pageY;
+          const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+          
+          // If at top and trying to scroll up (pull-to-refresh gesture), prevent it
+          if (scrollTop <= 0 && touchY > startY) {
+            e.preventDefault();
+            console.log('🚫 Prevented pull-to-refresh gesture');
+          }
+        }
+      }, { passive: false });
+      
+      // Also prevent default touchmove on document to be extra safe on iOS
+      document.addEventListener('touchmove', function(e) {
+        // Allow scrolling only within question-container
+        if (!e.target.closest('.question-container')) {
+          e.preventDefault();
+        }
+      }, { passive: false });
     });
   </script>
   <!-- Cookie Consent Script -->
