@@ -176,6 +176,7 @@
       .link-button .underline {
         margin-top: 2px !important; /* Minimal gap */
         position: relative !important;
+        transition: width 0.3s ease !important; /* Smooth animation */
       }
       
       /* Fix hamburger menu button - remove scale transform */
@@ -220,6 +221,12 @@
       .link-button:active .button-text.is-hover {
         transform: translateY(0) !important; /* Reset hover text */
         transition: transform 0.15s ease !important; /* Quick slide back */
+      }
+      
+      /* UNDERLINE CLICK ANIMATION - Shrink and return like Stripe */
+      .link-button:active .underline {
+        width: 0 !important; /* Shrink underline on click */
+        transition: width 0.15s ease !important; /* Quick shrink like text */
       }
       
       /* Fix email button vertical alignment with social buttons */
