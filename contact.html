@@ -56,6 +56,21 @@
       position: relative;
     }
     
+    /* Ensure no scroll on mobile */
+    @media (max-width: 767px) {
+      body {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100vh !important;
+      }
+      
+      .page-wrapper {
+        height: 100vh !important;
+        overflow: hidden !important;
+      }
+    }
+    
     
     .page-wrapper {
       height: 100vh;
@@ -154,23 +169,30 @@
         backdrop-filter: none !important; /* Remove blur for solid look */
       }
       
-      /* Better scroll containment between top and bottom bars */
-      .form-container {
-        padding-top: 120px !important; /* Exact header height */
-        padding-bottom: 120px !important; /* More space for bottom continue bar + safe area */
-        min-height: calc(100vh - 220px) !important; /* Minimum height but allow natural expansion */
-        height: auto !important; /* Remove fixed height constraint - let content determine height */
-        overflow-y: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        border: none !important;
-        box-sizing: border-box !important;
+      /* Fix main content area to account for fixed header and navigation */
+      .main-content {
+        height: calc(100vh - 180px) !important; /* Header (120px) + Navigation (60px) */
+        margin-top: 120px !important; /* Push down below fixed header */
+        margin-bottom: 0 !important;
+        overflow: hidden !important;
       }
       
-      /* Ensure form content is properly contained */
-      .questionnaire-container {
+      /* Make question container the scrollable area */
+      .question-container {
         height: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 1rem 0 2rem 0 !important; /* Reduced padding for better content fit */
+        align-items: flex-start !important;
+        background: var(--primary-black) !important;
+      }
+      
+      /* Ensure question content can expand naturally */
+      .question-card {
+        min-height: auto !important; /* Remove fixed height constraints */
+        height: auto !important;
+        align-items: flex-start !important;
+        padding: 0 !important;
       }
     }
     
@@ -941,13 +963,21 @@
       }
       
       .questionnaire-header {
-        height: 90px;
+        height: 120px !important; /* Keep consistent with larger mobile */
         padding: 0.75rem 0;
       }
       
       .main-content {
-        min-height: calc(100vh - 130px - env(safe-area-inset-bottom)); /* Allow expansion */
-        height: auto !important; /* Remove fixed height to prevent cutoff */
+        height: calc(100vh - 160px - env(safe-area-inset-bottom)) !important; /* Header (120px) + Navigation (40px) */
+        margin-top: 120px !important;
+        overflow: hidden !important;
+      }
+      
+      .question-container {
+        height: 100% !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 0.75rem 0 1.5rem 0 !important;
       }
       
       .question-content {
@@ -984,7 +1014,10 @@
       }
       
       .question-card {
-        min-height: calc(100vh - 130px - env(safe-area-inset-bottom) - 4rem);
+        min-height: auto !important; /* Remove fixed height constraints */
+        height: auto !important;
+        align-items: flex-start !important;
+        padding: 0 !important;
       }
       
       .pill-options {
@@ -1033,9 +1066,9 @@
       .navigation-area {
         padding: 0.5rem;
         padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
-        height: 40px;
+        height: 40px !important; /* Consistent navigation height */
         background: rgba(15, 15, 15, 0.98);
-        z-index: 1001;
+        z-index: 1001 !important;
       }
       
     }
@@ -1857,10 +1890,9 @@
               font-family: 'General Sans', -apple-system, BlinkMacSystemFont, sans-serif;
               color: white;
             `;
+            // Fixed: Removed cache buster causing double execution
             loadingMessage.innerHTML = `
-              <div style="width: 60px; height: 60px; border: 2px solid rgba(255, 255, 255, 0.1); border-top: 2px solid white; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 2rem;"></div>
-              <div style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: white;">Taking You to Your Confirmation</div>
-              <div style="font-size: 1rem; color: #b4b4b4; max-width: 400px; text-align: center; line-height: 1.5;">You've already booked your session. Redirecting to your confirmation page...</div>
+              <div style="width: 24px; height: 24px; border: 2px solid rgba(255, 255, 255, 0.3); border-top: 2px solid white; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
             `;
             
             // Add professional spin animation
