@@ -14,7 +14,7 @@
   <meta content="Transform your business with AI&nbsp;automation. Get a free 30-minute strategy&nbsp;call to identify your highest-impact automations and reclaim 10+&nbsp;hours every week. Zero sales pressure, pure strategic insight." property="twitter:description">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta content="Webflow" name="generator">
   <link href="css/normalize.css" rel="stylesheet" type="text/css">
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
@@ -28,10 +28,10 @@
   <link rel="manifest" href="manifest.json">
   <!-- Cookie Consent Styles -->
   <link href="css/cookie-consent.css" rel="stylesheet" type="text/css">
-  <!-- Mobile Overflow Fixes -->
-  <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css">
-  <!-- iOS Overscroll Prevention & Mobile Polish -->
-  <style>
+  <!-- Mobile Overflow Fixes - DISABLED to match working backup -->
+  <!-- <link href="css/mobile-fixes.css" rel="stylesheet" type="text/css"> -->
+  <!-- iOS Overscroll Prevention & Mobile Polish - DISABLED to match backup -->
+  <!-- <style>
     /* Allow pull-to-refresh but prevent bottom bounce */
     html {
       overscroll-behavior-y: contain; /* Allows refresh but prevents chain scrolling */
@@ -134,7 +134,120 @@
         line-height: 1.4 !important;
       }
     }
+  </style> -->
+  
+  <!-- MOBILE BUTTON FIX - NO TRANSFORM SCALING -->
+  <style>
+    @media (max-width: 479px) {
+      /* NO TRANSFORM - Direct sizing only for MAIN CTA BUTTONS */
+      .link-button.bigger {
+        transform: none !important; /* Remove ALL scaling */
+        margin-top: 20px !important;
+      }
+      
+      /* Remove gaps that push underline away from text */
+      .link-button {
+        grid-row-gap: 0 !important; /* Critical: no gap between text and underline */
+        grid-column-gap: 0 !important;
+      }
+      
+      /* Direct font sizing instead of scale transform */
+      .link-button.bigger .button-text {
+        font-size: 16px !important; /* Direct size instead of scaling */
+        text-transform: uppercase !important;
+        line-height: 1.2 !important;
+      }
+      
+      /* Adjust text container height to match font size */
+      .button-text-block.bigger {
+        height: 16px !important; /* Match font size for proper containment */
+        overflow: hidden !important; /* Required for slide effect */
+        position: relative !important;
+      }
+      
+      /* Regular button text blocks */
+      .button-text-block {
+        height: 14px !important;
+        overflow: hidden !important;
+        position: relative !important;
+      }
+      
+      /* Position underline directly under text - no big gap */
+      .link-button .underline {
+        margin-top: 2px !important; /* Minimal gap */
+        position: relative !important;
+      }
+      
+      /* Fix hamburger menu button - remove scale transform */
+      .nav-menu .link-button.is-nav {
+        transform: none !important; /* Remove scale(2) that breaks layout */
+      }
+      
+      /* Hover animation setup */
+      .button-text {
+        transform: translateY(0) !important;
+        transition: transform 0.3s ease !important;
+        position: relative !important;
+      }
+      
+      /* Hover animation - slide up to reveal grey text */
+      .link-button:hover .button-text {
+        transform: translateY(-100%) !important;
+      }
+      
+      /* Grey hover text positioned to slide in */
+      .button-text.is-hover {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        transform: translateY(0) !important;
+        color: var(--grey) !important;
+        transition: transform 0.3s ease !important;
+      }
+      
+      /* Move hover text into view on hover */
+      .link-button:hover .button-text.is-hover {
+        transform: translateY(-100%) !important;
+      }
+      
+      /* STRIPE-STYLE CLICK ANIMATION - Professional slide back on click */
+      .link-button:active .button-text {
+        transform: translateY(0) !important; /* Slide back to normal */
+        transition: transform 0.15s ease !important; /* Quick slide back like Stripe */
+      }
+      
+      .link-button:active .button-text.is-hover {
+        transform: translateY(0) !important; /* Reset hover text */
+        transition: transform 0.15s ease !important; /* Quick slide back */
+      }
+      
+      /* Fix email button vertical alignment with social buttons */
+      .link-button:not(.bigger):not(.is-nav) .button-text-block {
+        vertical-align: middle !important;
+        display: inline-flex !important;
+        align-items: center !important;
+      }
+      
+      /* Ensure all footer buttons align on same baseline */
+      .footer-link-wrapper .link-button {
+        vertical-align: middle !important;
+      }
+      
+      /* Tighter underline spacing for email button */
+      .link-button:not(.bigger) .underline {
+        margin-top: 0 !important;
+        position: relative !important;
+        top: 2px !important; /* Very close to text */
+      }
+      
+      /* Hide the FREE 30-MIN CALL button in hamburger menu on mobile */
+      .nav-menu .link-button.is-nav {
+        display: none !important;
+      }
+    }
   </style>
+  
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
