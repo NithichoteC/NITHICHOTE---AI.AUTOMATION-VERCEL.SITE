@@ -63,11 +63,14 @@
         position: fixed !important;
         width: 100% !important;
         height: 100vh !important;
+        overscroll-behavior: none !important; /* Prevent pull-to-refresh */
+        touch-action: none !important; /* Prevent unwanted touch behaviors */
       }
       
       .page-wrapper {
         height: 100vh !important;
         overflow: hidden !important;
+        overscroll-behavior: none !important;
       }
     }
     
@@ -182,17 +185,20 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 1rem 0 2rem 0 !important; /* Reduced padding for better content fit */
+        padding: 0.5rem 0 2rem 0 !important; /* Start content immediately visible */
         align-items: flex-start !important;
         background: var(--primary-black) !important;
+        overscroll-behavior: contain !important; /* Contain scroll within this element */
+        touch-action: pan-y !important; /* Allow only vertical scrolling */
       }
       
-      /* Ensure question content can expand naturally */
+      /* Ensure question content can expand naturally and starts at top */
       .question-card {
         min-height: auto !important; /* Remove fixed height constraints */
         height: auto !important;
         align-items: flex-start !important;
-        padding: 0 !important;
+        padding: 1rem 0 0 0 !important; /* Start content immediately after header */
+        margin-top: 0 !important;
       }
     }
     
@@ -977,7 +983,9 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.75rem 0 1.5rem 0 !important;
+        padding: 0.25rem 0 1.5rem 0 !important; /* Minimal top padding for immediate visibility */
+        overscroll-behavior: contain !important;
+        touch-action: pan-y !important;
       }
       
       .question-content {
