@@ -5357,7 +5357,6 @@
         // PROFESSIONAL: Disable browser scroll restoration
         if ('scrollRestoration' in history) {
           history.scrollRestoration = 'manual';
-          console.log('📍 SCROLL: Browser scroll restoration disabled');
         }
         
         // AGGRESSIVE: Force scroll to top immediately
@@ -5371,18 +5370,15 @@
           window.scrollTo({ top: 0, behavior: 'auto' });
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
-          console.log('📍 SCROLL: DOM ready - forced to top');
           
-          // CRITICAL: Initialize Cal.com (this was missing!)
-          console.log('🚀 Initializing Cal.com...');
+          // Initialize Cal.com
           Cal("init");
           
-          // CRITICAL FIX: Check schedule_another parameter FIRST (from current URL)
+          // Check schedule_another parameter first
           const currentUrl = new URL(window.location.href);
           const isSchedulingAnother = currentUrl.searchParams.get('schedule_another') === 'true';
           
           if (isSchedulingAnother) {
-            console.log('🔄 SCHEDULE ANOTHER SESSION detected - Clearing ALL confirmation state');
             
             // Clear ALL confirmation state (comprehensive cleanup)
             localStorage.removeItem('confirmationViewed');
@@ -5400,17 +5396,15 @@
             cleanUrl.searchParams.delete('schedule_another');
             history.replaceState(null, null, cleanUrl.toString());
             
-            console.log('✅ All confirmation state cleared - User will see fresh Cal.com widget');
           }
           
-          // CRITICAL FIX: Clear old booking states for form users BEFORE persistence check
+          // Clear old booking states for form users before persistence check
           const referrer = document.referrer;
           const isFromForm = referrer && (referrer.includes('contact') || referrer.includes('index'));
           const isReload = !referrer || referrer === window.location.href;
           
           // PROFESSIONAL FIX: Only clear STALE booking state, preserve RECENT bookings
           if (isFromForm && !isSchedulingAnother && !isReload) {
-            console.log('🧹 FORM USER DETECTED - Checking if booking state is stale...');
             
             const bookingTimestamp = localStorage.getItem('bookingTimestamp');
             const now = Date.now();
@@ -5430,7 +5424,6 @@
             
             // Only clear if booking is old or doesn't exist
             if (!bookingTimestamp || (now - timestamp) > oneHour) {
-              console.log('🧹 Clearing STALE booking state (older than 1 hour)');
               
               // Clear ALL confirmation state (same as schedule_another cleanup)
               localStorage.removeItem('confirmationViewed');
@@ -5444,9 +5437,7 @@
               sessionStorage.removeItem('confirmationSource');
               sessionStorage.removeItem('confirmationPriority');
               
-              console.log('✅ Stale booking state cleared - Fresh Cal.com widget will be shown');
             } else {
-              console.log('✅ RECENT booking detected - Preserving state for persistence');
             }
           }
           
@@ -5455,17 +5446,9 @@
           const bookingConfirmed = localStorage.getItem('bookingConfirmed');
           
           // Enhanced debugging
-          console.log('🔍 PERSISTENCE DEBUG:');
-          console.log('  - isSchedulingAnother:', isSchedulingAnother);
-          console.log('  - confirmationViewed:', confirmationViewed);
-          console.log('  - bookingConfirmed:', bookingConfirmed);
-          console.log('  - currentUrl:', window.location.href);
-          console.log('  - referrer:', document.referrer || 'empty');
           
           // Simple logic: If we have confirmation flags and NOT scheduling another session, restore the page
           if (!isSchedulingAnother && (confirmationViewed === 'true' || bookingConfirmed === 'true')) {
-            console.log('🔄 RELOAD PERSISTENCE: Confirmation page should be restored');
-            console.log('🔍 Evidence: confirmationViewed =', confirmationViewed, 'bookingConfirmed =', bookingConfirmed);
             
             // Reset flags to ensure fresh creation
             window.confirmationPageCreated = false;
@@ -5483,10 +5466,8 @@
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
             document.body.style.scrollBehavior = 'auto';
-            console.log('📍 SCROLL: Reload - Professional scroll reset applied');
             
             // Create confirmation page immediately with enhanced debugging
-            console.log('🔄 Creating confirmation page for reload persistence...');
             try {
               window.createConfirmationPage({
                 detail: {
@@ -5495,13 +5476,11 @@
                   timestamp: localStorage.getItem('bookingTimestamp')
                 }
               });
-              console.log('✅ Reload persistence: Confirmation page creation initiated');
               
               // Double-check that it was created successfully
               setTimeout(() => {
                 const confirmationElement = document.querySelector('.enhanced-confirmation');
                 if (confirmationElement) {
-                  console.log('✅ Reload persistence: Confirmation page verified');
                 } else {
                   console.error('❌ Reload persistence: Confirmation page not found after creation attempt');
                   // Retry once more
@@ -5521,7 +5500,6 @@
               // Clear failed state and continue to Cal.com initialization
               localStorage.removeItem('confirmationViewed');
               localStorage.removeItem('bookingConfirmed');
-              console.log('🧹 Cleared failed persistence state, proceeding to Cal.com...');
             }
             return; // Exit early for persistence
           }
@@ -5534,27 +5512,19 @@
             if (!storedData) {
               // Fallback to sessionStorage for compatibility
               storedData = sessionStorage.getItem('questionnaireData');
-              console.log('📊 Using sessionStorage fallback (data may not persist on refresh)');
             } else {
-              console.log('📊 Using localStorage data (persistent across refresh)');
             }
             
             if (storedData) {
               questionnaireData = JSON.parse(storedData);
-              console.log('📊 Questionnaire data found:', questionnaireData);
             } else {
-              console.log('⚠️ No questionnaire data found in localStorage or sessionStorage');
             }
           } catch (err) {
-            console.log('❌ Error loading questionnaire data:', err);
-            console.log('Using defaults');
           }
 
           // REMOVED: Duplicate schedule_another handling - now handled at the beginning of DOMContentLoaded
 
           
-          console.log('📅 ✅ PROCEEDING WITH CAL.COM INITIALIZATION');
-          console.log('📅 ✅ Reason: Fresh form submission or no existing booking detected');
           
           // Prepare metadata for Cal.com (includes discovery phone if provided)
           const calMetadata = {
@@ -5574,7 +5544,6 @@
             original_content: questionnaireData.original_content || ''
           };
           
-          console.log('📊 Cal metadata prepared:', calMetadata);
           
           // Build prefill URL parameters  
           const prefillParams = new URLSearchParams();
@@ -5607,22 +5576,18 @@
           }
           
           const calLinkWithPrefill = `nithichote/30min?${prefillParams.toString()}`;
-          console.log('🔗 Cal.com link with prefill:', calLinkWithPrefill);
           
           // Initialize Cal.com embed with proper error handling
-          console.log('🔧 Checking Cal.com availability...');
           if (typeof Cal === 'undefined') {
             console.error('❌ Cal is not defined - Cal.com script not loaded');
             return;
           }
           
-          console.log('✅ Cal.com script loaded, proceeding with initialization...');
           
           // OFFICIAL CAL.COM INITIALIZATION (Fixed with namespace and origin)
           // Note: Cal.ns becomes available AFTER this init call
           Cal("init", "30min", {origin:"https://app.cal.com"});
           
-          console.log('🎯 Cal.com initialized, checking namespace availability...');
           
           // Wait a moment for namespace to be ready, then proceed
           setTimeout(() => {
@@ -5631,9 +5596,6 @@
               return;
             }
             
-            console.log('✅ Cal.ns["30min"] is ready, creating inline embed...');
-            console.log('📊 Metadata being passed to Cal.com:', calMetadata);
-            console.log('🔗 Cal link with prefill:', calLinkWithPrefill);
             
             // PROFESSIONAL CONFIG OBJECT - The metadata[key] syntax is critical
             const calConfig = {
@@ -5656,7 +5618,6 @@
               "email": calMetadata.email || ''
             };
             
-            console.log('🔧 Cal.com config object:', calConfig);
             
             Cal.ns["30min"]("inline", {
               elementOrSelector:"#my-cal-inline-30min",
@@ -5674,30 +5635,22 @@
               "hideEventTypeDetails": false,
               "layout": "month_view"
             });
-            console.log('✅ Cal.com theming applied');
             
           }, 100); // Small delay to allow namespace setup
 
-          // CRITICAL FIX: Define handleBookingSuccess BEFORE Cal.com event listeners
-          console.log('🔧 Defining booking success handler...');
+          // Define handleBookingSuccess before Cal.com event listeners
           
           // ENHANCED: Unified booking success handler with comprehensive debugging
           window.handleBookingSuccess = function(e, eventType) {
-            console.log('🚨 === BOOKING SUCCESS HANDLER TRIGGERED ===');
-            console.log('🔍 Called with eventType:', eventType);
-            console.log('🔍 Event object:', e);
-            console.log('🔍 Current booking state:', {
               bookingHandled: window.bookingHandled,
               confirmationPageCreated: window.confirmationPageCreated,
               currentTimestamp: new Date().toISOString()
             });
             
             if (window.bookingHandled) {
-              console.log('⚠️ Booking already handled, skipping duplicate');
               return;
             }
             
-            console.log(`🎯 Processing booking completion via ${eventType}`);
             window.bookingHandled = true;
             
             // Set booking flags for homepage redirect detection
@@ -5706,7 +5659,6 @@
             localStorage.setItem('bookingTimestamp', bookingTimestamp);
             localStorage.setItem('bookingEventType', eventType);
             
-            console.log('💾 Booking state saved to localStorage:', {
               bookingConfirmed: 'true',
               bookingTimestamp: bookingTimestamp,
               bookingEventType: eventType
@@ -5720,19 +5672,14 @@
             // ENHANCED: Extract and store attendee details for webhook correlation
             let attendeeData = {};
             
-            // DEBUG: Log event structure for PostMessage events
             if (eventType === 'POSTMESSAGE') {
-              console.log('🔍 POSTMESSAGE EVENT STRUCTURE:', {
                 'e.data': e.data,
                 'e.data.data': e.data?.data,
                 'e.data.payload': e.data?.payload,
                 'fullEvent': e
               });
               
-              // DEEP DEBUG: Show exactly what's in the data
-              console.log('🔍 DEEP DEBUG e.data:', JSON.stringify(e.data, null, 2));
               if (e.data?.data) {
-                console.log('🔍 DEEP DEBUG e.data.data:', JSON.stringify(e.data.data, null, 2));
               }
             }
             
@@ -5772,7 +5719,6 @@
                 bookingId: booking.id
               };
               
-              console.log('🎯 POSTMESSAGE: Extracted attendee data:', attendeeData);
             }
             
             // Store attendee data for webhook correlation
@@ -5785,36 +5731,28 @@
               };
               
               localStorage.setItem('cal_metadata', JSON.stringify(calMetadata));
-              console.log('💾 Attendee data stored for webhook correlation:', calMetadata);
             } else {
               console.warn('⚠️ Could not extract attendee email from booking event:', e);
             }
             
             // Create dynamic confirmation page - IMMEDIATE RESPONSE
-            console.log('🔄 IMMEDIATE: Creating dynamic confirmation page...');
             try {
               window.createConfirmationPage(e);
-              console.log('✅ createConfirmationPage called successfully');
             } catch (error) {
               console.error('❌ Error calling createConfirmationPage:', error);
             }
           };
           
           // Set up Cal.com event listeners with proper API
-          console.log('🔧 Setting up Cal.com event listeners...');
           
           // Set up Cal.com event listeners with error handling
           if (typeof Cal === 'function') {
             Cal("on", {
               action: "*", 
               callback: (e) => {
-              console.log('🎯 === CAL.COM EVENT DETECTED ===');
-              console.log('🔍 Event type:', e.type);
-              console.log('🔍 Event detail:', e.detail);
               
               if (e.type === 'booking_successful' || e.type === 'bookingSuccessful') {
                 if (!window.bookingHandled) {
-                  console.log('🎯 BOOKING SUCCESS detected via Cal universal API');
                   window.handleBookingSuccess(e, 'CAL_UNIVERSAL_API');
                 }
               }
@@ -5826,25 +5764,20 @@
           
           // Define booking observers function
           function setupBookingObservers() {
-            console.log('🔧 Setting up additional booking detection methods...');
             
             // Activate text-based confirmation detection
             if (typeof setupConfirmationDetection === 'function') {
               setupConfirmationDetection();
-              console.log('✅ Text observer confirmation detection activated');
             } else {
-              console.log('⚠️ setupConfirmationDetection not available');
             }
             
             // Add PostMessage listener for iframe communication
             window.addEventListener('message', function(event) {
               if (event.origin === 'https://app.cal.com' || event.origin === 'https://cal.com') {
-                console.log('🎯 PostMessage from Cal.com:', event.data);
                 if (event.data && (event.data.type === 'bookingSuccessful' || 
                     event.data.type === 'bookingSuccessfulV2' ||
                     event.data.type === 'booking_successful' ||
                     event.data.action === 'booking_confirmed')) {
-                  console.log('🎯 BOOKING SUCCESS via PostMessage');
                   if (!window.bookingHandled) {
                     window.handleBookingSuccess(event, 'POSTMESSAGE');
                   }
@@ -5852,7 +5785,6 @@
               }
             });
             
-            console.log('✅ Additional booking observers set up');
           }
           
           // Set up additional observers when Cal.com is ready
@@ -5862,27 +5794,19 @@
           if (typeof initializeSmartPhoneCta === 'function') {
             initializeSmartPhoneCta();
           } else {
-            console.log('⚠️ initializeSmartPhoneCta function not available yet');
           }
         });
 
         // TIMING FIX: Move createConfirmationPage to early script block for availability
         window.createConfirmationPage = function(e) {
-          console.log('🚨 === createConfirmationPage CALLED ===');
-          console.log('🔍 Called from:', e?.detail?.source || 'unknown');
-          console.log('🔍 Call stack:', new Error().stack);
-          console.log('🔍 Event data:', e);
-          console.log('🎯 Creating confirmation page...');
           
-          // CRITICAL FIX: Check if already created, but allow retry for failed attempts
+          // Check if already created, allow retry for failed attempts
           if (window.confirmationPageCreated && document.querySelector('.enhanced-confirmation')) {
-            console.log('⚠️ Confirmation page already created and visible, skipping...');
             return;
           }
           
           // Set flag early but will reset on error for retry capability
           const attemptStartTime = Date.now();
-          console.log('🔄 Starting confirmation page creation attempt...');
           
           // Get page wrapper element for content replacement
           const pageWrapper = document.querySelector('.page-wrapper');
@@ -5890,7 +5814,6 @@
             console.error('❌ pageWrapper element not found');
             return;
           }
-          console.log('✅ pageWrapper element found');
           
           // Get stored user data for personalization
           let userData = {};
@@ -5899,19 +5822,14 @@
             let storedData = localStorage.getItem('questionnaireData');
             if (!storedData) {
               storedData = sessionStorage.getItem('questionnaireData');
-              console.log('📊 Using sessionStorage fallback for confirmation');
             } else {
-              console.log('📊 Using localStorage data for confirmation');
             }
             
             if (storedData) {
               userData = JSON.parse(storedData);
-              console.log('📊 User data loaded for personalization:', userData);
             } else {
-              console.log('⚠️ No user data found for personalization');
             }
           } catch (err) {
-            console.log('❌ Error loading user data for confirmation:', err);
           }
 
           // Video mapping for challenge-specific content
@@ -5937,8 +5855,6 @@
           };
           const posterPath = posterMap[challengeType] || posterMap['manual-tasks'];
           
-          console.log('🎥 Using video path:', videoPath, 'for challenge:', challengeType);
-          console.log('🖼️ Using poster path:', posterPath, 'for challenge:', challengeType);
           
           // Create split messaging for better visual hierarchy
           const problemStatement = userData.challenge ? 
@@ -6277,7 +6193,6 @@
           document.documentElement.scrollTop = 0;
           document.body.scrollTop = 0;
           document.body.style.scrollBehavior = 'auto';
-          console.log('📍 SCROLL: Professional scroll reset before content replacement');
           
           // Insert the confirmation page
           pageWrapper.innerHTML = '';
@@ -6294,7 +6209,6 @@
               window.scrollTo({ top: 0, behavior: 'auto' });
               document.documentElement.scrollTop = 0;
               document.body.scrollTop = 0;
-              console.log('📍 SCROLL: Triple-checked - page confirmed at top');
             }, 50);
           });
           
@@ -6601,7 +6515,6 @@
           document.head.appendChild(confirmationCSS);
           
           // Initialize Minimal Professional Video Player
-          console.log('🎥 Setting up minimal professional video player...');
           setTimeout(() => {
             const video = document.getElementById('mainVideo');
             const centerPlayBtn = document.getElementById('centerPlayBtn');
@@ -6731,11 +6644,9 @@
             showBlurOverlay(); // Show blur on load
             updateVolumeButton(); // Set initial volume button state
             
-            console.log('✅ Minimal professional video player initialized');
           }, 500);
           
           // Initialize interactive elements
-          console.log('🔧 Setting up confirmation page interactions...');
           
           // Set up accordion functionality for preparation section
           document.querySelectorAll('.prep-question').forEach(question => {
@@ -6756,24 +6667,19 @@
           });
           
           // Initialize smart phone CTA after page creation
-          console.log('📱 Initializing phone CTA component...');
           
           // Set completion flag
           window.confirmationPageCreated = true;
-          console.log('✅ === CONFIRMATION PAGE CREATION COMPLETED ===');
-          console.log('⏱️ Total time:', Date.now() - attemptStartTime, 'ms');
           
           // Store booking confirmation and timestamp in localStorage for persistence
           localStorage.setItem('bookingConfirmed', 'true');
           localStorage.setItem('bookingTimestamp', Date.now().toString());
-          console.log('💾 Booking confirmation stored in localStorage for persistence');
           
           // Set up phone component after a brief delay to ensure DOM is ready
           setTimeout(() => {
             // Initialize phone component functionality
             initializeSmartPhoneCta();
             
-            console.log('✅ Confirmation page interactivity fully initialized');
           }, 100);
         };
         </script>
@@ -6783,7 +6689,6 @@
         // RESTORED: Function definition to fix syntax error
         // EARLY LOAD: Accordion function must be available immediately
         window.togglePrepItem = function(question, event) {
-          console.log('🎯 Accordion clicked! Function is working!');
           
           // Prevent event bubbling and default behavior
           if (event) {
@@ -6795,8 +6700,6 @@
             const clickedItem = question.parentElement;
             const wasActive = clickedItem.classList.contains('active');
             
-            console.log('🔍 Clicked item classes before:', clickedItem.className);
-            console.log('🔍 Was active before:', wasActive);
             
             // Close ALL accordion items
             document.querySelectorAll('.prep-item').forEach(function(item) {
@@ -6806,46 +6709,36 @@
             // Open clicked item if it wasn't active
             if (!wasActive) {
               clickedItem.classList.add('active');
-              console.log('🔍 Clicked item classes after:', clickedItem.className);
-              console.log('🎯 Accordion item opened successfully!');
               
               // Check if the answer div exists and its styles
               const answerDiv = clickedItem.querySelector('.prep-answer');
               if (answerDiv) {
                 const computedStyle = window.getComputedStyle(answerDiv);
-                console.log('🔍 Answer div found, grid-template-rows:', computedStyle.gridTemplateRows);
-                console.log('🔍 Answer div display:', computedStyle.display);
               } else {
-                console.log('❌ No .prep-answer found in clicked item!');
               }
             } else {
-              console.log('🎯 Accordion item closed!');
             }
           } catch (error) {
             console.error('❌ Accordion error:', error);
           }
         };
         
-        // CRITICAL FIX: Clean accordion state on page load
+        // Clean accordion state on page load
         window.cleanAccordionState = function() {
-          console.log('🧹 Cleaning accordion state - removing all active classes');
           const prepItems = document.querySelectorAll('.prep-item');
           prepItems.forEach(function(item) {
             item.classList.remove('active');
           });
-          console.log('✅ All accordion items reset to closed state');
         };
         
-        // CRITICAL FIX: Define video function early to fix ordering issue
+        // Define video function early to fix ordering issue
         window.initializeCustomVideoPlayer = function(userData) {
-          console.log('🎬 === EARLY VIDEO INITIALIZATION ===');
           
           const videoPlayer = document.getElementById('professionalVideoPlayer');
           const mainVideo = document.getElementById('mainVideo');
           const videoSource = document.getElementById('videoSource');
           
           if (!videoPlayer || !mainVideo || !videoSource) {
-            console.log('❌ Video elements not found');
             return;
           }
           
@@ -6862,7 +6755,6 @@
           const challenge = userData?.challenge || 'missed-opportunities';
           const videoPath = videoMapping[challenge] || videoMapping['missed-opportunities'];
           
-          console.log(`🎥 Setting video: ${videoPath} for challenge: ${challenge}`);
           
           // Set video source with proper MIME type and loading
           videoSource.src = videoPath;
@@ -6875,7 +6767,6 @@
           const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
           
           if (isIOS) {
-            console.log('📱 iOS detected - applying clean video optimizations');
             
             // Essential iOS attributes for inline playback (NO native controls)
             mainVideo.setAttribute('playsinline', 'playsinline');
@@ -6894,7 +6785,6 @@
             
             // Comprehensive fullscreen prevention
             mainVideo.addEventListener('webkitbeginfullscreen', function(e) {
-              console.log('📱 iOS: Blocking fullscreen attempt');
               e.preventDefault();
               e.stopPropagation();
               return false;
@@ -6902,7 +6792,6 @@
             
             mainVideo.addEventListener('webkitfullscreenchange', function(e) {
               if (mainVideo.webkitDisplayingFullscreen) {
-                console.log('📱 iOS: Force exiting fullscreen');
                 if (mainVideo.webkitExitFullscreen) {
                   mainVideo.webkitExitFullscreen();
                 }
@@ -6914,7 +6803,6 @@
           }
           
           // YOUTUBE-STYLE SOLUTION: Extract first frame with blur effect
-          console.log('🎬 Implementing YouTube-style first frame preview...');
           
           // Remove any existing poster to start fresh
           mainVideo.poster = '';
@@ -6926,7 +6814,6 @@
               const ctx = canvas.getContext('2d');
               
               const onCanPlay = () => {
-                console.log('📹 Video can play - extracting first frame');
                 
                 // Set canvas dimensions to match video
                 canvas.width = mainVideo.videoWidth || 640;
@@ -6957,14 +6844,12 @@
                     const posterDataUrl = canvas.toDataURL('image/jpeg', 0.8);
                     mainVideo.poster = posterDataUrl;
                     
-                    console.log('✅ YouTube-style first frame extracted and blurred');
                     resolve(posterDataUrl);
                     
                     // Reset video to beginning
                     mainVideo.currentTime = 0;
                     
                   } catch (error) {
-                    console.log('❌ Frame extraction failed:', error);
                     reject(error);
                   }
                   
@@ -6981,7 +6866,6 @@
           
           // Try to extract first frame, fallback to minimal poster if video is corrupted
           extractFirstFrame().catch(() => {
-            console.log('🔄 Video corrupted - using minimal fallback poster');
             
             // Minimal fallback for corrupted videos
             const canvas = document.createElement('canvas');
@@ -7000,7 +6884,6 @@
             const posterDataUrl = canvas.toDataURL('image/png');
             mainVideo.poster = posterDataUrl;
             
-            console.log('🔄 Minimal fallback poster applied');
           });
           
           // Force reload to recognize new source
@@ -7008,15 +6891,12 @@
           
           // Add loading event handlers for better debugging
           mainVideo.addEventListener('loadstart', () => {
-            console.log('📥 Video load started');
           });
           
           mainVideo.addEventListener('loadedmetadata', () => {
-            console.log('📊 Video metadata loaded - ready to play');
           });
           
           mainVideo.addEventListener('canplay', () => {
-            console.log('▶️ Video can start playing');
           });
           
           mainVideo.addEventListener('error', (e) => {
@@ -7028,7 +6908,6 @@
               });
               
               // Provide professional fallback for corrupted video files
-              console.log('🔄 Video file incompatible - showing professional placeholder');
               
               // Hide video and show informative message
               const videoPlayer = document.getElementById('professionalVideoPlayer');
@@ -7059,8 +6938,6 @@
             }
           });
           
-          console.log('✅ YouTube-style video preview system initialized:', mainVideo.src);
-          console.log('🎬 First frame extraction setup for challenge:', challenge);
         };
 
         // WEBHOOK FUNCTION - DEFINED EARLY FOR AVAILABILITY
@@ -7070,7 +6947,6 @@
           
           // GLOBAL DEDUPLICATION: 2-second protection window
           if (globalWebhookState.isProcessing || (now - globalWebhookState.lastRequestTime) < 2000) {
-            console.log(`🚫 WEBHOOK BLOCKED: Duplicate request prevented (last: ${globalWebhookState.lastRequestId})`);
             return Promise.resolve({ success: false, reason: 'duplicate_blocked' });
           }
           
@@ -7078,7 +6954,6 @@
           globalWebhookState.lastRequestId = requestId;
           globalWebhookState.lastRequestTime = now;
                 
-                console.log(`📡 CENTRAL WEBHOOK: Sending request ${requestId} from ${requestSource}`);
                 
                 // Get stored data from questionnaire
                 const getStoredData = () => {
@@ -7149,13 +7024,10 @@
                 });
                 
                 const getWebhookUrl = `${webhookUrl}?${params.toString()}`;
-                console.log('🚀 CENTRAL WEBHOOK: Sending request with URL length:', getWebhookUrl.length);
                 
                 return fetch(getWebhookUrl, { method: 'GET' })
                   .then(response => {
-                    console.log(`📡 WEBHOOK ${requestId}: Response status ${response.status}`);
                     if (response.ok) {
-                      console.log(`✅ WEBHOOK ${requestId}: Successfully sent to n8n`);
                       return response.text().then(text => ({ success: true, response: text, requestId }));
                     } else {
                       console.warn(`⚠️ WEBHOOK ${requestId}: Non-200 response:`, response.status);
@@ -7170,21 +7042,17 @@
                     // Reset processing state after 2 seconds
                     setTimeout(() => {
                       globalWebhookState.isProcessing = false;
-                      console.log(`🔄 WEBHOOK: Ready for next request (${requestId} completed)`);
                     }, 2000);
                   });
               }
 
         // PHONE COMPONENT IMPLEMENTATION - DEFINED BEFORE USAGE
         function initializeSmartPhoneCta() {
-          console.log('📱 Setting up AI Strategy Call phone component...');
           
           const ctaButton = document.getElementById('ctaButton');
           if (ctaButton) {
-            console.log('🔲 CTA button found, adding click handler...');
             
             ctaButton.addEventListener('click', function(e) {
-              console.log('🎯 CTA: Get AI Strategy Call button clicked!');
               e.preventDefault();
               e.stopPropagation();
               
@@ -7194,7 +7062,6 @@
               const phoneInput = document.getElementById('phoneInput');
               
               if (buttonContainer && phoneFormContainer) {
-                console.log('🔄 CTA: Starting button → phone form transition');
                 
                 // Smooth Vercel-like crossfade transition
                 buttonContainer.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -7212,7 +7079,6 @@
                 if (phoneContainer) {
                   phoneContainer.style.setProperty('pointer-events', 'auto', 'important');
                   phoneContainer.classList.add('form-active');
-                  console.log('🔓 Parent container pointer events enabled');
                 }
                 
                 // Smooth Vercel-like crossfade in
@@ -7222,13 +7088,11 @@
                   phoneFormContainer.style.setProperty('pointer-events', 'auto', 'important');
                   phoneFormContainer.style.setProperty('z-index', '110', 'important');
                   
-                  console.log('✅ CTA: Phone form transition completed');
                   
                   // Focus on phone input for better UX
                   setTimeout(() => {
                     if (phoneInput) {
                       phoneInput.focus();
-                      console.log('📱 Phone input focused');
                     }
                   }, 350);
                 });
@@ -7237,7 +7101,6 @@
               }
             });
           } else {
-            console.log('⚠️ CTA button not found');
           }
           
           // Phone Input Functionality
@@ -7245,7 +7108,6 @@
           const callButton = document.getElementById('callButton');
           
           if (phoneInput && callButton) {
-            console.log('📱 Setting up phone input and call button functionality');
             
             // Phone number formatting
             phoneInput.addEventListener('input', function(e) {
@@ -7272,7 +7134,6 @@
                 callButton.style.cursor = 'pointer';
                 callButton.style.opacity = '1';
                 callButton.disabled = false;
-                console.log('📞 Call button enabled for phone:', formattedValue);
               } else {
                 callButton.style.background = 'rgba(255, 255, 255, 0.15)';
                 callButton.style.color = 'rgba(255, 255, 255, 0.5)';
@@ -7291,7 +7152,6 @@
               const cleanPhone = phoneValue.replace(/\D/g, '');
               
               if (cleanPhone.length >= 10) {
-                console.log('📞 Call button clicked with phone:', phoneValue);
                 
                 // IMMEDIATE UI FEEDBACK: Show "Calling..." state instantly
                 const buttonText = callButton.querySelector('.call-button-text');
@@ -7299,30 +7159,22 @@
                   buttonText.textContent = 'Calling...';
                   callButton.disabled = true;
                   callButton.style.cursor = 'default';
-                  console.log('🔄 IMMEDIATE: Button changed to "Calling..." state');
                 }
                 
                 // Format phone for display and webhook
                 const formattedPhone = `(${cleanPhone.slice(0, 3)}) ${cleanPhone.slice(3, 6)}-${cleanPhone.slice(6, 10)}`;
                 
-                console.log('🎯 Initiating webhook call for AI discovery...');
-                console.log('📊 Phone data:', { phoneValue, formattedPhone, cleanPhone });
                 
                 // Call the webhook function with Promise handling for UI transitions
                 if (typeof window.sendWebhookToN8N === 'function') {
-                  console.log('🔗 Calling sendWebhookToN8N function...');
                   window.sendWebhookToN8N(phoneValue, formattedPhone, 'ai_discovery_call')
                     .then(result => {
-                      console.log('📡 WEBHOOK RESPONSE:', result);
                       
                       if (result && result.success) {
-                        console.log('✅ WEBHOOK SUCCESS: Transitioning immediately to confirmation state');
                         showSuccessCallState(phoneFormContainer);
                       } else if (result && result.reason === 'duplicate_blocked') {
-                        console.log('🚫 DUPLICATE BLOCKED: Showing success state for UX');
                         showSuccessCallState(phoneFormContainer);
                       } else {
-                        console.log('⚠️ WEBHOOK ISSUE: Showing success for better UX');
                         // Show success state anyway - user experience is more important than backend status
                         showSuccessCallState(phoneFormContainer);
                       }
@@ -7336,11 +7188,9 @@
                   console.error('❌ sendWebhookToN8N function not available');
                 }
               } else {
-                console.log('⚠️ Invalid phone number length:', cleanPhone.length);
               }
             });
           } else {
-            console.log('⚠️ Phone input or call button not found');
           }
         }
         </script>
@@ -7350,7 +7200,6 @@
         // RESTORED: Function definition to fix syntax error
         // EARLY LOAD: Accordion function must be available immediately
         window.togglePrepItem = function(question, event) {
-          console.log('🎯 Accordion clicked! Function is working!');
           
           // Prevent event bubbling and default behavior
           if (event) {
@@ -7361,32 +7210,26 @@
           // Get the parent prep item
           const prepItem = event.target.closest('.prep-item');
           if (!prepItem) {
-            console.log('❌ Could not find parent prep item');
             return;
           }
           
-          console.log('🔍 Found prep item:', prepItem);
           
           // Check current state
           const isActive = prepItem.classList.contains('active');
-          console.log('📊 Current state - Active:', isActive);
           
           // Close all other items first
           const allPrepItems = document.querySelectorAll('.prep-item');
           allPrepItems.forEach(item => {
             if (item !== prepItem) {
               item.classList.remove('active');
-              console.log('🔒 Closed other prep item');
             }
           });
           
           // Toggle current item
           if (isActive) {
             prepItem.classList.remove('active');
-            console.log('🔒 Closed current prep item');
           } else {
             prepItem.classList.add('active');
-            console.log('🔓 Opened current prep item');
           }
         };
         </script>
@@ -7394,7 +7237,6 @@
         <!-- Global webhook state and functions -->
         <script type="text/javascript">
         // GLOBAL: Global webhook state and management
-        console.log('🔧 Setting up global webhook state...');
         
         let globalWebhookState = {
           isProcessing: false,
@@ -7404,17 +7246,14 @@
 
         // UI STATE FUNCTION: Success state for phone call
         window.showSuccessCallState = function(phoneFormContainer) {
-          console.log('🎯 SUCCESS: showSuccessCallState function called');
           
           // Check if calling state already exists to prevent duplicates
           const existingCallingContainer = document.getElementById('callingStateContainer');
           if (existingCallingContainer) {
-            console.log('⚠️ SUCCESS: Calling state already active, ignoring duplicate');
             return;
           }
           
           if (phoneFormContainer) {
-            console.log('🧈 SUCCESS: Starting smooth crossfade...');
             
             // Create success container
             const callingContainer = document.createElement('div');
