@@ -51,6 +51,7 @@
     
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
     
     body {
@@ -424,6 +425,8 @@
       cursor: pointer;
       transition: all 0.3s ease;
       user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
       text-align: center;
       min-height: 48px;
       display: flex;
@@ -502,6 +505,8 @@
       min-height: 80px;
       display: flex;
       align-items: center;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     
     .option-card:hover {
@@ -1992,9 +1997,10 @@
         submitForm();
       });
       
-      // Add keyboard navigation
+      // Add keyboard navigation - only for non-text inputs
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && e.target.classList.contains('question-input')) {
+        // Only advance on Enter for option selection, not text inputs
+        if (e.key === 'Enter' && e.target.tagName !== 'INPUT') {
           e.preventDefault();
           nextQuestion();
         }
