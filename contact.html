@@ -1431,7 +1431,7 @@
           <div class="divider-stripe"></div>
           <div class="footer-padding">
             <div class="footer-logo-wrapper">
-              <a href="#" class="brand-link w-inline-block"><img src="images/ntihcihtoe.svg" loading="lazy" alt="" class="logo"></a>
+              <a href="/" class="brand-link w-inline-block"><img src="images/ntihcihtoe.svg" loading="lazy" alt="" class="logo"></a>
               <div class="text-size-small text-color-secondary">Your AI strategist</div>
             </div>
             <div class="w-layout-grid footer-grid">
@@ -1700,7 +1700,6 @@
       const hiddenField = document.getElementById(fieldName);
       if (hiddenField) {
         hiddenField.value = value;
-        console.log('✅ Selected:', element.textContent, '- Value set to:', value);
         
         // Production: Log selection for analytics
         if (window.gtag) {
@@ -1772,7 +1771,6 @@
       // Store in both localStorage (persistent) and sessionStorage (temporary) for compatibility
       localStorage.setItem('questionnaireData', JSON.stringify(dataForWebhook));
       sessionStorage.setItem('questionnaireData', JSON.stringify(dataForWebhook));
-      console.log('💾 Questionnaire data stored in both localStorage and sessionStorage for maximum reliability');
       
       // Build URL parameters for calendar page
       const calendarPageParams = new URLSearchParams();
@@ -1816,7 +1814,6 @@
       const scheduleAnother = currentUrlParams.get('schedule_another');
       if (scheduleAnother === 'true') {
         calendarPageParams.append('schedule_another', 'true');
-        console.log('🔄 Passing schedule_another=true parameter to calendar.html for fresh booking flow');
       }
       
       // Build calendar page URL
@@ -1940,21 +1937,17 @@
       
       // IMMEDIATE click handlers - no delay needed
       function attachClickHandlers() {
-        console.log('🔧 Attaching click handlers...');
         
         // Add direct click handlers to all pill options
         const allPills = document.querySelectorAll('.pill-option');
-        console.log('🔍 Found', allPills.length, 'pill-option elements');
         
         allPills.forEach((pill, index) => {
-          console.log(`🔍 Pill ${index}:`, pill.textContent.trim());
           
           // Remove any existing listeners first
           pill.removeEventListener('click', pill._clickHandler);
           
           // Create new click handler
           pill._clickHandler = function(e) {
-            console.log('🎯 PILL CLICKED:', this.textContent.trim());
             e.preventDefault();
             e.stopPropagation();
             selectPill(this);
@@ -1965,14 +1958,12 @@
         
         // Add direct click handlers to all option cards  
         const allCards = document.querySelectorAll('.option-card');
-        console.log('🔍 Found', allCards.length, 'option-card elements');
         
         allCards.forEach(card => {
           // Remove any existing listeners first
           card.removeEventListener('click', card._clickHandler);
           
           card._clickHandler = function(e) {
-            console.log('🎯 CARD CLICKED:', this.textContent.trim());
             e.preventDefault();
             e.stopPropagation();
             const hiddenField = this.closest('.question-slide').querySelector('input[type="hidden"]');
@@ -1984,7 +1975,6 @@
           card.addEventListener('click', card._clickHandler);
         });
         
-        console.log('✅ Click handlers attached successfully!');
       }
       
       // Attach handlers immediately and also after a short delay
@@ -2028,31 +2018,22 @@
       // Professional booking detection - redirect to confirmation page
       function checkExistingBooking() {
         try {
-          console.log('🔍 === BOOKING CHECK DEBUG ===');
-          console.log('🔍 Current URL:', window.location.href);
-          console.log('🔍 Document referrer:', document.referrer);
           
           // Check if user explicitly wants to schedule another session
           const urlParams = new URLSearchParams(window.location.search);
           const scheduleAnother = urlParams.get('schedule_another') === 'true';
           const fromConfirmation = document.referrer.includes('booking-confirmed.html');
           
-          console.log('🔍 schedule_another parameter:', urlParams.get('schedule_another'));
-          console.log('🔍 scheduleAnother:', scheduleAnother);
-          console.log('🔍 fromConfirmation:', fromConfirmation);
           
           // Don't redirect if user is intentionally scheduling another session
           if (scheduleAnother || fromConfirmation) {
-            console.log('🔄 Allowing fresh booking flow (schedule_another=true or from confirmation)');
             return;
           }
           
           const existingBooking = localStorage.getItem('questionnaireData');
           const bookingConfirmed = localStorage.getItem('bookingConfirmed');
           
-          console.log('🔍 existingBooking:', !!existingBooking);
-          console.log('🔍 bookingConfirmed:', bookingConfirmed);
-          console.log('🔍 Should redirect to static confirmation?', !!(existingBooking || bookingConfirmed)); 
+ 
           
           if (existingBooking || bookingConfirmed) {
             // Show professional site-matching loading overlay
@@ -2091,12 +2072,10 @@
             
             // Redirect after brief delay
             setTimeout(() => {
-              console.log('🔄 Redirecting returning user to static confirmation page');
               window.location.href = 'booking-confirmed.html';
             }, 800);
           }
         } catch (err) {
-          console.log('Booking check error:', err);
         }
       }
       
@@ -2129,7 +2108,6 @@
           // If at top and trying to scroll up (pull-to-refresh gesture), prevent it
           if (scrollTop <= 0 && touchY > startY) {
             e.preventDefault();
-            console.log('🚫 Prevented pull-to-refresh gesture');
           }
         }
       }, { passive: false });
