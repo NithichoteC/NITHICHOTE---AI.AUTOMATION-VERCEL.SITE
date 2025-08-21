@@ -191,7 +191,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.5rem 0 5rem 0 !important; /* Increased bottom padding for navigation clearance and content visibility */
+        padding: calc(60px + 2rem) 0 !important; /* Equal top/bottom spacing accounting for navigation */
         align-items: flex-start !important;
         background: var(--primary-black) !important;
         overscroll-behavior-y: contain !important; /* Contain scroll within this element */
@@ -287,7 +287,7 @@
       height: 100%;
       overflow-y: auto;
       align-items: flex-start;
-      padding: 2rem 0 calc(60px + 2rem) 0; /* Account for fixed bottom navigation */
+      padding: calc(60px + 2rem) 0; /* Equal top/bottom spacing accounting for 60px navigation */
     }
     
     /* Special handling for Calendly page */
@@ -302,7 +302,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: calc(100vh - 180px - 4rem);
+      min-height: calc(100vh - 120px); /* Simplified height calculation for better centering */
       padding: 1rem 0;
     }
     
@@ -981,7 +981,7 @@
 
       /* Update tablet question container padding for bottom navigation */
       .question-container {
-        padding: 2rem 0 calc(50px + 2rem) 0 !important; /* Account for 50px tablet navigation */
+        padding: calc(50px + 2rem) 0 !important; /* Equal top/bottom spacing for 50px tablet navigation */
       }
       
     }
@@ -1042,7 +1042,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.25rem 0 calc(40px + 2rem + env(safe-area-inset-bottom)) 0 !important; /* Account for 40px mobile navigation + extra space */
+        padding: calc(40px + 2rem + env(safe-area-inset-bottom)) 0 !important; /* Equal top/bottom spacing for 40px mobile navigation */
         overscroll-behavior-y: contain !important;
         touch-action: pan-y !important;
       }
