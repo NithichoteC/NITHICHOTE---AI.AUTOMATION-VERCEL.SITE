@@ -191,7 +191,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.5rem 0 2rem 0 !important; /* Start content immediately visible */
+        padding: 0.5rem 0 4rem 0 !important; /* Increased bottom padding for navigation clearance */
         align-items: flex-start !important;
         background: var(--primary-black) !important;
         overscroll-behavior-y: contain !important; /* Contain scroll within this element */
@@ -228,9 +228,14 @@
         min-height: auto !important; /* Remove fixed height constraints */
         height: auto !important;
         align-items: flex-start !important;
-        padding: 0.5rem 0 0 0 !important; /* Minimal top padding */
+        padding: 0.5rem 0 2rem 0 !important; /* Added bottom padding for better spacing */
         margin-top: 0 !important;
         width: 100% !important;
+      }
+      
+      /* Add balanced spacing to first question sections */
+      .assessment-section:last-child {
+        margin-bottom: 2rem !important; /* Equal spacing at bottom */
       }
     }
     
@@ -977,6 +982,12 @@
     }
     
     @media screen and (max-width: 479px) {
+      /* System fonts for faster loading on mobile - Vercel approach */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                     'Helvetica Neue', Arial, sans-serif !important;
+      }
+      
       .logo-section {
         position: static;
         transform: none;
@@ -989,15 +1000,25 @@
         text-align: center;
       }
       
+      /* Header title - More compact */
+      .header-title {
+        font-size: 0.875rem !important; /* 14px - smaller, cleaner */
+        letter-spacing: 0.05em !important;
+      }
+      
+      /* PROFESSIONAL MOBILE TYPOGRAPHY - Apple/Vercel Standards */
       .question-title {
-        font-size: 1.6rem;
-        line-height: 1.3;
-        margin-bottom: 1.5rem;
+        font-size: 1.25rem !important; /* 20px - 22% smaller for better fit */
+        line-height: 1.2 !important; /* Tighter line height */
+        letter-spacing: -0.01em !important; /* Slightly tighter tracking */
+        margin-bottom: 1.25rem !important;
       }
       
       .assessment-title {
-        font-size: 1.3rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.1rem !important; /* 17.6px - more compact */
+        line-height: 1.25 !important;
+        letter-spacing: -0.01em !important;
+        margin-bottom: 1.25rem !important;
       }
       
       .questionnaire-header {
@@ -1015,7 +1036,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.25rem 0 1.5rem 0 !important; /* Minimal top padding for immediate visibility */
+        padding: 0.25rem 0 3rem 0 !important; /* Increased bottom padding for navigation clearance */
         overscroll-behavior-y: contain !important;
         touch-action: pan-y !important;
       }
@@ -1044,14 +1065,15 @@
         visibility: visible !important;
       }
       
+      /* Better text flow with slightly more padding */
       .question-content {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 24px !important; /* Slightly more than 20px */
+        padding-right: 24px !important;
       }
       
       .question-title, .question-subtitle, .assessment-title {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 24px !important; /* Match content padding */
+        padding-right: 24px !important;
       }
       
       .calendly-text {
@@ -1091,16 +1113,25 @@
         margin: 0 auto;
       }
       
+      /* Options and pills - Slightly smaller text */
       .pill-option {
         width: 100%;
         min-height: 44px;
         padding: 0.75rem 1rem;
+        font-size: 0.875rem !important; /* 14px */
       }
       
       .option-card {
         width: 100%;
         min-height: 44px;
         padding: 0.75rem 1rem;
+        font-size: 0.875rem !important; /* 14px */
+      }
+      
+      /* Section labels - Compact sizing */
+      .section-label {
+        font-size: 0.813rem !important; /* 13px */
+        letter-spacing: 0.03em !important;
       }
       
       .options-container {
@@ -1121,10 +1152,14 @@
         padding: 1rem;
       }
       
+      /* Navigation buttons - Professional sizing for mobile */
       .nav-button {
-        padding: 0.75rem 1.5rem;
+        padding: 0.65rem 1rem !important; /* Slightly less padding */
         min-height: 44px;
-        font-size: 0.9rem;
+        font-size: 0.75rem !important; /* 12px - smaller for long text */
+        letter-spacing: 0.03em !important; /* Tighter spacing */
+        text-transform: uppercase !important;
+        white-space: nowrap !important; /* Prevent text wrapping */
       }
       
       .navigation-area {
@@ -1135,6 +1170,44 @@
         z-index: 1001 !important;
       }
       
+      /* Make navigation container responsive */
+      .navigation-container {
+        max-width: calc(100% - 32px) !important; /* Full width minus padding */
+      }
+      
+    }
+    
+    /* Ultra-narrow screens (360px and below) - iPhone SE, small Android */
+    @media screen and (max-width: 360px) {
+      .question-title {
+        font-size: 1.125rem !important; /* 18px - even smaller for ultra-narrow */
+        line-height: 1.15 !important;
+        letter-spacing: -0.015em !important;
+      }
+      
+      .assessment-title {
+        font-size: 1rem !important; /* 16px - very compact */
+        line-height: 1.2 !important;
+      }
+      
+      .header-title {
+        font-size: 0.813rem !important; /* 13px - very small but readable */
+        letter-spacing: 0.04em !important;
+      }
+      
+      .nav-button {
+        font-size: 0.688rem !important; /* 11px - very small but readable */
+        letter-spacing: 0.02em !important;
+        padding: 0.6rem 0.875rem !important; /* Even tighter padding */
+      }
+      
+      .pill-option, .option-card {
+        font-size: 0.813rem !important; /* 13px */
+      }
+      
+      .section-label {
+        font-size: 0.75rem !important; /* 12px */
+      }
     }
   </style>
   
@@ -1474,6 +1547,35 @@
       });
     }
     
+    // Professional mobile text optimization - Apple/Vercel approach
+    function updateTextForMobile(questionNum) {
+      const width = window.innerWidth;
+      const nextBtn = document.getElementById('nextBtn');
+      
+      if (width <= 390) {
+        // Ultra-short versions for narrow screens including iPhone 12 Pro (390px)
+        if (questionNum === totalQuestions) {
+          nextBtn.textContent = 'Book Call'; // Even shorter for narrow screens
+        } else {
+          nextBtn.textContent = 'Continue';
+        }
+      } else if (width <= 479) {
+        // Short versions for wider mobile
+        if (questionNum === totalQuestions) {
+          nextBtn.textContent = 'Book Strategy'; // Slightly shorter
+        } else {
+          nextBtn.textContent = 'Continue';
+        }
+      } else {
+        // Standard text for larger screens
+        if (questionNum === totalQuestions) {
+          nextBtn.textContent = 'Book Strategy Call';
+        } else {
+          nextBtn.textContent = 'Continue';
+        }
+      }
+    }
+    
     function showQuestion(questionNum) {
       // Hide all questions
       document.querySelectorAll('.question-slide').forEach(function(slide) {
@@ -1512,12 +1614,8 @@
       nextBtn.style.display = 'block';
       submitBtn.style.display = 'none';
       
-      // Update button text for final question
-      if (questionNum === totalQuestions) {
-        nextBtn.textContent = 'Book My Strategy Session';
-      } else {
-        nextBtn.textContent = 'Continue';
-      }
+      // Update button text for final question with smart mobile alternatives
+      updateTextForMobile(questionNum);
       
       updateProgress();
     }
@@ -1717,7 +1815,15 @@
       // Show loading state briefly, then redirect
       const nextBtn = document.getElementById('nextBtn');
       if (nextBtn) {
-        nextBtn.textContent = 'Redirecting to Calendar...';
+        // Smart loading text based on screen width - optimized for iPhone 12 Pro (390px)
+        const width = window.innerWidth;
+        if (width <= 390) {
+          nextBtn.textContent = 'Loading...'; // Shortest for narrow screens including iPhone 12 Pro
+        } else if (width <= 479) {
+          nextBtn.textContent = 'Opening Calendar...';
+        } else {
+          nextBtn.textContent = 'Redirecting to Calendar...';
+        }
         nextBtn.disabled = true;
       }
       
@@ -1984,6 +2090,11 @@
       
       // Run booking check IMMEDIATELY on page load - no delay to prevent bypass
       checkExistingBooking();
+      
+      // Add resize listener for dynamic text updates
+      window.addEventListener('resize', function() {
+        updateTextForMobile(currentQuestion);
+      });
       
       // iOS Pull-to-Refresh Prevention - JavaScript Fallback for Safari < 16
       let startY = 0;
