@@ -182,7 +182,7 @@
       .main-content {
         height: calc(100vh - 180px) !important; /* Header (120px) + Navigation (60px) */
         margin-top: 120px !important; /* Push down below fixed header */
-        margin-bottom: 0 !important;
+        margin-bottom: 60px !important; /* Account for bottom navigation */
         overflow: hidden !important;
       }
       
@@ -287,7 +287,7 @@
       height: 100%;
       overflow-y: auto;
       align-items: flex-start;
-      padding: 2rem 0 4rem 0;
+      padding: 2rem 0 calc(60px + 2rem) 0; /* Account for fixed bottom navigation */
     }
     
     /* Special handling for Calendly page */
@@ -978,6 +978,11 @@
         height: 50px;
         background: rgba(15, 15, 15, 0.98);
       }
+
+      /* Update tablet question container padding for bottom navigation */
+      .question-container {
+        padding: 2rem 0 calc(50px + 2rem) 0 !important; /* Account for 50px tablet navigation */
+      }
       
     }
     
@@ -1029,6 +1034,7 @@
       .main-content {
         height: calc(100vh - 160px - env(safe-area-inset-bottom)) !important; /* Header (120px) + Navigation (40px) */
         margin-top: 120px !important;
+        margin-bottom: calc(40px + env(safe-area-inset-bottom)) !important; /* Account for mobile bottom navigation */
         overflow: hidden !important;
       }
       
@@ -1036,7 +1042,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.25rem 0 max(5rem, calc(4rem + env(safe-area-inset-bottom))) 0 !important; /* Bottom padding with safe area support */
+        padding: 0.25rem 0 calc(40px + 2rem + env(safe-area-inset-bottom)) 0 !important; /* Account for 40px mobile navigation + extra space */
         overscroll-behavior-y: contain !important;
         touch-action: pan-y !important;
       }
