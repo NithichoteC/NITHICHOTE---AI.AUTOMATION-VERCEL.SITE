@@ -191,7 +191,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.5rem 0 4rem 0 !important; /* Increased bottom padding for navigation clearance */
+        padding: 0.5rem 0 5rem 0 !important; /* Increased bottom padding for navigation clearance and content visibility */
         align-items: flex-start !important;
         background: var(--primary-black) !important;
         overscroll-behavior-y: contain !important; /* Contain scroll within this element */
@@ -228,7 +228,7 @@
         min-height: auto !important; /* Remove fixed height constraints */
         height: auto !important;
         align-items: flex-start !important;
-        padding: 0.5rem 0 2rem 0 !important; /* Added bottom padding for better spacing */
+        padding: 0.5rem 0 3rem 0 !important; /* Increased bottom padding for better spacing */
         margin-top: 0 !important;
         width: 100% !important;
       }
@@ -1036,7 +1036,7 @@
         height: 100% !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        padding: 0.25rem 0 3rem 0 !important; /* Increased bottom padding for navigation clearance */
+        padding: 0.25rem 0 max(5rem, calc(4rem + env(safe-area-inset-bottom))) 0 !important; /* Bottom padding with safe area support */
         overscroll-behavior-y: contain !important;
         touch-action: pan-y !important;
       }
