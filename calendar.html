@@ -220,14 +220,15 @@
     
     .progress-steps {
       display: inline-flex;
-      align-items: center;
+      align-items: flex-start; /* Align to top so circles line up horizontally */
       gap: 1rem;
     }
     
     .progress-step {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-direction: column; /* Stack circle above text for perfect line alignment */
+      align-items: center; /* Center-align circle and text within each step */
+      gap: 0.3rem; /* Smaller gap between circle and text */
     }
     
     .step-circle {
@@ -246,10 +247,9 @@
     }
     
     .step-circle.completed {
-      background: var(--white) !important;
+      background: rgba(255, 255, 255, 0.6) !important; /* Muted grey-white to match overall scheme */
       color: var(--primary-black) !important;
-      border: 2px solid var(--white) !important;
-      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+      border: none !important; /* Remove border for clean appearance */
       font-size: 0.9rem;
       font-weight: 700;
     }
@@ -267,12 +267,6 @@
       border: 2px solid var(--white) !important;
     }
     
-    /* Progress step active state consistency */
-    .progress-step.active .progress-step-circle {
-      background: var(--white) !important;
-      border-color: var(--white) !important;
-      color: var(--primary-black) !important;
-    }
     
     .step-text {
       font-size: 0.9rem;
@@ -282,7 +276,7 @@
     }
     
     .progress-step:has(.step-circle.completed) .step-text {
-      color: var(--white) !important;
+      color: rgba(255, 255, 255, 0.6) !important; /* Lighter grey to match muted checkmark circle */
       font-weight: 600;
     }
     
@@ -294,13 +288,15 @@
     .step-divider {
       width: 40px;
       height: 2px;
-      background: var(--grey); /* Match subtext color */
+      background: rgba(255, 255, 255, 0.3) !important; /* Explicit muted grey to match checkmark circle */
       border-radius: 1px;
       transition: all 0.2s ease;
+      margin-top: 12px; /* Half the circle height (24px/2) to align with circle center */
+      align-self: flex-start; /* Align to start position for precise positioning */
     }
     
     .progress-steps:hover .step-divider {
-      background: var(--grey); /* Keep consistent grey on hover */
+      background: rgba(255, 255, 255, 0.3) !important; /* Keep consistent muted grey on hover */
     }
     
     /* Calendar Container - Professional Design */
@@ -2525,14 +2521,17 @@
       }
       
       .progress-steps {
-        flex-direction: column;
-        gap: 0.5rem;
+        flex-direction: row; /* Keep horizontal layout on tablets for better space usage */
+        gap: 1rem; /* Increased gap for better tablet spacing */
+        align-items: flex-start; /* Align to top so circles line up horizontally */
       }
       
       .step-divider {
         width: 35px; /* Tablet-optimized size */
         height: 1px;
-        background: var(--grey); /* Match subtext color */
+        background: rgba(255, 255, 255, 0.3) !important; /* Muted grey to match checkmark */
+        margin-top: 12px; /* Align with circle center (same as desktop) */
+        align-self: flex-start;
       }
       
       /* Scrollable container for tablets - same as mobile */
@@ -2676,7 +2675,7 @@
       /* Smaller progress elements on mobile */
       .progress-steps {
         gap: 0.5rem; /* Tighter spacing */
-        align-items: center;
+        align-items: flex-start; /* Align to top so circles line up horizontally */
         flex-direction: row; /* Keep horizontal on mobile */
       }
       
@@ -2693,7 +2692,9 @@
       .step-divider {
         width: 30px; /* Medium responsive size */
         height: 1px;
-        background: var(--grey); /* Match subtext color */
+        background: rgba(255, 255, 255, 0.3) !important; /* Muted grey to match checkmark */
+        margin-top: 10px; /* Half the mobile circle height (20px/2) to align with center */
+        align-self: flex-start;
       }
       
       .calendar-container {
@@ -2947,11 +2948,23 @@
       }
     }
     
-    /* For very small screens (iPhone SE, etc) */
+    /* For very small screens (iPhone SE, etc) - Stack vertically for better readability */
     @media screen and (max-width: 375px) {
       .calendly-inline-widget iframe,
       #my-cal-inline-30min iframe {
         height: 1100px !important; /* Slightly less for smaller screens */
+      }
+      
+      /* Stack progress steps vertically on very small screens */
+      .progress-steps {
+        flex-direction: column;
+        gap: 0.5rem; /* Vertical spacing between steps */
+        align-items: center;
+      }
+      
+      /* Hide divider line when stacked vertically */
+      .step-divider {
+        display: none;
       }
       
       /* Restored progress indicator text */
@@ -2960,14 +2973,25 @@
         color: var(--grey);
       }
       
-      .step-divider {
-        width: 25px; /* Visible but mobile-optimized */
-        height: 1px;
-        background: var(--grey); /* Match subtext color */
+      .progress-step {
+        gap: 0.5rem; /* Spacing between circle and text */
+      }
+    }
+    
+    /* Medium mobile screens - Keep horizontal layout with optimal spacing */
+    @media screen and (min-width: 376px) and (max-width: 479px) {
+      .progress-steps {
+        flex-direction: row;
+        gap: 0.75rem; /* Balanced spacing for medium mobile */
+        align-items: flex-start; /* Align to top so circles line up horizontally */
       }
       
-      .progress-steps {
-        gap: 0.25rem; /* Minimal spacing */
+      .step-divider {
+        width: 30px; /* Medium size for these screens */
+        height: 1px;
+        background: rgba(255, 255, 255, 0.3) !important; /* Muted grey to match checkmark */
+        margin-top: 10px; /* Half the mobile circle height (20px/2) to align with center */
+        align-self: flex-start;
       }
     }
     
@@ -3069,66 +3093,7 @@
       opacity: 1;
     }
     
-    .progress-step-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.6);
-      transition: all 0.3s ease;
-    }
     
-    .progress-step.active .progress-step-circle {
-      background: var(--white);
-      border-color: var(--white);
-      color: var(--primary-black);
-    }
-    
-    .progress-step-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.6);
-      text-align: center;
-      white-space: nowrap;
-    }
-    
-    .progress-step.active .progress-step-label {
-      color: rgba(255, 255, 255, 0.9);
-    }
-    
-    .progress-step-connector {
-      width: 60px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.1);
-      margin: 0 1rem;
-    }
-    
-    @media (max-width: 767px) {
-      .progress-steps {
-        margin: 1.5rem 0 2rem 0;
-      }
-      
-      .progress-step-connector {
-        width: 40px;
-        margin: 0 0.5rem;
-      }
-      
-      .progress-step-label {
-        font-size: 0.7rem;
-      }
-      
-      .progress-step-circle {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-      }
-    }
 
     /* Step Indicators for Visual Hierarchy */
     .step-indicator {
