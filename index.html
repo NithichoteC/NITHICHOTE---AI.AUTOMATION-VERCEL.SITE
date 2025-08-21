@@ -177,6 +177,9 @@
         margin-top: 2px !important; /* Minimal gap */
         position: relative !important;
         transition: width 0.3s ease !important; /* Smooth animation */
+        will-change: width !important; /* Optimize for animation performance */
+        -webkit-transform: translateZ(0) !important; /* Force hardware acceleration */
+        transform: translateZ(0) !important; /* Force hardware acceleration */
       }
       
       /* Fix hamburger menu button - remove scale transform */
@@ -227,6 +230,27 @@
       .link-button:active .underline {
         width: 0 !important; /* Shrink underline on click */
         transition: width 0.15s ease !important; /* Quick shrink like text */
+      }
+
+      /* Touch device optimizations - Better mobile animation performance */
+      @media (hover: none) and (pointer: coarse) {
+        /* Touch devices: Ensure smoother animations on mobile */
+        .link-button .underline {
+          transition: width 0.2s ease !important; /* Slightly slower for touch feedback */
+        }
+        
+        .link-button:active .underline {
+          transition: width 0.1s ease !important; /* Quick response on touch */
+        }
+        
+        /* Optimize text animations for touch */
+        .button-text {
+          transition: transform 0.2s ease !important; /* Optimized for touch */
+        }
+        
+        .link-button:active .button-text {
+          transition: transform 0.1s ease !important; /* Quick touch response */
+        }
       }
       
       /* Fix email button vertical alignment with social buttons */
@@ -4790,6 +4814,44 @@
     });
   </script>
   
+  <!-- Professional Safari bfcache Fix for CTA Button Animations -->
+  <script>
+    // Fix CTA button underline animation stuck state when returning from navigation
+    // This handles Safari's Back-Forward Cache (bfcache) behavior
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        // Page was restored from bfcache, reset all button animations
+        console.log('🔄 Page restored from bfcache - resetting CTA button animations');
+        
+        // Reset all link-button underline animations
+        const underlines = document.querySelectorAll('.link-button .underline');
+        underlines.forEach(underline => {
+          // Force reset animation state
+          underline.style.width = '';
+          underline.style.transition = 'none';
+          
+          // Re-enable transition after a brief moment
+          setTimeout(() => {
+            underline.style.transition = '';
+          }, 10);
+        });
+        
+        // Reset text animations
+        const buttonTexts = document.querySelectorAll('.link-button .button-text');
+        buttonTexts.forEach(text => {
+          text.style.transform = '';
+          text.style.transition = 'none';
+          
+          setTimeout(() => {
+            text.style.transition = '';
+          }, 10);
+        });
+        
+        console.log('✅ CTA button animations reset successfully');
+      }
+    });
+  </script>
+
   <script>
     // Capture and store UTM parameters on landing page
     document.addEventListener('DOMContentLoaded', function() {
