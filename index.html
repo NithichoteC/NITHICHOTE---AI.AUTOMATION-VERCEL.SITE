@@ -4821,7 +4821,6 @@
     window.addEventListener('pageshow', function(event) {
       if (event.persisted) {
         // Page was restored from bfcache, reset all button animations
-        console.log('🔄 Page restored from bfcache - resetting CTA button animations');
         
         // Reset all link-button underline animations
         const underlines = document.querySelectorAll('.link-button .underline');
@@ -4847,7 +4846,6 @@
           }, 10);
         });
         
-        console.log('✅ CTA button animations reset successfully');
       }
     });
   </script>
@@ -4880,7 +4878,6 @@
       const questionnaireLinks = document.querySelectorAll('a[href*="contact.html"]');
       
       if (bookingConfirmed === 'true') {
-        console.log('🔄 Return user detected - modifying CTA behavior');
         
         // Modify CTA buttons for confirmed users
         questionnaireLinks.forEach((link, index) => {
@@ -4898,7 +4895,6 @@
           // Redirect to static confirmation instead of form
           link.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('🔄 Redirecting return user to static confirmation');
             window.location.href = 'booking-confirmed.html';
           });
         });
